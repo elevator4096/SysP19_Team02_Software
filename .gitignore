@@ -19,7 +19,7 @@
 *.tar.gz
 *.rar
 
-#eclipse Files
+#eclipse and deep Files
 /.settings
 .project
 .classpath
