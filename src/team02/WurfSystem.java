@@ -17,13 +17,18 @@ public class WurfSystem extends Task{
 			zustand++;
 			switch(zustand) {
 			case 1:
-				pwm.setWurfZylinderPWM(10);
+				pwm.setWurfZylinderPWM(30);
 				timer1.set(5000);
 				break;
 			case 2:
-				
+				IO.WurfMagnet.set(true);
+				timer1.set(1000);
 				break;
 			case 3:
+				IO.WurfMagnet.set(false);
+				pwm.setWurfZylinderPWM(80);
+				zustand = 0;
+				timer1.set(10000);
 				break;
 			}
 		}
