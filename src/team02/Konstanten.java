@@ -3,18 +3,23 @@ package team02;
 public interface Konstanten
 {
 	//Debug Konstanten
-	boolean DEBUG = true;
-	
+	final boolean DEBUG 	= true;
 	
 	//Programm Parameter
-	int TASK_PERIOD = 200;
-	int TIME_1S	= 1000;
-	//Eingänge
+	final int TASK_PERIOD 	= 200;
+	final int TIME_1S		= 1000;
 	
+	//Eingänge
+	final int FIRST_IN		= 15;
+	final int ANZ_IN		= 4;
 	
 	//Ausgänge
+	final int FIRST_OUT		= 19;
+	final int ANZ_OUT		= 4;
 	
-	
-	//Wifi Parameters
+	//Wifi Parameter
+	//Befehle
+	final int BEW_ZYL 		= 0b1101;
+	final int WERFE 		= 0b1110;
 	
 }

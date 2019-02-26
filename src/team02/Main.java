@@ -12,16 +12,13 @@ public class Main extends Task implements Konstanten
 {
 	//Variablen
 	
-	public WirelessConnection wifi;
-	public OutputStream stream;
-	public Output out;
-	public Input in;
-	public PWM pwm;
-	public HLC demo;
-	public Debug debug;
-
-	
-	static final int ZYL = 13;
+	public static WirelessConnection wifi;
+	public static OutputStream stream;
+	public static Output out;
+	public static Input in;
+	public static PWM pwm;
+	public static HLC demo;
+	public static Debug debug;
 	
 	static int x = 0;
 	static int y = 1;
@@ -36,11 +33,19 @@ public class Main extends Task implements Konstanten
 			Task task = new Main();
 			task.period = Konstanten.TASK_PERIOD;
 			Task.install(task);
+			wifi = new WirelessConnection();
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+		
+		stream = new OutputStream();
+		out = new Output();
+		in = new Input();
+		pwm = new PWM();
+		demo = new HLC();
+		debug = new Debug();
 
 	}
 	
@@ -48,13 +53,7 @@ public class Main extends Task implements Konstanten
 	//Konstruktor
 	public Main() throws Exception
 	{
-		wifi = new WirelessConnection();
-		stream = new OutputStream();
-		out = new Output();
-		in = new Input();
-		pwm = new PWM();
-		demo = new HLC();
-		debug = new Debug();
+
 	}
 	
 	//Methode, die Zyklisch aufgerufen wird

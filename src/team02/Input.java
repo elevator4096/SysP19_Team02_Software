@@ -8,35 +8,38 @@ package team02;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 
-public class Input
+public class Input implements Konstanten
 {
-	public static MPIOSM_DIO IN_1;
-	public static MPIOSM_DIO IN_2;
-	public static MPIOSM_DIO IN_3;
-	public static MPIOSM_DIO IN_4;
+	public static MPIOSM_DIO[] IN;
+	
 	
 	public Input()
 	{
-		IN_1 = new MPIOSM_DIO(12, false);
-		IN_2 = new MPIOSM_DIO(13, false);
-		IN_3 = new MPIOSM_DIO(14, false);
-		IN_4 = new MPIOSM_DIO(15, false);
+		IN = new MPIOSM_DIO[Konstanten.ANZ_IN];
+		int x = Konstanten.FIRST_IN;
+		for(MPIOSM_DIO m : IN)
+		{
+			IN[x-Konstanten.FIRST_IN] = new MPIOSM_DIO(x, false);
+			x++;
+		}
 	}
 	
 	public boolean get(int i)
 	{
-		switch(i)
+		if(i-Konstanten.FIRST_IN<Konstanten.ANZ_IN)
+			return IN[i-Konstanten.FIRST_IN].get();
+		return false;
+	}
+	
+	public void print()
+	{
+		int x = Konstanten.FIRST_IN;
+		for(MPIOSM_DIO m : IN )
 		{
-			case 1:
-				return IN_1.get();
-			case 2:
-				return IN_2.get();
-			case 3:
-				return IN_3.get();
-			case 4:
-				return IN_4.get();
-			default:
-				return false;
+			System.out.print("IN ");
+			System.out.print(x);
+			System.out.print(" ");;
+			System.out.println(m.get());
 		}
 	}
 }

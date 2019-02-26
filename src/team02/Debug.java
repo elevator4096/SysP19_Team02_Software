@@ -17,7 +17,7 @@ public class Debug implements Konstanten
 			System.out.println("Debug Enabled");
 			x=1;
 		}
-		
+		Main.in.print();
 		x++;
 	}
 }

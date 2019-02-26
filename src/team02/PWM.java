@@ -6,7 +6,6 @@
 */
 package team02;
 
-import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PPWA;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
 public class PWM
