@@ -59,6 +59,7 @@ public class Main extends Task implements Konstanten
 	//Methode, die Zyklisch aufgerufen wird
 	public void action()
 	{
+		
 		if (Konstanten.DEBUG)
 		{
 			debug.run();
