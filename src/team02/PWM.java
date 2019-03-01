@@ -46,6 +46,27 @@ public class PWM
 		double d;
 		d = ((double)(i))/100;
 		d = d*(CHAN_0_MAX-CHAN_0_MIN)+CHAN_0_MIN;
-		IO.WurfZylinderPWM.update((int)d);
+		IO.wurfZylinderPWM.update((int)d);
 	}
+
+	
+	public void setMotorLinksPWM(int i)
+	{
+		double d;
+		d = ((double)(i))/100;
+		d = d*IO.motorenPWMPeriod;
+		IO.motorLinksPWM.update((int)d);
+	}
+	
+
+
+	public void setMotorRechtsPWM(int i)
+	{
+		double d;
+		d = ((double)(i))/100;
+		d = d*IO.motorenPWMPeriod;
+		IO.motorRechtsPWM.update((int)d);
+	}
+	
+	
 }

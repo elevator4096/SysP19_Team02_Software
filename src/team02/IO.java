@@ -15,10 +15,16 @@ public interface IO {
 	
 	//Output
 	MPIOSM_DIO testLed 				= new MPIOSM_DIO(10, true );
-	MPIOSM_DIO WurfMagnet			= new MPIOSM_DIO(11, true );
+	MPIOSM_DIO wurfMagnet			= new MPIOSM_DIO(11, true );
+
+	//PWM Periodendauer
+	int wurfZylinderPWMPeriod 		= 14_000_000/TPU_PWM.tpuTimeBase; 	// PWM 	   72 Hz
+	int motorenPWMPeriod			= 	  50_000/TPU_PWM.tpuTimeBase;   // PWM 20'000 Hz
 	
 	//PWM
-	TPU_PWM    WurfZylinderPWM 	   	= new TPU_PWM(true, 0, 14_000_000 /TPU_PWM.tpuTimeBase, 0); // PWM 72 Hz
+	TPU_PWM    wurfZylinderPWM 	   	= new TPU_PWM(true, 0, wurfZylinderPWMPeriod , 0); 
+	TPU_PWM    motorLinksPWM 	   	= new TPU_PWM(true, 1, motorenPWMPeriod		 , 0); 
+	TPU_PWM    motorRechtsPWM 	   	= new TPU_PWM(true, 2, motorenPWMPeriod		 , 0);
 	
 
 
