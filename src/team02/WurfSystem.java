@@ -8,8 +8,17 @@ public class WurfSystem extends Task{
 	private static Timer timer1;
 	private static int zustand = 0;
 	
-	public void action() {
+	public WurfSystem()
+	{
 		
+	}
+	
+	
+	
+	
+	
+	public void action() {
+		//Testprogramm
 		if (timer1.expired())
 		{
 			zustand++;
@@ -38,6 +47,7 @@ public class WurfSystem extends Task{
 	
 	static 
 	{
+		/*
 		// Einfahrzeit ca 12 Sekunden
 		Task t = new WurfSystem(); // Task erzeugen
 		t.period = 500; // Task-Periode festlegen
@@ -45,13 +55,10 @@ public class WurfSystem extends Task{
 		
 		pwm = new PWM();
 		timer1 = new Timer();
-		
-		timer1.set(5000);
+		timerv
 		zustand = 0;
-		
-		//pwm.setChan0(10);
 		pwm.setWurfZylinderPWM(80);
-		//pwm.setChan0(100);
+		*/
 		
 	}
 }
