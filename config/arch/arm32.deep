@@ -1,0 +1,180 @@
+#deep-1
+
+meta {
+	version = "2015-09-24";
+	description = "ARM architecture description file";
+}
+
+arch arm32 {
+
+	registermap {
+	
+		# general purpose registers
+		register R0 {
+			type = GPR;
+			addr = 0;
+			size = 4;
+		}
+		register R1 {
+			type = GPR;
+			addr = 1;
+			size = 4;
+		}
+		register R2 {
+		        type = GPR;
+		        addr = 2;
+		        size = 4;
+		}
+		register R3 {
+		        type = GPR;
+		        addr = 3;
+		        size = 4;
+		}
+		register R4 {
+		        type = GPR;
+		        addr = 4;
+		        size = 4;
+		}
+		register R5 {
+		        type = GPR;
+		        addr = 5;
+		        size = 4;
+		}
+		register R6 {
+		        type = GPR;
+		        addr = 6;
+		        size = 4;
+		}
+		register R7 {
+		        type = GPR;
+		        addr = 7;
+		        size = 4;
+		}
+		register R8 {
+		        type = GPR;
+		        addr = 8;
+		        size = 4;
+		}
+		register R9 {
+		        type = GPR;
+		        addr = 9;
+		        size = 4;
+		}
+		register R10 {
+		        type = GPR;
+		        addr = 10;
+		        size = 4;
+		}
+		register R11 {
+		        type = GPR;
+		        addr = 11;
+		        size = 4;
+		}
+		register R12 {
+		        type = GPR;
+		        addr = 12;
+		        size = 4;
+		}
+		
+		# general purpose registers with special function
+		register SP {
+			type = GPR;
+			addr = 13;
+			size = 4;
+		}
+		register LR {
+			type = GPR;
+			addr = 14;
+			size = 4;
+		}
+		register PC {
+			type = GPR;
+			addr = 15;
+			size = 4;
+		}
+
+		 
+		 # floating point registers
+		 register D0 {
+		        type = FPR;
+		        addr = 0;
+		        size = 8;
+		 }
+		 register D1 {
+		        type = FPR;
+		        addr = 1;
+		        size = 8;
+		 }
+		 register D2 {
+		        type = FPR;
+		        addr = 2;
+		        size = 8;
+		 }
+		 register FPR3 {
+		        type = FPR;
+		        addr = 3;
+		        size = 8;
+		 }
+		 register FPR4 {
+		        type = FPR;
+		        addr = 4;
+		        size = 8;
+		 }
+		 register FPR5 {
+		        type = FPR;
+		        addr = 5;
+		        size = 8;
+		 }
+		 register FPR6 {
+		        type = FPR;
+		        addr = 6;
+		        size = 8;
+		 }
+		 register FPR7 {
+		        type = FPR;
+		        addr = 7;
+		        size = 8;
+		 }
+		 register FPR8 {
+		        type = FPR;
+		        addr = 8;
+		        size = 8;
+		 }
+		 register FPR9 {
+		        type = FPR;
+		        addr = 9;
+		        size = 8;
+		 }
+		 register FPR10 {
+		        type = FPR;
+		        addr = 10;
+		        size = 8;
+		 }
+		 register FPR11 {
+		        type = FPR;
+		        addr = 11;
+		        size = 8;
+		 }
+		 register FPR12 {
+		        type = FPR;
+		        addr = 12;
+		        size = 8;
+		 }
+		 register FPR13 {
+		        type = FPR;
+		        addr = 13;
+		        size = 8;
+		 }
+		 register FPR14 {
+		        type = FPR;
+		        addr = 14;
+		        size = 8;
+		 }
+		 register FPR15 {
+		        type = FPR;
+		        addr = 15;
+		        size = 8;
+		 }
+		 
+    }
+}

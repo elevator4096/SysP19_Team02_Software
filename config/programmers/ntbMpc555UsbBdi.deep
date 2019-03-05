@@ -1,0 +1,12 @@
+#deep-1
+
+meta {
+	version = "2012-06-14";
+	description = "Programmer description file for NTB MPC555 USB-BDI";
+}
+
+programmer ntbMpc555UsbBdi {
+	description = "NTB MPC555 USB-BDI";
+	pluginid = "ch.ntb.inf.mpc555UsbBdi";
+	classname = "ch.ntb.inf.usbbdi.mpc555.NtbMpc555UsbBdi";
+}

@@ -9,7 +9,6 @@ package team02;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
-import ch.ntb.inf.deep.runtime.util.CmdInt.Type;
 
 
 public class WirelessConnection 

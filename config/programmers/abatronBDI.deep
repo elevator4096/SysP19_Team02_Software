@@ -1,0 +1,12 @@
+#deep-1
+
+meta {
+	version = "2016-02-26";
+	description = "Programmer description file for Abatron BDI2000 or BDI3000";
+}
+
+programmer abatronBDI {
+	description = "Abatron BDI2000/3000";
+	pluginid = "ch.ntb.inf.abatronInterface";
+	classname = "ch.ntb.inf.abatronInterface.AbatronTelnet";
+}

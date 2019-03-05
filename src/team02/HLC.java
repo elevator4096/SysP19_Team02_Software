@@ -18,11 +18,13 @@
 
 package team02;
 
-import java.io.PrintStream;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+import java.io.PrintStream;
+
 
 /* CHANGES:
  * 22.02.2011	NTB/Zueger	OutT replaced by System.out
@@ -69,7 +71,10 @@ public class HLC extends Task {
 		min = 1001;
 		max = -1;
 	}
-	
+
+	/**
+	 *
+	 */
 	static {
 		// Initialize HLC1395Pulsed driver for 4 sensors and start reading values
 		sense = HLC1395Pulsed.getInstance();

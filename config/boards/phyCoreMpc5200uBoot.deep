@@ -1,0 +1,119 @@
+#deep-1
+
+meta {
+	version = "2015-06-05";
+	description = "Board description file for Phytec phyCORE-MPC5200tiny or phyCORE-MPC5200io with preinstalled uBoot";
+}
+
+board phyCoreMpc5200uBoot {
+	description = "Phytec phyCORE-MPC5200 uBoot";
+	cputype = mpc5200;
+	
+	sysconst {
+		extRamBase   = 0x0;						        # starting at 0x0
+		extRamSize   = 0x8000000;						# 128M external RAM
+	
+		extFlashBase = 0xFFF00000;						# starting at 0xFF000000
+		extFlashSize = 0x100000;						# only the last MB of the 16MB external Flash is used
+
+		excpCodeFlashBase = extFlashBase;				# Base address for exception code when starting from flash
+		excpCodeRamBase = extRamBase;					# Base address for exception code when starting from ram
+		excpCodeSize = 0x4000;							# Exception code size (includes exception vectors and further methods of the exception classes
+		
+		sysTabBaseAddr = excpCodeSize;					# Place system table behind exception code
+		
+		stackSize = 0x2000;								# Default stack size
+		heapSize = 0x40000;								# Default heap size
+	}
+	
+	memorymap {
+
+		# ===== External RAM =====
+		device ExternalRam {							# External RAM device configuration
+			base = extRamBase;
+			size = extRamSize;
+			width = 4;
+			technology = ram;
+			attributes = read, write;
+		}
+		
+		segment ExternalRam.ExceptionCode {				# Exception code
+			base = excpCodeRamBase;
+			size = excpCodeSize;
+			attributes = read, code;
+		}
+		  
+		segment ExternalRam.SysTab {					# Default Segment for code, constants and class fields
+			base = sysTabBaseAddr;						# Place system table behind exception code
+			attributes = read, systab;
+		}
+
+		segment ExternalRam.Default {
+			attributes = read, write, const, code, var;
+		}
+
+		segment ExternalRam.Stack {
+			attributes = read, write, stack;
+			size = stackSize;
+			base = extRamBase + extRamSize - stackSize;	# Place it at the end of the device
+		}
+
+		segment ExternalRam.Heap {						
+			base = extRamBase + extRamSize - stackSize - heapSize;
+			size = heapSize;							# Place it below stack
+			attributes = read, write, heap;				
+		}
+		
+		# ===== External Flash =====
+		device ExternalFlash {							# External flash device configuration
+			base = extFlashBase;
+			size = extFlashSize;
+			width = 4;
+			technology = flash;
+			memorytype = "IntelStrata";
+			attributes = read;
+			
+			memorysector Sec0 {							# First sector is used for exception code and system table
+				base = extFlashBase;
+				sectorsize = 0x8000;					# 32k
+			}
+			memorysector Sec1 {
+				base = extFlashBase + 0x8000;
+				sectorsize = 0x8000;					# 32k
+			}
+#			memorysector Sec2 {
+#				base = extFlashBase + 0x10000;
+#				sectorsize = 0x8000;					# 32k
+#			}
+		}
+		
+		segment ExternalFlash.ExceptionCode {			# Exception code
+			base = excpCodeFlashBase;
+			size = excpCodeSize;
+			attributes = read, code;
+		}
+		  
+		segment ExternalFlash.SysTab {					# Default Segment for code, constants and class fields
+			base = sysTabBaseAddr;						# Place system table behind exception code
+			attributes = read, systab;
+		}
+
+		segment ExternalFlash.Default {					# Default Segment for code, constants and class fields
+			attributes = read, const, code;
+		}
+	}
+	
+
+	runconfiguration BootFromRam {
+		description = "load program to ram (optimized)";
+		system {
+			systemtable: systab@ExternalRam.SysTab;
+		}
+		modules {
+			kernel, heap: code@ExternalRam.Default, const@ExternalRam.Default, var@ExternalRam.Default;
+			exception: code@ExternalRam.ExceptionCode, const@ExternalRam.Default, var@ExternalRam.Default;
+			default: code@ExternalRam.Default, const@ExternalRam.Default, var@ExternalRam.Default;           
+		}
+	}
+
+}

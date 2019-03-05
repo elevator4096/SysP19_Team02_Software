@@ -1,0 +1,147 @@
+#deep-1
+
+meta {
+	version = "2015-10-04";
+	description = "CPU description file for Freescale i.MX6 processor";
+}
+
+cpu iMX6 {
+	description = "Freescale i.MX6";
+	cpuarch = arm32;
+	
+	sysconst {
+		IMB = 0x0;										# Internal Memory Base
+		
+		SRAMA_BaseAddr = IMB + 0;						# Internal SRAM A Base Address
+		SRAMA_Size = 0x2800;							# Internal SRAM A Size (10 KiB)
+		SRAMB_BaseAddr = SRAMA_BaseAddr + SRAMA_Size;	# Internal SRAM B Base Address
+		SRAMB_Size = 0x4000;							# Internal SRAM B Size (16 KiB)
+		
+#		excpCodeBase = IMB;								# Base address for exception code
+#		excpCodeSize = 0x1000;							# Exception code size
+		
+#		sysTabBaseAddr = IMB + excpCodeSize;			# Place system table behind exception code
+		
+		stackSize = 0x10000;								# Default stack size
+		SRR1init = 0x3802;								# Initial value of Machine Status Save/Restore Register 1
+	}
+	
+	memorymap {
+
+		# ===== Internal RAM =====
+		device InternalRam {
+			attributes = read, write;
+			width = 4; # byte
+			size = SRAMA_Size + SRAMB_Size;
+			base = SRAMA_BaseAddr;
+			technology = ram;
+		}
+		
+	}
+	
+	registermap {
+			
+		# special purpose register
+
+		 register SPR80 {
+			 type = SPR;
+			 addr = 80;
+			 size = 4;
+		}
+		 register EIE {
+			 type = SPR;
+			 addr = 80;
+			 size = 4;
+		}
+
+		# ARM MP core registers
+		
+		register GTCR_L {
+			 type = IOR;
+			 addr = 0xA00200;
+			 size = 4;
+		}
+		register GTCR_U {
+			 type = IOR;
+			 addr = 0xA00204;
+			 size = 4;
+		}
+		register GTCR {
+			 type = IOR;
+			 addr = 0xA00208;
+			 size = 4;
+		}
+
+		# UART1 registers
+		
+		register UART1_URXD {
+			 type = IOR;
+			 addr = 0x2020000;
+			 size = 4;
+		}
+		register UART1_UTXD {
+			 type = IOR;
+			 addr = 0x2020040;
+			 size = 4;
+		}
+		register UART1_UCR1 {
+			 type = IOR;
+			 addr = 0x2020080;
+			 size = 4;
+		}
+		register UART1_UCR2 {
+			 type = IOR;
+			 addr = 0x2020084;
+			 size = 4;
+		}
+		register UART1_UCR3 {
+			 type = IOR;
+			 addr = 0x2020088;
+			 size = 4;
+		}
+		register UART1_UCR4 {
+			 type = IOR;
+			 addr = 0x202008c;
+			 size = 4;
+		}
+		register UART1_UFCR {
+			 type = IOR;
+			 addr = 0x2020090;
+			 size = 4;
+		}
+		register UART1_USR1 {
+			 type = IOR;
+			 addr = 0x2020094;
+			 size = 4;
+		}
+		register UART1_USR2 {
+			 type = IOR;
+			 addr = 0x2020098;
+			 size = 4;
+		}
+
+		# input/output registers
+		
+		register GPIO2_DR {
+			 type = IOR;
+			 addr = 0x20A0000;
+			 size = 4;
+		}
+		register GPIO2_GDIR {
+			 type = IOR;
+			 addr = 0x20A0004;
+			 size = 4;
+		}
+		register GPIO2_PSR {
+			 type = IOR;
+			 addr = 0x20A0008;
+			 size = 4;
+		}
+		register IOMUXC_NAND_DATA02 {
+			 type = IOR;
+			 addr = 0x20E028C;
+			 size = 4;
+		}
+
+	}
+}

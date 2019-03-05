@@ -1,0 +1,165 @@
+#deep-1
+
+meta {
+	version = "2012-06-14";
+	description = "Board description file for NTB MPC555 header board";
+}
+
+board ntbMpc555HB {
+	description = "NTB MPC555 header board";
+	cputype = mpc555;
+	
+	sysconst {
+		extRamSize   = 0x200000 + IMB;					# 2M external RAM
+		extRamBase   = 0x800000;						# starting at 0x800000
+		extFlashSize = 0x400000;						# 4M external Flash
+		extFlashBase = 0x1000000;						# starting at 0x1000000
+		
+		dualMappedSize = 0x8000;						# 32k dual mapped memory
+		
+		heapSize = 0x40000;								# Default heap size
+		SRR1init = 0x3802;								# Initial value of Machine Status Save/Restore Register 1
+	}
+	
+	memorymap {
+
+		# ===== External RAM =====
+		device ExternalRam {							# External RAM device configuration
+			base = extRamBase;
+			size = extRamSize;
+			width = 4;
+			technology = ram;
+			attributes = read, write;
+		}
+		
+		segment ExternalRam.ExceptionCode {				# Exception code in dual mapped address space
+			base = extRamBase;
+			size = excpCodeSize;
+		}
+
+		segment ExternalRam.SysTab {					# System table in dual mapped address space
+			base = extRamBase + excpCodeSize;			# Place system table behind exception code
+			size = excpCodeSize;
+		}
+
+		segment ExternalRam.Default {					# Default Segment for code, constants and class fields
+			base = extRamBase + dualMappedSize;			# Place it behind the dual mapped memory part
+			attributes = read, write, const, code, var;
+		}
+
+		segment ExternalRam.Heap {						# Default Segment for the heap
+			base = extRamBase + extRamSize - heapSize;	# Place it at the end of the device
+			size = heapSize;
+			attributes = read, write, heap;
+		}
+		
+		# ===== External Flash =====
+		device ExternalFlash {							# External flash device configuration
+			base = extFlashBase;
+			size = extFlashSize;
+			width = 4;
+			technology = flash;
+			memorytype = "Am29LV160d";
+			attributes = read;
+			
+			memorysector BS_0 {							# First sector is used for dual mapping
+				base = extFlashBase;
+				sectorsize = 0x08000;					# 32k
+			}
+			memorysector BS_1 {
+				base = extFlashBase + 0x08000;
+				sectorsize = 0x04000;					# 16k
+			}
+			memorysector BS_2 {
+				base = extFlashBase + 0x0C000;
+				sectorsize = 0x04000;					# 16k
+			}
+			memorysector BS_3 {
+				base = extFlashBase + 0x10000;
+				sectorsize = 0x10000;					# 64k
+			}
+			memorysectorarray DS {
+				base = extFlashBase + 0x20000;
+				sectorsize = 0x20000;					# 128k
+				nofsectors = 31;						# 31 * 128k = 3968k
+			}
+		}
+		
+		segment ExternalFlash.ExceptionCode {			# Exception code in dual mapped address space
+			base = extFlashBase;
+			size = excpCodeSize;
+			attributes = read, code;
+		}
+		  
+		segment ExternalFlash.SysTab {					# Default Segment for code, constants and class fields
+			base = extFlashBase + excpCodeSize;			# Place system table behind exception code
+			attributes = read, systab;
+		}
+
+		segment ExternalFlash.Default {					# Default Segment for code, constants and class fields
+			base = extFlashBase + dualMappedSize;		# Place it behind the dual mapped memory part
+			attributes = read, const, code;
+		}
+	}
+	
+	reginit {
+		SYPCR = 0xFFFFFF83;								# Disable Watchdog, enable bus monitor
+		SIUMCR = 0x40000;								# Set Freeze when LWP0 is active
+		BR0 = 0x01000003;								# Set base address for chip select CS0 (external Flash)
+		OR0 = 0xFFC00020; 								# Set address mask for CS0 to 4M, address type mask = 0, 2 + 2 wait states
+		BR1 = 0x0800003;								# Set base address for chip select CS1 (external RAM)
+		OR1 = 0xFFE00020;								# Set address mask for CS0 to 2M, address type mask = 0, 2 + 2 wait states
+		ICTRL = 7;										# ???
+		RSR = -1;										# Set reset status register back
+		DER = 0x3143400F;								# Set debug enable register // 0x31C3400F includes program exc
+		SRR1 = SRR1init;								# Set Machine Status Save/Restore Register 1
+	}
+
+	runconfiguration BootFromRam {
+		description = "load program to ram (optimized)";
+		system {
+			systemtable: systab@InternalRam.SysTab;
+		}
+		modules {
+				kernel, heap: code@InternalRam.Code, const@InternalRam.Constants, var@InternalRam.Variables; 
+				exception: code@ExternalRam.ExceptionCode, const@InternalRam.Constants, var@InternalRam.Variables;
+				default: code@ExternalRam.Default, const@ExternalRam.Default, var@ExternalRam.Default;      
+		}
+		reginit {
+			DMBR = 0x3;									# Dual mapping enable, map from address 0, use CS1 (external RAM)
+			DMOR = 0x7E000000;							# Map 32k -> 0x0...0x8000 is dual mapped
+		}
+	}
+
+	runconfiguration BootFromExtRam {
+		description = "load program to external ram";
+		system {
+			systemtable: systab@InternalRam.SysTab;
+		}
+		modules {
+				kernel, heap: code@ExternalRam.Default, const@ExternalRam.Default, var@ExternalRam.Default; 
+				exception: code@ExternalRam.ExceptionCode, const@ExternalRam.Default, var@ExternalRam.Default;
+				default: code@ExternalRam.Default, const@ExternalRam.Default, var@ExternalRam.Default;      
+		}
+		reginit {
+			DMBR = 0x3;									# Dual mapping enable, map from address 0, use CS1 (external RAM)
+			DMOR = 0x7E000000;							# Map 32k -> 0x0...0x8000 is dual mapped
+		}
+	}
+
+	runconfiguration BootFromFlash {
+		description = "load program to flash";
+		system {
+			systemtable: systab@ExternalFlash.SysTab;
+		}
+		modules {
+				kernel, heap: code@ExternalFlash.Default, const@ExternalFlash.Default, var@InternalRam.Variables;
+				exception: code@ExternalFlash.ExceptionCode, const@ExternalFlash.Default, var@InternalRam.Variables;
+				default: code@ExternalFlash.Default, const@ExternalFlash.Default, var@ExternalRam.Default;
+		}
+		reginit {
+			DMBR = 0x1;									# Dual mapping enable, map from address 0, use CS0 (external Flash)
+			DMOR = 0x7E000000;							# Map 32k -> 0x0...0x8000 is dual mapped
+		}
+	}
+}

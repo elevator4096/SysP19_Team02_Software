@@ -1,0 +1,520 @@
+#deep-1
+
+meta {
+	version = "2012-11-25";
+	description = "PPC architecture description file";
+}
+
+arch ppc32 {
+
+	registermap {
+	
+		# special registers
+		register MSR {
+			type = MSR;
+			addr = 1;
+			size = 4;
+		}	
+		register CR {
+			type = CR;
+			addr = 1;
+			size = 4;
+		}
+		register FPSCR {
+			type = FPSCR;
+			addr = 1;
+			size = 4;
+		}
+ 
+		# general purpose registers
+		register R0 {
+			type = GPR;
+			addr = 0;
+			size = 4;
+		}
+		 register R1 {
+		        type = GPR;
+		        addr = 1;
+		        size = 4;
+		 }
+		 register R2 {
+		        type = GPR;
+		        addr = 2;
+		        size = 4;
+		 }
+		 register R3 {
+		        type = GPR;
+		        addr = 3;
+		        size = 4;
+		 }
+		 register R4 {
+		        type = GPR;
+		        addr = 4;
+		        size = 4;
+		 }
+		 register R5 {
+		        type = GPR;
+		        addr = 5;
+		        size = 4;
+		 }
+		 register R6 {
+		        type = GPR;
+		        addr = 6;
+		        size = 4;
+		 }
+		 register R7 {
+		        type = GPR;
+		        addr = 7;
+		        size = 4;
+		 }
+		 register R8 {
+		        type = GPR;
+		        addr = 8;
+		        size = 4;
+		 }
+		 register R9 {
+		        type = GPR;
+		        addr = 9;
+		        size = 4;
+		 }
+		 register R10 {
+		        type = GPR;
+		        addr = 10;
+		        size = 4;
+		 }
+		 register R11 {
+		        type = GPR;
+		        addr = 11;
+		        size = 4;
+		 }
+		 register R12 {
+		        type = GPR;
+		        addr = 12;
+		        size = 4;
+		 }
+		 register R13 {
+		        type = GPR;
+		        addr = 13;
+		        size = 4;
+		 }
+		 register R14 {
+		        type = GPR;
+		        addr = 14;
+		        size = 4;
+		 }
+		 register R15 {
+		        type = GPR;
+		        addr = 15;
+		        size = 4;
+		 }
+		 register R16 {
+		        type = GPR;
+		        addr = 16;
+		        size = 4;
+		 }
+		 register R17 {
+		        type = GPR;
+		        addr = 17;
+		        size = 4;
+		 }
+		 register R18 {
+		        type = GPR;
+		        addr = 18;
+		        size = 4;
+		 }
+		 register R19 {
+		        type = GPR;
+		        addr = 19;
+		        size = 4;
+		 }
+		 register R20 {
+		        type = GPR;
+		        addr = 20;
+		        size = 4;
+		 }
+		 register R21 {
+		        type = GPR;
+		        addr = 21;
+		        size = 4;
+		 }
+		 register R22 {
+		        type = GPR;
+		        addr = 22;
+		        size = 4;
+		 }
+		 register R23 {
+		        type = GPR;
+		        addr = 23;
+		        size = 4;
+		 }
+		 register R24 {
+		        type = GPR;
+		        addr = 24;
+		        size = 4;
+		 }
+		 register R25 {
+		        type = GPR;
+		        addr = 25;
+		        size = 4;
+		 }
+		 register R26 {
+		        type = GPR;
+		        addr = 26;
+		        size = 4;
+		 }
+		 register R27 {
+		        type = GPR;
+		        addr = 27;
+		        size = 4;
+		 }
+		 register R28 {
+		        type = GPR;
+		        addr = 28;
+		        size = 4;
+		 }
+		 register R29 {
+		        type = GPR;
+		        addr = 29;
+		        size = 4;
+		 }
+		 register R30 {
+		        type = GPR;
+		        addr = 30;
+		        size = 4;
+		 }
+		 register R31 {
+		        type = GPR;
+		        addr = 31;
+		        size = 4;
+		 }
+		 
+		 # floating point registers
+		 register FPR0 {
+		        type = FPR;
+		        addr = 0;
+		        size = 8;
+		 }
+		 register FPR1 {
+		        type = FPR;
+		        addr = 1;
+		        size = 8;
+		 }
+		 register FPR2 {
+		        type = FPR;
+		        addr = 2;
+		        size = 8;
+		 }
+		 register FPR3 {
+		        type = FPR;
+		        addr = 3;
+		        size = 8;
+		 }
+		 register FPR4 {
+		        type = FPR;
+		        addr = 4;
+		        size = 8;
+		 }
+		 register FPR5 {
+		        type = FPR;
+		        addr = 5;
+		        size = 8;
+		 }
+		 register FPR6 {
+		        type = FPR;
+		        addr = 6;
+		        size = 8;
+		 }
+		 register FPR7 {
+		        type = FPR;
+		        addr = 7;
+		        size = 8;
+		 }
+		 register FPR8 {
+		        type = FPR;
+		        addr = 8;
+		        size = 8;
+		 }
+		 register FPR9 {
+		        type = FPR;
+		        addr = 9;
+		        size = 8;
+		 }
+		 register FPR10 {
+		        type = FPR;
+		        addr = 10;
+		        size = 8;
+		 }
+		 register FPR11 {
+		        type = FPR;
+		        addr = 11;
+		        size = 8;
+		 }
+		 register FPR12 {
+		        type = FPR;
+		        addr = 12;
+		        size = 8;
+		 }
+		 register FPR13 {
+		        type = FPR;
+		        addr = 13;
+		        size = 8;
+		 }
+		 register FPR14 {
+		        type = FPR;
+		        addr = 14;
+		        size = 8;
+		 }
+		 register FPR15 {
+		        type = FPR;
+		        addr = 15;
+		        size = 8;
+		 }
+		 register FPR16 {
+		        type = FPR;
+		        addr = 16;
+		        size = 8;
+		 }
+		 register FPR17 {
+		        type = FPR;
+		        addr = 17;
+		        size = 8;
+		 }
+		 register FPR18 {
+		        type = FPR;
+		        addr = 18;
+		        size = 8;
+		 }
+		 register FPR19 {
+		        type = FPR;
+		        addr = 19;
+		        size = 8;
+		 }
+		 register FPR20 {
+		        type = FPR;
+		        addr = 20;
+		        size = 8;
+		 }
+		 register FPR21 {
+		        type = FPR;
+		        addr = 21;
+		        size = 8;
+		 }
+		 register FPR22 {
+		        type = FPR;
+		        addr = 22;
+		        size = 8;
+		 }
+		 register FPR23 {
+		        type = FPR;
+		        addr = 23;
+		        size = 8;
+		 }
+		 register FPR24 {
+		        type = FPR;
+		        addr = 24;
+		        size = 8;
+		 }
+		 register FPR25 {
+		        type = FPR;
+		        addr = 25;
+		        size = 8;
+		 }
+		 register FPR26 {
+		        type = FPR;
+		        addr = 26;
+		        size = 8;
+		 }
+		 register FPR27 {
+		        type = FPR;
+		        addr = 27;
+		        size = 8;
+		 }
+		 register FPR28 {
+		        type = FPR;
+		        addr = 28;
+		        size = 8;
+		 }
+		 register FPR29 {
+		        type = FPR;
+		        addr = 29;
+		        size = 8;
+		 }
+		 register FPR30 {
+		        type = FPR;
+		        addr = 30;
+		        size = 8;
+		 }
+		 register FPR31 {
+		        type = FPR;
+		        addr = 31;
+		        size = 8;
+		 }
+		 
+		 # special purpose register
+		 register SPR1 {
+		        type = SPR;
+		        addr = 1;
+		        size = 4;
+		 }
+		 register XER {
+		        type = SPR;
+		        addr = 1;
+		        size = 4;
+		 }
+		 register SPR8 {
+		        type = SPR;
+		        addr = 8;
+		        size = 4;
+		 }
+		 register LR {
+		        type = SPR;
+		        addr = 8;
+		        size = 4;
+		 }
+		 register SPR9 {
+		        type = SPR;
+		        addr = 9;
+		        size = 4;
+		 }
+		 register CTR {
+		        type = SPR;
+		        addr = 9;
+		        size = 4;
+		 }
+		 register SPR18 {
+		        type = SPR;
+		        addr = 18;
+		        size = 4;
+		 }
+		 register DSISR {
+		        type = SPR;
+		        addr = 18;
+		        size = 4;
+		 }
+		 register SPR19 {
+		        type = SPR;
+		        addr = 19;
+		        size = 4;
+		 }
+		 register DAR {
+		        type = SPR;
+		        addr = 19;
+		        size = 4;
+		 }
+		 register SPR22 {
+		        type = SPR;
+		        addr = 22;
+		        size = 4;
+		 }
+		 register DEC {
+		        type = SPR;
+		        addr = 22;
+		        size = 4;
+		 }
+		 register SPR26 {
+		        type = SPR;
+		        addr = 26;
+		        size = 4;
+		 }
+		 register SRR0 {
+		        type = SPR;
+		        addr = 26;
+		        size = 4;
+		 }
+		 register SPR27 {
+		        type = SPR;
+		        addr = 27;
+		        size = 4;
+		 }
+		 register SRR1 {
+		        type = SPR;
+		        addr = 27;
+		        size = 4;
+		 }
+		 register SPR268 {
+		        type = SPR;
+		        addr = 268;
+		        size = 4;
+		 }
+		 register TBLread {
+		        type = SPR;
+		        addr = 268;
+		        size = 4;
+		 }
+		 register SPR269 {
+		        type = SPR;
+		        addr = 269;
+		        size = 4;
+		 }
+		 register TBUread {
+		        type = SPR;
+		        addr = 269;
+		        size = 4;
+		 }
+		 register SPR272 {
+		        type = SPR;
+		        addr = 272;
+		        size = 4;
+		 }
+		 register SPRG0 {
+		        type = SPR;
+		        addr = 272;
+		        size = 4;
+		 }
+		 register SPR273 {
+		        type = SPR;
+		        addr = 273;
+		        size = 4;
+		 }
+		 register SPRG1 {
+		        type = SPR;
+		        addr = 273;
+		        size = 4;
+		 }
+		 register SPR274 {
+		        type = SPR;
+		        addr = 274;
+		        size = 4;
+		 }
+		 register SPRG2 {
+		        type = SPR;
+		        addr = 274;
+		        size = 4;
+		 }
+		 register SPR275 {
+		        type = SPR;
+		        addr = 275;
+		        size = 4;
+		 }
+		 register SPRG3 {
+		        type = SPR;
+		        addr = 275;
+		        size = 4;
+		 }
+		 register SPR284 {
+		        type = SPR;
+		        addr = 284;
+		        size = 4;
+		 }
+		 register TBLwrite {
+		        type = SPR;
+		        addr = 284;
+		        size = 4;
+		 }
+		 register SPR285 {
+		        type = SPR;
+		        addr = 285;
+		        size = 4;
+		 }
+		 register TBUwrite {
+		        type = SPR;
+		        addr = 285;
+		        size = 4;
+		 }
+		 register SPR287 {
+		        type = SPR;
+		        addr = 287;
+		        size = 4;
+		 }
+    }
+}
