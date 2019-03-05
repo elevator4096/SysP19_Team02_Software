@@ -8,8 +8,10 @@ public class WurfSystem extends Task{
 	private static Timer timer1;
 	private static int zustand = 0;
 	private static long letzteSpannZeit=0;
+	private static long letzteEntmagnetisierZeit=0;
 	Task t = new WurfSystem(); 		 // Task erzeugen
 	
+	//Konstruktor: Initialisiert das Wurfsystem
 	public WurfSystem()
 	{
 		pwm = new PWM();
@@ -17,40 +19,48 @@ public class WurfSystem extends Task{
 		letzteSpannZeit = System.currentTimeMillis();
 	}
 	
+	// Bringt den Zylinder auf Zielposition
 	public void zylinderSpannen(int pwmValue)
 	{
 		pwm.setWurfZylinderPWM(pwmValue);
 		letzteSpannZeit = System.currentTimeMillis();
 	}
 	
+	// Wirft den Ball durch entmagnetisieren des HalteMagneten
 	public void ballWerfen()
 	{
 		magnetEntmagnetisieren();
-		
-		t.period = Konstanten.WURF_ZEIT; 
-		Task.install(t); 				 // Task installieren um Magnet automatisch zu Magnetisieren
 	}
 	
+	//Abfragen ob Zylinder Zielposition erreicht hat
 	public boolean zylinderGespannt()
 	{
 		return ( System.currentTimeMillis() > (letzteSpannZeit+Konstanten.SPANN_ZEIT));
 	}
 	
-	public void magnetEntmagnetisieren()
+	//WurfSystem update Funktion wird zyklisch aufgerufen
+	public void update()
 	{
-		IO.wurfMagnet.set(true);
+		if ( System.currentTimeMillis() > (letzteEntmagnetisierZeit+Konstanten.WURF_ZEIT) )
+		{
+			magnetMagnetisieren();
+		}
 	}
 	
-	public void magnetMagnetisieren()
+	// Magnetspule kurzzeitig entmagnetisieren (durch EINSCHALTEN des EntmagnetisierElektroMagneten)
+	private void magnetEntmagnetisieren()
 	{
+		IO.wurfMagnet.set(true);
+		letzteEntmagnetisierZeit = System.currentTimeMillis();
+	}
+	
+	// Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
+	private void magnetMagnetisieren() {
 		IO.wurfMagnet.set(false);
 	}
 	
 	
 	public void action() {
-		
-		magnetMagnetisieren();
-		Task.remove(t);
 		
 		/*
 		//Testprogramm
