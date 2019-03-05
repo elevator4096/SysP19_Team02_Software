@@ -43,7 +43,7 @@ public class Main extends Task implements Konstanten
 		stream = new OutputStream();
 		out = new Output();
 		in = new Input();
-		pwm = new PWM();
+		//pwm = new PWM();
 		demo = new HLC();
 		debug = new Debug();
 
@@ -59,9 +59,13 @@ public class Main extends Task implements Konstanten
 	//Methode, die Zyklisch aufgerufen wird
 	public void action()
 	{
+		
+		
+		/*
 		if (Konstanten.DEBUG)
 		{
 			debug.run();
 		}
+		*/
 	}
 }

@@ -10,11 +10,9 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
 public class PWM
 {
-	private final int pwmPeriod = 14_000_000 /TPU_PWM.tpuTimeBase;
 	private final int CHAN_0_MIN = 980_000/TPU_PWM.tpuTimeBase;
 	private final int CHAN_0_MAX = 1_980_000/TPU_PWM.tpuTimeBase;
 	private final int CHAN_0_x	= 1_300_000/TPU_PWM.tpuTimeBase;
-	private TPU_PWM CHAN_0;
 	
 	//private TPU_PPWA CHAN_1;
 	//private TPU_PPWA CHAN_2;
@@ -24,7 +22,6 @@ public class PWM
 	
 	public PWM()
 	{
-		CHAN_0 = new TPU_PWM(true, 0, pwmPeriod, 0);
 		//CHAN_1 = new TPU_PPWA(true,1,true);
 		//CHAN_2 = new TPU_PPWA(true,2,false);
 		
@@ -44,11 +41,32 @@ public class PWM
 		*/
 	}
 	
-	public void setChan0(int i)
+	public void setWurfZylinderPWM(int i)
 	{
 		double d;
 		d = ((double)(i))/100;
 		d = d*(CHAN_0_MAX-CHAN_0_MIN)+CHAN_0_MIN;
-		CHAN_0.update((int)d);
+		IO.wurfZylinderPWM.update((int)d);
 	}
+
+	
+	public void setMotorLinksPWM(int i)
+	{
+		double d;
+		d = ((double)(i))/100;
+		d = d*IO.motorenPWMPeriod;
+		IO.motorLinksPWM.update((int)d);
+	}
+	
+
+
+	public void setMotorRechtsPWM(int i)
+	{
+		double d;
+		d = ((double)(i))/100;
+		d = d*IO.motorenPWMPeriod;
+		IO.motorRechtsPWM.update((int)d);
+	}
+	
+	
 }
