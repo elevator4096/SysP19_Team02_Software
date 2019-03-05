@@ -6,8 +6,8 @@
 */
 package team02;
 
+import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
-import javafx.concurrent.Task;
 
 public class Motor extends Task
 {

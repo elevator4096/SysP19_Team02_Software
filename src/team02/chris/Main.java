@@ -13,6 +13,7 @@ public class Main extends Task implements IO
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
+    Fahren fahren;
 
     static
     {
@@ -21,6 +22,7 @@ public class Main extends Task implements IO
             Task task = new Main();
             task.period = Konstanten.TASK_PERIOD;
             Task.install(task);
+
         }
         catch (Exception e)
         {
@@ -31,14 +33,17 @@ public class Main extends Task implements IO
     public Main()
     {
         IN_Taster1.set(true);
+        fahren = new Fahren();
     }
 
     public void action()
     {
         if (Konstanten.DEBUG)
         {
-
+            fahren.drehe(1);
         }
+
+
 
         //Fehler erkannt
         if(false)
@@ -102,10 +107,12 @@ public class Main extends Task implements IO
             }
             case ENDE:
             {
+                ende();
                 break;
             }
             case FEHLER:
             {
+                fehler();
                 break;
             }
 
@@ -199,5 +206,15 @@ public class Main extends Task implements IO
         {
             zustand = ROB_HAT_KEIN_BALL;
         }
+    }
+
+    private void ende()
+    {
+
+    }
+
+    private void fehler()
+    {
+
     }
 }
