@@ -25,10 +25,10 @@ public class WurfSystem extends Task{
 	
 	public void ballWerfen()
 	{
-		magnetDeaktivieren();
+		magnetEntmagnetisieren();
 		
-		t.period = Konstanten.WURF_ZEIT; // Task-Periode festlegen
-		Task.install(t); 				 // Task installieren
+		t.period = Konstanten.WURF_ZEIT; 
+		Task.install(t); 				 // Task installieren um Magnet automatisch zu Magnetisieren
 	}
 	
 	public boolean zylinderGespannt()
@@ -36,12 +36,12 @@ public class WurfSystem extends Task{
 		return ( System.currentTimeMillis() > (letzteSpannZeit+Konstanten.SPANN_ZEIT));
 	}
 	
-	public void magnetDeaktivieren()
+	public void magnetEntmagnetisieren()
 	{
 		IO.wurfMagnet.set(true);
 	}
 	
-	public void magnetReAktivieren()
+	public void magnetMagnetisieren()
 	{
 		IO.wurfMagnet.set(false);
 	}
@@ -49,7 +49,7 @@ public class WurfSystem extends Task{
 	
 	public void action() {
 		
-		magnetReAktivieren();
+		magnetMagnetisieren();
 		Task.remove(t);
 		
 		/*
