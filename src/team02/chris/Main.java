@@ -29,7 +29,6 @@ public class Main extends Task implements IO
     }
 
 
-
     public Main()
     {
         IN_Taster1.set(true);
