@@ -38,7 +38,7 @@ public class WurfSystem extends Task{
 	
 	static 
 	{
-		
+		// Einfahrzeit ca 12 Sekunden
 		Task t = new WurfSystem(); // Task erzeugen
 		t.period = 500; // Task-Periode festlegen
 		Task.install(t); // Task installieren
