@@ -7,17 +7,52 @@ public class WurfSystem extends Task{
 	public static PWM pwm;
 	private static Timer timer1;
 	private static int zustand = 0;
+	private static long letzteSpannZeit=0;
+	Task t = new WurfSystem(); 		 // Task erzeugen
 	
 	public WurfSystem()
 	{
+		pwm = new PWM();
+		pwm.setWurfZylinderPWM(0);
+		letzteSpannZeit = System.currentTimeMillis();
+	}
+	
+	public void zylinderSpannen(int pwmValue)
+	{
+		pwm.setWurfZylinderPWM(pwmValue);
+		letzteSpannZeit = System.currentTimeMillis();
+	}
+	
+	public void ballWerfen()
+	{
+		magnetDeaktivieren();
 		
+		t.period = Konstanten.WURF_ZEIT; // Task-Periode festlegen
+		Task.install(t); 				 // Task installieren
+	}
+	
+	public boolean zylinderGespannt()
+	{
+		return ( System.currentTimeMillis() > (letzteSpannZeit+Konstanten.SPANN_ZEIT));
+	}
+	
+	public void magnetDeaktivieren()
+	{
+		IO.wurfMagnet.set(true);
+	}
+	
+	public void magnetReAktivieren()
+	{
+		IO.wurfMagnet.set(false);
 	}
 	
 	
-	
-	
-	
 	public void action() {
+		
+		magnetReAktivieren();
+		Task.remove(t);
+		
+		/*
 		//Testprogramm
 		if (timer1.expired())
 		{
@@ -42,6 +77,7 @@ public class WurfSystem extends Task{
 				break;
 			}
 		}
+		*/
 		
 	}
 	

@@ -9,11 +9,11 @@ public interface Konstanten
 	final int TASK_PERIOD 	= 200;
 	final int TIME_1S		= 1000;
 	
-	//Eingänge
+	//Eingaenge
 	final int FIRST_IN		= 15;
 	final int ANZ_IN		= 4;
 	
-	//Ausgänge
+	//Ausgaenge
 	final int FIRST_OUT		= 19;
 	final int ANZ_OUT		= 4;
 	
@@ -21,5 +21,9 @@ public interface Konstanten
 	//Befehle
 	final int BEW_ZYL 		= 0b1101;
 	final int WERFE 		= 0b1110;
+	
+	//Feineinstellungen
+	final int SPANN_ZEIT	= 15_000; // Spannzeit in ms
+	final int WURF_ZEIT		= 1_000 ; // wurfzeit  in ms
 	
 }
