@@ -19,8 +19,11 @@ public class WurfSystem extends Task{
 				timer1.set(5000);
 				break;
 			case 2:
-				IO.wurfMagnet.set(true);
-				timer1.set(1000);
+				if(IO.ballDetektor.get())
+				{
+					IO.wurfMagnet.set(true);
+					timer1.set(1000);
+				}
 				break;
 			case 3:
 				IO.wurfMagnet.set(false);

@@ -12,6 +12,7 @@ public interface IO {
 	//Input
 	MPIOSM_DIO taster1 				= new MPIOSM_DIO( 5, false);
 	MPIOSM_DIO taster2 				= new MPIOSM_DIO( 6, false);
+	MPIOSM_DIO ballDetektor			= new MPIOSM_DIO( 7, false);
 	
 	//Output
 	MPIOSM_DIO testLed 				= new MPIOSM_DIO(10, true );
