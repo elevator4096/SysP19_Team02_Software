@@ -5,15 +5,14 @@
 package team02.chris;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-
+import team02.IO;
 import static team02.chris.Zustand.*;
 
-
-public class Main extends Task
+public class Main extends Task implements IO
 {
 
     private Zustand zustand = SETUP;
-
+    private Zustand letzter_Zustand;
 
     static
     {
@@ -30,9 +29,10 @@ public class Main extends Task
     }
 
 
+
     public Main()
     {
-
+        IN_Taster1.set(true);
     }
 
     public void action()
@@ -40,6 +40,13 @@ public class Main extends Task
         if (Konstanten.DEBUG)
         {
 
+        }
+
+        //Fehler erkannt
+        if(false)
+        {
+            letzter_Zustand = zustand;
+            zustand = FEHLER;
         }
 
         switch (zustand)
@@ -116,7 +123,6 @@ public class Main extends Task
                 {
                     zustand = ENDE;
                 }
-
                 break;
             }
             case KURZER_WURF:               //Kurzer Wurf
@@ -138,6 +144,16 @@ public class Main extends Task
             }
             case ENDE:
             {
+                break;
+            }
+            case FEHLER:
+            {
+                break;
+            }
+
+            default:
+            {
+                zustand = FEHLER;
                 break;
             }
         }

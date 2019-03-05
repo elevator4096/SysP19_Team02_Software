@@ -15,5 +15,6 @@ public enum Zustand
     KORB_WURF,
     LANGER_WURF,
     KURZER_WURF,
-    ENDE
+    ENDE,
+    FEHLER
 }

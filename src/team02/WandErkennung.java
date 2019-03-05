@@ -14,7 +14,7 @@ public class WandErkennung extends Task  {
 	
 	public void action() {
 		
-		IO.testLed.set(IO.taster1.get() && IO.taster2.get());
+		IO.OUT_Test_Led.set(IO.IN_Taster1.get() && IO.IN_Taster2.get());
 	}
 	
 	static { // Klassenkonstruktor

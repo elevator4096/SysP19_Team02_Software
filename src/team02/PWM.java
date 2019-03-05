@@ -54,7 +54,7 @@ public class PWM
 	{
 		double d;
 		d = ((double)(i))/100;
-		d = d*IO.motorenPWMPeriod;
+		d = d*IO.PWM_Period;
 		IO.motorLinksPWM.update((int)d);
 	}
 	
@@ -64,7 +64,7 @@ public class PWM
 	{
 		double d;
 		d = ((double)(i))/100;
-		d = d*IO.motorenPWMPeriod;
+		d = d*IO.PWM_Period;
 		IO.motorRechtsPWM.update((int)d);
 	}
 	
