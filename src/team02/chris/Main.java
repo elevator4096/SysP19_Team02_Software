@@ -28,7 +28,6 @@ public class Main extends Task implements IO
         }
     }
 
-
     public Main()
     {
         IN_Taster1.set(true);
@@ -47,98 +46,58 @@ public class Main extends Task implements IO
             letzter_Zustand = zustand;
             zustand = FEHLER;
         }
+        zustand();
+    }
 
+    private void zustand()
+    {
         switch (zustand)
         {
             case SETUP:                     //Dies ist der Startzustand
             {
-
-                if(false)                   //Weiterschaltbedingung
-                {
-                    zustand = SPIEL_BEGINNT;
-                }
+                setup();
                 break;
             }
 
             case SPIEL_BEGINNT:             //Kommentar
             {
-
-                if(false)
-                {
-                    zustand = ROB_HAT_BALL;
-                }
-                else if(false)
-                {
-                    zustand = ROB_HAT_KEIN_BALL;
-                }
+                spiel_beginnt();
                 break;
             }
             case ROB_HAT_KEIN_BALL:         //Roboter hat keinen Ball
             {
 
-                if (false)
-                {
-                    zustand = ROB_FAEHRT;
-                }
+                rob_hat_kein_ball();
                 break;
             }
             case ROB_FAEHRT:                //Roboter faehrt
             {
-                if(false)
-                {
-                    zustand = ROB_POSITION_ERREICHT;
-                }
-
+                rob_faehrt();
                 break;
             }
             case ROB_HAT_BALL:              //Roboter hat Ball
             {
-                if(false)
-                {
-                    zustand = KORB_WURF;
-                }
-                else if(false)
-                {
-                    zustand = LANGER_WURF;
-                }
-                else if (false)
-                {
-                    zustand = KURZER_WURF;
-                }
+                rob_hat_ball();
                 break;
             }
             case ROB_POSITION_ERREICHT:     //Roboter hat Position erreicht
             {
-
-                if(false)
-                {
-                    zustand = ROB_HAT_BALL;
-                }
+                rob_position_erreicht();
                 break;
             }
             case KORB_WURF:                 //Korb Wurf
             {
-                if(false)
-                {
-                    zustand = ENDE;
-                }
+                korb_wurf();
                 break;
             }
             case KURZER_WURF:               //Kurzer Wurf
             {
-
-                if(false)
-                {
-                    zustand = ROB_HAT_KEIN_BALL;
-                }
+                kurzer_wurf();
                 break;
             }
             case LANGER_WURF:               //Langer Wurf
             {
-                if(false)
-                {
-                    zustand = ROB_HAT_KEIN_BALL;
-                }
+                langer_wurf();
                 break;
             }
             case ENDE:
@@ -156,7 +115,89 @@ public class Main extends Task implements IO
                 break;
             }
         }
-
     }
 
+    private void setup()
+    {
+        if(false)                   //Weiterschaltbedingung
+        {
+            zustand = SPIEL_BEGINNT;
+        }
+    }
+
+    private void spiel_beginnt()
+    {
+        if(false)
+        {
+            zustand = ROB_HAT_BALL;
+        }
+        else if(false)
+        {
+            zustand = ROB_HAT_KEIN_BALL;
+        }
+    }
+
+    private void rob_hat_kein_ball()
+    {
+        if (false)
+        {
+            zustand = ROB_FAEHRT;
+        }
+    }
+
+    private void rob_faehrt()
+    {
+        if(false)
+        {
+            zustand = ROB_POSITION_ERREICHT;
+        }
+    }
+
+    private void rob_hat_ball()
+    {
+        if(false)
+        {
+            zustand = KORB_WURF;
+        }
+        else if(false)
+        {
+            zustand = LANGER_WURF;
+        }
+        else if (false)
+        {
+            zustand = KURZER_WURF;
+        }
+    }
+
+    private void rob_position_erreicht()
+    {
+        if(false)
+        {
+            zustand = ROB_HAT_BALL;
+        }
+    }
+
+    private void korb_wurf()
+    {
+        if(false)
+        {
+            zustand = ENDE;
+        }
+    }
+
+    private void kurzer_wurf()
+    {
+        if(false)
+        {
+            zustand = ROB_HAT_KEIN_BALL;
+        }
+    }
+
+    private void langer_wurf()
+    {
+        if(false)
+        {
+            zustand = ROB_HAT_KEIN_BALL;
+        }
+    }
 }
