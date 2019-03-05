@@ -9,9 +9,6 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import static team02.chris.Zustand.*;
 
 
-/**
- *
- */
 public class Main extends Task
 {
 
