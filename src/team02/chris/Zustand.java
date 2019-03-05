@@ -10,5 +10,6 @@ public enum Zustand
     ROB_HAT_BALL,
     KORB_WURF,
     LANGER_WURF,
-    KURZER_WURF
+    KURZER_WURF,
+    ENDE
 }
