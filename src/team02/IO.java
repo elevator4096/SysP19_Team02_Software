@@ -5,6 +5,7 @@
 package team02;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
 public interface IO {
@@ -25,7 +26,8 @@ public interface IO {
 	TPU_PWM    wurfZylinderPWM 	   	= new TPU_PWM(true, 0, PWM_WurfZyl, 0);
 	TPU_PWM    motorLinksPWM 	   	= new TPU_PWM(true, 1, PWM_Period, 0);
 	TPU_PWM    motorRechtsPWM 	   	= new TPU_PWM(true, 2, PWM_Period, 0);
-	
 
 
+	TPU_FQD FQD_Links = new TPU_FQD(true, 3);
+	TPU_FQD FQD_Rechts = new TPU_FQD(true, 5);
 }
