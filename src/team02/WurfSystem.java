@@ -78,9 +78,12 @@ public class WurfSystem extends Task{
 					IO.wurfMagnet.set(true);
 					timer1.set(1000);
 				}
+				IO.OUT_Magnet.set(true);
+				timer1.set(1000);
+
 				break;
 			case 3:
-				IO.wurfMagnet.set(false);
+				IO.OUT_Magnet.set(false);
 				pwm.setWurfZylinderPWM(80);
 				zustand = 0;
 				timer1.set(10000);

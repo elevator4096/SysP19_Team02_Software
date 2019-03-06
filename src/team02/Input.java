@@ -23,14 +23,16 @@ public class Input implements Konstanten
 			x++;
 		}
 	}
-	
+
+
 	public boolean get(int i)
 	{
 		if(i-Konstanten.FIRST_IN<Konstanten.ANZ_IN)
 			return IN[i-Konstanten.FIRST_IN].get();
 		return false;
 	}
-	
+
+
 	public void print()
 	{
 		int x = Konstanten.FIRST_IN;
