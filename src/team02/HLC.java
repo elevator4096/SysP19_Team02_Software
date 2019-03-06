@@ -43,6 +43,7 @@ import java.io.PrintStream;
  */
 public class HLC extends Task {
 	
+	MotorSteuerung motorSteuerung = new MotorSteuerung(); 
 	
 	int min = 1001;
 	int max = -1;
@@ -60,8 +61,27 @@ public class HLC extends Task {
 				min = y;
 			if(max < y)
 				max = y;*/
+			/*
 			System.out.print(y);
 			System.out.print('\t');
+			*/
+			
+			if (i==0)
+			{
+				System.out.print(y);
+				System.out.print('\t');
+				
+				if((y < 100))
+				{
+					motorSteuerung.rechtsKurve();
+				}
+				else
+				{
+					motorSteuerung.linksKurve();
+				}
+			}
+			
+			
 		}
 		System.out.println("");
 		/*System.out.print(max);
@@ -93,5 +113,13 @@ public class HLC extends Task {
 		Task demoTask = new HLC();
 		demoTask.period = 1000;
 		Task.install(demoTask);
+		
+		
+		/*
+		motorSteuerung.anhalten();
+		motorSteuerung.vorwarts();
+		motorSteuerung.rechtsKurve();
+		motorSteuerung.linksKurve();
+		*/
 	}
 }

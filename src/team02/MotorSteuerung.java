@@ -5,11 +5,12 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 
 public class MotorSteuerung extends Task {
-	public static PWM pwm;
+	public static PWM pwm = new PWM();;
 	private static Timer timer1;
 	private static int zustand = 0;
 	
 	
+	/*
 	public void action() {
 		
 		
@@ -18,7 +19,7 @@ public class MotorSteuerung extends Task {
 			zustand++;
 			switch(zustand) {
 			case 1:
-				pwm.setMotorLinksPWM(60);pwm.setMotorRechtsPWM(60);
+				pwm.setMotorLinksPWM(50);pwm.setMotorRechtsPWM(50);
 				timer1.set(1000);
 				break;
 			case 2:
@@ -35,10 +36,12 @@ public class MotorSteuerung extends Task {
 		
 		
 	}
+	*/
 	
 	
 	static {
 		
+		/*
 		Task t = new MotorSteuerung(); // Task erzeugen
 		t.period = 50; // Task-Periode festlegen
 		Task.install(t); // Task installieren
@@ -48,9 +51,28 @@ public class MotorSteuerung extends Task {
 		
 		timer1.set(5000);
 		zustand = 0;
-		
-		pwm.setMotorLinksPWM(50);
-		pwm.setMotorRechtsPWM(50);
+		*/
+		//anhalten();
+	}
+	
+	public void anhalten()
+	{
+		pwm.setMotorLinksPWM(50);pwm.setMotorRechtsPWM(50);
+	}
+	
+	public void vorwarts()
+	{
+		pwm.setMotorLinksPWM(55);pwm.setMotorRechtsPWM(55);
+	}
+	
+	public void rechtsKurve()
+	{
+		pwm.setMotorLinksPWM(55);pwm.setMotorRechtsPWM(52);
+	}
+	
+	public void linksKurve()
+	{
+		pwm.setMotorLinksPWM(52);pwm.setMotorRechtsPWM(55);
 	}
 	
 	

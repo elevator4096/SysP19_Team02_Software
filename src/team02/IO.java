@@ -29,6 +29,6 @@ public interface IO {
 	TPU_PWM    PWM_MotorRechtsPWM 	   	= new TPU_PWM(true, 2, PERIOD_Motoren, 0);
 
 
-	TPU_FQD    FQD_Links 				= new TPU_FQD(true, 3);
-	TPU_FQD    FQD_Rechts 				= new TPU_FQD(true, 5);
+	//TPU_FQD    FQD_Links 				= new TPU_FQD(true, 3);
+	//TPU_FQD    FQD_Rechts 				= new TPU_FQD(true, 5);
 }
