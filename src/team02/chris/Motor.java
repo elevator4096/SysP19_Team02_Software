@@ -15,6 +15,7 @@ public class Motor implements IO,Konstanten
     private TPU_PWM pwm;
     private int pwm_time;
 
+
     public Motor(TPU_FQD fqd, TPU_PWM pwm,int pwm_time)
     {
         this.fqd = fqd;
@@ -25,11 +26,11 @@ public class Motor implements IO,Konstanten
 
     public void updateSpeed(float f)
     {
-        pwm.update();
+        pwm.update(PWM_Period,calculateDutyCycle(f));
     }
 
 
-    private float calculateSpeed(double d)
+    private int calculateDutyCycle(double d)
     {
         double maxSpeed = MAX_ROUNDS*GEAR_RATIO*WHEEL_DIAMETER*Math.PI;
 
@@ -42,7 +43,9 @@ public class Motor implements IO,Konstanten
             d = -maxSpeed;
         }
 
-        return 0f;
+        int duty_cycle = (int)(PWM_Period*(d + maxSpeed)/(2*maxSpeed));
+
+        return duty_cycle;
     }
     
 }
