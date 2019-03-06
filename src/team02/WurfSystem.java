@@ -50,13 +50,13 @@ public class WurfSystem extends Task{
 	// Magnetspule kurzzeitig entmagnetisieren (durch EINSCHALTEN des EntmagnetisierElektroMagneten)
 	private void magnetEntmagnetisieren()
 	{
-		IO.wurfMagnet.set(true);
+		IO.OUT_Magnet.set(true);
 		letzteEntmagnetisierZeit = System.currentTimeMillis();
 	}
 	
 	// Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
 	private void magnetMagnetisieren() {
-		IO.wurfMagnet.set(false);
+		IO.OUT_Magnet.set(false);
 	}
 	
 	

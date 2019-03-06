@@ -10,10 +10,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
 public interface IO {
 	
-	//Input
-	MPIOSM_DIO taster1 				= new MPIOSM_DIO( 5, false);
-	MPIOSM_DIO taster2 				= new MPIOSM_DIO( 6, false);
-	
+	//Input	
 	MPIOSM_DIO IN_Taster1 				= new MPIOSM_DIO( 5, false);
 	MPIOSM_DIO IN_Taster2				= new MPIOSM_DIO( 6, false);
 	MPIOSM_DIO IN_BallDetektor			= new MPIOSM_DIO( 7, false);
@@ -23,15 +20,15 @@ public interface IO {
 	MPIOSM_DIO OUT_Magnet				= new MPIOSM_DIO(11, true );
 
 	//PWM Periodendauer
-	int PWM_WurfZyl					= 14_000_000/TPU_PWM.tpuTimeBase; 	// PWM 	   72 Hz
-	int PWM_Period 					=     50_000/TPU_PWM.tpuTimeBase;   	// PWM 20'000 Hz
+	int 	   PERIOD_WurfZyl			= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
+	int 	   PERIOD_Motoren 			=     50_000/TPU_PWM.tpuTimeBase;   	// PWM 20'000 Hz
 	
 	//PWM
-	TPU_PWM    wurfZylinderPWM 	   	= new TPU_PWM(true, 0, PWM_WurfZyl, 0);
-	TPU_PWM    motorLinksPWM 	   	= new TPU_PWM(true, 1, PWM_Period, 0);
-	TPU_PWM    motorRechtsPWM 	   	= new TPU_PWM(true, 2, PWM_Period, 0);
+	TPU_PWM    PWM_WurfZylinder		   	= new TPU_PWM(true, 0, PERIOD_WurfZyl, 0);
+	TPU_PWM    PWM_MotorLinksPWM 	   	= new TPU_PWM(true, 1, PERIOD_Motoren, 0);
+	TPU_PWM    PWM_MotorRechtsPWM 	   	= new TPU_PWM(true, 2, PERIOD_Motoren, 0);
 
 
-	TPU_FQD FQD_Links = new TPU_FQD(true, 3);
-	TPU_FQD FQD_Rechts = new TPU_FQD(true, 5);
+	TPU_FQD    FQD_Links 				= new TPU_FQD(true, 3);
+	TPU_FQD    FQD_Rechts 				= new TPU_FQD(true, 5);
 }
