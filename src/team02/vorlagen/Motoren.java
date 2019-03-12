@@ -1,6 +1,6 @@
 package team02.vorlagen;
 
-import team02.PWM;
+import team02.*;
 
 public class Motoren {
 	

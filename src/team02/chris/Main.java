@@ -5,8 +5,7 @@
 package team02.chris;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team02.IO;
-import team02.Konstanten;
+import team02.*;
 
 import static team02.chris.Zustand.*;
 

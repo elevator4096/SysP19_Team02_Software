@@ -4,17 +4,17 @@
  */
 package team02.chris;
 
-public enum Zustand
-{
-    SETUP,              //Startzustand
-    SPIEL_BEGINNT,
-    ROB_HAT_KEIN_BALL,
-    ROB_FAEHRT,
-    ROB_POSITION_ERREICHT,
-    ROB_HAT_BALL,
-    KORB_WURF,
-    LANGER_WURF,
-    KURZER_WURF,
+public enum Zustand {
     ENDE,
-    FEHLER
+    FEHLER,
+    KORB_WURF,
+    KURZER_WURF,
+    LANGER_WURF,
+    ROB_FAEHRT,
+    ROB_HAT_BALL,
+    ROB_HAT_KEIN_BALL,
+    ROB_POSITION_ERREICHT,
+    SETUP, //Startzustand
+    SPIEL_BEGINNT
+
 }
