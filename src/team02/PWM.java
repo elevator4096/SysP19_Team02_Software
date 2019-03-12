@@ -4,10 +4,9 @@
 *@author chris
 *@version 19.01.13.0
 */
-package team02.vorlagen;
+package team02;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-import team02.IO;
 
 public class PWM
 {

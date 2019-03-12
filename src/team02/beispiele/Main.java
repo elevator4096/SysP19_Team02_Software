@@ -8,7 +8,7 @@ package team02.beispiele;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.Konstanten;
-import team02.vorlagen.PWM;
+import team02.PWM;
 
 public class Main extends Task implements Konstanten
 {

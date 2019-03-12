@@ -1,10 +1,12 @@
-package team02.vorlagen;
+package team02.loris;
+
+import team02.*;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
-import team02.PWM;
 import ch.ntb.inf.deep.runtime.mpc555.Timer;
+
 
 public class WurfSystem extends Task{
 	public static PWM pwm;

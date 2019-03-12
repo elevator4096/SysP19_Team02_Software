@@ -1,5 +1,7 @@
 package team02.vorlagen;
 
+import team02.PWM;
+
 public class Motoren {
 	
 	public static PWM pwm = new PWM();
