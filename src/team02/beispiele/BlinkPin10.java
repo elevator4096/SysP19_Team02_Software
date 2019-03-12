@@ -1,6 +1,7 @@
-package team02;
+package team02.beispiele;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team02.IO;
 
 public class BlinkPin10 extends Task  {
 

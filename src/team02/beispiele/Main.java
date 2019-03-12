@@ -4,9 +4,12 @@
 *@author chris
 *@version 19.01.13.0
 */
-package team02;
+package team02.beispiele;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team02.Input;
+import team02.Konstanten;
+import team02.PWM;
 
 public class Main extends Task implements Konstanten
 {

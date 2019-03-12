@@ -4,7 +4,7 @@
 *@author chris
 *@version 19.01.13.0
 */
-package team02;
+package team02.beispiele;
 
 import java.io.PrintStream;
 
