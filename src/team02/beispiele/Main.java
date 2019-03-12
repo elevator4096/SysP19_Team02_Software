@@ -7,7 +7,6 @@
 package team02.beispiele;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team02.Input;
 import team02.Konstanten;
 import team02.PWM;
 
@@ -17,11 +16,8 @@ public class Main extends Task implements Konstanten
 	
 	public static WirelessConnection wifi;
 	public static OutputStream stream;
-	public static Output out;
-	public static Input in;
 	public static PWM pwm;
 	public static HLC demo;
-	public static Debug debug;
 	
 	static int x = 0;
 	static int y = 1;
@@ -44,11 +40,8 @@ public class Main extends Task implements Konstanten
 		}
 		
 		stream = new OutputStream();
-		out = new Output();
-		in = new Input();
 		//pwm = new PWM();
 		demo = new HLC();
-		debug = new Debug();
 
 	}
 	
