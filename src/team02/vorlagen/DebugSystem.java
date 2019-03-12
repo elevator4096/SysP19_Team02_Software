@@ -1,4 +1,4 @@
-package team02;
+package team02.vorlagen;
 
 public class DebugSystem {
 

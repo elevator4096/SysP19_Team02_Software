@@ -1,6 +1,8 @@
-package team02;
+package team02.vorlagen;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team02.IO;
+import team02.Konstanten;
 import ch.ntb.inf.deep.runtime.mpc555.Timer;
 
 public class WurfSystem extends Task{

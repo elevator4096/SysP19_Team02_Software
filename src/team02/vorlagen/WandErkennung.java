@@ -1,4 +1,6 @@
-package team02;
+package team02.vorlagen;
+
+import team02.IO;
 
 public class WandErkennung {
 	
