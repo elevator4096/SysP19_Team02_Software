@@ -22,7 +22,7 @@ package team02.beispiele;
 import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team02.temp.MotorSteuerung;
+import team02.Motoren;
 
 import java.io.PrintStream;
 
@@ -44,7 +44,7 @@ import java.io.PrintStream;
  */
 public class HLC extends Task {
 	
-	MotorSteuerung motorSteuerung = new MotorSteuerung(); 
+	Motoren motoren = new Motoren(); 
 	
 	int min = 1001;
 	int max = -1;
@@ -74,11 +74,11 @@ public class HLC extends Task {
 				
 				if((y < 100))
 				{
-					motorSteuerung.rechtsKurve();
+					motoren.rechtsKurve();
 				}
 				else
 				{
-					motorSteuerung.linksKurve();
+					motoren.linksKurve();
 				}
 			}
 			
