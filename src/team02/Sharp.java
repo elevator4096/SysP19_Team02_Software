@@ -11,6 +11,5 @@ public class Sharp {
 	{	
 		return IO.ADC_B.read(false, 0);
 	}
-	
-	
+
 }
