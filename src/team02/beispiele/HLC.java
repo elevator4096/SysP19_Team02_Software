@@ -16,12 +16,13 @@
  * 
  */
 
-package team02;
+package team02.beispiele;
 
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team02.MotorSteuerung;
 
 import java.io.PrintStream;
 
