@@ -15,11 +15,13 @@ public class BewegungsSystem {
 		
 	}
 	
+	//Drehe exakt 90 Grad nach rechts auf Linie
 	public void drehe90GradRechts()
 	{
 		
 	}
 	
+	//Drehe exakt 90 Grad nach links auf Linie
 	public void drehe90GradLinks()
 	{
 		
@@ -31,6 +33,7 @@ public class BewegungsSystem {
 		
 	}
 	
+	// Prüfe ob der Roboter noch eine Bewegung durchfuehrt
 	public boolean istInBewegung()
 	{
 		return inBewegung;

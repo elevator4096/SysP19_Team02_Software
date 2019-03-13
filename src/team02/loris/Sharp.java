@@ -5,6 +5,7 @@ import team02.IO;
 public class Sharp {
 	int ADCKanal = 0;
 	
+	//Konstruktor: ADC Kanal festlegen
 	public Sharp(int AdcChannel)
 	{
 		this.ADCKanal = AdcChannel;

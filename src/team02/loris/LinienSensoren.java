@@ -13,16 +13,19 @@ public class LinienSensoren {
 		sense.start();
 	}
 	
+	// Erkennt ob sich der Sensor auf einer Vertikal stehenden Linie befindet (beide Schwarz)
 	public boolean istLinieVorne(LinienSensor linienSensor)
 	{
 		return true;
 	}
 	
+	//Erkennt ob sich nur Links vom Sensor eine Linie befindet
 	public boolean istLinieLinks(LinienSensor linienSensor)
 	{
 		return true;
 	}
 	
+	//Erkennt ob sich nur Rechts vom Sensor eine Linie befindet
 	public boolean istLinieRechts(LinienSensor linienSensor)
 	{
 		return true;
