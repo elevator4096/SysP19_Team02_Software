@@ -3,9 +3,11 @@ package team02.loris;
 import team02.IO;
 
 public class Sharp {
+	int ADCKanal = 0;
 	
-	public Sharp()
+	public Sharp(int AdcChannel)
 	{
+		this.ADCKanal = AdcChannel;
 		//IO.ADC_B.init(false);
 	}
 	

@@ -8,7 +8,8 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-import team02.chris.Motor;
+import team02.chris.*;
+import team02.loris.*;
 
 public interface IO {
 	
@@ -16,9 +17,13 @@ public interface IO {
 	MPIOSM_DIO IN_Taster1 				= new MPIOSM_DIO( 5, false);
 	MPIOSM_DIO IN_Taster2				= new MPIOSM_DIO( 6, false);
 	MPIOSM_DIO IN_BallDetektor			= new MPIOSM_DIO( 7, false);
-
+	
 	QADC_AIN   ADC_B					= new QADC_AIN();
-	int 	   PIN_LeftSharpChannel		= 0;
+	int 	   PIN_Sharp_Kanal_Links	= 0;
+	Sharp	   SHARP_Links				= new Sharp(PIN_Sharp_Kanal_Links);
+	Sharp	   SHARP_Rechts				= new Sharp(PIN_Sharp_Kanal_Links);
+	Sharp	   SHARP_Vorne				= new Sharp(PIN_Sharp_Kanal_Links);
+	
 
 	//Output
 	MPIOSM_DIO OUT_Test_Led				= new MPIOSM_DIO(10, true );
