@@ -1,7 +1,7 @@
 package team02.loris;
 
 public class BewegungsSystem {
-	public boolean inBewegung;
+	public boolean inBewegung = false;
 	
 	public void folgeLinieVorwaerts(int distanz)
 	{
