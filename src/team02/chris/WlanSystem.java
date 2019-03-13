@@ -1,3 +1,8 @@
+/**
+ * @Author Chris
+ * @version 2019.03.13
+ */
+
 package team02.chris;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
@@ -9,7 +14,11 @@ public class WlanSystem
 {
     private RN131 wifi;
 
-
+    /**
+     * Konstruktor für die Wlan Verbindung
+     *
+     * @throws Exception
+     */
     public WlanSystem() throws Exception
     {
         SCI sci = SCI.getInstance(SCI.pSCI2);
@@ -17,6 +26,10 @@ public class WlanSystem
         wifi = new RN131(sci.in , sci.out, new MPIOSM_DIO(11, true));
     }
 
+    /**
+     * Teste, ob eine Verbindung besteht
+     * @return True Connected, False Not Connected
+     */
     public boolean connected()
     {
         if(wifi.connected())
@@ -27,12 +40,21 @@ public class WlanSystem
 
     }
 
+    /**
+     * Sende ein Integer
+     * @param i Integer welcher gesendet wird
+     */
     public void send(int i)
     {
         if(wifi.connected())
             wifi.cmd.writeCmd(i);
     }
 
+    /**
+     * Lade Integer aus dem Puffer
+     * Achtund!!! getInt Löscht Integer aus dem RingArray
+     * @return gibt Integer aus dem Puffer aus
+     */
     public int get()
     {
         if(wifi.connected())

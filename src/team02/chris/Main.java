@@ -16,9 +16,11 @@ public class Main extends Task implements IO
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
-    Fahren fahren;
 
-    static                      //Initialisieren des Tasks
+    /**
+     * Initialisieren der Tasks
+     */
+    static
     {
         try
         {
@@ -33,17 +35,21 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Konstruktor
+     */
     public Main()
     {
         IN_Taster1.set(true);
-        fahren = new Fahren();
     }
 
+    /**
+     * Methode die Zyklisch aufgerufen wird
+     */
     public void action()
     {
         if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {
-            fahren.drehe(1);
         }
 
         if (Konstanten.TEST)
@@ -62,6 +68,9 @@ public class Main extends Task implements IO
         zustand();                  //Zustaende gemaess Zustandsdiagramm
     }
 
+    /**
+     * Schrittkette
+     */
     private void zustand()
     {
         switch (zustand)
@@ -132,6 +141,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Setup Methode
+     */
     private void setup()
     {
         if(false)                   //Weiterschaltbedingung
@@ -140,6 +152,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Spiel beginnt Zustand
+     */
     private void spiel_beginnt()
     {
         if(false)
@@ -152,6 +167,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Rob Hat kein Ball Zustand
+     */
     private void rob_hat_kein_ball()
     {
         if (false)
@@ -160,6 +178,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Rob Faehrt Zustand
+     */
     private void rob_faehrt()
     {
         if(false)
@@ -168,6 +189,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Rob Hat Ball Zustand
+     */
     private void rob_hat_ball()
     {
         if(false)
@@ -184,6 +208,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Rob Position Erreicht Zustand
+     */
     private void rob_position_erreicht()
     {
         if(false)
@@ -192,6 +219,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Korb Wurf Zustand
+     */
     private void korb_wurf()
     {
         if(false)
@@ -200,6 +230,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Kurzer Wurf Zustand
+     */
     private void kurzer_wurf()
     {
         if(false)
@@ -208,6 +241,9 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * Langer Wurf Zustand
+     */
     private void langer_wurf()
     {
         if(false)
@@ -216,11 +252,17 @@ public class Main extends Task implements IO
         }
     }
 
+    /**
+     * End Zustand
+     */
     private void ende()
     {
 
     }
 
+    /**
+     * Fehler Zustand
+     */
     private void fehler()
     {
 

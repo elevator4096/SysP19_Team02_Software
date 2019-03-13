@@ -14,8 +14,9 @@ public interface Konstanten
 
 	//Wifi Parameter
 	//Befehle
-	final int BEW_ZYL 		= 0b1101;
-	final int WERFE 		= 0b1110;
+	final int CATCH_READY = 0;
+	final int THROW_READY = 0;
+	final int BALL_CATCHED = 0;
 
 
 	final float GEAR_RATIO = 1.0f/86f;
@@ -29,7 +30,7 @@ public interface Konstanten
 	final int PWM_Period = 0;
 
 
-	final float MAX_ROUNDS = 7_000/60;		//1/s
+	final float MAX_ROUNDS = 7_000f/60f;		//1/s
 
 
 	final double SPANN_ZEIT = 0;
