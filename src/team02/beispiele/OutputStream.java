@@ -7,7 +7,7 @@
 package team02.beispiele;
 
 import java.io.PrintStream;
-
+import java.lang.System;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 
 public class OutputStream 

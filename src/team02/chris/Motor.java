@@ -45,8 +45,9 @@ public class Motor implements IO, Konstanten
         }
 
         int duty_cycle = (int)(PWM_Period*(d + maxSpeed)/(2*maxSpeed));
-
         return duty_cycle;
     }
+
+
     
 }

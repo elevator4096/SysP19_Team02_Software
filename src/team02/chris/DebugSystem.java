@@ -1,6 +1,11 @@
 package team02.chris;
 
-public class DebugSystem
-{
+import team02.IO;
 
+public class DebugSystem implements IO
+{
+    public void print()
+    {
+
+    }
 }

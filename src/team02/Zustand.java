@@ -2,7 +2,7 @@
  * @Author Chris
  * @version 2019.03.05
  */
-package team02.chris;
+package team02;
 
 public enum Zustand {
     ENDE,

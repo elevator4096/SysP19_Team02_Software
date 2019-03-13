@@ -9,7 +9,7 @@ package team02.chris;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.*;
 
-import static team02.chris.Zustand.*;
+import static team02.Zustand.*;
 
 public class Main extends Task implements IO
 {
@@ -46,6 +46,10 @@ public class Main extends Task implements IO
             fahren.drehe(1);
         }
 
+        if (Konstanten.TEST)
+        {
+
+        }
 
 
         //Fehler erkannt

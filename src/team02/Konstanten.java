@@ -6,6 +6,7 @@ public interface Konstanten
 {
 	//Debug Konstanten
 	final boolean DEBUG 	= true;
+	final boolean TEST		= true;
 
 	//Programm Parameter
 	final int TASK_PERIOD 	= 200;

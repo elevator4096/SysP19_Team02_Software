@@ -5,7 +5,9 @@
 
 package team02.chris;
 
-public class Fahren
+import team02.IO;
+
+public class Fahren implements IO
 {
 
     public Fahren()
@@ -20,12 +22,14 @@ public class Fahren
      */
     public void drehe(int i)
     {
-
+        MOTOR_links.updateSpeed((float)i);
+        MOTOR_rechts.updateSpeed((float)-i);
     }
 
     public void vorwaerts(int i)
     {
-
+        MOTOR_links.updateSpeed((float)i);
+        MOTOR_links.updateSpeed((float)i);
     }
 
     public void update()
