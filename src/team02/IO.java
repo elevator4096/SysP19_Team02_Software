@@ -10,6 +10,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import team02.chris.*;
 import team02.loris.*;
+import team02.vorlagen.Sharp;
 
 public interface IO {
 	

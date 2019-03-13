@@ -1,4 +1,4 @@
-package team02.loris;
+package team02.vorlagen;
 
 public class GegnerSystem {
 	
