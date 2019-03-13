@@ -23,6 +23,11 @@ public class Fahren
 
     }
 
+    public void vorwaerts(int i)
+    {
+
+    }
+
     public void update()
     {
 

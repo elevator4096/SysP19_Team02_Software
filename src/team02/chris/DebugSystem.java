@@ -1,5 +1,6 @@
 package team02.chris;
 
-public class DebugSystem {
+public class DebugSystem
+{
 
 }

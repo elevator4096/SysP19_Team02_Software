@@ -1,6 +1,8 @@
 /**
+ * Das ist die "Hauptklasse" des Roboter Programms
+ * Alle weiteren Klassen werden hier aufgerufen
  * @Author Chris
- * @version 2019.03.05
+ * @version 2019.03.013
  */
 package team02.chris;
 
@@ -16,7 +18,7 @@ public class Main extends Task implements IO
     private Zustand letzter_Zustand;
     Fahren fahren;
 
-    static
+    static                      //Initialisieren des Tasks
     {
         try
         {
@@ -39,7 +41,7 @@ public class Main extends Task implements IO
 
     public void action()
     {
-        if (Konstanten.DEBUG)
+        if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {
             fahren.drehe(1);
         }
@@ -52,7 +54,8 @@ public class Main extends Task implements IO
             letzter_Zustand = zustand;
             zustand = FEHLER;
         }
-        zustand();
+
+        zustand();                  //Zustaende gemaess Zustandsdiagramm
     }
 
     private void zustand()
