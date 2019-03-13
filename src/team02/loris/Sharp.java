@@ -11,7 +11,7 @@ public class Sharp {
 		//IO.ADC_B.init(false);
 	}
 	
-	public int gibDistanz()
+	public int getDistanz()
 	{	
 		int distanz = 0;
 		//return IO.ADC_B.read(false, 0);
