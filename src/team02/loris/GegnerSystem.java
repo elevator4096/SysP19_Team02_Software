@@ -1,6 +1,7 @@
 package team02.loris;
 
 public class GegnerSystem {
+	public int[] gegner = new int[8];
 	
 	public GegnerSystem()
 	{

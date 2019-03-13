@@ -1,8 +1,9 @@
 package team02.loris;
 
 public class BewegungsSystem {
-	public boolean inBewegung = false;
+	private boolean inBewegung = false;
 	
+	//Distanz = 0 -> fahre unendlich
 	public void folgeLinieVorwaerts(int distanz)
 	{
 		
@@ -24,6 +25,16 @@ public class BewegungsSystem {
 		
 	}
 	
+	// drehe Ungenau in Grad (Gegenuhrzeigersinn positiv!)
+	public void dreheUngenau(int winkel)
+	{
+		
+	}
+	
+	public boolean istInBewegung()
+	{
+		return inBewegung;
+	}
 	
 	
 
