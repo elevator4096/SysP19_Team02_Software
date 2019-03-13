@@ -1,4 +1,4 @@
-package team02.vorlagen;
+package team02.loris;
 
 import team02.IO;
 
