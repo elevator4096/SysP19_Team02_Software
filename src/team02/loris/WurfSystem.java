@@ -5,11 +5,8 @@ import team02.*;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
-import ch.ntb.inf.deep.runtime.mpc555.Timer;
-
 
 public class WurfSystem extends Task{
-	public static PWM pwm;
 	private static long letzteSpannZeit=0;
 	private static long letzteEntmagnetisierZeit=0;
 	Task t = new WurfSystem(); 		 // Task erzeugen
@@ -17,15 +14,15 @@ public class WurfSystem extends Task{
 	//Konstruktor: Initialisiert das Wurfsystem
 	public WurfSystem()
 	{
-		pwm = new PWM();
-		pwm.setWurfZylinderPWM(0);
+		
+		setWurfZylinderPWM(0);
 		letzteSpannZeit = System.currentTimeMillis();
 	}
 	
 	// Bringt den Zylinder auf Zielposition
 	public void zylinderSpannen(int pwmValue)
 	{
-		pwm.setWurfZylinderPWM(pwmValue);
+		setWurfZylinderPWM(pwmValue);
 		letzteSpannZeit = System.currentTimeMillis();
 	}
 	
@@ -61,6 +58,14 @@ public class WurfSystem extends Task{
 	// Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
 	private void magnetMagnetisieren() {
 		IO.OUT_Magnet.set(false);
+	}
+	
+	private void setWurfZylinderPWM(int i)
+	{
+		double d;
+		d = ((double)(i))/100;
+		d = d*IO.PERIOD_WurfZyl;
+		IO.PWM_WurfZylinder.update((int)d);
 	}
 	
 	
