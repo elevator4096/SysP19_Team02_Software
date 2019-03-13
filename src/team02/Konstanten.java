@@ -29,5 +29,10 @@ public interface Konstanten
 
 
 	final float MAX_ROUNDS = 7_000/60;		//1/s
-	
+
+
+	final double SPANN_ZEIT = 0;
+	final double WURF_ZEIT = 0;
+
+
 }

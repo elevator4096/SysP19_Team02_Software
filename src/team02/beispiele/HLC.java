@@ -22,9 +22,10 @@ package team02.beispiele;
 import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team02.vorlagen.Motoren;
+import team02.chris.Motoren;
 
 import java.io.PrintStream;
+import java.lang.System;
 
 
 /* CHANGES:

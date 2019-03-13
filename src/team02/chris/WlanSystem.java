@@ -1,4 +1,4 @@
-package team02.vorlagen;
+package team02.chris;
 
 public class WlanSystem {
 
