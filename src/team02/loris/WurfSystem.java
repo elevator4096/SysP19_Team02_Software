@@ -10,8 +10,6 @@ import ch.ntb.inf.deep.runtime.mpc555.Timer;
 
 public class WurfSystem extends Task{
 	public static PWM pwm;
-	private static Timer timer1;
-	private static int zustand = 0;
 	private static long letzteSpannZeit=0;
 	private static long letzteEntmagnetisierZeit=0;
 	Task t = new WurfSystem(); 		 // Task erzeugen
@@ -30,6 +28,7 @@ public class WurfSystem extends Task{
 		pwm.setWurfZylinderPWM(pwmValue);
 		letzteSpannZeit = System.currentTimeMillis();
 	}
+	
 	
 	// Wirft den Ball durch entmagnetisieren des HalteMagneten
 	public void ballWerfen()
