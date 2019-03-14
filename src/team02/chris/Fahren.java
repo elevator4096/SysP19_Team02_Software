@@ -46,7 +46,8 @@ public class Fahren implements IO
     }
 
     /**
-     * Update Geschwindigkeiten
+     * Update Geschwindigkeiten, wenn die Geschwindigkeit sich vom vorherigen Zyklus unterscheiden soll
+     * zB wenn die Geschwindigkeit über den Mikrokontroller geändert wird
      */
     public static void update()
     {
