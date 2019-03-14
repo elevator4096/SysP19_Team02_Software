@@ -19,11 +19,13 @@ public interface IO {
 	MPIOSM_DIO IN_Taster2				= new MPIOSM_DIO( 6, false);
 	MPIOSM_DIO IN_BallDetektor			= new MPIOSM_DIO( 7, false);
 	
-	QADC_AIN   ADC_B					= new QADC_AIN();
 	int 	   PIN_Sharp_Kanal_Links	= 0;
+	int 	   PIN_Sharp_Kanal_Rechts	= 1;
+	int 	   PIN_Sharp_Kanal_Vorne	= 2;
+	QADC_AIN   ADC_B					= new QADC_AIN();
 	Sharp	   SHARP_Links				= new Sharp(PIN_Sharp_Kanal_Links);
-	Sharp	   SHARP_Rechts				= new Sharp(PIN_Sharp_Kanal_Links);
-	Sharp	   SHARP_Vorne				= new Sharp(PIN_Sharp_Kanal_Links);
+	Sharp	   SHARP_Rechts				= new Sharp(PIN_Sharp_Kanal_Rechts);
+	Sharp	   SHARP_Vorne				= new Sharp(PIN_Sharp_Kanal_Vorne);
 	
 
 	//Output
