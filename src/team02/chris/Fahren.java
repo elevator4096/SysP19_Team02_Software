@@ -1,6 +1,6 @@
 /**
  * @Author Chris
- * @version 2019.03.13
+ * @version 2019.03.15
  */
 
 package team02.chris;
@@ -14,6 +14,8 @@ public class Fahren implements IO
      * Folgende Methode müssen integriert und getestet werden:
      * -Vorwärts fahren
      * -Drehen (an ort und stelle)
+     * -Drehe, bis ein Eingang kommt, benötigt evtl die Update methode,
+     * dh, es muss zyklisch überprüft werden, ob der Eingang da ist.
      * -Kurve fahren(Radius, Winkelgeschwindigkeit) Skizze machen!"*"
      *
      * "*"Sehr herausforderend!

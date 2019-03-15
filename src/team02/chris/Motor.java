@@ -1,6 +1,6 @@
 /**
  * @Author Chris
- * @version 2019.03.13
+ * @version 2019.03.15
  */
 
 package team02.chris;
@@ -17,7 +17,7 @@ public class Motor implements IO, Konstanten {
 
 
     /**
-     *
+     * Konstruktor für ein Motor
      * @param fqd FQD Objekt, welches zum Motor gehört
      * @param pwm PWM Objekt, welches zum MOtor gehört
      * @param pwm_time pwm_time Periodendauer
@@ -29,11 +29,11 @@ public class Motor implements IO, Konstanten {
     }
 
     /**
-     * Setze Geschwindigkeit
+     * Setze Geschwindigkeit, kann positiv oder negativ werden
      * @param f Geschwindigkeit in mm/s
      */
     public void updateSpeed(float f) {
-        pwm.update(PWM_Period, calculateDutyCycle(f));
+        pwm.update(PERIOD_Motoren, calculateDutyCycle(f));
     }
 
     /**
@@ -51,7 +51,7 @@ public class Motor implements IO, Konstanten {
             d = -maxSpeed;
         }
 
-        int duty_cycle = (int) (PWM_Period * (d + maxSpeed) / (2 * maxSpeed));
+        int duty_cycle = (int) (PERIOD_Motoren * (d + maxSpeed) / (2 * maxSpeed));
         return duty_cycle;
     }
 
