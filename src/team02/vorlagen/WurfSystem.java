@@ -9,9 +9,11 @@ import team02.Konstanten;
 public class WurfSystem extends Task{
 	private static long letzteSpannZeit=0;
 	private static long letzteEntmagnetisierZeit=0;
-	Task t = new WurfSystem(); 		 /** Task erzeugen
-	
-	/**Konstruktor: Initialisiert das Wurfsystem */
+	Task t = new WurfSystem();         /** Task erzeugen
+
+	 /*
+	 * Konstruktor: Initialisiert das Wurfsystem
+	 */
 	public WurfSystem()
 	{
 		
@@ -19,7 +21,9 @@ public class WurfSystem extends Task{
 		letzteSpannZeit = System.currentTimeMillis();
 	}
 	
-	/** Bringt den Zylinder auf Zielposition */
+	/**
+	 * Bringt den Zylinder auf Zielposition
+	 * */
 	public void zylinderSpannen(int pwmValue)
 	{
 		setWurfZylinderPWM(pwmValue);
@@ -27,19 +31,25 @@ public class WurfSystem extends Task{
 	}
 	
 	
-	/** Wirft den Ball durch entmagnetisieren des HalteMagneten */
+	/**
+	 * Wirft den Ball durch entmagnetisieren des HalteMagneten
+	 * */
 	public void ballWerfen()
 	{
 		magnetEntmagnetisieren();
 	}
 	
-	/**Abfragen ob Zylinder Zielposition erreicht hat */
+	/**
+	 * Abfragen ob Zylinder Zielposition erreicht hat
+	 * */
 	public boolean zylinderGespannt()
 	{
 		return ( System.currentTimeMillis() > (letzteSpannZeit+Konstanten.SPANN_ZEIT));
 	}
 	
-	/**WurfSystem update Funktion wird zyklisch aufgerufen */
+	/**
+	 * WurfSystem update Funktion wird zyklisch aufgerufen
+	 */
 	public void update()
 	{
 		if ( System.currentTimeMillis() > (letzteEntmagnetisierZeit+Konstanten.WURF_ZEIT) )
@@ -48,14 +58,18 @@ public class WurfSystem extends Task{
 		}
 	}
 	
-	/** Magnetspule kurzzeitig entmagnetisieren (durch EINSCHALTEN des EntmagnetisierElektroMagneten) */
+	/**
+	 * Magnetspule kurzzeitig entmagnetisieren (durch EINSCHALTEN des EntmagnetisierElektroMagneten)
+	 */
 	private void magnetEntmagnetisieren()
 	{
 		IO.OUT_Magnet.set(true);
 		letzteEntmagnetisierZeit = System.currentTimeMillis();
 	}
 	
-	/** Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten) */
+	/**
+	 * Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
+	 */
 	private void magnetMagnetisieren() {
 		IO.OUT_Magnet.set(false);
 	}
