@@ -1,3 +1,7 @@
+/**
+ * @author loris
+ * @version 2019.03.17
+ */
 package team02.vorlagen;
 
 import team02.IO;
@@ -9,7 +13,7 @@ public class WandErkennung {
 	}
 
 	/**
-	 *
+	 * Ist eine Wand vorne
 	 * @return ist eine Wand vorne
 	 */
 	public boolean istWandVorne()
@@ -18,7 +22,7 @@ public class WandErkennung {
 	}
 
 	/**
-	 *
+	 * Ist eine Wand links
 	 * @return ist eine Wand links
 	 */
 	public boolean istWandLinks()
@@ -27,7 +31,7 @@ public class WandErkennung {
 	}
 
 	/**
-	 *
+	 * Ist eine Wand rechts
 	 * @return ist eine Wand rechts
 	 */
 	public boolean istWandRechts()

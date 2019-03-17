@@ -1,32 +1,51 @@
+/**
+ * @author loris
+ * @version 2019.03.17
+ */
 package team02.vorlagen;
 
 public class LinienSensor {
 
-	/**Erkennt ob beide Sensoren Schwarz sehen */
+	/**
+	 * Erkennt ob beide Sensoren Schwarz sehen
+	 * @return ist Linie vorne
+	 */
 	public boolean istLinieVorne()
 	{
 		return true;
 	}
 	
-	/**Erkennt ob ausschliesslich der linke Sensor Schwarz sieht */
+	/**
+	 * Erkennt ob ausschliesslich der linke Sensor Schwarz sieht
+	 * @return ist Linie Links
+	 */
 	public boolean istLinieLinks()
 	{
 		return true;
 	}
 	
-	/**Erkennt ob ausschliesslich der rechte Sensor Schwarz sieht */
+	/**
+	 * Erkennt ob ausschliesslich der rechte Sensor Schwarz sieht
+	 * @return ist Linie Rechts
+	 */
 	public boolean istLinieRechts()
 	{
 		return true;
 	}
 	
-	/** gibt einen kalibrierten Helligkeitswert zwischen 0 und 100% zurück */
+	/**
+	 * gibt einen kalibrierten Helligkeitswert zwischen 0 und 100% zurï¿½ck
+	 * @return gibt Helligkeit zurÃ¼ck
+	 */
 	private int getHelligkeit(int sensorNr)
 	{
 		return 0;
 	}
 	
-	/** gibt einen unkalibrierten Rohen Sensorwert zurück */
+	/**
+	 * gibt einen unkalibrierten Rohen Sensorwert zurï¿½ck
+	 * @return gibt Wert zurÃ¼ck
+	 */
 	private int getRawValue()
 	{
 		return 0;

@@ -1,3 +1,7 @@
+/**
+ * @author loris
+ * @version 2019.03.17
+ */
 package team02.vorlagen;
 
 import team02.*;
@@ -23,6 +27,7 @@ public class WurfSystem extends Task{
 	
 	/**
 	 * Bringt den Zylinder auf Zielposition
+     * @param pwmValue setzt neue pwmValue
 	 * */
 	public void zylinderSpannen(int pwmValue)
 	{
@@ -41,6 +46,7 @@ public class WurfSystem extends Task{
 	
 	/**
 	 * Abfragen ob Zylinder Zielposition erreicht hat
+     * @return Hat Zylinder Position erreicht
 	 * */
 	public boolean zylinderGespannt()
 	{

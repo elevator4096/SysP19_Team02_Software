@@ -57,7 +57,7 @@ public class Motor implements IO, Konstanten {
 
     /**
      * Gibt aktuelle Encoder Position zurück
-     * @return
+     * @return aktuelle Encoder Position
      */
     public short getEncPos()
     {
@@ -66,7 +66,7 @@ public class Motor implements IO, Konstanten {
 
     /**
      * Setzt die aktuelle Encoder Position, zB zum Referenzieren
-     * @param i
+     * @param i Ueberschreibt den aktuellen Wert mit i
      */
     public void setEncPos(int i)
     {
