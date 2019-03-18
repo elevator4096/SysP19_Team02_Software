@@ -50,7 +50,7 @@ public interface IO {
 	//LinienSensoren
 	LinienSensoren LINES_Sensoren 		= new LinienSensoren();
 	
-	LinienSensor LINE_Sensor_Vorne		= new LinienSensor(1,2);
+	LinienSensor LINE_Sensor_Vorne		= new LinienSensor(0,1);
 	LinienSensor LINE_Sensor_Links		= new LinienSensor(2,3);
 	LinienSensor LINE_Sensor_Rechts		= new LinienSensor(4,5);
 	LinienSensor LINE_Sensor_Hinten		= new LinienSensor(6,7);
