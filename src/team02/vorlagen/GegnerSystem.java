@@ -4,14 +4,15 @@
  */
 package team02.vorlagen;
 
+import team02.IO;
+
 public class GegnerSystem {
 	
 	/**
      * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
      * */
-	private void diagrammDummy()
+	private void diagrammDummy(Sharp sharp)
 	{
-		Sharp sharp;
 	}
 	
 	public GegnerSystem()
@@ -59,8 +60,8 @@ public class GegnerSystem {
 	 * @return ist ein Gegner vorne
 	 */
 	public boolean istGegnerVorne()
-	{
-		return true;
+	{	
+		return (IO.SHARP_Vorne.getDistanz() < 6);
 	}
 	
 	/**
