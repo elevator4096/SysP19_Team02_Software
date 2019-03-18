@@ -21,11 +21,11 @@
   </class>  
   <class id="3" language="java" name="team02.vorlagen.GegnerSystem" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/GegnerSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1623" y="618"/>    
+    <position height="-1" width="-1" x="1624" y="608"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="false" protected="false" private="true" static="true"/>      
+      <operations public="true" package="true" protected="false" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="4" language="java" name="team02.vorlagen.LinienSensoren" project="SysP19" 
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="team02.vorlagen.LinienSensor" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/LinienSensor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="601" y="1327"/>    
+    <position height="-1" width="-1" x="603" y="1348"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -75,16 +75,16 @@
   </class>  
   <class id="9" language="java" name="team02.vorlagen.BewegungsSystem" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/BewegungsSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="935" y="728"/>    
+    <position height="-1" width="-1" x="935" y="719"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="false" protected="false" private="true" static="true"/>      
+      <operations public="true" package="true" protected="false" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="10" language="java" name="team02.vorlagen.Fahren" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Fahren.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="158" width="186" x="1077" y="991"/>    
+    <position height="158" width="186" x="1078" y="990"/>    
     <display autosize="false" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -100,59 +100,79 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="team02.chris.Main" project="SysP19" file="/SysP19/src/team02/chris/Main.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1623" y="252"/>    
+  <class id="12" language="java" name="team02.vorlagen.Orientierung" project="SysP19" 
+    file="/SysP19/src/team02/vorlagen/Orientierung.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="927" y="1080"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="true" package="false" protected="false" private="true" static="true"/>      
+      <operations public="true" package="true" protected="false" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="team02.vorlagen.Orientierung" project="SysP19" 
-    file="/SysP19/src/team02/vorlagen/Orientierung.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="932" y="1092"/>    
+  <class id="13" language="java" name="team02.chris.Main" project="SysP19" file="/SysP19/src/team02/chris/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1623" y="238"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <operations public="true" package="true" protected="false" private="true" static="true"/>    
     </display>  
   </class>  
   <dependency id="14">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <dependency id="15">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="16">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="17">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <dependency id="18">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="19">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="20">    
+  <dependency id="15">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="10"/>  
   </dependency>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
   <dependency id="21">    
     <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="TARGET" refId="3"/>  
   </dependency>  
   <dependency id="22">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="24">    
     <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

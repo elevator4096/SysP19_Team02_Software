@@ -9,7 +9,7 @@ public class Orientierung {
 	/**
      * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
      * */
-	private void diagrammDummy()
+	protected void diagrammDummy()
 	{
 		WandErkennung 	wandErkennung;
 		LinienSensoren 	linienSensoren 	;

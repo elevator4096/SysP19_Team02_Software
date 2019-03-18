@@ -13,7 +13,7 @@ public class BewegungsSystem {
 	/**
      * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
      * */
-	private void diagrammDummy()
+	protected void diagrammDummy()
 	{
 		LinienSensoren 	linienSensoren 	;
 		Orientierung 	orientierung 	;

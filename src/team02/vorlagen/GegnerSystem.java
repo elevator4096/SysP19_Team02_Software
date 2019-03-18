@@ -11,7 +11,7 @@ public class GegnerSystem {
 	/**
      * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
      * */
-	private void diagrammDummy(Sharp sharp)
+	protected void diagrammDummy(Sharp sharp)
 	{
 	}
 	

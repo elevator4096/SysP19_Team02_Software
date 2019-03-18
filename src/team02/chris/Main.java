@@ -8,6 +8,8 @@ package team02.chris;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.*;
+import team02.vorlagen.*;
+import team02.vorlagen.Sharp;
 
 import static team02.Zustand.*;
 
@@ -42,6 +44,14 @@ public class Main extends Task implements IO
     {
         IN_Taster1.set(true);
     }
+    
+	/**
+     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * */
+	protected void diagrammDummy(WurfSystem wurfsystem,BewegungsSystem bewegungsSystem,DebugSystem debugSystem,GegnerSystem gegnerSystem,WlanSystem wlanSystem)
+	{
+		
+	}
 
     /**
      * Methode die Zyklisch aufgerufen wird
