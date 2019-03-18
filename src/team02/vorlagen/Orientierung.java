@@ -7,6 +7,16 @@ package team02.vorlagen;
 public class Orientierung {
 	
 	/**
+     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * */
+	private void diagrammDummy()
+	{
+		WandErkennung 	wandErkennung;
+		LinienSensoren 	linienSensoren 	;
+		Motor 			motor;
+	}
+	
+	/**
 	 * Konstruktor:
 	 */
 	public Orientierung()
@@ -45,18 +55,27 @@ public class Orientierung {
 	 * Aus EncoderPositionen und Liniennummern geschaetzte Position (zum debuggen)
 	 * @return X und Y Position
 	 */
-	public int[] getGeschaetzteXYpos()
+	public int[] getXYpos()
 	{
 		int[] x = {0,0} ;
 		return x;
 	}
 	
 	/**
-	 * Aus EncoderPositionen und letzter bekannter Ausrichtung berechnete Ausrichtung
+	 * Aus EncoderPositionen und letzter bekannter Ausrichtung berechnete Ausrichtung zum Spielfeld
 	 * (im Normalfall 0,90, 180 oder 270 Grad)
-	 * @return aktuelle Ausrichtung
+	 * @return aktuelle Ausrichtung zum Spielfeld
 	 */
-	public int getGeschaetzteAusrichtung()
+	public int getAusrichtungSpielfeld()
+	{
+		return 0;
+	}
+	
+	/**
+	 * Gibt Ausrichtung relativ zur Wand an, berechnet aus Taster und EncoderPositionen 
+	 * @return aktuelle Ausrichtung zur Wand
+	 */
+	public int getAusrichtungWand()
 	{
 		return 0;
 	}

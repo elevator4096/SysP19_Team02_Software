@@ -6,6 +6,14 @@ package team02.vorlagen;
 
 public class GegnerSystem {
 	
+	/**
+     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * */
+	private void diagrammDummy()
+	{
+		Sharp sharp;
+	}
+	
 	public GegnerSystem()
 	{
 		

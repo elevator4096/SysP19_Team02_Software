@@ -8,8 +8,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-import team02.vorlagen.Motor;
-import team02.vorlagen.Sharp;
+import team02.vorlagen.*;
 
 public interface IO {
 	
@@ -42,9 +41,19 @@ public interface IO {
 
 
 	//Motoren
-	Motor MOTOR_links = new Motor(IO.FQD_Links, IO.PWM_MotorLinksPWM, IO.PERIOD_Motoren);
-	Motor 		MOTOR_rechts = new Motor(IO.FQD_Rechts, IO.PWM_MotorRechtsPWM, IO.PERIOD_Motoren);
+	Motor 	   MOTOR_links = new Motor(IO.FQD_Links, IO.PWM_MotorLinksPWM, IO.PERIOD_Motoren);
+	Motor 	   MOTOR_rechts = new Motor(IO.FQD_Rechts, IO.PWM_MotorRechtsPWM, IO.PERIOD_Motoren);
 
 	TPU_FQD    FQD_Links 				= new TPU_FQD(true, 3);
 	TPU_FQD    FQD_Rechts 				= new TPU_FQD(true, 5);
+	
+	//LinienSensoren
+	LinienSensoren LINES_Sensoren 		= new LinienSensoren();
+	
+	LinienSensor LINE_Sensor_Vorne		= new LinienSensor();
+	LinienSensor LINE_Sensor_Links		= new LinienSensor();
+	LinienSensor LINE_Sensor_Rechts		= new LinienSensor();
+	LinienSensor LINE_Sensor_Hinten		= new LinienSensor();
+	
+	
 }

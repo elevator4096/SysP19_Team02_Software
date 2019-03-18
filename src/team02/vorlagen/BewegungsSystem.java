@@ -15,8 +15,9 @@ public class BewegungsSystem {
      * */
 	private void diagrammDummy()
 	{
-		Fahren fahren = new Fahren();
-		
+		LinienSensoren 	linienSensoren 	;
+		Orientierung 	orientierung 	;
+		Fahren 			fahren 			;
 	}
 	
 	/**
