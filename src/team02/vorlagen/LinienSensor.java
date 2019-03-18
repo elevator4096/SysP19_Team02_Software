@@ -5,6 +5,14 @@
 package team02.vorlagen;
 
 public class LinienSensor {
+	private int sensorLeftIndex, sensorRightIndex;  
+	
+	/** Konstruktor: */
+	public LinienSensor(int sensorLeftIndex,int sensorRightIndex)
+	{
+		this.sensorLeftIndex 	= sensorLeftIndex;
+		this.sensorRightIndex 	= sensorRightIndex;
+	}
 
 	/**
 	 * Erkennt ob beide Sensoren Schwarz sehen
