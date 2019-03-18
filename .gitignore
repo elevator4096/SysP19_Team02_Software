@@ -31,3 +31,5 @@ hs_err_pid*
 /bin/
 *.html
 /doc/
+*.bluej
+blueJ_prj/SysP19_Team02_Software/README.TXT
