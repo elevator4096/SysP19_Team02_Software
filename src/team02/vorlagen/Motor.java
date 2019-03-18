@@ -3,7 +3,7 @@
  * @version 2019.03.15
  */
 
-package team02.chris;
+package team02.vorlagen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;

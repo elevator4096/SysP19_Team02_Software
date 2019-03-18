@@ -3,7 +3,7 @@
  * @version 2019.03.13
  */
 
-package team02.chris;
+package team02.vorlagen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;

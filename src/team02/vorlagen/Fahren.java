@@ -3,7 +3,7 @@
  * @version 2019.03.15
  */
 
-package team02.chris;
+package team02.vorlagen;
 
 import team02.IO;
 
@@ -21,14 +21,16 @@ public class Fahren implements IO
      * "*"Sehr herausforderend!
      */
 
-
+    /**
+     * Konstruktor
+     */
     public Fahren()
     {
 
     }
 
     /**
-     *
+     * Dreht einen gewissen Winkel
      * @param i RAD positiv im GUZ,negativ im UZ
      */
     public static void drehe(int i)
