@@ -11,6 +11,15 @@ public class BewegungsSystem {
 	private ZustandBewegung zustandBewegung = ZustandBewegung.STOP;
 	
 	/**
+     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * */
+	private void diagrammDummy()
+	{
+		Fahren fahren = new Fahren();
+		
+	}
+	
+	/**
      * kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
      * @param kreuzungsPos ?
      * */
