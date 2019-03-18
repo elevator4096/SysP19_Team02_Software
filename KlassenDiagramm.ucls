@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="team02.vorlagen.LinienSensoren" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/LinienSensoren.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="276" y="753"/>    
+    <position height="-1" width="-1" x="245" y="751"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="team02.vorlagen.Orientierung" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Orientierung.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="555" y="764"/>    
+    <position height="-1" width="-1" x="524" y="762"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="team02.vorlagen.LinienSensor" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/LinienSensor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="231" y="948"/>    
+    <position height="-1" width="-1" x="200" y="946"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="team02.vorlagen.WandErkennung" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/WandErkennung.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="474" y="958"/>    
+    <position height="-1" width="-1" x="443" y="956"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="team02.vorlagen.Motor" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Motor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="729" y="978"/>    
+    <position height="-1" width="-1" x="698" y="976"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="team02.vorlagen.Fahren" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Fahren.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="160" width="160" x="689" y="685"/>    
+    <position height="160" width="160" x="658" y="683"/>    
     <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
