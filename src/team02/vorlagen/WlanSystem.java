@@ -21,9 +21,15 @@ public class WlanSystem
      */
     public WlanSystem() throws Exception
     {
-        SCI sci = SCI.getInstance(SCI.pSCI2);
-        sci.start(115200, SCI.NO_PARITY, (short)8);
-        wifi = new RN131(sci.in , sci.out, new MPIOSM_DIO(11, true));
+        try {
+            SCI sci = SCI.getInstance(SCI.pSCI2);
+            sci.start(115200, SCI.NO_PARITY, (short) 8);
+            wifi = new RN131(sci.in, sci.out, new MPIOSM_DIO(11, true));
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
     /**
