@@ -46,7 +46,7 @@ public class Main extends Task implements IO
     }
     
 	/**
-     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * diagrammDummy erzeugt kï¿½nstlich Abhaengigkeiten fuer Klassendiagramm
      * */
 	protected void diagrammDummy(WurfSystem wurfsystem,BewegungsSystem bewegungsSystem,DebugSystem debugSystem,GegnerSystem gegnerSystem,WlanSystem wlanSystem)
 	{
@@ -58,8 +58,10 @@ public class Main extends Task implements IO
      */
     public void action()
     {
+        update();
         if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {
+
         }
 
         if (Konstanten.TEST)
@@ -274,6 +276,14 @@ public class Main extends Task implements IO
      * Fehler Zustand
      */
     private void fehler()
+    {
+
+    }
+
+    /**
+     * Ruft alle anderen update methoden auf
+     */
+    private void update()
     {
 
     }

@@ -11,8 +11,8 @@ public class BewegungsSystem {
 	private ZustandBewegung zustandBewegung = ZustandBewegung.STOP;
 	
 	/**
-     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
-     * */
+     * diagrammDummy erzeugt kï¿½nstlich Abhaengigkeiten fuer Klassendiagramm
+     */
 	protected void diagrammDummy()
 	{
 		LinienSensoren 	linienSensoren 	;
@@ -23,7 +23,7 @@ public class BewegungsSystem {
 	/**
      * kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
      * @param kreuzungsPos ?
-     * */
+     */
 	public void fahreFreiBisKreuzungVorwaerts(int kreuzungsPos)
 	{
 		zustandBewegung = ZustandBewegung.FAHRE_FREI_BIS_KREUZUNG_VORWAERTS;
@@ -48,7 +48,7 @@ public class BewegungsSystem {
 	}
 
     /**
-     * 	kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
+     * kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
      * @param kreuzungsPos ?
      */
 	public void folgeLinieBisKreuzungRueckwaerts(int kreuzungsPos)
