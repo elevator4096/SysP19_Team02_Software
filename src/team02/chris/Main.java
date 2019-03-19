@@ -13,7 +13,7 @@ import team02.vorlagen.Sharp;
 
 import static team02.Zustand.*;
 
-public class Main extends Task implements IO
+public class Main extends Task implements IO,Systems
 {
 
     private Zustand zustand = SETUP;
@@ -285,6 +285,9 @@ public class Main extends Task implements IO
      */
     private void update()
     {
-
+        bewegungsSystem.update();
+        debugSystem.update();
+        gegnerSystem.update();
+        wurfSystem.update();
     }
 }

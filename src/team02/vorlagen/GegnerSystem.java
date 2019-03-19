@@ -9,7 +9,7 @@ import team02.IO;
 public class GegnerSystem {
 	
 	/**
-     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * diagrammDummy erzeugt kï¿½nstlich Abhaengigkeiten fuer Klassendiagramm
      * */
 	protected void diagrammDummy(Sharp sharp)
 	{
@@ -82,7 +82,11 @@ public class GegnerSystem {
 		return true;
 	}
 	
-	
+
+	public void update()
+	{
+
+	}
 
 
 }

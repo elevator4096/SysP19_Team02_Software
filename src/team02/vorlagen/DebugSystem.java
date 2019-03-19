@@ -27,4 +27,9 @@ public class DebugSystem implements IO
          * Siehe Output Stream als Beispiel
           */
     }
+
+    public void update()
+    {
+
+    }
 }

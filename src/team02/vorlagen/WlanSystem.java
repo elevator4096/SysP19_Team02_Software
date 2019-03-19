@@ -64,4 +64,9 @@ public class WlanSystem
         }
         return -1;
     }
+
+    public void update()
+    {
+
+    }
 }
