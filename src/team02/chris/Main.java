@@ -288,6 +288,7 @@ public class Main extends Task implements IO,Systems
         bewegungsSystem.update();
         debugSystem.update();
         gegnerSystem.update();
+        wlanSystem.update();
         wurfSystem.update();
     }
 }

@@ -19,7 +19,7 @@ public class WlanSystem
      *
      * @throws Exception
      */
-    public WlanSystem() throws Exception
+    public WlanSystem()
     {
         try {
             SCI sci = SCI.getInstance(SCI.pSCI2);

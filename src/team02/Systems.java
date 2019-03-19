@@ -10,6 +10,6 @@ public interface Systems
     DebugSystem debugSystem = new DebugSystem();
     GegnerSystem gegnerSystem = new GegnerSystem();
 
-    //WlanSystem wlanSystem = new WlanSystem(); try catch
+    WlanSystem wlanSystem = new WlanSystem();
     WurfSystem wurfSystem = new WurfSystem();
 }
