@@ -33,6 +33,11 @@ public interface Konstanten
 
 	final double SPANN_ZEIT = 0;
 	final double WURF_ZEIT = 0;
+	
+	//Sensor Konstanten 
+	
+	final int HLC_GRENZWERT_SCHWARZ = 100;							// schwarze Linie 
+	final int HLC_GRENZWERT_WEISS = 100;							// keine Linie 
 
 
 }

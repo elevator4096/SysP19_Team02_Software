@@ -4,10 +4,12 @@
 */
 package team02;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import team02.dominique.LinienSensor;
 import team02.vorlagen.*;
 
 public interface IO {
@@ -46,6 +48,9 @@ public interface IO {
 
 	TPU_FQD    FQD_Links 				= new TPU_FQD(true, 3);
 	TPU_FQD    FQD_Rechts 				= new TPU_FQD(true, 5);
+	
+	//HLC
+	static HLC1395Pulsed sense 			= HLC1395Pulsed.getInstance();
 	
 	//LinienSensoren
 	LinienSensoren LINES_Sensoren 		= new LinienSensoren();

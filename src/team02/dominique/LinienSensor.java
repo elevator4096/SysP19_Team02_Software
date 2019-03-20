@@ -2,7 +2,10 @@
  * @author loris
  * @version 2019.03.17
  */
-package team02.vorlagen;
+package team02.dominique;
+
+import team02.IO;
+import team02.Konstanten;
 
 public class LinienSensor {
 	private int sensorLeftIndex, sensorRightIndex;  
@@ -20,7 +23,8 @@ public class LinienSensor {
 	 */
 	public boolean istLinieVorne()
 	{
-		return true;
+		
+		return IO.sense.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.sense.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
 	}
 	
 	/**
@@ -29,7 +33,7 @@ public class LinienSensor {
 	 */
 	public boolean istLinieLinks()
 	{
-		return true;
+		return IO.sense.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.sense.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_WEISS;
 	}
 	
 	/**
@@ -38,25 +42,7 @@ public class LinienSensor {
 	 */
 	public boolean istLinieRechts()
 	{
-		return true;
-	}
-	
-	/**
-	 * gibt einen kalibrierten Helligkeitswert zwischen 0 und 100% zur�ck
-	 * @return gibt Helligkeit zurück
-	 */
-	private int getHelligkeit(int sensorNr)
-	{
-		return 0;
-	}
-	
-	/**
-	 * gibt einen unkalibrierten Rohen Sensorwert zur�ck
-	 * @return gibt Wert zurück
-	 */
-	private int getRawValue()
-	{
-		return 0;
+		return IO.sense.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.sense.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_WEISS;
 	}
 
 }
