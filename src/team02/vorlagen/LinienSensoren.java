@@ -5,7 +5,6 @@
 package team02.vorlagen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
-import team02.dominique.LinienSensor;
 
 public class LinienSensoren {
 	
