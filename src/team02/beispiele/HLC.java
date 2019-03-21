@@ -44,7 +44,7 @@ import java.lang.System;
  */
 public class HLC extends Task {
 	
-	Motoren motoren = new Motoren(); 
+	//Motoren motoren = new Motoren(); 
 	
 	int min = 1001;
 	int max = -1;
@@ -74,11 +74,11 @@ public class HLC extends Task {
 				
 				if((y < 100))
 				{
-					motoren.rechtsKurve();
+					//motoren.rechtsKurve();
 				}
 				else
 				{
-					motoren.linksKurve();
+					//motoren.linksKurve();
 				}
 			}
 			
