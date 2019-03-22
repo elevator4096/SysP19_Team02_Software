@@ -50,7 +50,6 @@ public class Main extends Task implements IO
     {
         wurfSystem = new WurfSystem();
         bewegungsSystem = new BewegungsSystem();
-        debugSystem = new DebugSystem();
         gegnerSystem = new GegnerSystem();
         wlanSystem = new WlanSystem();
     }
@@ -60,6 +59,8 @@ public class Main extends Task implements IO
      */
     public void action()
     {
+        OUT_LED1.set(!OUT_LED1.get());
+
         update();
         if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {

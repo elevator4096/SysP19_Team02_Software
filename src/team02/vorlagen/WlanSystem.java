@@ -66,25 +66,12 @@ public class WlanSystem
      */
     public ZustandWifi getPartnerState()
     {
-        ZustandWifi zW = ZustandWifi.ERROR;
-        if(wifi.connected())
-        {
-            if(wifi.cmd.readCmd() == CmdInt.Type.Cmd)
-                return zW;
-        }
-        return ZustandWifi.ERROR;
+        return partnerState;
     }
 
     public void update()
     {
         //Schleife die solange durchläuft wie States im Array sind, der letzte wird zwischengespeichert und kann über
         //die Methode getPartnerState geholt werden
-    }
-
-
-    private int getEnumlength()
-    {
-
-        return ZustandWifi.values().length;
     }
 }

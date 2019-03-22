@@ -6,7 +6,11 @@
 
 package team02.vorlagen;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import team02.IO;
+import java.lang.System;
+
+import java.io.PrintStream;
 
 public class DebugSystem implements IO
 {
@@ -21,11 +25,37 @@ public class DebugSystem implements IO
      * dH der Output stream muss zuerst initialisiert werden.
      * Sonst kann nichts auf die serielle Schnittstelle ausgegeben werden
      */
-    public void print()
+
+    private static DebugSystem debugSystem;
+
+    private DebugSystem()
     {
-        /**
-         * Siehe Output Stream als Beispiel
-          */
+
+            SCI sci1 = SCI.getInstance(SCI.pSCI1);
+            sci1.start(9600, SCI.NO_PARITY, (short) 8);
+            //Hook SCI1.out on System.out
+            System.out = new PrintStream(sci1.out);
+
+    }
+
+    public static DebugSystem getInstance()
+    {
+        if(debugSystem==null)
+        {
+            debugSystem= new DebugSystem();
+        }
+        return debugSystem;
+    }
+
+    public void println(String s)
+    {
+
+        System.out.println(s);
+    }
+
+    public void print(String s)
+    {
+        System.out.print(s);
     }
 
     public void update()
