@@ -4,18 +4,18 @@
  */
 package team02.vorlagen;
 
-import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
+import static team02.IO.*;
 
 public class LinienSensoren {
-	
+
+
+	/**
+	 * Initialize HLC1395Pulsed driver for HLC_Anzahl_Sens sensors and start reading values
+	 */
 	public LinienSensoren()
 	{
-		/**
-		 * Initialize HLC1395Pulsed driver for 4 sensors and start reading values
-		 */
-		sense = HLC1395Pulsed.getInstance();
-		sense.init(4, 0x50076, 59); // initialize 4 sensors (addrPin0 = MPIOB6, addrPin1 = MPIOB7, trgPin = MPIOB5, analogInPin = AN59)
-		sense.start();
+		HLC_1395_PULSED.init(HLC_Anzahl_Sens,HLC_Code_Sens,HLC_AN_chan);
+		HLC_1395_PULSED.start();
 	}
 	
 	/**
@@ -41,7 +41,11 @@ public class LinienSensoren {
 	{
 		return true;
 	}
-	
+
+	public void update()
+	{
+
+	}
 	
 	
 

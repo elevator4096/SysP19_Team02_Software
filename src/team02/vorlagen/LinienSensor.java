@@ -24,7 +24,7 @@ public class LinienSensor {
 	public boolean istLinieVorne()
 	{
 		
-		return IO.sense.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.sense.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
+		return IO.HLC_1395_PULSED.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class LinienSensor {
 	 */
 	public boolean istLinieLinks()
 	{
-		return IO.sense.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.sense.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_WEISS;
+		return IO.HLC_1395_PULSED.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_WEISS;
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class LinienSensor {
 	 */
 	public boolean istLinieRechts()
 	{
-		return IO.sense.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.sense.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_WEISS;
+		return IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_WEISS;
 	}
 
 }

@@ -42,7 +42,7 @@ public class Main extends Task implements IO,Systems
      */
     public Main()
     {
-        IN_Taster1.set(true);
+
     }
     
 	/**

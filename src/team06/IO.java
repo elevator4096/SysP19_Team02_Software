@@ -62,7 +62,7 @@ public interface IO{
 //	TPU_FQD    FQD_Rechts 				= new TPU_FQD(true, 5);
 //	
 //	//HLC
-//	static HLC1395Pulsed sense 			= HLC1395Pulsed.getInstance();
+//	static HLC1395Pulsed HLC_1395_PULSED 			= HLC1395Pulsed.getInstance();
 //	
 //	//LinienSensoren
 //	LinienSensoren LINES_Sensoren 		= new LinienSensoren();

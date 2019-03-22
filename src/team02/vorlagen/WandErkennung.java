@@ -6,9 +6,11 @@ package team02.vorlagen;
 
 import team02.IO;
 
-public class WandErkennung {
+public class WandErkennung
+{
 	
-	public WandErkennung() {
+	public WandErkennung()
+	{
 
 	}
 
@@ -18,7 +20,7 @@ public class WandErkennung {
 	 */
 	public boolean istWandVorne()
 	{
-		return IO.IN_Taster1.get() && IO.IN_Taster2.get();
+		return IO.IN_Taster_1.get() && IO.IN_Taster_2.get();
 	}
 
 	/**
@@ -27,7 +29,7 @@ public class WandErkennung {
 	 */
 	public boolean istWandLinks()
 	{
-		return IO.IN_Taster1.get() && !IO.IN_Taster2.get();
+		return IO.IN_Taster_1.get() && !IO.IN_Taster_2.get();
 	}
 
 	/**
@@ -36,15 +38,15 @@ public class WandErkennung {
 	 */
 	public boolean istWandRechts()
 	{
-		return !IO.IN_Taster1.get() && IO.IN_Taster2.get();
+		return !IO.IN_Taster_1.get() && IO.IN_Taster_2.get();
 	}
 
 	/**
 	 * Alte Testmethode
 	 */
-	public void action() {
-		
-		IO.OUT_Test_Led.set(IO.IN_Taster1.get() && IO.IN_Taster2.get());
+	public void action()
+	{
+		//IO.OUT_Test_Led.set(IO.IN_Taster_1.get() && IO.IN_Taster_2.get());
 	}
 
 }

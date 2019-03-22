@@ -9,10 +9,14 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
+import team02.Zustand;
+import team02.ZustandWifi;
+import team02.ZustandWifi.*;
 
 public class WlanSystem
 {
     private RN131 wifi;
+    private ZustandWifi partnerState;
 
     /**
      * Konstruktor für die Wlan Verbindung
@@ -48,12 +52,11 @@ public class WlanSystem
 
     /**
      * Sende ein Integer
-     * @param i Integer welcher gesendet wird
+     * @param zustandWifi Zustand Welcher gesendet wird
      */
-    public void send(int i)
+    public void setOwnState(ZustandWifi zustandWifi)
     {
-        if(wifi.connected())
-            wifi.cmd.writeCmd(i);
+        wifi.cmd.writeCmd(zustandWifi.number);
     }
 
     /**
@@ -61,18 +64,27 @@ public class WlanSystem
      * Achtund!!! getInt Löscht Integer aus dem RingArray
      * @return gibt Integer aus dem Puffer aus
      */
-    public int get()
+    public ZustandWifi getPartnerState()
     {
+        ZustandWifi zW = ZustandWifi.ERROR;
         if(wifi.connected())
         {
             if(wifi.cmd.readCmd() == CmdInt.Type.Cmd)
-                return wifi.cmd.getInt();
+                return zW;
         }
-        return -1;
+        return ZustandWifi.ERROR;
     }
 
     public void update()
     {
+        //Schleife die solange durchläuft wie States im Array sind, der letzte wird zwischengespeichert und kann über
+        //die Methode getPartnerState geholt werden
+    }
 
+
+    private int getEnumlength()
+    {
+
+        return ZustandWifi.values().length;
     }
 }
