@@ -11,11 +11,11 @@ public class BlinkPin10 extends Task  {
 	*/
 	public BlinkPin10() {
 		//led = new MPIOSM_DIO(ledPin, true); // Pin initialisieren
-		IO.OUT_Test_Led.set(false); // LED ausschalten
+		//IO.OUT_Test_Led.set(false); // LED ausschalten
 	}
 	
 	public void action() {
-		IO.OUT_Test_Led.set(!IO.OUT_Test_Led.get()); // LED �toggeln�
+		//IO.OUT_Test_Led.set(!IO.OUT_Test_Led.get()); // LED �toggeln�
 	}
 	
 	static { // Klassenkonstruktor

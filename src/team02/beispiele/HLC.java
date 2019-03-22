@@ -67,6 +67,7 @@ public class HLC extends Task {
 			System.out.print('\t');
 			
 			
+			/*
 			if (i==0)
 			{
 				System.out.print(y);
@@ -81,6 +82,7 @@ public class HLC extends Task {
 					//motoren.linksKurve();
 				}
 			}
+			*/
 			
 			
 		}
