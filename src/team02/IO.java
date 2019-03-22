@@ -59,13 +59,15 @@ public interface IO {
 	TPU_PWM    PWM_MotorRechtsPWM 	   	= new TPU_PWM(false, 2, PERIOD_Motoren, 0);
 
 
-	//Motoren
-	Motor 	   MOTOR_links 				= new Motor(IO.FQD_Links, IO.PWM_MotorLinksPWM, IO.PERIOD_Motoren);
-	Motor 	   MOTOR_rechts				= new Motor(IO.FQD_Rechts, IO.PWM_MotorRechtsPWM, IO.PERIOD_Motoren);
-
 	TPU_FQD    FQD_Links 				= new TPU_FQD(false, 3);
 	TPU_FQD    FQD_Rechts 				= new TPU_FQD(false, 5);
-	
+
+
+	//Motoren
+	Motor 	   MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, PERIOD_Motoren);
+	Motor 	   MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, PERIOD_Motoren);
+
+
 	//LinienSensoren
 	LinienSensoren LINES_Sensoren 		= new LinienSensoren();
 	
