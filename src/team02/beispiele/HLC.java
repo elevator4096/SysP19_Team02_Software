@@ -62,10 +62,10 @@ public class HLC extends Task {
 				min = y;
 			if(max < y)
 				max = y;*/
-			/*
+			
 			System.out.print(y);
 			System.out.print('\t');
-			*/
+			
 			
 			if (i==0)
 			{
