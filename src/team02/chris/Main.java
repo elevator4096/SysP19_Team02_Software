@@ -13,11 +13,17 @@ import team02.vorlagen.Sharp;
 
 import static team02.Zustand.*;
 
-public class Main extends Task implements IO,Systems
+public class Main extends Task implements IO
 {
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
+
+    private WurfSystem wurfSystem;
+    private BewegungsSystem bewegungsSystem;
+    private DebugSystem debugSystem;
+    private GegnerSystem gegnerSystem;
+    private WlanSystem wlanSystem;
 
     /**
      * Initialisieren der Tasks
@@ -42,16 +48,12 @@ public class Main extends Task implements IO,Systems
      */
     public Main()
     {
-
+        wurfSystem = new WurfSystem();
+        bewegungsSystem = new BewegungsSystem();
+        debugSystem = new DebugSystem();
+        gegnerSystem = new GegnerSystem();
+        wlanSystem = new WlanSystem();
     }
-    
-	/**
-     * diagrammDummy erzeugt k�nstlich Abhaengigkeiten fuer Klassendiagramm
-     * */
-	protected void diagrammDummy(WurfSystem wurfsystem,BewegungsSystem bewegungsSystem,DebugSystem debugSystem,GegnerSystem gegnerSystem,WlanSystem wlanSystem)
-	{
-		
-	}
 
     /**
      * Methode die Zyklisch aufgerufen wird
