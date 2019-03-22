@@ -4,30 +4,20 @@
  */
 package team02.vorlagen;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.IO;
 
 public class Sharp {
-	int ADCKanal = 0;
-	
-	/**
-	 * Konstruktor: ADC Kanal festlegen
-	 * @param AdcChannel setzt ADCChannel
-	 */
-	public Sharp(int AdcChannel)
-	{
-		this.ADCKanal = AdcChannel;
-		//IO.ADC_B.init(false);
-	}
 	
 	/**
 	 * Distanz messen
 	 * @return aktuelle Distanz
 	 */
-	public int getDistanz()
+	public static int getDistanz(boolean ADCPort,int sensorIndex, double kalibrierWert)
 	{	
-		int distanz = 0;
-		//return IO.ADC_B.read(false, 0);
+		int distanz = QADC_AIN.read(ADCPort,sensorIndex);
 		return distanz;
+
 	}
 	
 	

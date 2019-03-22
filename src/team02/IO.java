@@ -45,10 +45,10 @@ public interface IO {
 	int				HLC_AN_chan			= 0;
 
 
-	//Sharp
-	short		AN_Sharp1				= QADC_AIN.read(false,0);
-	short		AN_Sharp2				= QADC_AIN.read(false,1);
-	short		AN_Sharp3				= QADC_AIN.read(false,2);
+	//Sharp Distanz in mm
+	int			AN_Sharp1				= Sharp.getDistanz(false,0, 0.0);
+	int			AN_Sharp2				= Sharp.getDistanz(false,1, 0.0);
+	int			AN_Sharp3				= Sharp.getDistanz(false,2, 0.0);
 
 	//PWM Periodendauer
 	int 	   PERIOD_WurfZyl			= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
