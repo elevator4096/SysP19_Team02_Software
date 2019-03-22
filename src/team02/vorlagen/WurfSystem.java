@@ -10,21 +10,35 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
 
-public class WurfSystem extends Task{
+public class WurfSystem
+{
+
+
 	private static long letzteSpannZeit=0;
 	private static long letzteEntmagnetisierZeit=0;
-	Task t = new WurfSystem();         /** Task erzeugen
+
+	private static WurfSystem wurfSystem;
 
 	 /*
 	 * Konstruktor: Initialisiert das Wurfsystem
 	 */
-	public WurfSystem()
+	private WurfSystem()
 	{
 		
 		setWurfZylinderPWM(0);
 		letzteSpannZeit = System.currentTimeMillis();
 	}
-	
+
+
+	public static WurfSystem getInstance()
+	{
+		if(wurfSystem==null)
+		{
+			wurfSystem= new WurfSystem();
+		}
+		return wurfSystem;
+	}
+
 	/**
 	 * Bringt den Zylinder auf Zielposition
      * @param pwmValue setzt neue pwmValue

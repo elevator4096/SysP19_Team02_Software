@@ -7,6 +7,7 @@
 package team02.chris;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import sun.awt.windows.WLightweightFramePeer;
 import team02.*;
 import team02.vorlagen.*;
 import team02.vorlagen.Sharp;
@@ -21,7 +22,6 @@ public class Main extends Task implements IO
 
     private WurfSystem wurfSystem;
     private BewegungsSystem bewegungsSystem;
-    private DebugSystem debugSystem;
     private GegnerSystem gegnerSystem;
     private WlanSystem wlanSystem;
 
@@ -48,10 +48,10 @@ public class Main extends Task implements IO
      */
     public Main()
     {
-        wurfSystem = new WurfSystem();
-        bewegungsSystem = new BewegungsSystem();
-        gegnerSystem = new GegnerSystem();
-        wlanSystem = new WlanSystem();
+        wurfSystem = WurfSystem.getInstance();
+        bewegungsSystem = BewegungsSystem.getInstance();
+        gegnerSystem = GegnerSystem.getInstance();
+        wlanSystem = WlanSystem.getInstance();
     }
 
     /**

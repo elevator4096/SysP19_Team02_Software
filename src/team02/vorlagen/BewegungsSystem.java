@@ -6,9 +6,26 @@ package team02.vorlagen;
 
 import team02.ZustandBewegung;
 
-public class BewegungsSystem {
+public class BewegungsSystem
+{
 	private boolean inBewegung = false;
+	private static BewegungsSystem bewegungsSystem;
 	private ZustandBewegung zustandBewegung = ZustandBewegung.STOP;
+
+	private BewegungsSystem()
+	{
+
+	}
+
+	public static BewegungsSystem getInstance()
+	{
+		if(bewegungsSystem==null)
+		{
+			bewegungsSystem = new BewegungsSystem();
+		}
+		return bewegungsSystem;
+	}
+
 	
 	/**
      * diagrammDummy erzeugt k�nstlich Abhaengigkeiten fuer Klassendiagramm

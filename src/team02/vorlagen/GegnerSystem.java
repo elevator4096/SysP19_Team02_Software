@@ -8,7 +8,8 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.IO;
 
 public class GegnerSystem {
-	
+
+	private static GegnerSystem gegnerSystem;
 	/**
      * diagrammDummy erzeugt k�nstlich Abhaengigkeiten fuer Klassendiagramm
      * */
@@ -16,9 +17,18 @@ public class GegnerSystem {
 	{
 	}
 	
-	public GegnerSystem()
+	private GegnerSystem()
 	{
 		QADC_AIN.init(false);
+	}
+
+	public static GegnerSystem getInstance()
+	{
+		if(gegnerSystem==null)
+		{
+			gegnerSystem = new GegnerSystem();
+		}
+		return gegnerSystem;
 	}
 	
 	/**

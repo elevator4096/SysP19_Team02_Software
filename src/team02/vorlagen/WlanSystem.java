@@ -8,8 +8,6 @@ package team02.vorlagen;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
-import ch.ntb.inf.deep.runtime.util.CmdInt;
-import team02.Zustand;
 import team02.ZustandWifi;
 import team02.ZustandWifi.*;
 
@@ -17,13 +15,14 @@ public class WlanSystem
 {
     private RN131 wifi;
     private ZustandWifi partnerState;
+    private static WlanSystem wlanSystem;
 
     /**
      * Konstruktor für die Wlan Verbindung
      *
      * @throws Exception
      */
-    public WlanSystem()
+    private WlanSystem()
     {
         try {
             SCI sci = SCI.getInstance(SCI.pSCI2);
@@ -34,6 +33,15 @@ public class WlanSystem
         {
 
         }
+    }
+
+    public static WlanSystem getInstance()
+    {
+        if(wlanSystem==null)
+        {
+            wlanSystem = new WlanSystem();
+        }
+        return wlanSystem;
     }
 
     /**
