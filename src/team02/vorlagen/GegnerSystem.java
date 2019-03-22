@@ -4,6 +4,7 @@
  */
 package team02.vorlagen;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.IO;
 
 public class GegnerSystem {
@@ -17,7 +18,7 @@ public class GegnerSystem {
 	
 	public GegnerSystem()
 	{
-		
+		QADC_AIN.init(false);
 	}
 	
 	/**
@@ -61,7 +62,7 @@ public class GegnerSystem {
 	 */
 	public boolean istGegnerVorne()
 	{	
-		return (IO.SHARP_Vorne.getDistanz() < 6);
+		return (IO.AN_Sharp3 < 6);
 	}
 	
 	/**

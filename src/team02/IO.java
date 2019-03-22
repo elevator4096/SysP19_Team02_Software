@@ -46,16 +46,9 @@ public interface IO {
 
 
 	//Sharp
-	int 	   PIN_Sharp_Kanal_Links	= 0;									//Sharp1
-	int 	   PIN_Sharp_Kanal_Rechts	= 1;									//Sharp2
-	int 	   PIN_Sharp_Kanal_Vorne	= 2;									//Sharp3
-	QADC_AIN   ADC_B					= new QADC_AIN();
-	Sharp	   SHARP_Links				= new Sharp(PIN_Sharp_Kanal_Links);
-	Sharp	   SHARP_Rechts				= new Sharp(PIN_Sharp_Kanal_Rechts);
-	Sharp	   SHARP_Vorne				= new Sharp(PIN_Sharp_Kanal_Vorne);
 	short		AN_Sharp1				= QADC_AIN.read(false,0);
-	short		AN_Sharp2				= QADC_AIN.read(false,0);
-	short		AN_Sharp3				= QADC_AIN.read(false,0);
+	short		AN_Sharp2				= QADC_AIN.read(false,1);
+	short		AN_Sharp3				= QADC_AIN.read(false,2);
 
 	//PWM Periodendauer
 	int 	   PERIOD_WurfZyl			= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
