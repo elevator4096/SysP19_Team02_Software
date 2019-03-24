@@ -8,6 +8,8 @@ package team02.vorlagen;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.util.CmdInt;
+import team02.Zustand;
 import team02.ZustandWifi;
 import team02.ZustandWifi.*;
 
@@ -81,5 +83,20 @@ public class WlanSystem
     {
         //Schleife die solange durchläuft wie States im Array sind, der letzte wird zwischengespeichert und kann über
         //die Methode getPartnerState geholt werden
+        if(wifi.connected())
+        {
+            while(wifi.cmd.readCmd() == CmdInt.Type.Cmd)
+            {
+                int data =wifi.cmd.getInt();
+                for(ZustandWifi zw: ZustandWifi.values())
+                {
+                    if(zw.number == data)
+                    {
+                        partnerState = zw;
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
