@@ -52,10 +52,19 @@ public class MotorSMSC implements IO
 		
 	}
 	
-	
+	/**
+	 * Wurfgeschwindigkeit einstellen
+	 */
 	public void wurfgeschwindigkeit(float speed) {
 		motor.setDesiredSpeed(speed);
 		
+	}
+	
+	/**
+	 * Motor mit SpeedController starten
+	 */
+	public void schiessen() {
+		motor.run();
 	}
 			
 }
