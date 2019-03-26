@@ -4,9 +4,6 @@
  */
 package team02.vorlagen;
 
-import team02.*;
-
-import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
 
@@ -83,7 +80,7 @@ public class WurfSystem
 	 */
 	private void magnetEntmagnetisieren()
 	{
-		IO.OUT_Magnet.set(true);
+		IO.OUT_Magnet_Wand.set(true);
 		letzteEntmagnetisierZeit = System.currentTimeMillis();
 	}
 	
@@ -91,7 +88,7 @@ public class WurfSystem
 	 * Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
 	 */
 	private void magnetMagnetisieren() {
-		IO.OUT_Magnet.set(false);
+		IO.OUT_Magnet_Wand.set(false);
 	}
 	
 	private void setWurfZylinderPWM(int i)
@@ -121,12 +118,12 @@ public class WurfSystem
 					IO.wurfMagnet.set(true);
 					timer1.set(1000);
 				}
-				IO.OUT_Magnet.set(true);
+				IO.OUT_Magnet_Wand.set(true);
 				timer1.set(1000);
 
 				break;
 			case 3:
-				IO.OUT_Magnet.set(false);
+				IO.OUT_Magnet_Wand.set(false);
 				pwm.setWurfZylinderPWM(80);
 				zustand = 0;
 				timer1.set(10000);

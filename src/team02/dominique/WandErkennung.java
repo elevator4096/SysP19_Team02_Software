@@ -2,7 +2,7 @@
  * @author loris
  * @version 2019.03.17
  */
-package team02.vorlagen;
+package team02.dominique;
 
 import team02.IO;
 

@@ -42,7 +42,7 @@ public interface IO{
 //
 //	//Output
 //	MPIOSM_DIO OUT_Test_Led				= new MPIOSM_DIO(10, true );
-//	MPIOSM_DIO OUT_Magnet				= new MPIOSM_DIO(11, true );
+//	MPIOSM_DIO OUT_Magnet_Wand				= new MPIOSM_DIO(11, true );
 //
 //	//PWM Periodendauer
 //	int 	   PERIOD_WurfZyl			= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz

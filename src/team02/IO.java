@@ -27,7 +27,7 @@ public interface IO
 	//Output
 	MPIOSM_DIO 		OUT_Reset_Wlan				= new MPIOSM_DIO(11,true);
 	MPIOSM_DIO 		OUT_Magnet_Ausloeser		= new MPIOSM_DIO(8, true);
-	MPIOSM_DIO 		OUT_Magnet					= new MPIOSM_DIO(7, true);
+	MPIOSM_DIO 		OUT_Magnet_Wand 			= new MPIOSM_DIO(7, true);
 
 	MDASM_DIO 		OUT_FG_Speed				= new MDASM_DIO(12,true);
 	MDASM_DIO 		OUT_DIR_Speed1				= new MDASM_DIO(11,true);

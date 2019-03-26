@@ -4,14 +4,16 @@
  */
 package team02.vorlagen;
 
+import team02.dominique.WandErkennung;
+
 public class Orientierung {
 	
 	/**
-     * diagrammDummy erzeugt künstlich Abhaengigkeiten fuer Klassendiagramm
+     * diagrammDummy erzeugt kï¿½nstlich Abhaengigkeiten fuer Klassendiagramm
      * */
 	protected void diagrammDummy()
 	{
-		WandErkennung 	wandErkennung;
+		WandErkennung wandErkennung;
 		LinienSensoren 	linienSensoren 	;
 		Motor 			motor;
 	}
