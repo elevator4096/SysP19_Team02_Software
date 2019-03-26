@@ -7,10 +7,8 @@
 package team02.chris;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import sun.awt.windows.WLightweightFramePeer;
 import team02.*;
 import team02.vorlagen.*;
-import team02.vorlagen.Sharp;
 
 import static team02.Zustand.*;
 

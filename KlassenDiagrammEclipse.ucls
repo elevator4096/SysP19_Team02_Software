@@ -91,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="team02.vorlagen.WlanSystem" project="SysP19" 
+  <class id="11" language="java" name="team02.chris.WlanSystem" project="SysP19"
     file="/SysP19/src/team02/vorlagen/WlanSystem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1862" y="578"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
