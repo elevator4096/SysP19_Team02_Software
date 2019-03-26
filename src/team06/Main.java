@@ -11,6 +11,7 @@ public class Main extends Task implements IO {
 
 	private WurfSystem wurfSystem;
 	private WlanSystem wlanSystem;
+	private boolean gestartet = false;
 
 	static {
 		try {
@@ -36,14 +37,14 @@ public class Main extends Task implements IO {
 	 * Konstruktor
 	 */
 	public Main() {
-		wurfSystem = WurfSystem.getInstance();
-		wlanSystem = WlanSystem.getInstance();
+		// wurfSystem = WurfSystem.getInstance();
+		// wlanSystem = WlanSystem.getInstance();
 		System.out.println("Main Konstruktor gestartet");
-
 	}
-	
+
 	public void instanz() {
-	
+		wurfSystem = WurfSystem.getInstance();
+
 	}
 
 	/**
@@ -51,10 +52,14 @@ public class Main extends Task implements IO {
 	 */
 	public void action() {
 
-		System.out.println("Main action");
-		//wurfSystem = WurfSystem.getInstance();
-
+		if (gestartet == false) {
+			instanz();
+		}
+		
+		wurfSystem.werfen();
 	}
+
+	// System.out.println("Main action");
 
 	/**
 	 * Task initialisieren
