@@ -1,5 +1,5 @@
 /**
- * @author loris
+ * @author dominique
  * @version 2019.03.17
  */
 package team02.dominique;
