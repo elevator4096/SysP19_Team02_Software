@@ -11,7 +11,7 @@ package team06;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
 
-public class MotorSMSC implements IO									
+public class MotorSMSC implements IO, Variablen									
 {
 	
 	private float ts;
