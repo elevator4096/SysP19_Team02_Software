@@ -6,30 +6,26 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 public class Test extends Task implements IO {
-	
-	
+
 	public Test() {
 		System.out.println("Main Konstruktor gestartet");
-		schreiben();
 	}
-	
-	
+
 	public static void schreiben() {
 		System.out.println("schreiben");
 	}
-	
-	
-	
+
+	public void action() {
+		System.out.println("test");
+		
+	}
 
 	static {
-		try {
-			Task task = new Main();
-			task.period = Variablen.TASK_PERIOD;
-			Task.install(task);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Task task = new Main();
+		task.period = Variablen.TASK_PERIOD;
+		Task.install(task);
+
 		{
 			SCI sci1 = SCI.getInstance(SCI.pSCI1);
 			sci1.start(9600, SCI.NO_PARITY, (short) 8);
@@ -37,7 +33,7 @@ public class Test extends Task implements IO {
 			System.out = new PrintStream(sci1.out);
 		}
 
-		System.out.println("Main Static gestartet");
+		System.out.println("test test test test");
 
 	}
 

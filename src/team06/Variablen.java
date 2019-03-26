@@ -14,7 +14,7 @@ public interface Variablen
 	static float speedkorbschuss = 1;	// in s^-1 (Radiant)
 	
 	
-	final int TASK_PERIOD = 200;
+	final int TASK_PERIOD = 500;
 	
 
 }
