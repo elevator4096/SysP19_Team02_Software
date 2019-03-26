@@ -41,6 +41,10 @@ public class Main extends Task implements IO {
 		System.out.println("Main Konstruktor gestartet");
 
 	}
+	
+	public void instanz() {
+	
+	}
 
 	/**
 	 * Methode die Zyklisch aufgerufen wird
