@@ -1,3 +1,8 @@
+/**
+ * @Author Phil
+ * @version 2019.03.26
+ */
+
 package team06;
 
 import java.io.PrintStream;
@@ -11,8 +16,27 @@ public class Main extends Task implements IO {
 
 	private WurfSystem wurfSystem;
 	private WlanSystem wlanSystem;
-	private boolean gestartet = false;
 
+	/**
+	 * Konstruktor
+	 */
+	public Main() {
+		wurfSystem = WurfSystem.getInstance();
+		wlanSystem = WlanSystem.getInstance();
+	}
+
+	/**
+	 * Methode die Zyklisch aufgerufen wird
+	 */
+	public void action() {
+
+		System.out.println(wlanSystem.connected());
+		wurfSystem.werfen();
+	}
+
+	/**
+	 * Task initialisieren/ SCI_OUT
+	 */
 	static {
 		try {
 			Task task = new Main();
@@ -22,6 +46,7 @@ public class Main extends Task implements IO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		{
 			SCI sci1 = SCI.getInstance(SCI.pSCI1);
 			sci1.start(9600, SCI.NO_PARITY, (short) 8);
@@ -32,37 +57,5 @@ public class Main extends Task implements IO {
 		System.out.println("Main Static gestartet");
 
 	}
-
-	/**
-	 * Konstruktor
-	 */
-	public Main() {
-		// wurfSystem = WurfSystem.getInstance();
-		// wlanSystem = WlanSystem.getInstance();
-		System.out.println("Main Konstruktor gestartet");
-	}
-
-	public void instanz() {
-		wurfSystem = WurfSystem.getInstance();
-
-	}
-
-	/**
-	 * Methode die Zyklisch aufgerufen wird
-	 */
-	public void action() {
-
-		if (gestartet == false) {
-			instanz();
-		}
-		
-		wurfSystem.werfen();
-	}
-
-	// System.out.println("Main action");
-
-	/**
-	 * Task initialisieren
-	 */
 
 }

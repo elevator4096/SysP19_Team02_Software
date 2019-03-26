@@ -1,10 +1,10 @@
-package team06;
+package team06.testprogramme;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 public class FlashLight extends Task {
-	public final byte ledPin = 5; // Pin fuer LED festlegen
+	public final byte ledPin = 7; // Pin fuer LED festlegen
 	MPIOSM_DIO led;
 
 	public FlashLight() {

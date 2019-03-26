@@ -14,19 +14,15 @@ public class WurfSystem implements IO, Variablen {
 
 	private WurfSystem() {
 
-		System.out.println("Wurfsystem_1");
+		System.out.println("Wurfsystem_gestartet");
 
 	}
 
 	public static WurfSystem getInstance() {
-
-		System.out.println("Wurfsystem");
-
 		if (wurfSystem == null) {
 			wurfSystem = new WurfSystem();
 		}
 		return wurfSystem;
-
 	}
 
 	/**
