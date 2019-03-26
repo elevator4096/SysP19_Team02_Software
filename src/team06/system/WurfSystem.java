@@ -29,24 +29,24 @@ public class WurfSystem implements IO, Variablen {
 	 * Speed für den Pass setzen
 	 */
 	public void setspeedpassgegner() {
-		IO.SMSC_WurfMotor1.wurfgeschwindigkeit(Variablen.speedpassgegner);
-		IO.SMSC_WurfMotor2.wurfgeschwindigkeit(Variablen.speedpassgegner);
+		SMSC_WurfMotor1.wurfgeschwindigkeit(Variablen.speedpassgegner);
+		SMSC_WurfMotor2.wurfgeschwindigkeit(Variablen.speedpassgegner);
 	}
 
 	/**
 	 * Speed für den Korbschuss setzen
 	 */
 	public void setspeedkorbschuss() {
-		IO.SMSC_WurfMotor1.wurfgeschwindigkeit(Variablen.speedkorbschuss);
-		IO.SMSC_WurfMotor2.wurfgeschwindigkeit(Variablen.speedkorbschuss);
+		SMSC_WurfMotor1.wurfgeschwindigkeit(Variablen.speedkorbschuss);
+		SMSC_WurfMotor2.wurfgeschwindigkeit(Variablen.speedkorbschuss);
 	}
 
 	/**
 	 * Wurfmotoren Starten
 	 */
 	public void werfen() {
-		IO.SMSC_WurfMotor1.schiessen();
-		IO.SMSC_WurfMotor2.schiessen();
+		SMSC_WurfMotor1.schiessen();
+		SMSC_WurfMotor2.schiessen();
 
 	}
 

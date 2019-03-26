@@ -9,9 +9,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
-import team02.Zustand;
-import team02.ZustandWifi;
-import team02.ZustandWifi.*;
+import team06.ZustandWifi;
 
 public class WlanSystem {
 	private RN131 wifi;
@@ -33,6 +31,10 @@ public class WlanSystem {
 		}
 	}
 
+	
+	/**
+	 * Instanz erzeugen
+	 */
 	public static WlanSystem getInstance() {
 		if (wlanSystem == null) {
 			wlanSystem = new WlanSystem();
@@ -71,20 +73,12 @@ public class WlanSystem {
 	public ZustandWifi getPartnerState() {
 		return partnerState;
 	}
-	
-	public int readcmd() {
-		if (wifi.connected()) {
-			int data = wifi.cmd.getInt();
-			return data;
-		}
-		int data = wifi.cmd.getInt();
-		return data;
-	}
 
+	/**
+	 * Schleife die solange durchläuft, wie States im Array sind. Der letzte wird
+	 * zwischengespeichert und kann über die Methode getPartnerstate geholt werden
+	 */
 	public void update() {
-		// Schleife die solange durchlÃ¤uft wie States im Array sind, der letzte wird
-		// zwischengespeichert und kann Ã¼ber
-		// die Methode getPartnerState geholt werden
 		if (wifi.connected()) {
 			while (wifi.cmd.readCmd() == CmdInt.Type.Cmd) {
 				int data = wifi.cmd.getInt();
