@@ -3,15 +3,13 @@
  * @version 2019.03.13
  */
 
-package team02.vorlagen;
+package team02.chris;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
-import team02.Zustand;
 import team02.ZustandWifi;
-import team02.ZustandWifi.*;
 
 public class WlanSystem
 {
@@ -81,6 +79,13 @@ public class WlanSystem
 
     public void update()
     {
+
+        getData();
+    }
+
+    private void getData()
+    {
+
         //Schleife die solange durchläuft wie States im Array sind, der letzte wird zwischengespeichert und kann über
         //die Methode getPartnerState geholt werden
         if(wifi.connected())
