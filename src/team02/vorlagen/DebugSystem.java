@@ -64,6 +64,11 @@ public class DebugSystem implements IO
         System.out.print(s);
     }
 
+    public void print(Object o)
+    {
+        System.out.print(o.toString());
+    }
+
     public void update()
     {
 
