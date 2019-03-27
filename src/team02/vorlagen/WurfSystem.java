@@ -80,7 +80,7 @@ public class WurfSystem
 	 */
 	private void magnetEntmagnetisieren()
 	{
-		IO.OUT_Magnet_Wand.set(true);
+		IO.OUT_Magnet_Ausloeser.set(true);
 		letzteEntmagnetisierZeit = System.currentTimeMillis();
 	}
 	
@@ -88,7 +88,7 @@ public class WurfSystem
 	 * Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
 	 */
 	private void magnetMagnetisieren() {
-		IO.OUT_Magnet_Wand.set(false);
+		IO.OUT_Magnet_Ausloeser.set(false);
 	}
 	
 	private void setWurfZylinderPWM(int i)
