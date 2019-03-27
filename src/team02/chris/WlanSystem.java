@@ -50,11 +50,7 @@ public class WlanSystem
      */
     public boolean connected()
     {
-        if(wifi.connected())
-        {
-            return true;
-        }
-        return false;
+        return wifi.connected();
 
     }
 
