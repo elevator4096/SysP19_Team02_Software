@@ -8,7 +8,8 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.IO;
 import team02.Konstanten;
 
-public class GegnerSystem {
+public class GegnerSystem implements IO
+{
 
 	private static GegnerSystem gegnerSystem;
 	/**
@@ -109,6 +110,8 @@ public class GegnerSystem {
 		if(Konstanten.TEST)
 		{
 			update();
+			int i = AN_Sharp1;
+			DebugSystem.println(i);
 		}
 		else
 		{

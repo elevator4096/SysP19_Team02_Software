@@ -1,5 +1,6 @@
 package team02.chris;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
@@ -40,11 +41,15 @@ public class Test_Task extends Task implements IO
         gegnerSystem = GegnerSystem.getInstance();
         //wlanSystem = WlanSystem.getInstance();
         debugSystem = DebugSystem.getInstance();
+    	debugSystem.println("Test Task läuft!");
+
 
     }
 
     public void action()
     {
+    	OUT_LED1.set(!OUT_LED1.get());
+    	debugSystem.println("------");
         gegnerSystem.test();
         debugSystem.update();
     }
