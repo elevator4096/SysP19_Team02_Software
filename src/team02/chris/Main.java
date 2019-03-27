@@ -1,4 +1,4 @@
-/**
+/*
  * Das ist die "Hauptklasse" des Roboter Programms
  * Alle weiteren Klassen werden hier aufgerufen
  * @Author Chris

@@ -1,4 +1,4 @@
-/**
+/*
  * @author loris
  * @version 2019.03.17
  */
@@ -112,12 +112,12 @@ public class GegnerSystem implements IO
 			update();
 			int i = QADC_AIN.read(false,1);
 			int x = (int)AN_Sharp1.getDistanz();
-			DebugSystem.println(i);
-			DebugSystem.println(x);
+			debugSystem.println(i);
+			debugSystem.println(x);
 		}
 		else
 		{
-			DebugSystem.println("Test nicht aktiv");
+			debugSystem.println("Test nicht aktiv");
 		}
 	}
 
