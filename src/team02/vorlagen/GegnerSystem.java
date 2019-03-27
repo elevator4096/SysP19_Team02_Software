@@ -6,8 +6,10 @@ package team02.vorlagen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.IO;
+import team02.Konstanten;
 
-public class GegnerSystem {
+public class GegnerSystem implements IO
+{
 
 	private static GegnerSystem gegnerSystem;
 	/**
@@ -72,7 +74,7 @@ public class GegnerSystem {
 	 */
 	public boolean istGegnerVorne()
 	{	
-		return (IO.AN_Sharp3 < 6);
+		return (AN_Sharp3.getDistanz() < 6);
 	}
 	
 	/**
@@ -97,6 +99,26 @@ public class GegnerSystem {
 	public void update()
 	{
 
+	}
+
+	/**
+	 * Testmethode die vom Testtask aufgerufen wird
+	 * @author Chris
+	 */
+	public void test()
+	{
+		if(Konstanten.TEST)
+		{
+			update();
+			int i = QADC_AIN.read(false,1);
+			int x = AN_Sharp1.getDistanz();
+			DebugSystem.println(i);
+			DebugSystem.println(x);
+		}
+		else
+		{
+			DebugSystem.println("Test nicht aktiv");
+		}
 	}
 
 

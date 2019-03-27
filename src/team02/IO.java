@@ -9,6 +9,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import team02.loris.LinienSensoren;
 import team02.vorlagen.*;
 
 
@@ -41,15 +42,15 @@ public interface IO
 
 	//HLC
 	HLC1395Pulsed 	HLC_1395_PULSED				= HLC1395Pulsed.getInstance();
-	int 		  	HLC_Anzahl_Sens				= 8;
-	int				HLC_Code_Sens				= 0xC0EDF;								//Trig,Adr3,Adr2,Adr1,Adr0 HEX Codiert
+	int 		  	HLC_Anzahl_Sens				= 4;
+	int				HLC_Code_Sens				= (12 << 16) | (0 << 12) | (14 << 8) | (13 << 4) | (15 << 0) ;//0xC0EDF;	//Trig,Adr3,Adr2,Adr1,Adr0 HEX
 	int				HLC_AN_chan					= 0;
 
 
 	//Sharp Distanz in mm
-	int				AN_Sharp1					= Sharp.getDistanz(false,0, 0.0);
-	int				AN_Sharp2					= Sharp.getDistanz(false,1, 0.0);
-	int				AN_Sharp3					= Sharp.getDistanz(false,2, 0.0);
+	Sharp			AN_Sharp1					= new Sharp(false,0,0.0);
+	Sharp			AN_Sharp2					= new Sharp(false,1, 0.0);
+	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0);
 
 	//PWM Periodendauer
 	int 	   		PERIOD_WurfZyl				= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz

@@ -5,6 +5,7 @@
 package team02.vorlagen;
 
 import team02.dominique.WandErkennung;
+import team02.loris.LinienSensoren;
 
 public class Orientierung {
 	
