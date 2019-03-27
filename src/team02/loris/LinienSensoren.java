@@ -2,9 +2,11 @@
  * @author loris
  * @version 2019.03.17
  */
-package team02.vorlagen;
+package team02.loris;
 
 import static team02.IO.*;
+
+import team02.vorlagen.LinienSensor;
 
 public class LinienSensoren {
 
