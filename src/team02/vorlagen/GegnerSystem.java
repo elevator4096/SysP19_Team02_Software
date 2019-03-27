@@ -74,7 +74,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean istGegnerVorne()
 	{	
-		return (IO.AN_Sharp3 < 6);
+		return (AN_Sharp3.getDistanz() < 6);
 	}
 	
 	/**
@@ -110,8 +110,10 @@ public class GegnerSystem implements IO
 		if(Konstanten.TEST)
 		{
 			update();
-			int i = AN_Sharp1;
+			int i = QADC_AIN.read(false,1);
+			int x = AN_Sharp1.getDistanz();
 			DebugSystem.println(i);
+			DebugSystem.println(x);
 		}
 		else
 		{

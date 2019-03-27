@@ -7,6 +7,7 @@ package team02;
 import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import team02.loris.LinienSensoren;
@@ -48,9 +49,9 @@ public interface IO
 
 
 	//Sharp Distanz in mm
-	int				AN_Sharp1					= Sharp.getDistanz(false,0, 0.0);
-	int				AN_Sharp2					= Sharp.getDistanz(false,1, 0.0);
-	int				AN_Sharp3					= Sharp.getDistanz(false,2, 0.0);
+	Sharp			AN_Sharp1					= new Sharp(false,0,0.0);
+	Sharp			AN_Sharp2					= new Sharp(false,1, 0.0);
+	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0);
 
 	//PWM Periodendauer
 	int 	   		PERIOD_WurfZyl				= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
