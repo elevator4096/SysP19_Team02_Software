@@ -47,13 +47,13 @@ public class DebugSystem implements IO
         return debugSystem;
     }
 
-    public static void println(String s)
+    public void println(String s)
     {
 
         System.out.println(s);
     }
     
-    public static void println(int i)
+    public void println(int i)
     {
 
         System.out.println(i);

@@ -1,10 +1,10 @@
-package team02;
+package team02.testklassen;
 
-import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team02.IO;
+import team02.Konstanten;
 import team02.chris.WlanSystem;
 import team02.vorlagen.BewegungsSystem;
-import team02.vorlagen.DebugSystem;
 import team02.vorlagen.GegnerSystem;
 import team02.vorlagen.WurfSystem;
 
@@ -21,7 +21,7 @@ public class Test_Task extends Task implements IO
         try
         {
             Task task = new Test_Task();
-            task.period = (int)Konstanten.TASK_PERIOD*1000;
+            task.period = (int) Konstanten.TASK_PERIOD*1000;
             Task.install(task);
 
         }

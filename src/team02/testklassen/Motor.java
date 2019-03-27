@@ -4,6 +4,18 @@
  */
 package team02.testklassen;
 
-public class Motor
+import team02.IO;
+
+public class Motor implements IO
 {
+    public static void setLeftSpeed()
+    {
+
+    }
+
+    public static void setRightSpeed()
+    {
+
+    }
+
 }
