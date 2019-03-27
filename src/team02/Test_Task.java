@@ -1,9 +1,8 @@
-package team02.chris;
+package team02;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team02.IO;
-import team02.Konstanten;
+import team02.chris.WlanSystem;
 import team02.vorlagen.BewegungsSystem;
 import team02.vorlagen.DebugSystem;
 import team02.vorlagen.GegnerSystem;
