@@ -29,7 +29,7 @@ public class MotorSMSC implements IO, Variablen
 	
 	private int encTPR;
 	
-	static SpeedController4DCMotor motor;
+	static SpeedController4DCMotor motor;   //darf nicht static sein
 	
 	
 	/**
