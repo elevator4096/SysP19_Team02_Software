@@ -52,11 +52,22 @@ public class LinienSensoren {
 	
 	public void test()
 	{
+		
+		System.out.print(istLinieLinks(IO.LINE_Sensor_Vorne));System.out.print("\t");
 		System.out.print(istLinieVorne(IO.LINE_Sensor_Vorne));System.out.print("\t");
-		System.out.print(istLinieVorne(IO.LINE_Sensor_Rechts));System.out.print("\t");
-		System.out.print(istLinieVorne(IO.LINE_Sensor_Hinten));System.out.print("\t");
-		System.out.print(istLinieVorne(IO.LINE_Sensor_Links));System.out.print("\t");
+		System.out.print(istLinieRechts(IO.LINE_Sensor_Vorne));System.out.print("\t");
+		
+		/*
+		
 		System.out.println("");
+		
+		//System.out.print(IO.LINE_Sensor_Vorne.getHelligkeitLinks());System.out.print("\t");
+		//System.out.print(IO.LINE_Sensor_Vorne.getHelligkeitRechts());
+		//System.out.println("");
+		
+		//System.out.print(istLinieLinks(IO.LINE_Sensor_Vorne));System.out.print("\t");
+		System.out.println("");
+		*/
 		
 	}
 	
