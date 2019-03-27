@@ -20,7 +20,7 @@ public class DebugSystem implements IO
      * Auftrag:
      * Es sollen die Zustände von Ein/Ausgängen auf die Serielle schnittstelle ausgegeben werden.
      * Pseudo Code Beispiel(Syntax wahrscheinlich nicht korrekt)
-     * system.out.print("Eingang x ");
+     * system.out.print("Dig_Eingang x ");
      * system.out.print(eingangx.get());
      * dH der Output stream muss zuerst initialisiert werden.
      * Sonst kann nichts auf die serielle Schnittstelle ausgegeben werden
