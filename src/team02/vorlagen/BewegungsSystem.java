@@ -78,7 +78,7 @@ public class BewegungsSystem
      */
 	public void folgeLinieBisWandVorwaerts()
 	{
-		zustandBewegung = ZustandBewegung.FOLGE_LINIE_BIS_WAND_VORWAERTS;
+		zustandBewegung = ZustandBewegung.FOLGE_LINIE_BIS_WAND_RUECKWAERTS;
 	}
 
     /**

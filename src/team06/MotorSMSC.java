@@ -32,6 +32,9 @@ public class MotorSMSC implements IO, Variablen
 	static SpeedController4DCMotor motor;
 	
 	
+	/**
+	 * Motor Instanz erzeugen
+	 */
 	public MotorSMSC(float ts, int pwmChannel1, int pwmChannel2, boolean useTPUABPWM, int encChannel, 
 				boolean useTPUAEnc, int encTPR, float umax, float i, float kp, float tn) {
 		this.ts = ts;

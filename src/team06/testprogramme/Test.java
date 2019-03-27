@@ -1,11 +1,13 @@
-package team06;
+package team06.testprogramme;
 
 import java.io.PrintStream;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team06.Main;
+import team06.Variablen;
 
-public class Test extends Task implements IO {
+public class Test extends Task {
 
 	public Test() {
 		System.out.println("Main Konstruktor gestartet");
@@ -17,7 +19,7 @@ public class Test extends Task implements IO {
 
 	public void action() {
 		System.out.println("test");
-		
+
 	}
 
 	static {

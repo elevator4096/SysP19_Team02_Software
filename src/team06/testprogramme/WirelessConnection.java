@@ -1,10 +1,10 @@
 /**
 *
 *
-*@author chris
+*@author Phil
 *@version 19.01.13.0
 */
-package team06;
+package team06.testprogramme;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
