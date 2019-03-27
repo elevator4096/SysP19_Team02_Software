@@ -23,7 +23,6 @@ public class LinienSensor {
 	 */
 	public boolean istLinieVorne()
 	{
-		
 		return IO.HLC_1395_PULSED.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
 	}
 	
