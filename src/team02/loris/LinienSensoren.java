@@ -6,6 +6,7 @@ package team02.loris;
 
 import static team02.IO.*;
 
+import team02.IO;
 import team02.vorlagen.LinienSensor;
 
 public class LinienSensoren {
@@ -25,7 +26,7 @@ public class LinienSensoren {
 	 */
 	public boolean istLinieVorne(LinienSensor linienSensor)
 	{
-		return true;
+		return linienSensor.istLinieVorne();
 	}
 	
 	/**
@@ -33,7 +34,7 @@ public class LinienSensoren {
 	 */
 	public boolean istLinieLinks(LinienSensor linienSensor)
 	{
-		return true;
+		return linienSensor.istLinieLinks();
 	}
 	
 	/**
@@ -41,12 +42,22 @@ public class LinienSensoren {
 	 */
 	public boolean istLinieRechts(LinienSensor linienSensor)
 	{
-		return true;
+		return linienSensor.istLinieRechts();
 	}
 
 	public void update()
 	{
 
+	}
+	
+	public void test()
+	{
+		System.out.print(istLinieVorne(IO.LINE_Sensor_Vorne));System.out.print("\t");
+		System.out.print(istLinieVorne(IO.LINE_Sensor_Rechts));System.out.print("\t");
+		System.out.print(istLinieVorne(IO.LINE_Sensor_Hinten));System.out.print("\t");
+		System.out.print(istLinieVorne(IO.LINE_Sensor_Links));System.out.print("\t");
+		System.out.println("");
+		
 	}
 	
 	
