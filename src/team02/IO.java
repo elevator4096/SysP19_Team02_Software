@@ -53,7 +53,7 @@ public interface IO
 	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0);
 
 	//PWM Periodendauer
-	double 	   		PERIOD_WurfZyl				= 14_000_000.0/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
+	double 	   		PERIOD_WurfZyl				= 14_000_000.0/TPU_PWM.tpuTimeBase; 	// PWM 	   72 Hz
 	double 	   		PERIOD_Motoren 				=     50_000.0/TPU_PWM.tpuTimeBase;   	// PWM 20'000 Hz
 
 	//PWM
