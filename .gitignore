@@ -32,3 +32,4 @@ hs_err_pid*
 *.html
 /doc/
 /blueJ_prj/
+src/team02/IO_Prototype.java
