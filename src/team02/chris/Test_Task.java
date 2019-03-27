@@ -15,7 +15,6 @@ public class Test_Task extends Task implements IO
     private BewegungsSystem bewegungsSystem;
     private GegnerSystem gegnerSystem;
     private WlanSystem wlanSystem;
-    private DebugSystem debugSystem;
 
 
     static
@@ -40,10 +39,7 @@ public class Test_Task extends Task implements IO
         //bewegungsSystem = BewegungsSystem.getInstance();
         gegnerSystem = GegnerSystem.getInstance();
         //wlanSystem = WlanSystem.getInstance();
-        debugSystem = DebugSystem.getInstance();
     	debugSystem.println("Test Task läuft!");
-
-
     }
 
     public void action()
