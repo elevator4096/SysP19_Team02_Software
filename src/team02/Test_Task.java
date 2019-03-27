@@ -47,10 +47,14 @@ public class Test_Task extends Task implements IO
 
     public void action()
     {
+    	/*
     	OUT_LED1.set(!OUT_LED1.get());
     	debugSystem.println("------");
         gegnerSystem.test();
         debugSystem.update();
+        */
+        
+        LINES_Sensoren.test();
     }
 
 }
