@@ -1,5 +1,5 @@
 package team02.testklassen;
 
-public class Dig_Ausgang
+public class AN_IO
 {
 }
