@@ -9,9 +9,10 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
+import team02.IO;
 import team02.ZustandWifi;
 
-public class WlanSystem
+public class WlanSystem implements IO
 {
     private RN131 wifi;
     private ZustandWifi partnerState;
@@ -20,7 +21,6 @@ public class WlanSystem
     /**
      * Konstruktor für die Wlan Verbindung
      *
-     * @throws Exception
      */
     private WlanSystem()
     {
@@ -31,7 +31,7 @@ public class WlanSystem
         }
         catch (Exception e)
         {
-
+            debugSystem.println("Fehler WLAN!");
         }
     }
 
