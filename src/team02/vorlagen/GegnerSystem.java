@@ -6,6 +6,7 @@ package team02.vorlagen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.IO;
+import team02.Konstanten;
 
 public class GegnerSystem {
 
@@ -97,6 +98,22 @@ public class GegnerSystem {
 	public void update()
 	{
 
+	}
+
+	/**
+	 * Testmethode die vom Testtask aufgerufen wird
+	 * @author Chris
+	 */
+	public void test()
+	{
+		if(Konstanten.TEST)
+		{
+			update();
+		}
+		else
+		{
+			DebugSystem.println("Test nicht aktiv");
+		}
 	}
 
 
