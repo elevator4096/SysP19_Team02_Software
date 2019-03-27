@@ -31,7 +31,7 @@ public class Main extends Task implements IO
         try
         {
             Task task = new Main();
-            task.period = Konstanten.TASK_PERIOD;
+            task.period = (int)Konstanten.TASK_PERIOD*1000;
             Task.install(task);
 
         }

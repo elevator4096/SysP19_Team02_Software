@@ -53,13 +53,13 @@ public interface IO
 	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0);
 
 	//PWM Periodendauer
-	int 	   		PERIOD_WurfZyl				= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
-	int 	   		PERIOD_Motoren 				=     50_000/TPU_PWM.tpuTimeBase;   	// PWM 20'000 Hz
+	double 	   		PERIOD_WurfZyl				= 14_000_000/TPU_PWM.tpuTimeBase; 		// PWM 	   72 Hz
+	double 	   		PERIOD_Motoren 				=     50_000/TPU_PWM.tpuTimeBase;   	// PWM 20'000 Hz
 
 	//PWM
-	TPU_PWM    		PWM_WurfZylinder		   	= new TPU_PWM(false, 0, PERIOD_WurfZyl, 0);
-	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, PERIOD_Motoren, 0);
-	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, PERIOD_Motoren, 0);
+	TPU_PWM    		PWM_WurfZylinder		   	= new TPU_PWM(false, 0, (int)PERIOD_WurfZyl, 0);
+	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, 0);
+	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, 0);
 
 
 	TPU_FQD    		FQD_Links 					= new TPU_FQD(false, 3);
@@ -67,8 +67,8 @@ public interface IO
 
 
 	//Motoren
-	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, PERIOD_Motoren);
-	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, PERIOD_Motoren);
+	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren);
+	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren);
 
 
 	//LinienSensoren

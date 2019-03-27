@@ -30,10 +30,10 @@ public class Motor implements IO, Konstanten {
 
     /**
      * Setze Geschwindigkeit, kann positiv oder negativ werden
-     * @param f Geschwindigkeit in mm/s
+     * @param d Geschwindigkeit in mm/s
      */
-    public void updateSpeed(float f) {
-        pwm.update(PERIOD_Motoren, calculateDutyCycle(f));
+    public void updateSpeed(double d) {
+        pwm.update((int)PERIOD_Motoren, calculateDutyCycle(d));
     }
 
     /**

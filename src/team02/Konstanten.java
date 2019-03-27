@@ -13,8 +13,7 @@ public interface Konstanten
 	final boolean TEST		= true;							//True, Testfunktionen aktiviert
 
 	//Programm Parameter
-	final int TASK_PERIOD 	= 200;							//Taktzeit des Haupttasks
-	final int TIME_1S		= 1000;							//1s
+	final double TASK_PERIOD 	= 0.2;							//Taktzeit des Haupttasks
 
 	//Wifi Parameter
 	//Befehle
@@ -23,12 +22,12 @@ public interface Konstanten
 	final int BALL_CATCHED = 0;								//wifi Befehl Ball gefangen
 
 
-	final float GEAR_RATIO = 1.0f/86f;						//Übersetzung des Getriebes
+	final double GEAR_RATIO = 1.0/86;						//Übersetzung des Getriebes
 	final int TICKS_PER_ROUND = 128;						//Encoder Impulse pro Umdr.
-	final float WHEEL_DIAMETER = 45.5f; 					//in mm
-	final float WHEEL_DISTANCE = 100f;						//Horizontaler Abstand der RĂ¤der
+	final double WHEEL_DIAMETER = 0.0455; 					//in mm
+	final double WHEEL_DISTANCE = 0.100;						//Horizontaler Abstand der RĂ¤der
 
-	final float MAX_ROUNDS = 7_000f/60f;					//1/s
+	final double MAX_ROUNDS = 7000.0/60;					//1/s
 
 
 	final double SPANN_ZEIT = 0;

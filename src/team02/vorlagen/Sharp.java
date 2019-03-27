@@ -25,9 +25,9 @@ public class Sharp {
 		this.kalibrierWert = kalibrierWert;
 	}
 	
-	public int getDistanz()
+	public double getDistanz()
 	{	
-		int distanz = QADC_AIN.read(ADCPort,sensorIndex);
+		double distanz = QADC_AIN.read(ADCPort,sensorIndex);
 		return distanz;
 
 	}
