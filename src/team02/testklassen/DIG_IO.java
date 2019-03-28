@@ -76,4 +76,12 @@ public class DIG_IO implements IO
     	debugSystem.print(OUT_LED1.get());
     	debugSystem.println("");
     }
+
+    public static void test_all()
+    {
+        for(MDASM_DIO out : IO.OUT_MDASM_DIO)
+        {
+            out.set(true);
+        }
+    }
 }

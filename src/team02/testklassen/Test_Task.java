@@ -1,3 +1,7 @@
+/*
+ * @author Chris
+ * @version 2019.03.27
+ */
 package team02.testklassen;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
@@ -8,13 +12,15 @@ import team02.vorlagen.BewegungsSystem;
 import team02.vorlagen.GegnerSystem;
 import team02.vorlagen.WurfSystem;
 
+/**
+ *
+ */
 public class Test_Task extends Task implements IO
 {
     private WurfSystem wurfSystem;
     private BewegungsSystem bewegungsSystem;
     private GegnerSystem gegnerSystem;
     private WlanSystem wlanSystem;
-
 
     static
     {

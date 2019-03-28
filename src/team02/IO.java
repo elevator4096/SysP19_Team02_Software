@@ -24,11 +24,18 @@ public interface IO
 	MDASM_DIO 		IN_Taster_konf1				= new MDASM_DIO(30,false);
 	MDASM_DIO 		IN_Taster_konf2				= new MDASM_DIO(31,false);
 
+	//Experimental
+	MPIOSM_DIO[]    IN_MPIOSM_DIO               = {IN_Taster_1,IN_Taster_2,IN_Laser_1,IN_Laser_2};
+	MDASM_DIO[]     IN_MDASM_DIO                = {IN_Taster_konf1, IN_Taster_konf2};
+
 
 	//Output
 	MPIOSM_DIO 		OUT_Reset_Wlan				= new MPIOSM_DIO(11,true);
 	MPIOSM_DIO 		OUT_Magnet_Ausloeser		= new MPIOSM_DIO(8, true);
 	MPIOSM_DIO 		OUT_Magnet_Wand 			= new MPIOSM_DIO(7, true);
+
+	//Experimental
+	MPIOSM_DIO[]    OUT_MPIOSM_DIO              = {OUT_Reset_Wlan, OUT_Magnet_Ausloeser, OUT_Magnet_Wand};
 
 	MDASM_DIO 		OUT_FG_Speed				= new MDASM_DIO(12,true);
 	MDASM_DIO 		OUT_DIR_Speed1				= new MDASM_DIO(11,true);
@@ -38,6 +45,9 @@ public interface IO
 	MDASM_DIO 		OUT_LED3					= new MDASM_DIO(27,true);
 	MDASM_DIO 		OUT_LED4					= new MDASM_DIO(28,true);
 	MDASM_DIO 		OUT_LED5					= new MDASM_DIO(29,true);
+
+	//Experimental
+	MDASM_DIO[]     OUT_MDASM_DIO               = {OUT_FG_Speed, OUT_DIR_Speed1, OUT_DIR_Speed2, OUT_LED1, OUT_LED2, OUT_LED3, OUT_LED4, OUT_LED5};
 
 
 	//HLC
