@@ -6,14 +6,14 @@ meta {
 }
 
 project SysP19_team02 {
-	libpath = "I:\deep\lib";
+	libpath = "D:\DEV_DATA\deep_runtime_library_1.4.0_2017-10-31";
 	boardtype = ntbMpc555HB;
-	ostype = ntbSTS;
+	ostype = ntbSTS_ppc;
 	programmertype = ntbMpc555UsbBdi;
 
 #	enter names of rootclasses, e.g.
 #	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
-	rootclasses = "team06.testprogramme/FlashLight";
+	rootclasses = "team02.testklassen.DIG_IO";
 
 #	imgfile = "M:\team06\trunk\SysP19-Mikrokontroller\SysP19\SysP19.bin";
 #	imgformat = BIN;

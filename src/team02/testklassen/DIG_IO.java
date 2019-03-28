@@ -59,50 +59,21 @@ public class DIG_IO implements IO
     }
 
     /**
-     * Achtung!!!! Dieser Test beinhaltet eine While Schleife, die zuerst komplett durchlaufen wird bis weitere
-     * Befehle ausgefuehrt werden. Dauer: 1s!!
+     * Invertiert die Ausgaenge!
      */
     public static void LED_Test()
     {
-        int i = 0;
-        OUT_LED1.set(true);
-        OUT_LED2.set(false);
-        OUT_LED3.set(false);
-        OUT_LED4.set(false);
-        OUT_LED5.set(false);
-        long l =  System.currentTimeMillis();
-        while(l+1000 <  System.currentTimeMillis())
-        {
-            if(l+200 <  System.currentTimeMillis())
-            {
-                OUT_LED1.set(false);
-                OUT_LED2.set(true);
-                i++;
-            }
-            if(l+400 <  System.currentTimeMillis() && i==1)
-            {
-                OUT_LED2.set(false);
-                OUT_LED3.set(true);
-                i++;
-            }
-            if(l+600 <  System.currentTimeMillis() && i==2)
-            {
-                OUT_LED3.set(false);
-                OUT_LED4.set(true);
-                i++;
-            }
-            if(l+800 <  System.currentTimeMillis() && i==3)
-            {
-                OUT_LED4.set(false);
-                OUT_LED5.set(true);
-                i++;
-            }
-
-        }
-        OUT_LED1.set(false);
-        OUT_LED2.set(false);
-        OUT_LED3.set(false);
-        OUT_LED4.set(false);
-        OUT_LED5.set(false);
+    	debugSystem.println("Test");
+    	OUT_LED1.set(!OUT_LED1.get());
+    	OUT_LED2.set(!OUT_LED2.get());
+    	OUT_LED3.set(!OUT_LED3.get());
+    	OUT_LED4.set(!OUT_LED4.get());
+    	OUT_LED5.set(!OUT_LED5.get());
+    }
+    
+    public static void get()
+    {
+    	debugSystem.print(OUT_LED1.get());
+    	debugSystem.println("");
     }
 }
