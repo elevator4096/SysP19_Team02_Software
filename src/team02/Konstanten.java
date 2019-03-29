@@ -11,23 +11,22 @@ public interface Konstanten
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
 
 	//Programm Parameter
-	double TASK_PERIOD 				= 0.2;							//Taktzeit des Haupttasks
+	int		TASK_PERIOD 			= 0.2;							//Taktzeit des Haupttasks (muss int sein)
 
-	double GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
-	int TICKS_PER_ROUND 			= 128;							//Encoder Impulse pro Umdr.
-	double WHEEL_DIAMETER 			= 0.0455; 						//in mm
-	double WHEEL_DISTANCE 			= 0.100;						//Horizontaler Abstand der RĂ¤der
+	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
+	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
+	double 	WHEEL_DIAMETER 			= 0.0455; 						//in mm
+	double 	WHEEL_DISTANCE 			= 0.100;						//Horizontaler Abstand der RĂ¤der
 
-	double MAX_ROUNDS 				= 7000.0/60;					//1/s
+	double 	MAX_ROUNDS 				= 7000.0/60;					//1/s
 
 
-	double SPANN_ZEIT 				= 0;
-	double WURF_ZEIT 				= 0;
+	double 	SPANN_ZEIT 				= 0;
+	double 	WURF_ZEIT 				= 0;
 	
 	//Sensor Konstanten 
-	
-	int HLC_GRENZWERT_SCHWARZ 		= 100;							// schwarze Linie
-	int HLC_GRENZWERT_WEISS 		= 100;							// keine Linie
+	int 	HLC_GRENZWERT_SCHWARZ 	= 100;							// schwarze Linie
+	int 	HLC_GRENZWERT_WEISS 	= 100;							// keine Linie
 
 
 }
