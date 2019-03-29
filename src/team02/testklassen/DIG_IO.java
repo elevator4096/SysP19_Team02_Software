@@ -77,16 +77,42 @@ public class DIG_IO implements IO
     	debugSystem.println("");
     }
 
-    public static void test_all()
+    public static void test_allOUT()
     {
+        MDASM_DIO prevMDASM = null;
         for(MDASM_DIO out : IO.OUT_MDASM_DIO)
         {
+            prevMDASM.set(false);
             long x = System.currentTimeMillis();
             out.set(true);
+            prevMDASM = out;
+            while(System.currentTimeMillis()< x+1000);
+            {
+                //Warte 1S
+            }
+        }
+        MPIOSM_DIO prevMPIOSM = null;
+        for(MPIOSM_DIO out : IO.OUT_MPIOSM_DIO)
+        {
+            prevMPIOSM.set(false);
+            long x = System.currentTimeMillis();
+            out.set(true);
+            prevMPIOSM = out;
             while(System.currentTimeMillis()< x+1000);
             {
                 //Warte 1S
             }
         }
     }
+
+    public static void test_allIN()
+    {
+        for(MPIOSM_DIO in : IO.IN_MPIOSM_DIO)
+        {
+            debugSystem.print("IN: ");
+            debugSystem.print(in.get());
+            debugSystem.println("\t");
+        }
+    }
+
 }
