@@ -81,7 +81,12 @@ public class DIG_IO implements IO
     {
         for(MDASM_DIO out : IO.OUT_MDASM_DIO)
         {
+            long x = System.currentTimeMillis();
             out.set(true);
+            while(System.currentTimeMillis()< x+1000);
+            {
+                //Warte 1S
+            }
         }
     }
 }
