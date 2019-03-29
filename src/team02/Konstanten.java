@@ -11,7 +11,7 @@ public interface Konstanten
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
 
 	//Programm Parameter
-	int		TASK_PERIOD 			= 200;							//Taktzeit des Haupttasks in ms (muss int sein)
+	double	TASK_PERIOD 			= 0.200;							//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
