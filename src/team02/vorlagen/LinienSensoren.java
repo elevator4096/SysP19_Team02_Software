@@ -2,12 +2,11 @@
  * @author loris
  * @version 2019.03.17
  */
-package team02.loris;
+package team02.vorlagen;
 
 import static team02.IO.*;
 
 import team02.IO;
-import team02.vorlagen.LinienSensor;
 
 public class LinienSensoren {
 
@@ -49,17 +48,5 @@ public class LinienSensoren {
 	{
 
 	}
-	
-	public void test()
-	{
-		
-		IO.debugSystem.print(Boolean.toString( istLinieLinks (IO.LINE_Sensor_Vorne)));IO.debugSystem.print("\t");
-		IO.debugSystem.print(Boolean.toString( istLinieVorne (IO.LINE_Sensor_Vorne)));IO.debugSystem.print("\t");
-		IO.debugSystem.print(Boolean.toString( istLinieRechts(IO.LINE_Sensor_Vorne)));IO.debugSystem.print("\t");
-		IO.debugSystem.println("");
-		
-	}
-	
-	
 
 }
