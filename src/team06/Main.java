@@ -12,17 +12,18 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team06.system.WlanSystem;
 import team06.system.WurfSystem;
 
-public class Main extends Task implements IO {
-
-	private WurfSystem wurfSystem;
-	private WlanSystem wlanSystem;
+public class Main extends Task{
+	
+	private Instanzen instanz;
 
 	/**
 	 * Konstruktor
+	 * Instanz erzugen
 	 */
 	public Main() {
-		wurfSystem = WurfSystem.getInstance();
-		wlanSystem = WlanSystem.getInstance();
+		
+		instanz = new Instanzen();
+		
 	}
 
 	/**
@@ -30,8 +31,7 @@ public class Main extends Task implements IO {
 	 */
 	public void action() {
 
-		System.out.println(wlanSystem.connected());
-		wurfSystem.werfen();
+		Instanzen.wurfSystem.motorstarten();
 	}
 
 	/**

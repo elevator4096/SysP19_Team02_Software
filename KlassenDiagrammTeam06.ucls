@@ -10,16 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="team06.IO" project="SysP19" file="/SysP19/src/team06/IO.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="329" y="207"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <interface id="3" language="java" name="team06.Variablen" project="SysP19" file="/SysP19/src/team06/Variablen.java" 
+  <interface id="2" language="java" name="team06.Variablen" project="SysP19" file="/SysP19/src/team06/Variablen.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="593" y="232"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <enumeration id="4" language="java" name="team06.ZustandWifi" project="SysP19" 
+  <enumeration id="3" language="java" name="team06.ZustandWifi" project="SysP19" 
     file="/SysP19/src/team06/ZustandWifi.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1049" y="480"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="5" language="java" name="team06.system.WlanSystem" project="SysP19" 
+  <class id="4" language="java" name="team06.system.WlanSystem" project="SysP19" 
     file="/SysP19/src/team06/system/WlanSystem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="846" y="237"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="team06.system.WurfSystem" project="SysP19" 
+  <class id="5" language="java" name="team06.system.WurfSystem" project="SysP19" 
     file="/SysP19/src/team06/system/WurfSystem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="673" y="492"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="team06.MotorSMSC" project="SysP19" file="/SysP19/src/team06/MotorSMSC.java" 
+  <class id="6" language="java" name="team06.MotorSMSC" project="SysP19" file="/SysP19/src/team06/MotorSMSC.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="242" y="481"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,84 +55,72 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="8">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="9">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="10" name="partnerState">        
+  <association id="7">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="8" name="partnerState">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="11" minimum="0" maximum="1">        
+      <multiplicity id="9" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="10">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="11" name="wurfSystem">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="13">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="14">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="15" name="wlanSystem">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="12">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="13" name="wlanSystem">        
+  <association id="17">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="18" name="wlanSystem">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="14" minimum="0" maximum="1">        
+      <multiplicity id="19" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="15">    
-    <end type="SOURCE" refId="1"/>    
+  <realization id="20">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <realization id="16">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <realization id="17">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <realization id="18">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <association id="19">    
+  <association id="21">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="20" name="wlanSystem">        
+      <attribute id="22" name="wurfSystem">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="21" minimum="0" maximum="1">        
+      <multiplicity id="23" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="23" name="wurfSystem">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="26" name="wurfSystem">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="27" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

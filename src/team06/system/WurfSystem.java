@@ -5,48 +5,31 @@
 
 package team06.system;
 
-import team06.IO;
+import team06.Instanzen;
 import team06.Variablen;
 
-public class WurfSystem implements IO, Variablen {
+public class WurfSystem {
 
-	private static WurfSystem wurfSystem;
-
-	private WurfSystem() {
+	public WurfSystem() {
 
 		System.out.println("Wurfsystem_gestartet");
 
 	}
 
-	public static WurfSystem getInstance() {
-		if (wurfSystem == null) {
-			wurfSystem = new WurfSystem();
-		}
-		return wurfSystem;
-	}
-
 	/**
-	 * Speed für den Pass setzen
+	 * Speed für Wurfmotoren setzen
 	 */
-	public void setspeedpassgegner() {
-		SMSC_WurfMotor1.wurfgeschwindigkeit(Variablen.speedpassgegner);
-		SMSC_WurfMotor2.wurfgeschwindigkeit(Variablen.speedpassgegner);
-	}
-
-	/**
-	 * Speed für den Korbschuss setzen
-	 */
-	public void setspeedkorbschuss() {
-		SMSC_WurfMotor1.wurfgeschwindigkeit(Variablen.speedkorbschuss);
-		SMSC_WurfMotor2.wurfgeschwindigkeit(Variablen.speedkorbschuss);
+	public void setdrehzahl(float drehzahl) {
+		Instanzen.sMSC_WurfMotor1.setdrehzahl(drehzahl);
+		Instanzen.sMSC_WurfMotor2.setdrehzahl(drehzahl);
 	}
 
 	/**
 	 * Wurfmotoren Starten
 	 */
-	public void werfen() {
-		SMSC_WurfMotor1.schiessen();
-		SMSC_WurfMotor2.schiessen();
+	public void motorstarten() {
+		Instanzen.sMSC_WurfMotor1.motorstarten();
+		Instanzen.sMSC_WurfMotor2.motorstarten();
 
 	}
 
