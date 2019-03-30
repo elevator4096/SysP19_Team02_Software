@@ -55,6 +55,9 @@ public class Test_Task extends Task implements IO
         gegnerSystem.test();
         debugSystem.update();
         */
+    	
+    	DIG_IO.test();
+    	
     }
 
 }

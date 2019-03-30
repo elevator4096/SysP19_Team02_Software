@@ -10,6 +10,12 @@ import team02.IO;
 
 public class DIG_IO implements IO
 {
+	
+	public static void test()
+	{
+		test_allOUT();
+	}
+	
     /**
      * Schreibt den Aktuellen Zustand auf die Serielle Schnittstelle
      * @param in der IO der ausgelesen werden soll

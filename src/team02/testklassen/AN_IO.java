@@ -9,13 +9,17 @@ import team02.IO;
 
 public class AN_IO implements IO
 {
+	public static void test()
+	{
+
+	}
 
     /**
      *
      * @param ADCPort true ADC A, false ADC B
      * @param sensorIndex welcher Sensor
      */
-    public static void getAN_IN(boolean ADCPort, int sensorIndex)
+    public static void printAN_IN(boolean ADCPort, int sensorIndex)
     {
         QADC_AIN.init(ADCPort);
         debugSystem.print("Port: ");
