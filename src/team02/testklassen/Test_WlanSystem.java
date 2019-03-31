@@ -4,7 +4,7 @@
  */
 package team02.testklassen;
 
-public class WLAN
+public class Test_WlanSystem
 {
 
 }
