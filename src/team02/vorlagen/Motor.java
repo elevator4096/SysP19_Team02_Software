@@ -38,7 +38,7 @@ public class Motor implements IO, Konstanten {
 
     /**
      * Interne Methode zum berechnen der Periodendauer
-     * @param d Geschwindigkeit in mm/s
+     * @param d Geschwindigkeit in m/s
      * @return Duty Cycle in 0..1, muss mit der Periodendauer multipliziert werden
      */
     private int calculateDutyCycle(double d) {

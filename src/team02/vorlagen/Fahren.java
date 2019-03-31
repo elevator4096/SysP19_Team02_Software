@@ -6,6 +6,7 @@
 package team02.vorlagen;
 
 import team02.IO;
+import team02.Konstanten;
 
 public class Fahren implements IO
 {
@@ -14,7 +15,7 @@ public class Fahren implements IO
      * Folgende Methode müssen integriert und getestet werden:
      * -Vorwärts fahren
      * -Drehen (an ort und stelle)
-     * -Kurve fahren(Radius, Winkelgeschwindigkeit) Skizze machen!"*"
+     * -Kurve fahren(Radius, BahnGeschwindigkeit) Skizze machen!"*"
      *
      * "*"Sehr herausfordernd!
      */
@@ -39,27 +40,38 @@ public class Fahren implements IO
 
     /**
      * Fahre Vorwärts
-     * @param i Geschwindigkeit vorwärts
+     * @param i Geschwindigkeit in m/s vorwärts
      */
     public static void vorwaerts(int i)
     {
         MOTOR_links .updateSpeed((float)i);
         MOTOR_rechts.updateSpeed((float)i);
     }
-    
-    public static void kurveFahren(double radius, double winkelGeschw)
+
+    /**
+     * Fahre Kurve
+     * @param radius	 (positiv = GUZ, negativ = UZ)
+     * @param bahnGeschw (positiv = vorwaerts, negativ = rueckwaerts)
+     */
+    public void kurveFahren(double radius, double bahnGeschw)
     {
+    	if (Math.abs(radius)<0.001)
+    	{
+    		DebugSystem.println("Kurve mit Radius kleiner 0.001m nicht erlaubt!");
+    		return;
+    	}
     	
-    }
-    
-    
-    public static void leichteRechtsKurve()
-    {
+    	double w = bahnGeschw/radius;
     	
-    }
-    
-    public static void leichteLinksKurve()
-    {
+    	double rRechts = Math.abs( radius - Konstanten.WHEEL_DISTANCE/2.0);
+    	double rLinks  = Math.abs( radius + Konstanten.WHEEL_DISTANCE/2.0);
+    	
+    	double speedRechts = w*rRechts;
+    	double speedLinks  = w*rLinks ;
+    	
+        //MOTOR_links .updateSpeed(rMin);
+        //MOTOR_rechts.updateSpeed((float)i);
+    	
     	
     }
     
