@@ -9,20 +9,27 @@ public interface Konstanten
 	//Debug Konstanten
 	boolean DEBUG 					= true;							//True, Debug aktiviert
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
+	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 0.200;							//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.200;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
-	double 	WHEEL_DIAMETER 			= 0.0455; 						//in mm
+	double 	WHEEL_DIAMETER 			= 0.0455; 						//in m
 	double 	WHEEL_DISTANCE 			= 0.100;						//Horizontaler Abstand der RĂ¤der
 
-	double 	MAX_ROUNDS 				= 7000.0/60;					//1/s
-
-
+	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde
+	
+	//Tuning Parameter
+	double	DRIVING_SPEED			= 0.018;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   ( Werte von ca 0.010   - 0.180)
+	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s ( Werte von ca 0.050PI - 1.150PI)
+	
+	
 	double 	SPANN_ZEIT 				= 0;
 	double 	WURF_ZEIT 				= 0;
+	
+	
 	
 	//Sensor Konstanten 
 	int 	HLC_GRENZWERT_SCHWARZ 	= 100;							// schwarze Linie

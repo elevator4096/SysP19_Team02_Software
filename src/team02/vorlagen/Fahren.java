@@ -14,11 +14,9 @@ public class Fahren implements IO
      * Folgende Methode müssen integriert und getestet werden:
      * -Vorwärts fahren
      * -Drehen (an ort und stelle)
-     * -Drehe, bis ein DIG_IO kommt, benötigt evtl die Update methode,
-     * dh, es muss zyklisch überprüft werden, ob der DIG_IO da ist.
      * -Kurve fahren(Radius, Winkelgeschwindigkeit) Skizze machen!"*"
      *
-     * "*"Sehr herausforderend!
+     * "*"Sehr herausfordernd!
      */
 
     /**
@@ -35,7 +33,7 @@ public class Fahren implements IO
      */
     public static void drehe(int i)
     {
-        MOTOR_links.updateSpeed((float)i);
+        MOTOR_links .updateSpeed((float)i);
         MOTOR_rechts.updateSpeed((float)-i);
     }
 
@@ -45,9 +43,27 @@ public class Fahren implements IO
      */
     public static void vorwaerts(int i)
     {
-        MOTOR_links.updateSpeed((float)i);
-        MOTOR_links.updateSpeed((float)i);
+        MOTOR_links .updateSpeed((float)i);
+        MOTOR_rechts.updateSpeed((float)i);
     }
+    
+    public static void kurveFahren(double radius, double winkelGeschw)
+    {
+    	
+    }
+    
+    
+    public static void leichteRechtsKurve()
+    {
+    	
+    }
+    
+    public static void leichteLinksKurve()
+    {
+    	
+    }
+    
+    
 
     /**
      * Update Geschwindigkeiten, wenn die Geschwindigkeit sich vom vorherigen Zyklus unterscheiden soll
