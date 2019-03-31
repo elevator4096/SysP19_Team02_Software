@@ -53,7 +53,7 @@ public class Fahren implements IO
      * @param radius	 (positiv = GUZ, negativ = UZ)
      * @param bahnGeschw (positiv = vorwaerts, negativ = rueckwaerts)
      */
-    public void kurveFahren(double radius, double bahnGeschw)
+    public static void kurveFahren(double radius, double bahnGeschw)
     {
     	if (Math.abs(radius)<0.001)
     	{
@@ -63,16 +63,24 @@ public class Fahren implements IO
     	
     	double w = bahnGeschw/radius;
     	
-    	double rRechts = Math.abs( radius - Konstanten.WHEEL_DISTANCE/2.0);
-    	double rLinks  = Math.abs( radius + Konstanten.WHEEL_DISTANCE/2.0);
+    	double rRechts = Math.abs( radius + Konstanten.WHEEL_DISTANCE/2.0);
+    	double rLinks  = Math.abs( radius - Konstanten.WHEEL_DISTANCE/2.0);
     	
     	double speedRechts = w*rRechts;
     	double speedLinks  = w*rLinks ;
     	
-        //MOTOR_links .updateSpeed(rMin);
-        //MOTOR_rechts.updateSpeed((float)i);
-    	
-    	
+        MOTOR_links .updateSpeed(speedLinks);
+        MOTOR_rechts.updateSpeed(speedRechts);
+    }
+    
+    /**leichte Kurve zur Richtungskorrektur des Roboters
+     * 
+     * @param fahrtRichtung (vorwaerts = True, rueckwaerts = False)
+     * @param drehSinn 		(GUZ 	   = True, UZ 		   = False)
+     */
+    public static void KorrekturKurve(boolean fahrtRichtung, boolean drehSinn)
+    {
+    		kurveFahren( Konstanten.LINE_FOLLOWER_RADIUS*(drehSinn? 1:-1), Konstanten.DRIVING_SPEED*(fahrtRichtung? 1:-1) );
     }
     
     

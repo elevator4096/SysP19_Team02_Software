@@ -4,6 +4,7 @@
  */
 package team02.vorlagen;
 
+import team02.IO;
 import team02.ZustandBewegung;
 
 public class BewegungsSystem
@@ -152,12 +153,46 @@ public class BewegungsSystem
 	}
 
     /**
-     * ?
-     * @param speed
      */
-	public void fahreFreiRueckwaerts(int speed)
+	public void fahreFreiRueckwaerts()
 	{
 		
+	}
+	
+	/**folge Linie in Fahrtrichtung
+	 * 
+	 * @param fahrtRichtung
+	 */
+	public void folgeLinie(boolean fahrtRichtung)
+	{
+		if (fahrtRichtung)
+		{
+			//Vorwaertsfahrt
+			if (IO.LINES_Sensoren.istLinieLinks(IO.LINE_Sensor_Vorne))
+			{
+				//Korrigiere im GegenUhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, true);
+			}
+			if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Vorne))
+			{
+				//Korrigiere im Uhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, false);
+			}
+		}
+		else
+		{
+			//Rueckwaertsfahrt
+			if (IO.LINES_Sensoren.istLinieLinks(IO.LINE_Sensor_Hinten))
+			{
+				//Korrigiere im Uhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, false);
+			}
+			if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Hinten))
+			{
+				//Korrigiere im GegenUhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, true);
+			}
+		}
 	}
 
 

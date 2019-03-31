@@ -12,7 +12,7 @@ public interface Konstanten
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 0.200;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.100;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
@@ -25,6 +25,7 @@ public interface Konstanten
 	double	DRIVING_SPEED			= 0.018;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   ( Werte von ca 0.010   - 0.180)
 	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s ( Werte von ca 0.050PI - 1.150PI)
 	
+	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
 	
 	double 	SPANN_ZEIT 				= 0;
 	double 	WURF_ZEIT 				= 0;
