@@ -17,11 +17,13 @@ public class Main extends Task implements IO
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
-
+    
+    /*Wuerde ich in IO auslagern (Loris)
     private WurfSystem wurfSystem;
     private BewegungsSystem bewegungsSystem;
     private GegnerSystem gegnerSystem;
     private WlanSystem wlanSystem;
+    */
 
     /**
      * Initialisieren der Tasks
@@ -45,11 +47,13 @@ public class Main extends Task implements IO
      * Konstruktor
      */
     public Main()
-    {
+    {	
+    	/* Wuerde ich in IO auslagern (Loris)
         wurfSystem = WurfSystem.getInstance();
         bewegungsSystem = BewegungsSystem.getInstance();
         gegnerSystem = GegnerSystem.getInstance();
         wlanSystem = WlanSystem.getInstance();
+        */
     }
 
     /**

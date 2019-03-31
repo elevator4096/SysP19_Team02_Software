@@ -7,6 +7,11 @@ public class Test_BewegungsSystem {
 		
 	}
 	
+	public static void linieFolgen()
+	{
+		
+	}
+	
 	
 	
 }

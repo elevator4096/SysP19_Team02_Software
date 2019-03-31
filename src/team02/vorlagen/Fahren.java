@@ -30,22 +30,22 @@ public class Fahren implements IO
 
     /**
      * Dreht einen gewissen Winkel
-     * @param i RAD positiv im GUZ,negativ im UZ
+     * @param turningSpeed RAD positiv im GUZ,negativ im UZ
      */
-    public static void drehe(int i)
+    public static void drehe(double turningSpeed)
     {
-        MOTOR_links .updateSpeed((float)i);
-        MOTOR_rechts.updateSpeed((float)-i);
+        MOTOR_links .updateSpeed( turningSpeed);
+        MOTOR_rechts.updateSpeed(-turningSpeed);
     }
 
     /**
-     * Fahre Vorwärts
-     * @param i Geschwindigkeit in m/s vorwärts
+     * Fahre geradeaus
+     * @param speed Geschwindigkeit in m/s
      */
-    public static void vorwaerts(int i)
+    public static void geradeaus(double speed)
     {
-        MOTOR_links .updateSpeed((float)i);
-        MOTOR_rechts.updateSpeed((float)i);
+        MOTOR_links .updateSpeed(speed);
+        MOTOR_rechts.updateSpeed(speed);
     }
 
     /**

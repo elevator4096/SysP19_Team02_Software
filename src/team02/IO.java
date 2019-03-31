@@ -9,6 +9,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import team02.chris.WlanSystem;
 import team02.vorlagen.*;
 
 
@@ -89,6 +90,10 @@ public interface IO
 	LinienSensor 	LINE_Sensor_Hinten			= new LinienSensor(6,7);
 
 
-	//Debug
+	//Systeme
+    WurfSystem		wurfSystem 					= WurfSystem.getInstance();
+    BewegungsSystem	bewegungsSystem 			= BewegungsSystem.getInstance();
+    GegnerSystem	gegnerSystem 				= GegnerSystem.getInstance();
+    WlanSystem		wlanSystem 					= WlanSystem.getInstance();
 	DebugSystem 	debugSystem 				= DebugSystem.getInstance();
 }

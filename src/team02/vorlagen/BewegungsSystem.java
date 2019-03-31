@@ -5,6 +5,7 @@
 package team02.vorlagen;
 
 import team02.IO;
+import team02.Konstanten;
 import team02.ZustandBewegung;
 
 public class BewegungsSystem
@@ -173,10 +174,14 @@ public class BewegungsSystem
 				//Korrigiere im GegenUhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, true);
 			}
-			if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Vorne))
+			else if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Vorne))
 			{
 				//Korrigiere im Uhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, false);
+			}
+			else
+			{
+				Fahren.geradeaus(Konstanten.DRIVING_SPEED);
 			}
 		}
 		else
@@ -187,10 +192,14 @@ public class BewegungsSystem
 				//Korrigiere im Uhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, false);
 			}
-			if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Hinten))
+			else if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Hinten))
 			{
 				//Korrigiere im GegenUhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, true);
+			}
+			else
+			{
+				Fahren.geradeaus(-Konstanten.DRIVING_SPEED);
 			}
 		}
 	}
