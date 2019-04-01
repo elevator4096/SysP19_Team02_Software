@@ -7,12 +7,18 @@ package team02.vorlagen;
 import team02.IO;
 import team02.Konstanten;
 import team02.ZustandBewegung;
+import team02.beispiele.Orientierung;
 
 public class BewegungsSystem
 {
-	private boolean inBewegung = false;
 	private static BewegungsSystem bewegungsSystem;
-	private ZustandBewegung zustandBewegung = ZustandBewegung.STOP;
+	
+	
+	private ZustandBewegung zustandBewegung 		= ZustandBewegung.STOP;
+	private int 			halteBedingung			=	0;		
+	private boolean 		bewegungsRichtung		=	false; //vorwaerts 	= true
+	private boolean 		drehRichtung			=	false; //GUZ		= true
+	private boolean 		inBewegung 				=	false;
 
 	private BewegungsSystem()
 	{
@@ -34,7 +40,6 @@ public class BewegungsSystem
      */
 	protected void diagrammDummy()
 	{
-		LinienSensoren 	linienSensoren 	;
 		Orientierung 	orientierung 	;
 		Fahren 			fahren 			;
 	}
@@ -46,6 +51,7 @@ public class BewegungsSystem
 	public void fahreFreiBisKreuzungVorwaerts(int kreuzungsPos)
 	{
 		zustandBewegung = ZustandBewegung.FAHRE_FREI_BIS_KREUZUNG_VORWAERTS;
+		//halteBedingung	= 
 	}
 
     /**
@@ -169,12 +175,12 @@ public class BewegungsSystem
 		if (fahrtRichtung)
 		{
 			//Vorwaertsfahrt
-			if (IO.LINES_Sensoren.istLinieLinks(IO.LINE_Sensor_Vorne))
+			if (IO.LINE_Sensor_Vorne.istLinieLinks())
 			{
 				//Korrigiere im GegenUhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, true);
 			}
-			else if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Vorne))
+			else if (IO.LINE_Sensor_Vorne.istLinieRechts())
 			{
 				//Korrigiere im Uhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, false);
@@ -187,12 +193,12 @@ public class BewegungsSystem
 		else
 		{
 			//Rueckwaertsfahrt
-			if (IO.LINES_Sensoren.istLinieLinks(IO.LINE_Sensor_Hinten))
+			if (IO.LINE_Sensor_Hinten.istLinieLinks())
 			{
 				//Korrigiere im Uhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, false);
 			}
-			else if (IO.LINES_Sensoren.istLinieRechts(IO.LINE_Sensor_Hinten))
+			else if (IO.LINE_Sensor_Hinten.istLinieRechts())
 			{
 				//Korrigiere im GegenUhrzeigersinn
 				Fahren.KorrekturKurve(fahrtRichtung, true);

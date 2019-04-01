@@ -2,21 +2,12 @@
  * @author loris
  * @version 2019.03.17
  */
-package team02.vorlagen;
+package team02.beispiele;
 
 import team02.dominique.WandErkennung;
+import team02.vorlagen.Motor;
 
 public class Orientierung {
-	
-	/**
-     * diagrammDummy erzeugt k�nstlich Abhaengigkeiten fuer Klassendiagramm
-     * */
-	protected void diagrammDummy()
-	{
-		WandErkennung wandErkennung;
-		LinienSensoren 	linienSensoren 	;
-		Motor 			motor;
-	}
 	
 	/**
 	 * Konstruktor:

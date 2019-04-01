@@ -82,7 +82,6 @@ public interface IO
 
 
 	//LinienSensoren
-	LinienSensoren 	LINES_Sensoren 				= new LinienSensoren();
 	
 	LinienSensor 	LINE_Sensor_Vorne			= new LinienSensor(0,1);
 	LinienSensor 	LINE_Sensor_Links			= new LinienSensor(2,3);
