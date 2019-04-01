@@ -1,94 +1,66 @@
 /**
- * @Author Phil
- * @version 2019.03.25
- */
+ * @author Phil
+ * @version 2019.04.01
+*/
 
 package team06.system;
 
+import java.io.PrintStream;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
-import team06.ZustandWifi;
+import team06.Variablen;
 
-public class WlanSystem {
+public class WlanSystem extends Task {
+	private static WlanSystem task;
 	private RN131 wifi;
-	private ZustandWifi partnerState;
-	private static WlanSystem wlanSystem;
 
-	/**
-	 * Konstruktor für die Wlan Verbindung
-	 */
-	private WlanSystem()
+	public WlanSystem() {
+		period = Variablen.TASK_PERIOD_WlAN;
 
-	{
 		try {
-			SCI sci = SCI.getInstance(SCI.pSCI2);
-			sci.start(115200, SCI.NO_PARITY, (short) 8);
-			wifi = new RN131(sci.in, sci.out, new MPIOSM_DIO(11, true));
+			SCI sci2 = SCI.getInstance(SCI.pSCI2);
+			sci2.start(115200, SCI.NO_PARITY, (short) 8);
+			wifi = new RN131(sci2.in, sci2.out, new MPIOSM_DIO(11, true));
 		} catch (Exception e) {
-
+			System.out.println("Fehler WlanSystem");
 		}
 	}
 
-	
-	/**
-	 * Instanz erzeugen
-	 */
-	public static WlanSystem getInstance() {
-		if (wlanSystem == null) {
-			wlanSystem = new WlanSystem();
-		}
-		return wlanSystem;
-	}
-
-	/**
-	 * Teste, ob eine Verbindung besteht
-	 * 
-	 * @return True Connected, False Not Connected
-	 */
-	public boolean connected() {
+	public void action() {
+		System.out.print(wifi.getState().toString());
 		if (wifi.connected()) {
-			return true;
+			System.out.print("\t(connected)\t");
+		} else
+			System.out.print("\t(not connected)\t");
+		CmdInt.Type type = wifi.cmd.readCmd();
+		if (type == CmdInt.Type.Cmd) {
+			System.out.print("command=");
+			System.out.print(wifi.cmd.getInt());
 		}
-		return false;
-
+		System.out.println();
 	}
 
-	/**
-	 * Sende ein Integer
-	 * 
-	 * @param zustandWifi Zustand Welcher gesendet wird
-	 */
-	public void setOwnState(ZustandWifi zustandWifi) {
-		wifi.cmd.writeCmd(zustandWifi.number);
+	public static void sendCmd(int code) {
+		if (task.wifi.connected())
+			task.wifi.cmd.writeCmd(code);
 	}
 
-	/**
-	 * Lade Integer aus dem Puffer Achtund!!! getInt LÃ¶scht Integer aus dem
-	 * RingArray
-	 * 
-	 * @return gibt Integer aus dem Puffer aus
-	 */
-	public ZustandWifi getPartnerState() {
-		return partnerState;
-	}
+	static {
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short) 8);
+		System.out = new PrintStream(sci1.out);
+		System.err = new PrintStream(sci1.out);
+		System.out.println("WlanSystem");
 
-	/**
-	 * Schleife die solange durchläuft, wie States im Array sind. Der letzte wird
-	 * zwischengespeichert und kann über die Methode getPartnerstate geholt werden
-	 */
-	public void update() {
-		if (wifi.connected()) {
-			while (wifi.cmd.readCmd() == CmdInt.Type.Cmd) {
-				int data = wifi.cmd.getInt();
-				for (ZustandWifi zw : ZustandWifi.values()) {
-					if (zw.number == data) {
-						partnerState = zw;
-						break;
-					}
-				}
-			}
+		try {
+			task = new WlanSystem();
+			Task.install(task);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 	}
 }
