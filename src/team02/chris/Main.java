@@ -9,6 +9,7 @@ package team02.chris;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.*;
 import team02.vorlagen.*;
+import team02.Systeme;
 
 import static team02.Zustand.*;
 
@@ -17,13 +18,6 @@ public class Main extends Task implements IO
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
-    
-    /*Wuerde ich in IO auslagern (Loris)
-    private WurfSystem wurfSystem;
-    private BewegungsSystem bewegungsSystem;
-    private GegnerSystem gegnerSystem;
-    private WlanSystem wlanSystem;
-    */
 
     /**
      * Initialisieren der Tasks
@@ -48,12 +42,7 @@ public class Main extends Task implements IO
      */
     public Main()
     {	
-    	/* Wuerde ich in IO auslagern (Loris)
-        wurfSystem = WurfSystem.getInstance();
-        bewegungsSystem = BewegungsSystem.getInstance();
-        gegnerSystem = GegnerSystem.getInstance();
-        wlanSystem = WlanSystem.getInstance();
-        */
+    	
     }
 
     /**
@@ -290,10 +279,11 @@ public class Main extends Task implements IO
      */
     private void update()
     {
-        bewegungsSystem.update();
-        debugSystem.update();
-        gegnerSystem.update();
-        wlanSystem.update();
-        wurfSystem.update();
+    	IO.debug.update();
+    	
+        Systeme.bewegungsSystem.update();
+        Systeme.gegnerSystem.update();
+        Systeme.wlanSystem.update();
+        Systeme.wurfSystem.update();
     }
 }
