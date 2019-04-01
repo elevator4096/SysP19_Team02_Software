@@ -33,6 +33,8 @@ public class Test_Fahren {
 			lastTime = System.currentTimeMillis();
 		}
 		
+		Fahren.update();
+		
 	}
 	
 	public static void vorwaerts()

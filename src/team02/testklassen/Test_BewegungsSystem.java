@@ -1,10 +1,12 @@
 package team02.testklassen;
 
 import team02.IO;
+import team02.vorlagen.Fahren;
 
 public class Test_BewegungsSystem {
 	public static long lastTime = System.currentTimeMillis();  
-	public static int counter=0; 
+	public static int counter=0;
+	public static boolean richtung = true;
 	
 	public static void test()
 	{
@@ -14,10 +16,10 @@ public class Test_BewegungsSystem {
 			switch(counter)
 			{
 			case 1:
-				folgeLinieVorwaerts();
+				richtung = true;
 				break;
 			case 2:
-				folgeLinieRueckwaerts();
+				richtung = false;
 				break;
 			case 3:
 				break;
@@ -26,6 +28,10 @@ public class Test_BewegungsSystem {
 			lastTime = System.currentTimeMillis();
 		}
 		
+		if(richtung) folgeLinieVorwaerts();
+		else folgeLinieRueckwaerts();
+		
+		IO.bewegungsSystem.update();
 	}
 	
 	public static void folgeLinieVorwaerts()

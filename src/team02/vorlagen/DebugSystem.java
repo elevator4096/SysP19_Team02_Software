@@ -47,7 +47,7 @@ public class DebugSystem implements IO
         return debugSystem;
     }
 
-    public static void println(String s)
+    public void println(String s)
     {
 
         System.out.println(s);
