@@ -220,6 +220,7 @@ public class BewegungsSystem
 	 */
 	public void update()
 	{
+		Fahren.update();
 		
 	}
 	
