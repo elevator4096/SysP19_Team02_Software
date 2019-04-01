@@ -19,11 +19,18 @@ public class Instanzen {
 	public static MotorSMSC sMSC_WurfMotor1 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
 			0.01f); // frequenz an task anpassen (1.zahl)
 	public static MotorSMSC sMSC_WurfMotor2 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
-			0.01f);
-
-// Wurfsystem erzeugen
-	public static WlanSystem wlanSystem = new WlanSystem ();
-	public static WurfSystem wurfSystem = new WurfSystem();
+			0.01f); // frequenz an task anpassen (1.zahl)
 	
+	// Motoren Fahrsystem erzeugen
+	public static MotorSMSC sMSC_FahrMotorlinks = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
+			0.01f); // frequenz an task anpassen (1.zahl)
+	public static MotorSMSC sMSC_FahrMotorrechts = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
+			0.01f); // frequenz an task anpassen (1.zahl)
+	
+
+	// Wurfsystem erzeugen
+	public static WlanSystem wlanSystem = new WlanSystem();
+	public static WurfSystem wurfSystem = new WurfSystem();
+	public static FahrSystem fahrSystem = new FahrSystem();
 
 }

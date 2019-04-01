@@ -42,4 +42,12 @@ public class MotorSMSC {
 		motor.run();
 	}
 
+	// Methode muss noch angepasst werden (Rechnung)
+	/**
+	 * Aktuelle Distanz zurückgeben
+	 */
+	public int gibInkrement() {
+		return (int) motor.getActualPosition();
+	}
+
 }

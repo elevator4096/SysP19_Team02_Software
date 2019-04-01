@@ -29,6 +29,9 @@ public class WlanSystem extends Task {
 		}
 	}
 
+	/**
+	 * WLan Status abfragen und Status ausgeben
+	 */
 	public void action() {
 		System.out.print(wifi.getState().toString());
 		if (wifi.connected()) {
@@ -43,9 +46,22 @@ public class WlanSystem extends Task {
 		System.out.println();
 	}
 
-	public static void sendCmd(int code) {
+	/**
+	 * Int senden
+	 */
+	public void sendCmd(int code) {
 		if (task.wifi.connected())
 			task.wifi.cmd.writeCmd(code);
+	}
+
+	/**
+	 * Int zurückgeben
+	 */
+	public int gibcmd() {
+		CmdInt.Type type = wifi.cmd.readCmd();
+		if (task.wifi.connected() && type == CmdInt.Type.Cmd) {
+		}
+		return -1;
 	}
 
 	static {

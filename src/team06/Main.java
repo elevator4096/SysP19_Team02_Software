@@ -12,19 +12,18 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team06.system.WlanSystem;
 import team06.system.WurfSystem;
 
-public class Main extends Task{
-	
+public class Main extends Task {
+	private static Main task;
+
 	private Instanzen instanz;
 
 	/**
-	 * Konstruktor
-	 * Instanz erzugen
+	 * Konstruktor Instanz erzugen
 	 */
 	public Main() {
-		
+
 		instanz = new Instanzen();
-		
-		
+
 	}
 
 	/**
@@ -33,6 +32,7 @@ public class Main extends Task{
 	public void action() {
 
 		Instanzen.wurfSystem.motorstarten();
+		Instanzen.fahrSystem.motorstarten();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class Main extends Task{
 	 */
 	static {
 		try {
-			Task task = new Main();
+			task = new Main();
 			task.period = Variablen.TASK_PERIOD;
 			Task.install(task);
 
