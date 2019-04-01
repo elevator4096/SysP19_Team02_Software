@@ -2,6 +2,7 @@ package team02.testklassen;
 
 import team02.IO;
 import team02.vorlagen.Fahren;
+import team02.Systeme;
 
 public class Test_BewegungsSystem {
 	public static long lastTime = System.currentTimeMillis();  
@@ -31,17 +32,17 @@ public class Test_BewegungsSystem {
 		if(richtung) folgeLinieVorwaerts();
 		else folgeLinieRueckwaerts();
 		
-		IO.bewegungsSystem.update();
+		Systeme.bewegungsSystem.update();
 	}
 	
 	public static void folgeLinieVorwaerts()
 	{
-		IO.bewegungsSystem.folgeLinie(true);
+		Systeme.bewegungsSystem.folgeLinie(true);
 	}
 	
 	public static void folgeLinieRueckwaerts()
 	{
-		IO.bewegungsSystem.folgeLinie(false);
+		Systeme.bewegungsSystem.folgeLinie(false);
 	}
 	
 	

@@ -112,12 +112,12 @@ public class GegnerSystem implements IO
 			update();
 			int i = QADC_AIN.read(false,1);
 			int x = (int)AN_Sharp1.getDistanz();
-			debugSystem.println(i);
-			debugSystem.println(x);
+			debug.println(i);
+			debug.println(x);
 		}
 		else
 		{
-			debugSystem.println("Test nicht aktiv");
+			debug.println("Test nicht aktiv");
 		}
 	}
 

@@ -44,7 +44,7 @@ public class Test_Task extends Task implements IO
         //bewegungsSystem = BewegungsSystem.getInstance();
         gegnerSystem = GegnerSystem.getInstance();
         //wlanSystem = WlanSystem.getInstance();
-    	debugSystem.println("Test Task läuft!");
+    	debug.println("Test Task läuft!");
     }
 
     public void action()

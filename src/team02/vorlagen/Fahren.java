@@ -57,7 +57,7 @@ public class Fahren implements IO
     {
     	if (Math.abs(radius)<0.001)
     	{
-    		debugSystem.println("Kurve mit Radius kleiner 0.001m nicht erlaubt!");
+    		debug.println("Kurve mit Radius kleiner 0.001m nicht erlaubt!");
     		return;
     	}
     	

@@ -31,7 +31,7 @@ public class WlanSystem implements IO
         }
         catch (Exception e)
         {
-            debugSystem.println("Fehler WLAN!");
+            debug.println("Fehler WLAN!");
         }
     }
 

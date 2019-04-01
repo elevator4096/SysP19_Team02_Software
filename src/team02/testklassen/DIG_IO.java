@@ -22,9 +22,9 @@ public class DIG_IO implements IO
      */
     public static void getMPIOSM_DIO(MPIOSM_DIO in)
     {
-        debugSystem.print("Eingang ist: ");
-        debugSystem.print(in.get());
-        debugSystem.println();
+        debug.print("Eingang ist: ");
+        debug.print(in.get());
+        debug.println();
     }
 
     /**
@@ -33,9 +33,9 @@ public class DIG_IO implements IO
      */
     public static void getMDASM(MDASM_DIO in)
     {
-        debugSystem.print("Eingang ist: ");
-        debugSystem.print(in.get());
-        debugSystem.println();
+        debug.print("Eingang ist: ");
+        debug.print(in.get());
+        debug.println();
     }
 
     /**
@@ -46,9 +46,9 @@ public class DIG_IO implements IO
     public static void setMPIOSM_DIO(MPIOSM_DIO out, boolean b)
     {
         out.set(b);
-        debugSystem.print("Ausgang ist: ");
-        debugSystem.print(out.get());
-        debugSystem.println();
+        debug.print("Ausgang ist: ");
+        debug.print(out.get());
+        debug.println();
     }
 
     /**
@@ -59,9 +59,9 @@ public class DIG_IO implements IO
     public static void setMPIOSM_DIO(MDASM_DIO out, boolean b)
     {
         out.set(b);
-        debugSystem.print("Ausgang ist: ");
-        debugSystem.print(out.get());
-        debugSystem.println();
+        debug.print("Ausgang ist: ");
+        debug.print(out.get());
+        debug.println();
     }
 
     /**
@@ -69,7 +69,7 @@ public class DIG_IO implements IO
      */
     public static void LED_Test()
     {
-    	debugSystem.println("Test");
+    	debug.println("Test");
     	OUT_LED1.set(!OUT_LED1.get());
     	OUT_LED2.set(!OUT_LED2.get());
     	OUT_LED3.set(!OUT_LED3.get());
@@ -79,8 +79,8 @@ public class DIG_IO implements IO
     
     public static void get()
     {
-    	debugSystem.print(OUT_LED1.get());
-    	debugSystem.println("");
+    	debug.print(OUT_LED1.get());
+    	debug.println("");
     }
 
     public static void test_allOUT()
@@ -115,9 +115,9 @@ public class DIG_IO implements IO
     {
         for(MPIOSM_DIO in : IO.IN_MPIOSM_DIO)
         {
-            debugSystem.print("IN: ");
-            debugSystem.print(in.get());
-            debugSystem.println("\t");
+            debug.print("IN: ");
+            debug.print(in.get());
+            debug.println("\t");
         }
     }
 
