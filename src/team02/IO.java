@@ -87,12 +87,7 @@ public interface IO
 	LinienSensor 	LINE_Sensor_Links			= new LinienSensor(2,3);
 	LinienSensor	LINE_Sensor_Rechts			= new LinienSensor(4,5);
 	LinienSensor 	LINE_Sensor_Hinten			= new LinienSensor(6,7);
-
-
-	//Systeme
-    WurfSystem		wurfSystem 					= WurfSystem.getInstance();
-    BewegungsSystem	bewegungsSystem 			= BewegungsSystem.getInstance();
-    GegnerSystem	gegnerSystem 				= GegnerSystem.getInstance();
-    WlanSystem		wlanSystem 					= WlanSystem.getInstance();
-	DebugSystem 	debugSystem 				= DebugSystem.getInstance();
+	
+	//Debug
+	DebugSystem		 	debug		 				= DebugSystem.getInstance();
 }

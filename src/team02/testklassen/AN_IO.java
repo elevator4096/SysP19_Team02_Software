@@ -22,19 +22,19 @@ public class AN_IO implements IO
     public static void printAN_IN(boolean ADCPort, int sensorIndex)
     {
         QADC_AIN.init(ADCPort);
-        debugSystem.print("Port: ");
+        debug.print("Port: ");
         if(ADCPort)
         {
-            debugSystem.print("A");
+        	debug.print("A");
         }
         else
         {
-            debugSystem.print("B");
+            debug.print("B");
         }
-        debugSystem.print("Sensor Index: ");
-        debugSystem.print(sensorIndex);
-        debugSystem.print("Wert :");
-        debugSystem.println(QADC_AIN.read(ADCPort,sensorIndex));
+        debug.print("Sensor Index: ");
+        debug.print(sensorIndex);
+        debug.print("Wert :");
+        debug.println(QADC_AIN.read(ADCPort,sensorIndex));
     }
 
 }
