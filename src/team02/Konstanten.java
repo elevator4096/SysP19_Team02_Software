@@ -36,5 +36,11 @@ public interface Konstanten
 	int 	HLC_GRENZWERT_SCHWARZ 	= 100;							// schwarze Linie
 	int 	HLC_GRENZWERT_WEISS 	= 100;							// keine Linie
 
+	//Bezeichner
+	int LINIE_VORNE 						= 0;
+	int LINIE_MITTE 						= 1;
+	int LINIE_HINTEN 						= 2;
+	
+	
 
 }

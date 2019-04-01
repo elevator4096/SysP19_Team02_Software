@@ -83,6 +83,11 @@ public class Fahren implements IO
     		kurveFahren( Konstanten.LINE_FOLLOWER_RADIUS*(drehSinn? 1:-1), Konstanten.DRIVING_SPEED*(fahrtRichtung? 1:-1) );
     }
     
+    public static void stop()
+    {
+        MOTOR_links .updateSpeed(0);
+        MOTOR_rechts.updateSpeed(0);
+    }
     
 
     /**
