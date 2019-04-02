@@ -1,3 +1,6 @@
+/*
+ * @author Loris
+ */ 
 package team02.testklassen;
 
 import team02.IO;

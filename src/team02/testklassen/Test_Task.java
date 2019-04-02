@@ -7,20 +7,13 @@ package team02.testklassen;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
-import team02.chris.WlanSystem;
-import team02.vorlagen.BewegungsSystem;
-import team02.vorlagen.GegnerSystem;
-import team02.vorlagen.WurfSystem;
+import team02.Systeme;
 
 /**
  *
  */
-public class Test_Task extends Task implements IO
+public class Test_Task extends Task implements IO, Systeme
 {
-    private WurfSystem wurfSystem;
-    private BewegungsSystem bewegungsSystem;
-    private GegnerSystem gegnerSystem;
-    private WlanSystem wlanSystem;
 
     static
     {
@@ -40,10 +33,6 @@ public class Test_Task extends Task implements IO
 
     public Test_Task()
     {
-        //wurfSystem = WurfSystem.getInstance();
-        //bewegungsSystem = BewegungsSystem.getInstance();
-        gegnerSystem = GegnerSystem.getInstance();
-        //wlanSystem = WlanSystem.getInstance();
     	debug.println("Test Task läuft!");
     }
 
@@ -56,7 +45,15 @@ public class Test_Task extends Task implements IO
         debugSystem.update();
         */
     	
-    	DIG_IO.test();
+    	//DIG_IO.test();
+    	
+    	
+    	//Test_LinienSensoren.test();
+    	
+    	Systeme.wurfSystem.update();
+    	Test_Wurfsystem.test();
+    	
+    	
     	
     }
 
