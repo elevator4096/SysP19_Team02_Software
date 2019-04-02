@@ -33,7 +33,15 @@ public class Main extends Task {
 	public void action() {
 
 		Instanzen.wurfSystem.motorstarten();
-		// Instanzen.fahrSystem.motorstarten();
+		//Instanzen.fahrSystem.motorstarten();
+		Instanzen.wurfSystem.gibweg();
+	}
+
+	/**
+	 * Spielablauf mit Switch/Case
+	 */
+	public void spielablauf() {
+
 	}
 
 	/**

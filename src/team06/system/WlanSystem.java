@@ -63,6 +63,7 @@ public class WlanSystem extends Task {
 	public int gibcmd() {
 		CmdInt.Type type = wifi.cmd.readCmd();
 		if (task.wifi.connected() && type == CmdInt.Type.Cmd) {
+			return wifi.cmd.getInt();
 		}
 		return -1;
 	}

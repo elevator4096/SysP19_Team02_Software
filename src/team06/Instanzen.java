@@ -28,7 +28,7 @@ public class Instanzen {
 	public Instanzen() {
 
 		// Motoren Wurfsysten erzeugen
-		sMSC_WurfMotor1 = new MotorSMSC(Variablen.TASK_PERIOD/1000f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
+		sMSC_WurfMotor1 = new MotorSMSC(Variablen.PERIOD_SMSC, 4, 5, true, 6, true, 64, 12f, 3249f / 196f, 1f,
 				0.01f); // frequenz an task anpassen (1.zahl)
 //		sMSC_WurfMotor2 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
 //				0.01f); // frequenz an task anpassen (1.zahl)

@@ -1,15 +1,17 @@
 package team06.testprogramme;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_DIO;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
-public class FlashLight extends Task {
-	public final byte ledPin = 6; // Pin fuer LED festlegen
-	MPIOSM_DIO led;
+public class TPUDIO extends Task {
+	public final byte ledPin = 2;
+	// Pin fuer LED festlegen
+	TPU_DIO led;
 
-	public FlashLight() {
+	public TPUDIO() {
 
-		led = new MPIOSM_DIO(ledPin, true); // Pin initialisieren
+		led = new TPU_DIO(true, ledPin, true); // Pin initialisieren
 		led.set(false); // LED ausschalten
 	}
 
@@ -18,7 +20,7 @@ public class FlashLight extends Task {
 	}
 
 	static { // Klassenkonstruktor
-		Task t = new FlashLight(); // Task erzeugen
+		Task t = new TPUDIO(); // Task erzeugen
 		t.period = 500; // Task-Periode festlegen
 		Task.install(t); // Task installieren
 	}

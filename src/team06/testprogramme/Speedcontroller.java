@@ -4,10 +4,10 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
 
 public class Speedcontroller extends Task {
-	protected static final boolean TPU_A = true;
-	protected static final int TPU_PWM_CH0 = 0;
-	protected static final int TPU_PWM_CH1 = 1;
-	protected static final int TPU_FQD_A = 2;
+	protected static final boolean TPU_A = false;
+	protected static final int TPU_PWM_CH0 = 2;
+	protected static final int TPU_PWM_CH1 = 3;
+	protected static final int TPU_FQD_A = 4;
 	/* Controller parameters */
 	protected static final float ts = 0.001f;
 	protected static final float kp = 1f;

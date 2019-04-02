@@ -17,9 +17,9 @@ public class Variablen {
 	public static float speedpassgegner = 1; // in s^-1 (Radiant)
 	public static float speedkorbschuss = 1; // in s^-1 (Radiant)
 
-	public static int TASK_PERIOD = 200;
+	public static int TASK_PERIOD = 100;
 	public static int TASK_PERIOD_WlAN = 500;
-	public static int TASK_PERIOD_SMSC = 500;
+	public static int PERIOD_SMSC = TASK_PERIOD/1000;
 
 	public Variablen() {
 
