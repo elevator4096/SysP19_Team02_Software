@@ -28,7 +28,7 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode die Zyklisch aufgerufen wird
+	 * Methode, die zyklisch aufgerufen wird
 	 */
 	public void action() {
 
