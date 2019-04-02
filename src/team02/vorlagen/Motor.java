@@ -30,16 +30,16 @@ public class Motor implements IO, Konstanten {
 
     /**
      * Setze Geschwindigkeit, kann positiv oder negativ werden
-     * @param d Geschwindigkeit in mm/s (max 0.213mm/s)
+     * @param d Geschwindigkeit in m/s (max 0.213m/s)
      */
     public void updateSpeed(double d) {
-        pwm.update((int)d);
+        pwm.update(calculateDutyCycle(d));
     }
 
     /**
      * Interne Methode zum berechnen der Periodendauer
      * @param d Geschwindigkeit in m/s
-     * @return Duty Cycle in 0..1, muss mit der Periodendauer multipliziert werden
+     * @return high Time fuer die aktuelle PERIOD_Motoren
      */
     private int calculateDutyCycle(double d) {
         double maxSpeed = MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;

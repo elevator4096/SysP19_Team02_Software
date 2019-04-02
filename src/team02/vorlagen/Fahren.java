@@ -29,8 +29,8 @@ public class Fahren implements IO
     }
 
     /**
-     * Dreht einen gewissen Winkel
-     * @param turningSpeed RAD positiv im GUZ,negativ im UZ
+     * Drehe an Ort und Stelle mit einer gewissen Geschwindigkeit
+     * @param turningSpeed m/s positiv im GUZ,negativ im UZ
      */
     public static void drehe(double turningSpeed)
     {
