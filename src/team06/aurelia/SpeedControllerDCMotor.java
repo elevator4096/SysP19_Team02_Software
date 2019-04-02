@@ -1,4 +1,4 @@
-package Motors;
+package team06.aurelia;
 
 import java.io.PrintStream;
 import java.text.DecimalFormat;
@@ -11,7 +11,7 @@ import ch.ntb.sysp.lib.SpeedController4DCMotor;
 public class SpeedControllerDCMotor extends Task {
 
 	// controller parameters
-	static final float ts = 0.001f;
+	static final float ts = 0.1f;
 	static final float kp = 1f;
 	static final float tn = 0.01f;
 
@@ -25,57 +25,42 @@ public class SpeedControllerDCMotor extends Task {
 	// Drehzahl
 	private static TPU_FQD fqd;
 
-	private double umdrehungen = 0;
+	private int umdrehungen = 0;
 	private short diff = 0;
 	private short oldpos = 0;
 	private short pos = 0;
 	private long longpos = 0;
-	private long counter = 0;
 
 	public SpeedControllerDCMotor() {
 
 		System.out.println("SpeedControllerDCMotor Class Start");
 
-		fqd = new TPU_FQD(true, 10);
+		fqd = new TPU_FQD(true, 6);
 
 	}
 
 	public void action() {
 
-		// System.out.println(fqd.getPosition());
-		// pos = fqd.getPosition();
-		// diff = (short)(pos - oldpos);
-		// longpos = longpos + diff;
-		// oldpos = pos;
-		// counter ++;
-
 		motor.run();
+
+		currentspeed();
 
 	}
 
 	public void currentspeed() {
 
-		// pos = fqd.getPosition();
-		// diff = (short)(pos - oldpos);
-		// oldpos = pos;
-		//
-		// umdrehungen = diff/4243.592/0.5;
-
-		// umdrehungen = longpos/counter/4243.592/0.5;
-
+		System.out.println(fqd.getPosition());
 		pos = fqd.getPosition();
 		diff = (short) (pos - oldpos);
 		longpos = longpos + diff;
 		oldpos = pos;
-		counter++;
-		double diffdouble = diff;
 
-		umdrehungen = diffdouble / 4243.592 / 0.5;
+		int umdrehungen = (int) (longpos / 4243.592);
 
-		System.out.print("Umdrehungen :           ");
-		System.out.println(df2.format(umdrehungen));
-
-		System.out.println(diff);
+		System.out.print("> ");
+		System.out.print(longpos);
+//		System.out.print("       Umdrehungen: ");
+//		System.out.println(umdrehungen);
 
 	}
 
@@ -94,7 +79,7 @@ public class SpeedControllerDCMotor extends Task {
 		// Standard SCI1 for standard Output
 		System.out = new PrintStream(sci1.out);
 
-		motor = new SpeedController4DCMotor(ts, 8, 9, true, 10, true, ticksPerRotation, motorVoltage, gearRation, kp,
+		motor = new SpeedController4DCMotor(ts, 4, 5, true, 6, true, ticksPerRotation, motorVoltage, gearRation, kp,
 				tn);
 		motor.setDesiredSpeed((float) (2 * Math.PI));
 
