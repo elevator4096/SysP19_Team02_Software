@@ -6,6 +6,7 @@ package team02.testklassen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 
 public class DIG_IO implements IO
@@ -94,10 +95,10 @@ public class DIG_IO implements IO
         for(MDASM_DIO out : IO.OUT_MDASM_DIO)
         {
             prevMDASM.set(false);
-            long x = System.currentTimeMillis();
+            long x = Task.time();
             out.set(true);
             prevMDASM = out;
-            while(System.currentTimeMillis()< x+1000);
+            while(Task.time()< x+1000);
             {
                 //Warte 1S
             }
@@ -106,10 +107,10 @@ public class DIG_IO implements IO
         for(MPIOSM_DIO out : IO.OUT_MPIOSM_DIO)
         {
             prevMPIOSM.set(false);
-            long x = System.currentTimeMillis();
+            long x = Task.time();
             out.set(true);
             prevMPIOSM = out;
-            while(System.currentTimeMillis()< x+1000);
+            while(Task.time()< x+1000);
             {
                 //Warte 1S
             }

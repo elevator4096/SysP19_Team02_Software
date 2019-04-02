@@ -1,15 +1,16 @@
 package team02.testklassen;
 
+import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.Konstanten;
 import team02.vorlagen.Fahren;
 
 public class Test_Fahren {
-	public static long lastTime = System.currentTimeMillis();  
+	public static long lastTime = Task.time();
 	public static int counter=0; 
 	
 	public static void test()
 	{
-		if (System.currentTimeMillis() > lastTime+5000)
+		if (Task.time() > lastTime+5000)
 		{
 			counter++;
 			switch(counter)
@@ -30,7 +31,7 @@ public class Test_Fahren {
 				break;
 			}
 			
-			lastTime = System.currentTimeMillis();
+			lastTime = Task.time();
 		}
 		
 		Fahren.update();

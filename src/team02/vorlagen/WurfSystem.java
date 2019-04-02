@@ -4,6 +4,7 @@
  */
 package team02.vorlagen;
 
+import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
 
@@ -23,7 +24,7 @@ public class WurfSystem
 	{
 		
 		setWurfZylinderPWM(0);
-		letzteSpannZeit = System.currentTimeMillis();
+		letzteSpannZeit = Task.time();
 	}
 
 
@@ -43,7 +44,7 @@ public class WurfSystem
 	public void zylinderSpannen(int pwmValue)
 	{
 		setWurfZylinderPWM(pwmValue);
-		letzteSpannZeit = System.currentTimeMillis();
+		letzteSpannZeit = Task.time();
 	}
 	
 	
@@ -61,7 +62,7 @@ public class WurfSystem
 	 * */
 	public boolean zylinderGespannt()
 	{
-		return ( System.currentTimeMillis() > (letzteSpannZeit+Konstanten.SPANN_ZEIT));
+		return (Task.time() > (letzteSpannZeit+Konstanten.SPANN_ZEIT));
 	}
 	
 	/**
@@ -69,7 +70,7 @@ public class WurfSystem
 	 */
 	public void update()
 	{
-		if ( System.currentTimeMillis() > (letzteEntmagnetisierZeit+Konstanten.WURF_ZEIT) )
+		if ( Task.time() > (letzteEntmagnetisierZeit+Konstanten.WURF_ZEIT) )
 		{
 			magnetMagnetisieren();
 		}
@@ -81,7 +82,7 @@ public class WurfSystem
 	private void magnetEntmagnetisieren()
 	{
 		IO.OUT_Magnet_Ausloeser.set(true);
-		letzteEntmagnetisierZeit = System.currentTimeMillis();
+		letzteEntmagnetisierZeit = Task.time();
 	}
 	
 	/**
