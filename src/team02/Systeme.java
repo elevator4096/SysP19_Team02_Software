@@ -12,7 +12,7 @@ public interface Systeme
 {
 	//Systeme
     WurfSystem		wurfSystem 					= WurfSystem.getInstance();
-    BewegungsSystem	bewegungsSystem 			= BewegungsSystem.getInstance();
     GegnerSystem	gegnerSystem 				= GegnerSystem.getInstance();
     WlanSystem		wlanSystem 					= WlanSystem.getInstance();
+    BewegungsSystem	bewegungsSystem 			= BewegungsSystem.getInstance();
 }

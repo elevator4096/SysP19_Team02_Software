@@ -77,6 +77,11 @@ public class DIG_IO implements IO
     	OUT_LED5.set(!OUT_LED5.get());
     }
     
+    public static void LED1_TEST()
+    {
+    	OUT_LED1.set(!OUT_LED1.get());
+    }
+    
     public static void get()
     {
     	debug.print(OUT_LED1.get());
