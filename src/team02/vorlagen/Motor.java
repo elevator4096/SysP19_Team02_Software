@@ -33,7 +33,7 @@ public class Motor implements IO, Konstanten {
      * @param d Geschwindigkeit in mm/s
      */
     public void updateSpeed(double d) {
-        pwm.update((int)PERIOD_Motoren, calculateDutyCycle(d));
+        pwm.update((int)d);
     }
 
     /**
