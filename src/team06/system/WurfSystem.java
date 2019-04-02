@@ -12,6 +12,8 @@ public class WurfSystem {
 
 	public WurfSystem() {
 
+		
+		setdrehzahl(0);
 		System.out.println("Wurfsystem_gestartet");
 
 	}
@@ -21,7 +23,7 @@ public class WurfSystem {
 	 */
 	public void setdrehzahl(float drehzahl) {
 		Instanzen.sMSC_WurfMotor1.setdrehzahl(drehzahl);
-		Instanzen.sMSC_WurfMotor2.setdrehzahl(drehzahl);
+		//Instanzen.sMSC_WurfMotor2.setdrehzahl(drehzahl);
 	}
 
 	/**
@@ -29,7 +31,9 @@ public class WurfSystem {
 	 */
 	public void motorstarten() {
 		Instanzen.sMSC_WurfMotor1.motorstarten();
-		Instanzen.sMSC_WurfMotor2.motorstarten();
+		//Instanzen.sMSC_WurfMotor2.motorstarten();
+		
+		
 
 	}
 

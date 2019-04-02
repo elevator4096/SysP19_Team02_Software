@@ -18,6 +18,9 @@ public class WlanSystem extends Task {
 	private RN131 wifi;
 
 	public WlanSystem() {
+		
+		System.out.println("WlanSystem_gestartet");
+		
 		period = Variablen.TASK_PERIOD_WlAN;
 
 		try {

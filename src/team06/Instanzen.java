@@ -14,23 +14,35 @@ import ch.ntb.sysp.lib.SpeedController4DCMotor;
 import team06.system.*;
 
 public class Instanzen {
-
-	// Motoren Wurfsysten erzeugen
-	public static MotorSMSC sMSC_WurfMotor1 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
-			0.01f); // frequenz an task anpassen (1.zahl)
-	public static MotorSMSC sMSC_WurfMotor2 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
-			0.01f); // frequenz an task anpassen (1.zahl)
+	 
+	public static MotorSMSC sMSC_WurfMotor1;
+	public static MotorSMSC sMSC_WurfMotor2;
 	
-	// Motoren Fahrsystem erzeugen
-	public static MotorSMSC sMSC_FahrMotorlinks = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
-			0.01f); // frequenz an task anpassen (1.zahl)
-	public static MotorSMSC sMSC_FahrMotorrechts = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
-			0.01f); // frequenz an task anpassen (1.zahl)
+	public static MotorSMSC sMSC_FahrMotorlinks;
+	public static MotorSMSC sMSC_FahrMotorrechts;
 	
+	public static WlanSystem wlanSystem;
+	public static WurfSystem wurfSystem;
+	public static FahrSystem fahrSystem;
 
-	// Wurfsystem erzeugen
-	public static WlanSystem wlanSystem = new WlanSystem();
-	public static WurfSystem wurfSystem = new WurfSystem();
-	public static FahrSystem fahrSystem = new FahrSystem();
+	public Instanzen() {
 
+		// Motoren Wurfsysten erzeugen
+		sMSC_WurfMotor1 = new MotorSMSC(Variablen.TASK_PERIOD/1000f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
+				0.01f); // frequenz an task anpassen (1.zahl)
+//		sMSC_WurfMotor2 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
+//				0.01f); // frequenz an task anpassen (1.zahl)
+//
+//		// Motoren Fahrsystem erzeugen
+//		sMSC_FahrMotorlinks = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f,
+//				1f, 0.01f); // frequenz an task anpassen (1.zahl)
+//		sMSC_FahrMotorrechts = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f,
+//				1f, 0.01f); // frequenz an task anpassen (1.zahl)
+
+		// Wurfsystem erzeugen
+		wlanSystem = new WlanSystem();
+		wurfSystem = new WurfSystem();
+		//fahrSystem = new FahrSystem();
+
+	}
 }

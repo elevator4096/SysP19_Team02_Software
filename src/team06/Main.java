@@ -15,7 +15,7 @@ import team06.system.WurfSystem;
 public class Main extends Task {
 	private static Main task;
 
-	private Instanzen instanz;
+	public Instanzen instanz;
 
 	/**
 	 * Konstruktor Instanz erzugen
@@ -23,6 +23,7 @@ public class Main extends Task {
 	public Main() {
 
 		instanz = new Instanzen();
+		System.out.println("Main Konstruktor gestartet");
 
 	}
 
@@ -32,7 +33,7 @@ public class Main extends Task {
 	public void action() {
 
 		Instanzen.wurfSystem.motorstarten();
-		Instanzen.fahrSystem.motorstarten();
+		// Instanzen.fahrSystem.motorstarten();
 	}
 
 	/**
@@ -48,12 +49,12 @@ public class Main extends Task {
 			e.printStackTrace();
 		}
 
-		{
-			SCI sci1 = SCI.getInstance(SCI.pSCI1);
-			sci1.start(9600, SCI.NO_PARITY, (short) 8);
-			// Hook SCI1.out on System.out
-			System.out = new PrintStream(sci1.out);
-		}
+//		{
+//			SCI sci1 = SCI.getInstance(SCI.pSCI1);
+//			sci1.start(9600, SCI.NO_PARITY, (short) 8);
+//			// Hook SCI1.out on System.out
+//			System.out = new PrintStream(sci1.out);
+//		}
 
 		System.out.println("Main Static gestartet");
 

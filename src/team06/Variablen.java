@@ -21,4 +21,7 @@ public class Variablen {
 	public static int TASK_PERIOD_WlAN = 500;
 	public static int TASK_PERIOD_SMSC = 500;
 
+	public Variablen() {
+
+	}
 }
