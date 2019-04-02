@@ -28,12 +28,20 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode die Zyklisch aufgerufen wird
+	 * Methode, die zyklisch aufgerufen wird
 	 */
 	public void action() {
 
 		Instanzen.wurfSystem.motorstarten();
-		// Instanzen.fahrSystem.motorstarten();
+		//Instanzen.fahrSystem.motorstarten();
+		Instanzen.wurfSystem.gibweg();
+	}
+
+	/**
+	 * Spielablauf mit Switch/Case
+	 */
+	public void spielablauf() {
+
 	}
 
 	/**

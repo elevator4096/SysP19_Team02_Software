@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="team06.MotorSMSC" project="SysP19" file="/SysP19/src/team06/MotorSMSC.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="298" y="489"/>    
+    <position height="-1" width="-1" x="273" y="503"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -78,11 +78,11 @@
   </association>  
   <association id="11">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="12" name="sMSC_WurfMotor1">        
-        <position height="16" width="100" x="151" y="258"/>      
+      <attribute id="12" name="sMSC_WurfMotor2">        
+        <position height="16" width="100" x="165" y="329"/>      
       </attribute>      
       <multiplicity id="13" minimum="0" maximum="1">        
-        <position height="14" width="23" x="271" y="245"/>      
+        <position height="14" width="23" x="239" y="305"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
@@ -90,71 +90,71 @@
   </association>  
   <association id="14">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="15" name="wlanSystem">        
-        <position height="16" width="66" x="115" y="126"/>      
+      <attribute id="15" name="sMSC_FahrMotorlinks">        
+        <position height="16" width="114" x="132" y="307"/>      
       </attribute>      
       <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="14" width="23" x="212" y="258"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="18" name="wlanSystem">        
+        <position height="16" width="66" x="115" y="126"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
         <position height="14" width="23" x="224" y="152"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="17">    
+  <association id="20">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="18" name="sMSC_FahrMotorrechts">        
-        <position height="16" width="122" x="92" y="216"/>      
+      <attribute id="21" name="sMSC_WurfMotor1">        
+        <position height="16" width="100" x="126" y="272"/>      
       </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1">        
-        <position height="14" width="23" x="255" y="179"/>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="14" width="23" x="246" y="259"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="21" name="wurfSystem">        
-        <position height="16" width="65" x="153" y="171"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="1">        
-        <position height="14" width="23" x="249" y="214"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="23">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="24" name="sMSC_WurfMotor2">        
-        <position height="16" width="100" x="190" y="315"/>      
-      </attribute>      
-      <multiplicity id="25" minimum="0" maximum="1">        
-        <position height="14" width="23" x="264" y="291"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="26">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="27" name="instanz">        
+      <attribute id="24" name="instanz">        
         <position height="16" width="40" x="301" y="128"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="14" width="23" x="286" y="75"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="wurfSystem">        
+        <position height="16" width="65" x="153" y="171"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="14" width="23" x="249" y="214"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="29">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="30" name="sMSC_FahrMotorlinks">        
-        <position height="16" width="114" x="157" y="293"/>      
+      <attribute id="30" name="sMSC_FahrMotorrechts">        
+        <position height="16" width="122" x="67" y="230"/>      
       </attribute>      
       <multiplicity id="31" minimum="0" maximum="1">        
-        <position height="14" width="23" x="237" y="244"/>      
+        <position height="14" width="23" x="230" y="193"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
