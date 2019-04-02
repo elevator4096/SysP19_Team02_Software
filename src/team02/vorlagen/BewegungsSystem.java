@@ -9,6 +9,7 @@ import team02.IO;
 import team02.Konstanten;
 import team02.ZustandBewegung;
 import team02.beispiele.Orientierung;
+import team02.IO.*;
 
 public class BewegungsSystem
 {
@@ -23,7 +24,9 @@ public class BewegungsSystem
 
 	private BewegungsSystem()
 	{
-
+		IO.debug.println("Bewegungssystem Aktiv!");
+		IO.HLC_1395_PULSED.init(IO.HLC_Anzahl_Sens,IO.HLC_Code_Sens,IO.HLC_AN_chan);
+		IO.HLC_1395_PULSED.start();
 	}
 
 	public static BewegungsSystem getInstance()
