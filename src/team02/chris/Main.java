@@ -13,7 +13,7 @@ import team02.Systeme;
 
 import static team02.Zustand.*;
 
-public class Main extends Task implements IO
+public class Main extends Task implements IO, Systeme
 {
 
     private Zustand zustand = SETUP;
