@@ -30,7 +30,7 @@ public class Motor implements IO, Konstanten {
 
     /**
      * Setze Geschwindigkeit, kann positiv oder negativ werden
-     * @param d Geschwindigkeit in mm/s
+     * @param d Geschwindigkeit in mm/s (max 0.213mm/s)
      */
     public void updateSpeed(double d) {
         pwm.update((int)d);
