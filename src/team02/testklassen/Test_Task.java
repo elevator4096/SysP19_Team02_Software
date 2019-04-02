@@ -12,7 +12,7 @@ import team02.Systeme;
 /**
  *
  */
-public class Test_Task extends Task implements IO
+public class Test_Task extends Task implements IO, Systeme
 {
 
     static
@@ -38,7 +38,6 @@ public class Test_Task extends Task implements IO
 
     public void action()
     {
-    	Systeme.bewegungsSystem.istInBewegung();
     	/*
     	OUT_LED1.set(!OUT_LED1.get());
     	debugSystem.println("------");
@@ -47,7 +46,11 @@ public class Test_Task extends Task implements IO
         */
     	
     	//DIG_IO.test();
-    	Test_LinienSensoren.test();
+    	
+    	
+    	//Test_LinienSensoren.test();
+    	
+    	
     	
     	
     }
