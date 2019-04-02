@@ -65,6 +65,9 @@ public interface IO
 	//PWM Periodendauer
 	double 	   		PERIOD_WurfZyl				= 14_000_000.0/TPU_PWM.tpuTimeBase; 	// PWM 	   72 Hz
 	double 	   		PERIOD_Motoren 				=     50_000.0/TPU_PWM.tpuTimeBase;   	// PWM 20'000 Hz
+	
+	double 			PERIOD_WurfZyl_MIN 			= 980_000/TPU_PWM.tpuTimeBase;
+	double 			PERIOD_WurfZyl_MAX 			= 1_980_000/TPU_PWM.tpuTimeBase;
 
 	//PWM
 	TPU_PWM    		PWM_WurfZylinder		   	= new TPU_PWM(false, 0, (int)PERIOD_WurfZyl, 0);

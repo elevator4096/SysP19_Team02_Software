@@ -12,7 +12,7 @@ public interface Konstanten
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 2.000;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.200;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
@@ -28,7 +28,7 @@ public interface Konstanten
 	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
 	
 	double 	SPANN_ZEIT 				= 0;
-	double 	WURF_ZEIT 				= 0;
+	double 	WURF_ZEIT 				= 1000;
 	
 	
 	

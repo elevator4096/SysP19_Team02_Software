@@ -92,11 +92,11 @@ public class WurfSystem
 		IO.OUT_Magnet_Ausloeser.set(false);
 	}
 	
-	private void setWurfZylinderPWM(int i)
+	private void setWurfZylinderPWM(double i)
 	{
 		double d;
 		d = ((double)(i))/100;
-		d = d*IO.PERIOD_WurfZyl;
+		d = d*(IO.PERIOD_WurfZyl_MAX-IO.PERIOD_WurfZyl_MIN)+IO.PERIOD_WurfZyl_MIN;
 		IO.PWM_WurfZylinder.update((int)d);
 	}
 }
