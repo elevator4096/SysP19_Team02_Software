@@ -14,9 +14,11 @@ public class Variablen {
 	public static int FAHREN = 2;
 	public static int ERROR = 3;
 
+	// Speed für Moroten
 	public static float speedpassgegner = 1; // in s^-1 (Radiant)
 	public static float speedkorbschuss = 1; // in s^-1 (Radiant)
 
+	// Task Zeit
 	public static int TASK_PERIOD = 100;
 	public static int TASK_PERIOD_WlAN = 500;
 	public static int PERIOD_SMSC = TASK_PERIOD/1000;
