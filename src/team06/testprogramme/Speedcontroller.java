@@ -18,10 +18,13 @@ public class Speedcontroller extends Task {
 	protected static final float motorVoltage = 12f;
 	static SpeedController4DCMotor motor;
 	
+	float i = 0;
 
 
 	public void action() {
 		motor.run();
+		i = motor.getActualPosition();
+		System.out.println(i);
 	}
 
 	static {
