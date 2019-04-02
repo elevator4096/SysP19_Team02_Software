@@ -13,7 +13,7 @@ project SysP19_team02 {
 
 #	enter names of rootclasses, e.g.
 #	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
-	rootclasses = "team02.testklassen.Test_Motor";
+	rootclasses = "team02.testklassen.Test_Task";
 
 #	imgfile = "M:\team06\trunk\SysP19-Mikrokontroller\SysP19\SysP19.bin";
 #	imgformat = BIN;
