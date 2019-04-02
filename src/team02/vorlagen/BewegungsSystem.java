@@ -4,7 +4,6 @@
  */
 package team02.vorlagen;
 
-import sun.security.ssl.Debug;
 import team02.HalteBedingung;
 import team02.IO;
 import team02.Konstanten;

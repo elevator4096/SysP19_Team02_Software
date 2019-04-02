@@ -40,10 +40,6 @@ public class Test_Task extends Task implements IO
 
     public Test_Task()
     {
-        //wurfSystem = WurfSystem.getInstance();
-        //bewegungsSystem = BewegungsSystem.getInstance();
-        gegnerSystem = GegnerSystem.getInstance();
-        //wlanSystem = WlanSystem.getInstance();
     	debug.println("Test Task läuft!");
     }
 
@@ -56,7 +52,8 @@ public class Test_Task extends Task implements IO
         debugSystem.update();
         */
     	
-    	DIG_IO.test();
+    	//DIG_IO.test();
+    	Test_LinienSensoren.test();
     	
     }
 
