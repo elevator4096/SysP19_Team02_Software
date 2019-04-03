@@ -50,27 +50,44 @@ public class Fahren implements IO
 
     /**
      * Fahre Kurve
-     * @param radius	 (positiv = GUZ, negativ = UZ)
-     * @param bahnGeschw (positiv = vorwaerts, negativ = rueckwaerts)
+     * @param radius	 (positiv = UZ, negativ = GUZ)
+     * @param v (positiv = vorwaerts, negativ = rueckwaerts)
      */
-    public static void kurveFahren(double radius, double bahnGeschw)
+    public static void kurveFahren(double radius, double v)
     {
-    	if (Math.abs(radius)<0.001)
-    	{
-    		debug.println("Kurve mit Radius kleiner 0.001m nicht erlaubt!");
-    		return;
-    	}
-    	
-    	double w = bahnGeschw/radius;
-    	
-    	double rRechts = Math.abs( radius + Konstanten.WHEEL_DISTANCE/2.0);
-    	double rLinks  = Math.abs( radius - Konstanten.WHEEL_DISTANCE/2.0);
-    	
-    	double speedRechts = w*rRechts;
-    	double speedLinks  = w*rLinks ;
-    	
-        MOTOR_links .updateSpeed(speedLinks);
-        MOTOR_rechts.updateSpeed(speedRechts);
+        double vr;      //Rechte Bahngeschwindigkeit
+    	double vl;      //Linke Bahngeschwindigkeit
+        double a = Konstanten.WHEEL_DISTANCE/2;
+
+        vr = (v*(radius+a))/radius;
+        vl = (v*(radius-a))/radius;
+
+        if(vr>Konstanten.MAX_SPEED)
+        {
+            vr = Konstanten.MAX_SPEED;
+            vl = (vr*(radius-2*a))/radius;
+        }
+
+        if(vr<-Konstanten.MAX_SPEED)
+        {
+            vr = -Konstanten.MAX_SPEED;
+            vl = (vr*(radius-2*a))/radius;
+        }
+
+        if(vl>Konstanten.MAX_SPEED)
+        {
+            vl = Konstanten.MAX_SPEED;
+            vr = (vr*(radius+2*a))/radius;
+        }
+
+        if(vl<-Konstanten.MAX_SPEED)
+        {
+            vl = -Konstanten.MAX_SPEED;
+            vr = (vr*(radius+2*a))/radius;
+        }
+
+        MOTOR_links.updateSpeed(vl);
+        MOTOR_rechts.updateSpeed(vr);
     }
     
     /**leichte Kurve zur Richtungskorrektur des Roboters

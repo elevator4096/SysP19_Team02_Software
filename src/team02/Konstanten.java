@@ -24,6 +24,7 @@ public interface Konstanten
 	//Tuning Parameter
 	double	DRIVING_SPEED			= 0.018;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   ( Werte von ca 0.010   - 0.180)
 	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s ( Werte von ca 0.050PI - 1.150PI)
+	double	MAX_SPEED				= MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;
 	
 	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
 	

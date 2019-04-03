@@ -42,16 +42,16 @@ public class Motor implements IO, Konstanten {
      * @return high Time fuer die aktuelle PERIOD_Motoren
      */
     private int calculateDutyCycle(double d) {
-        double maxSpeed = MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;
+        
 
-        if (d > maxSpeed) {
-            d = maxSpeed;
+        if (d > Konstanten.MAX_SPEED) {
+            d = Konstanten.MAX_SPEED;
         }
-        if (d < -maxSpeed) {
-            d = -maxSpeed;
+        if (d < -Konstanten.MAX_SPEED) {
+            d = -Konstanten.MAX_SPEED;
         }
 
-        int duty_cycle = (int) (PERIOD_Motoren * (d + maxSpeed) / (2 * maxSpeed));
+        int duty_cycle = (int) (PERIOD_Motoren * (d + Konstanten.MAX_SPEED) / (2 * Konstanten.MAX_SPEED));
         return duty_cycle;
     }
 
