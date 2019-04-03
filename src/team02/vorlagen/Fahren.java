@@ -59,8 +59,15 @@ public class Fahren implements IO
     	double vl;      //Linke Bahngeschwindigkeit
         double a = Konstanten.WHEEL_DISTANCE/2;
 
-        vr = (v*(radius+a))/radius;
-        vl = (v*(radius-a))/radius;
+
+        if(Math.abs(radius) <= 0.0001)
+        {
+            vr = v;
+            vl = -v;
+        }else {
+            vr = (v * (radius + a)) / radius;
+            vl = (v * (radius - a)) / radius;
+        }
 
         if(vr>Konstanten.MAX_SPEED)
         {
