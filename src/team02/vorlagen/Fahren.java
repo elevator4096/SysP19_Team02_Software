@@ -20,12 +20,23 @@ public class Fahren implements IO, Konstanten
      * "*"Sehr herausfordernd!
      */
 
+    private static Fahren fahren;
+
     /**
      * Konstruktor
      */
-    public Fahren()
+    private Fahren()
     {
 
+    }
+
+    public static Fahren getInstance()
+    {
+        if(fahren == null)
+        {
+            fahren = new Fahren();
+        }
+        return fahren;
     }
 
     /**
