@@ -4,7 +4,8 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Systeme;
 
-public class Test_Wurfsystem implements IO {
+public class Test_Wurfsystem implements IO
+{
 	public static long lastTime = Integer.MIN_VALUE;
 	public static int counter=0;
 	public static boolean richtung = true;

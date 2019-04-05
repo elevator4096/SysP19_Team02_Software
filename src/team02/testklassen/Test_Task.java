@@ -33,7 +33,7 @@ public class Test_Task extends Task implements IO, Systeme
 
     public Test_Task()
     {
-    	debug.println("Test Task läuft!");
+    	debug.println("Test Task laeuft!");
     }
 
     public void action()

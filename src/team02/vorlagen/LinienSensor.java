@@ -7,7 +7,8 @@ package team02.vorlagen;
 import team02.IO;
 import team02.Konstanten;
 
-public class LinienSensor {
+public class LinienSensor implements IO
+{
 	private int sensorLeftIndex, sensorRightIndex;  
 	
 	/** Konstruktor: */

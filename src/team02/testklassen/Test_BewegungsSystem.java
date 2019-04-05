@@ -8,7 +8,8 @@ import team02.IO;
 import team02.vorlagen.Fahren;
 import team02.Systeme;
 
-public class Test_BewegungsSystem {
+public class Test_BewegungsSystem implements Systeme
+{
 	public static long lastTime = Task.time();
 	public static int counter=0;
 	public static boolean richtung = true;

@@ -4,7 +4,11 @@
  */
 package team02.testklassen;
 
-public class Test_WlanSystem
+import team02.IO;
+import team02.Konstanten;
+import team02.Systeme;
+
+public class Test_WlanSystem implements IO, Konstanten, Systeme
 {
 
 }

@@ -6,8 +6,9 @@ package team02.testklassen;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import team02.IO;
+import team02.Konstanten;
 
-public class Test_Motor implements IO
+public class Test_Motor implements IO, Konstanten
 {
     public static void setLeftSpeed(int speed)
     {

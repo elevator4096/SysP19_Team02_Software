@@ -11,7 +11,7 @@ import team02.ZustandBewegung;
 import team02.beispiele.Orientierung;
 import team02.IO.*;
 
-public class BewegungsSystem
+public class BewegungsSystem implements IO
 {
 	private static BewegungsSystem bewegungsSystem;
 	

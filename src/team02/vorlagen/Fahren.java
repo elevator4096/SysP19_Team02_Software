@@ -8,7 +8,7 @@ package team02.vorlagen;
 import team02.IO;
 import team02.Konstanten;
 
-public class Fahren implements IO
+public class Fahren implements IO, Konstanten
 {
     /**
      * Auftrag:
