@@ -20,6 +20,9 @@ public class Fahren implements IO, Konstanten
      * "*"Sehr herausfordernd!
      */
 
+    private static double phi =0;
+    private static long impRe, impLi;
+
     private static Fahren fahren;
 
     /**
@@ -123,6 +126,30 @@ public class Fahren implements IO, Konstanten
     {
         MOTOR_links .updateSpeed(0);
         MOTOR_rechts.updateSpeed(0);
+    }
+
+    /**
+     * Berechne den aktuellen Winkel gegenüber der x-Achse
+     */
+    public static void calcphi()
+    {
+
+        long deltali = impLi - MOTOR_links.getEncPos();
+        long deltare = impRe - MOTOR_rechts.getEncPos();
+        double phili = (Konstanten.WHEEL_DIAMETER * Math.PI * deltali) / (Konstanten.GEAR_RATIO * Konstanten.TICKS_PER_ROUND - (Konstanten.WHEEL_DISTANCE / 2));
+        double phire = (Konstanten.WHEEL_DIAMETER * Math.PI * deltare) / (Konstanten.GEAR_RATIO * Konstanten.TICKS_PER_ROUND - (Konstanten.WHEEL_DISTANCE / 2));
+
+        double deltaphi = phili - phire;
+
+        phi += deltaphi;
+    }
+
+    public static void set0()
+    {
+        MOTOR_links.setEncPos(0);
+        MOTOR_rechts.setEncPos(0);
+        impLi = 0;
+        impRe = 0;
     }
     
 
