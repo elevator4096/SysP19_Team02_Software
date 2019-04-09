@@ -36,6 +36,12 @@ public interface Konstanten
 	//Sensor Konstanten 
 	int 	HLC_GRENZWERT_SCHWARZ 	= 100;							// schwarze Linie
 	int 	HLC_GRENZWERT_WEISS 	= 100;							// keine Linie
+	
+	//Sharp Konstanten fuer Lineare Naeherung siehe Sharp_Distanz_Rechner.xlsx
+	double  m_SHARP					= 14249.186;
+	double  n_SHARP					= 9.941;
+	double  k_SHARP					= 18.030;
+	
 
 	//Bezeichner
 	int LINIE_VORNE 						= 0;

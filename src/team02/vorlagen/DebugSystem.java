@@ -59,6 +59,12 @@ public class DebugSystem implements IO
 
         System.out.println(i);
     }
+    
+    public void println(double d)
+    {
+
+        System.out.println(d);
+    }
 
     public void print(String s)
     {

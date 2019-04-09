@@ -49,7 +49,8 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	
     	//Test_LinienSensoren.test();
-    	debug.println(debug.read());
+    	//debug.println(debug.read());
+    	Test_Sharp.test();
     }
 
 }
