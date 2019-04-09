@@ -72,8 +72,8 @@ public interface IO
 
 	//PWM
 	TPU_PWM    		PWM_WurfZylinder		   	= new TPU_PWM(false, 0, (int)PERIOD_WurfZyl, 0);
-	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, 0);
-	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, 0);
+	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.5));
+	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.5));
 
 
 	TPU_FQD    		FQD_Links 					= new TPU_FQD(false, 3);
