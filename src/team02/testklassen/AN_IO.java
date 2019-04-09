@@ -11,7 +11,7 @@ public class AN_IO implements IO
 {
 	public static void test()
 	{
-
+		printAN_IN(false,0);
 	}
 
     /**
@@ -21,7 +21,7 @@ public class AN_IO implements IO
      */
     public static void printAN_IN(boolean ADCPort, int sensorIndex)
     {
-        QADC_AIN.init(ADCPort);
+    	QADC_AIN.init(false);
         debug.print("Port: ");
         if(ADCPort)
         {

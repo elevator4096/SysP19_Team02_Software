@@ -4,6 +4,7 @@
  */
 package team02.vorlagen;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import team02.HalteBedingung;
 import team02.IO;
 import team02.Konstanten;
@@ -26,6 +27,9 @@ public class BewegungsSystem implements IO
 		debug.println("Bewegungssystem Aktiv!");
 		IO.HLC_1395_PULSED.init(IO.HLC_Anzahl_Sens,IO.HLC_Code_Sens,IO.HLC_AN_chan);
 		IO.HLC_1395_PULSED.start();
+		
+		QADC_AIN.init(true);
+		QADC_AIN.init(false);
 	}
 
 	public static BewegungsSystem getInstance()
