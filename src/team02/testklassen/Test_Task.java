@@ -12,7 +12,7 @@ import team02.Systeme;
 /**
  *
  */
-public class Test_Task extends Task implements IO, Systeme
+public class Test_Task extends Task implements IO, Systeme, Konstanten
 {
 
     static
@@ -20,7 +20,7 @@ public class Test_Task extends Task implements IO, Systeme
         try
         {
             Task task = new Test_Task();
-            task.period = (int) Konstanten.TASK_PERIOD*1000;
+            task.period = (int) (Konstanten.TASK_PERIOD*1000);
             Task.install(task);
 
         }
@@ -49,12 +49,8 @@ public class Test_Task extends Task implements IO, Systeme
     	
     	
     	//Test_LinienSensoren.test();
-    	
-    	Systeme.wurfSystem.update();
-    	Test_Wurfsystem.test();
-    	
-    	
-    	
+    	//debug.println(debug.read());
+    	Test_Sharp.test();
     }
 
 }

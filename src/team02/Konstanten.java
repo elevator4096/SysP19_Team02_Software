@@ -12,7 +12,7 @@ public interface Konstanten
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 0.200;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 2.000;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
@@ -36,6 +36,12 @@ public interface Konstanten
 	//Sensor Konstanten 
 	int 	HLC_GRENZWERT_SCHWARZ 	= 100;							// schwarze Linie
 	int 	HLC_GRENZWERT_WEISS 	= 100;							// keine Linie
+	
+	//Sharp Konstanten fuer Lineare Naeherung siehe Sharp_Distanz_Rechner.xlsx
+	double  m_SHARP					= 14249.186;
+	double  n_SHARP					= 9.941;
+	double  k_SHARP					= 18.030;
+	
 
 	//Bezeichner
 	int LINIE_VORNE 						= 0;

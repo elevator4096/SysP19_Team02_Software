@@ -8,7 +8,10 @@ import team02.vorlagen.Fahren;
 public class Test_Fahren implements IO, Konstanten
 {
 	public static long lastTime = Task.time();
-	public static int counter=0; 
+	public static int counter=0;
+	
+	public static double speed = 0;
+	public static double radius =0;
 	
 	public static void test()
 	{
@@ -58,6 +61,36 @@ public class Test_Fahren implements IO, Konstanten
 	public static void dreheUZ()
 	{
 		Fahren.drehe(-Konstanten.TURNING_SPEED);
+	}
+
+	public static void kurveFahren()
+	{
+		Fahren.kurveFahren(radius,speed);
+	}
+	
+	public static void stop()
+	{
+		Fahren.kurveFahren(0.1, 0);
+	}
+	
+	public static void testKurve()
+	{
+		radius = 0.2;
+		int counter =0;
+		long start = Task.time();
+		long last = start;
+		while(start + 15000 > Task.time())
+		{
+			if(Task.time() > last)
+			{
+				speed += 0.001;
+				kurveFahren();
+				last += 100;
+			}
+
+			
+		}
+		stop();
 	}
 
 }

@@ -15,6 +15,7 @@ import java.io.PrintStream;
 public class DebugSystem implements IO
 {
 
+	public static SCI sci1;
     /**
      * Gibt die aktuellen Zustände auf der definierten System.out Schnittstelle aus
      * Auftrag:
@@ -31,7 +32,7 @@ public class DebugSystem implements IO
     private DebugSystem()
     {
 
-            SCI sci1 = SCI.getInstance(SCI.pSCI1);
+            sci1 = SCI.getInstance(SCI.pSCI1);
             sci1.start(9600, SCI.NO_PARITY, (short) 8);
             //Hook SCI1.out on System.out
             System.out = new PrintStream(sci1.out);
@@ -58,6 +59,12 @@ public class DebugSystem implements IO
 
         System.out.println(i);
     }
+    
+    public void println(double d)
+    {
+
+        System.out.println(d);
+    }
 
     public void print(String s)
     {
@@ -77,5 +84,15 @@ public class DebugSystem implements IO
     public void update()
     {
 
+    }
+    
+    public int read()
+    {
+    	try {
+    	return sci1.read();
+    	}catch(Exception e)
+    	{
+    		return -1;
+    	}
     }
 }

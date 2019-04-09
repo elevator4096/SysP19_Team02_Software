@@ -20,7 +20,7 @@ public class Main extends Task implements IO, Systeme
     private Zustand letzter_Zustand;
 
     /**
-     * Initialisieren der Tasks
+     * Initialisieren des Tasks
      */
     static
     {
@@ -55,12 +55,12 @@ public class Main extends Task implements IO, Systeme
         update();
         if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {
-
+            debug.println("Debug aktiv");
         }
 
         if (Konstanten.TEST)
         {
-
+            debug.println("Test aktiv");
         }
 
 
