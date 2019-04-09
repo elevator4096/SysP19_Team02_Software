@@ -6,7 +6,7 @@ package team02.dominique;
 
 import team02.IO;
 
-public class WandErkennung
+public class WandErkennung implements IO
 {
 	
 	public WandErkennung()

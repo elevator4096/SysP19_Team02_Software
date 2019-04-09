@@ -8,7 +8,7 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
 
-public class WurfSystem
+public class WurfSystem implements IO
 {
 
 

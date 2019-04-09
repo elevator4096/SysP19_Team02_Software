@@ -1,10 +1,12 @@
 package team02.testklassen;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import team02.IO;
 import team02.Konstanten;
 import team02.vorlagen.Fahren;
 
-public class Test_Fahren {
+public class Test_Fahren implements IO, Konstanten
+{
 	public static long lastTime = Task.time();
 	public static int counter=0; 
 	
@@ -56,6 +58,11 @@ public class Test_Fahren {
 	public static void dreheUZ()
 	{
 		Fahren.drehe(-Konstanten.TURNING_SPEED);
+	}
+
+	public static void kurveFahren()
+	{
+		Fahren.kurveFahren(0.05,0.05);
 	}
 
 }
