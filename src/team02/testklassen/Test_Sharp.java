@@ -8,6 +8,7 @@ public class Test_Sharp implements IO, Konstanten, Systeme
 {
 	public static void test()
 	{
+		//09.04.19 -> Funktioniert!
 		debug.println(IO.AN_Sharp1.getDistanz());
 	}
 }
