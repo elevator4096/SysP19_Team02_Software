@@ -11,7 +11,7 @@ public class AN_IO implements IO
 {
 	public static void test()
 	{
-
+		printAN_IN(false,0);
 	}
 
     /**

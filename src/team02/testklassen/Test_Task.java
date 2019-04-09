@@ -50,8 +50,9 @@ public class Test_Task extends Task implements IO, Systeme
     	
     	//Test_LinienSensoren.test();
     	
-    	Systeme.wurfSystem.update();
-    	Test_Wurfsystem.test();
+    	//Systeme.wurfSystem.update();
+    	//Test_Wurfsystem.test();
+    	AN_IO.test();
     	
     	
     	
