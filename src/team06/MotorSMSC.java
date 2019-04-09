@@ -25,7 +25,8 @@ public class MotorSMSC {
 		motor = new SpeedController4DCMotor(ts, pwmChannel1, pwmChannel2, useTPUABPWM, encChannel, useTPUAEnc, encTPR,
 				umax, i, kp, tn);
 
-		motor.setDesiredSpeed(2);
+		motor.setDesiredSpeed(0);
+		
 
 		System.out.println("Motor erzeugt");
 
@@ -50,9 +51,10 @@ public class MotorSMSC {
 	/**
 	 * Aktuelle Distanz zurückgeben
 	 */
-	public void gibInkrement() {
+	public int gibInkrement() {
 
-		motor.getActualPosition();
+		
+		return (int)motor.getActualPosition();
 
 	}
 

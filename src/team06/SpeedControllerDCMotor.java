@@ -1,4 +1,4 @@
-package team06.aurelia;
+package team06;
 
 import java.io.PrintStream;
 import java.text.DecimalFormat;

@@ -32,8 +32,25 @@ public class WurfSystem {
 		// Instanzen.sMSC_WurfMotor2.motorstarten();
 	}
 
+	/**
+	 * Ball wird losgelassen
+	 */
+	public void servomotoröffnen() {
+		Instanzen.servoMotor.servoupdate(Variablen.hightTimeoffen);
+	}
+
+	/**
+	 * Ball wird gesperrt
+	 */
+	public void servomotorschliessen() {
+		Instanzen.servoMotor.servoupdate(Variablen.hightTimehalten);
+	}
+
+	/**
+	 * Methode zum testen, funktioniert nicht
+	 */
 	public void gibweg() {
-		
+
 		Instanzen.sMSC_WurfMotor1.gibInkrement();
 
 	}
