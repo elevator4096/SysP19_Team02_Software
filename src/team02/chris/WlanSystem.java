@@ -15,7 +15,7 @@ import team02.ZustandWifi;
 public class WlanSystem implements IO
 {
     private RN131 wifi;
-    private ZustandWifi partnerState;
+    private int partnerState;
     private static WlanSystem wlanSystem;
 
     /**
@@ -58,9 +58,9 @@ public class WlanSystem implements IO
      * Sende ein Integer
      * @param zustandWifi Zustand Welcher gesendet wird
      */
-    public void setOwnState(ZustandWifi zustandWifi)
+    public void setOwnState(int zustandWifi)
     {
-        wifi.cmd.writeCmd(zustandWifi.number);
+        wifi.cmd.writeCmd(zustandWifi);
     }
 
     /**
@@ -68,7 +68,7 @@ public class WlanSystem implements IO
      * Achtund!!! getInt Löscht Integer aus dem RingArray
      * @return gibt Integer aus dem Puffer aus
      */
-    public ZustandWifi getPartnerState()
+    public int getPartnerState()
     {
         return partnerState;
     }
@@ -88,15 +88,7 @@ public class WlanSystem implements IO
         {
             while(wifi.cmd.readCmd() == CmdInt.Type.Cmd)
             {
-                int data =wifi.cmd.getInt();
-                for(ZustandWifi zw: ZustandWifi.values())
-                {
-                    if(zw.number == data)
-                    {
-                        partnerState = zw;
-                        break;
-                    }
-                }
+                partnerState =wifi.cmd.getInt();
             }
         }
     }
