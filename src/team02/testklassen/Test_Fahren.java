@@ -60,4 +60,9 @@ public class Test_Fahren implements IO, Konstanten
 		Fahren.drehe(-Konstanten.TURNING_SPEED);
 	}
 
+	public static void kurveFahren()
+	{
+		Fahren.kurveFahren(0.05,0.05);
+	}
+
 }
