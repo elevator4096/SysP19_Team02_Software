@@ -14,6 +14,7 @@ public class Motor implements IO, Konstanten {
     private TPU_FQD fqd;
     private TPU_PWM pwm;
     private int pwm_time;
+    private boolean inverted = false;
 
 
     /**
@@ -22,10 +23,11 @@ public class Motor implements IO, Konstanten {
      * @param pwm PWM Objekt, welches zum MOtor gehört
      * @param pwm_time pwm_time Periodendauer
      */
-    public Motor(TPU_FQD fqd, TPU_PWM pwm, int pwm_time) {
+    public Motor(TPU_FQD fqd, TPU_PWM pwm, int pwm_time, boolean inverted) {
         this.fqd = fqd;
         this.pwm = pwm;
         this.pwm_time = pwm_time;
+        this.inverted = inverted;
     }
 
     /**
@@ -33,7 +35,8 @@ public class Motor implements IO, Konstanten {
      * @param d Geschwindigkeit in m/s (max 0.213m/s)
      */
     public void updateSpeed(double d) {
-        pwm.update(calculateDutyCycle(d));
+        d = (inverted)? d:-d;
+    	pwm.update(calculateDutyCycle(d));
     }
 
     /**

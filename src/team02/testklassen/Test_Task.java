@@ -8,6 +8,7 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
 import team02.Systeme;
+import team02.vorlagen.Fahren;
 
 /**
  *
@@ -50,7 +51,11 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	//Test_LinienSensoren.test();
     	//debug.println(debug.read());
-    	Test_Sharp.test();
+    	//Test_Sharp.test();
+    	//Test_BewegungsSystem.folgeLinieRueckwaerts();
+    	//Test_Fahren.vorwaerts();
+    	//Test_Motor.setLeftSpeed0();
+    	
     }
 
 }

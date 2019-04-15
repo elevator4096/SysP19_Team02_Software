@@ -81,16 +81,15 @@ public interface IO
 
 
 	//Motoren
-	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren);
-	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren);
+	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,false);
+	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,true);
 
 
 	//LinienSensoren
-	
-	LinienSensor 	LINE_Sensor_Vorne			= new LinienSensor(0,1);
+	LinienSensor 	LINE_Sensor_Hinten			= new LinienSensor(1,0);
 	LinienSensor 	LINE_Sensor_Links			= new LinienSensor(2,3);
 	LinienSensor	LINE_Sensor_Rechts			= new LinienSensor(4,5);
-	LinienSensor 	LINE_Sensor_Hinten			= new LinienSensor(6,7);
+	LinienSensor 	LINE_Sensor_Vorne			= new LinienSensor(6,7);
 	
 	//Debug
 	DebugSystem		 	debug		 				= DebugSystem.getInstance();
