@@ -10,15 +10,6 @@ import team02.Konstanten;
 
 public class Fahren implements IO, Konstanten
 {
-    /**
-     * Auftrag:
-     * Folgende Methode müssen integriert und getestet werden:
-     * -Vorwärts fahren
-     * -Drehen (an ort und stelle)
-     * -Kurve fahren(Radius, BahnGeschwindigkeit) Skizze machen!"*"
-     *
-     * "*"Sehr herausfordernd!
-     */
 
     private static double phi =0;
     private static long impRe, impLi;
@@ -157,7 +148,6 @@ public class Fahren implements IO, Konstanten
     {
     	return (d>=0)? 1:-1;
     }
-    
 
     /**
      * Update Geschwindigkeiten, wenn die Geschwindigkeit sich vom vorherigen Zyklus unterscheiden soll
