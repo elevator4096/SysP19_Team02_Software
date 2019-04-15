@@ -9,7 +9,6 @@ import team02.HalteBedingung;
 import team02.IO;
 import team02.Konstanten;
 import team02.ZustandBewegung;
-import team02.beispiele.Orientierung;
 
 public class BewegungsSystem implements IO
 {
@@ -21,6 +20,8 @@ public class BewegungsSystem implements IO
 	private boolean 		bewegungsRichtung		= false; //vorwaerts 	= true
 	private boolean 		drehRichtung			= false; //GUZ		= true
 	private boolean 		inBewegung 				= false;
+	private double			zielDrehWinkel			= 0.0;
+	private double			zielDistanz				= 0.0;
 
 	private BewegungsSystem()
 	{
@@ -40,33 +41,15 @@ public class BewegungsSystem implements IO
 		}
 		return bewegungsSystem;
 	}
-
+	
     /**
      * kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
      * @param richtung true = vorwaerts
      * @param kreuzungsPos ?
      */
 	public void fahreFreiBisKreuzung(boolean richtung,int kreuzungsPos)
-	{
-		zustandBewegung = ZustandBewegung.FAHRE_FREI;
-		
-		bewegungsRichtung = richtung;
-		
-		switch(kreuzungsPos)
-		{
-		case Konstanten.LINIE_VORNE : 
-			halteBedingung	= HalteBedingung.BIS_KREUZUNG_VORNE;
-			break;
-		case Konstanten.LINIE_MITTE: 
-			halteBedingung	= HalteBedingung.BIS_KREUZUNG_MITTE;
-			break;
-		case Konstanten.LINIE_HINTEN: 
-			halteBedingung	= HalteBedingung.BIS_KREUZUNG_HINTEN;
-			break;
-		default:
-			IO.debug.print("BewegungsSystem: ungueltige kreuzungsPos ");
-			IO.debug.println(kreuzungsPos);
-		}
+	{	
+		setBewegung(ZustandBewegung.FAHRE_FREI, richtung, false, kreuzungsPos, HalteBedingung.BIS_NICHTS,0.0,0.0);
 	}
 
     /**
@@ -74,79 +57,50 @@ public class BewegungsSystem implements IO
      * @param kreuzungsPos ?
      */
 	public void folgeLinieBisKreuzung(boolean richtung,int kreuzungsPos)
-	{
-		zustandBewegung = ZustandBewegung.FOLGE_LINIE;
-		
-		bewegungsRichtung = richtung;
-		
-		switch(kreuzungsPos)
-		{
-		case Konstanten.LINIE_VORNE : 
-			halteBedingung	= HalteBedingung.BIS_KREUZUNG_VORNE;
-			break;
-		case Konstanten.LINIE_MITTE: 
-			halteBedingung	= HalteBedingung.BIS_KREUZUNG_MITTE;
-			break;
-		case Konstanten.LINIE_HINTEN: 
-			halteBedingung	= HalteBedingung.BIS_KREUZUNG_HINTEN;
-			break;
-		default:
-			IO.debug.print("BewegungsSystem: ungueltige kreuzungsPos ");
-			IO.debug.println(kreuzungsPos);
-		}
+	{	
+		setBewegung(ZustandBewegung.FOLGE_LINIE, richtung, false, kreuzungsPos, HalteBedingung.BIS_NICHTS,0.0,0.0);
 	}
 
     /**
-     * ?
+     * folgt Rueckwaerts der Linie bis an Wand angelangt 
      */
 	public void folgeLinieBisWandRueckwaerts()
-	{
-		bewegungsRichtung	= false;
-		zustandBewegung 	= ZustandBewegung.FOLGE_LINIE;
-		halteBedingung		= HalteBedingung.BIS_WAND;
+	{	
+		setBewegung(ZustandBewegung.FOLGE_LINIE, false, false, -1, HalteBedingung.BIS_WAND,0.0,0.0);
 	}
 
     /**
-     * ?
+     * richtet den Roboter gerade an der Wand aus
      */
 	public void richteAnWandAus()
-	{
-		zustandBewegung = ZustandBewegung.RICHTE_AN_WAND_AUS;
-		halteBedingung	= HalteBedingung.BIS_WAND_VORNE;
+	{		
+		setBewegung(ZustandBewegung.RICHTE_AN_WAND_AUS, false, false, -1, HalteBedingung.BIS_WAND_HINTEN,0.0,0.0);
 	}
 
     /**
-     * ?
+     * dreht den Roboter in Korbwurfrichtung
      */
 	public void dreheZuKorb()
 	{
-		drehRichtung	= false;
-		zustandBewegung = ZustandBewegung.DREHE;
-		halteBedingung	= HalteBedingung.BIS_DREHWINKEL_ERREICHT;
+		setBewegung(ZustandBewegung.DREHE, false, drehRichtung, -1, HalteBedingung.BIS_DREHWINKEL_ERREICHT,0.0,Konstanten.DREHWINKEL_KORB);
 	}
 	
-	
-	
-	
 	/**
-     * Distanz
+     * folgt der Linie eine gewisse Distanz
      * @param richtung vorwaerts = true
      * @param distanz
      */
 	public void folgeLinie(boolean richtung, int distanz)
-	{
-		zustandBewegung = ZustandBewegung.FOLGE_LINIE;
-		halteBedingung	= HalteBedingung.BIS_DISTANZ_ERREICHT;
+	{	
+		setBewegung(ZustandBewegung.FOLGE_LINIE, false, false, -1, HalteBedingung.BIS_DISTANZ_ERREICHT,distanz,0.0);
 	}
 	
 	/**
      * Drehe exakt 90 Grad nach rechts auf Linie
      */
 	public void drehe90GradUZ()
-	{
-		drehRichtung 	= false; 
-		zustandBewegung = ZustandBewegung.DREHE;
-		halteBedingung	= HalteBedingung.BIS_LINIE_SENKRECHT;
+	{	
+		setBewegung(ZustandBewegung.DREHE, false, false, -1, HalteBedingung.BIS_LINIE_SENKRECHT,0.0,0.0);
 	}
 	
 	/**
@@ -154,18 +108,23 @@ public class BewegungsSystem implements IO
      */
 	public void drehe90GradGUZ()
 	{
-		drehRichtung 	= true;
-		zustandBewegung = ZustandBewegung.DREHE;
-		halteBedingung	= HalteBedingung.BIS_LINIE_SENKRECHT;
+		setBewegung(ZustandBewegung.DREHE, false, true, -1, HalteBedingung.BIS_LINIE_SENKRECHT,0.0,0.0);
 	}
 	
 	/**
-     * drehe Ungenau in Grad (Gegenuhrzeigersinn positiv!)
+     * drehe Ungenau in UZ
      */
-	public void dreheUngenau(int winkel)
+	public void dreheUngenauUZ(double winkel)
 	{
-		zustandBewegung = ZustandBewegung.DREHE;
-		halteBedingung	= HalteBedingung.BIS_DREHWINKEL_ERREICHT;
+		setBewegung(ZustandBewegung.DREHE, false, false, -1, HalteBedingung.BIS_DREHWINKEL_ERREICHT,0.0,winkel);
+	}
+	
+	/**
+     * drehe Ungenau in GUZ
+     */
+	public void dreheUngenauGUZ(double winkel)
+	{
+		setBewegung(ZustandBewegung.DREHE, false, true, -1, HalteBedingung.BIS_DREHWINKEL_ERREICHT,0.0,winkel);
 	}
 	
 	/**folge Linie in Fahrtrichtung
@@ -229,9 +188,41 @@ public class BewegungsSystem implements IO
 		return false;
 	}
 
+    /**
+     * setzt alle Parameter des gewuenschten Bewegungszustandes
+     */
+	private void setBewegung(ZustandBewegung zustandBewegung, boolean richtung, boolean drehRichtung, int kreuzungsPos, HalteBedingung halteBedingung, double distanz, double drehWinkel)
+	{
+		this.zustandBewegung 	= zustandBewegung;
+		this.bewegungsRichtung 	= richtung;
+		this.drehRichtung		= drehRichtung;
+
+		if (kreuzungsPos != -1) { 
+			switch(kreuzungsPos)
+			{
+			case Konstanten.LINIE_VORNE : 
+				this.halteBedingung	= HalteBedingung.BIS_KREUZUNG_VORNE;
+				break;
+			case Konstanten.LINIE_MITTE: 
+				this.halteBedingung	= HalteBedingung.BIS_KREUZUNG_MITTE;
+				break;
+			case Konstanten.LINIE_HINTEN: 
+				this.halteBedingung	= HalteBedingung.BIS_KREUZUNG_HINTEN;
+				break;
+			default:
+				IO.debug.print("BewegungsSystem: ungueltige kreuzungsPos ");
+				IO.debug.println(kreuzungsPos);
+			}
+		}
+		else
+		{
+			this.halteBedingung = halteBedingung;
+		}
+	}
+
 
     /**
-     * Pr�fe ob der Roboter noch eine Bewegung durchfuehrt
+     * Pruefe ob der Roboter noch eine Bewegung durchfuehrt
      * @return
      */
 	public boolean istInBewegung()

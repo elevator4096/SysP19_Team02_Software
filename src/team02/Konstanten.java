@@ -31,6 +31,8 @@ public interface Konstanten
 	double 	SPANN_ZEIT 				= 0;
 	double 	WURF_ZEIT 				= 1000;
 	
+	double DREHWINKEL_KORB			= (15/180)*Math.PI;
+	
 	
 	
 	//Sensor Konstanten 

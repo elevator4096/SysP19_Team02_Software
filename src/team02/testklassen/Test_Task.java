@@ -15,8 +15,6 @@ import team02.vorlagen.Fahren;
  */
 public class Test_Task extends Task implements IO, Systeme, Konstanten
 {
-
-	int x =0;
     static
     {
         try
@@ -57,10 +55,9 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Fahren.vorwaerts();
     	//Test_Motor.setLeftSpeed0();
     	
-    	wlanSystem.setOwnState(2);
-    	wlanSystem.update();
-    	debug.println(wlanSystem.getPartnerState());
-    	x++;
+    	//wlanSystem.setOwnState(2);
+    	//wlanSystem.update();
+    	//debug.println(wlanSystem.getPartnerState());
     }
 
 }
