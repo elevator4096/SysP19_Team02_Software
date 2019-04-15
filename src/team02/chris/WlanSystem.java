@@ -39,6 +39,10 @@ public class WlanSystem implements IO
         }
     }
 
+    /**
+     * Statische Methode um WlanSystem Singleton zu erstelllen
+     * @return WlanSystem
+     */
     public static WlanSystem getInstance()
     {
         if(wlanSystem==null)
@@ -77,6 +81,9 @@ public class WlanSystem implements IO
         return partnerState;
     }
 
+    /**
+     * Wird benoetigt um die anderen Methoden aufzurufen
+     */
     public static void update()
     {
         getData();
@@ -84,6 +91,9 @@ public class WlanSystem implements IO
         sendHeartbeat();
     }
 
+    /**
+     * Aktuellen Zustand aus dem Array auslesen
+     */
     private static void getData()
     {
 
@@ -107,7 +117,10 @@ public class WlanSystem implements IO
         	partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
         }
     }
-    
+
+    /**
+     * Zyklisch den Zustand senden
+     */
     private static void sendData()
     {
     	if(lastTasktime +1000 < Task.time())
@@ -116,7 +129,10 @@ public class WlanSystem implements IO
     		lastTasktime = Task.time();
     	}
     }
-    
+
+    /**
+     * Heartbeat senden
+     */
     private static void sendHeartbeat()
     {
     	wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
