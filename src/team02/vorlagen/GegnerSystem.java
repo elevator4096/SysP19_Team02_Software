@@ -10,12 +10,14 @@ import team02.Konstanten;
 
 public class GegnerSystem implements IO
 {
+	private boolean gegner_re,gegner_li,gegner_vo;
 
 	private static GegnerSystem gegnerSystem;
 	
 	private GegnerSystem()
 	{
 		QADC_AIN.init(false);
+		resetGegnerErkennung();
 	}
 
 	public static GegnerSystem getInstance()
@@ -32,7 +34,9 @@ public class GegnerSystem implements IO
 	 **/
 	public void resetGegnerErkennung()
 	{
-		
+		gegner_li = false;
+		gegner_re = false;
+		gegner_vo = false;
 	}
 	
 	/**
@@ -41,7 +45,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean warGegnerVorne()
 	{
-		return true;
+		return gegner_vo;
 	}
 	
 	/**
@@ -50,7 +54,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean warGegnerLinks()
 	{
-		return true;
+		return gegner_li;
 	}
 	
 	/**
@@ -59,7 +63,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean warGegnerRechts()
 	{
-		return true;
+		return gegner_re;
 	}
 	
 	/**
@@ -77,7 +81,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean istGegnerLinks()
 	{
-		return true;
+		return (AN_Sharp2.getDistanz() < 0.06);
 	}
 	
 	/**
@@ -86,34 +90,23 @@ public class GegnerSystem implements IO
 	 */
 	public boolean istGegnerRechts()
 	{
-		return true;
+		return (AN_Sharp1.getDistanz() < 0.06);
 	}
 	
 
 	public void update()
 	{
-
-	}
-
-	/**
-	 * Testmethode die vom Testtask aufgerufen wird
-	 * @author Chris
-	 */
-	public void test()
-	{
-		if(Konstanten.TEST)
+		if(istGegnerLinks())
 		{
-			update();
-			int i = QADC_AIN.read(false,1);
-			int x = (int)AN_Sharp1.getDistanz();
-			debug.println(i);
-			debug.println(x);
+			gegner_li = true;
 		}
-		else
+		if(istGegnerRechts())
 		{
-			debug.println("Test nicht aktiv");
+			gegner_re = true;
+		}
+		if(istGegnerVorne())
+		{
+			gegner_vo = true;
 		}
 	}
-
-
 }
