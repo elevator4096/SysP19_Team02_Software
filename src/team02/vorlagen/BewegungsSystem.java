@@ -9,6 +9,7 @@ import team02.HalteBedingung;
 import team02.IO;
 import team02.Konstanten;
 import team02.ZustandBewegung;
+import team02.dominique.*;
 
 public class BewegungsSystem implements IO
 {
@@ -126,50 +127,7 @@ public class BewegungsSystem implements IO
 	{
 		setBewegung(ZustandBewegung.DREHE, false, true, -1, HalteBedingung.BIS_DREHWINKEL_ERREICHT,0.0,winkel);
 	}
-	
-	/**folge Linie in Fahrtrichtung
-	 * 
-	 * @param fahrtRichtung
-	 */
-	public void folgeLinie(boolean fahrtRichtung)
-	{
-		if (fahrtRichtung)
-		{
-			//Vorwaertsfahrt
-			if (IO.LINE_Sensor_Vorne.istLinieLinks())
-			{
-				//Korrigiere im GegenUhrzeigersinn
-				Fahren.KorrekturKurve(fahrtRichtung, true);
-			}
-			else if (IO.LINE_Sensor_Vorne.istLinieRechts())
-			{
-				//Korrigiere im Uhrzeigersinn
-				Fahren.KorrekturKurve(fahrtRichtung, false);
-			}
-			else
-			{
-				Fahren.geradeaus(Konstanten.DRIVING_SPEED);
-			}
-		}
-		else
-		{
-			//Rueckwaertsfahrt
-			if (IO.LINE_Sensor_Hinten.istLinieLinks())
-			{
-				//Korrigiere im Uhrzeigersinn
-				Fahren.KorrekturKurve(fahrtRichtung, false);
-			}
-			else if (IO.LINE_Sensor_Hinten.istLinieRechts())
-			{
-				//Korrigiere im GegenUhrzeigersinn
-				Fahren.KorrekturKurve(fahrtRichtung, true);
-			}
-			else
-			{
-				Fahren.geradeaus(-Konstanten.DRIVING_SPEED);
-			}
-		}
-	}
+
 
     /**
      * setzt alle Parameter des gewuenschten Bewegungszustandes
@@ -217,6 +175,53 @@ public class BewegungsSystem implements IO
 	}
 
 
+	
+	
+	
+	/**folge Linie in Fahrtrichtung
+	 * 
+	 * @param fahrtRichtung
+	 */
+	public void folgeLinie(boolean fahrtRichtung)
+	{
+		if (fahrtRichtung)
+		{
+			//Vorwaertsfahrt
+			if (IO.LINE_Sensor_Vorne.istLinieLinks())
+			{
+				//Korrigiere im GegenUhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, true);
+			}
+			else if (IO.LINE_Sensor_Vorne.istLinieRechts())
+			{
+				//Korrigiere im Uhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, false);
+			}
+			else
+			{
+				Fahren.geradeaus(Konstanten.DRIVING_SPEED);
+			}
+		}
+		else
+		{
+			//Rueckwaertsfahrt
+			if (IO.LINE_Sensor_Hinten.istLinieLinks())
+			{
+				//Korrigiere im Uhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, false);
+			}
+			else if (IO.LINE_Sensor_Hinten.istLinieRechts())
+			{
+				//Korrigiere im GegenUhrzeigersinn
+				Fahren.KorrekturKurve(fahrtRichtung, true);
+			}
+			else
+			{
+				Fahren.geradeaus(-Konstanten.DRIVING_SPEED);
+			}
+		}
+	}
+	
     /**
      * Pruefe ob der Roboter noch eine Bewegung durchfuehrt
      * @return
@@ -254,13 +259,62 @@ public class BewegungsSystem implements IO
 		*/	
 			
 		case BIS_WAND:
+			return WandErkennung.istWandIrgendwo();
 			
+		case BIS_WAND_HINTEN:
+			return WandErkennung.istWandVorne();
+		
+		case BIS_WAND_LINKS:
+			return WandErkennung.istWandLinks();
+		
+		case BIS_WAND_RECHTS:
+			return WandErkennung.istWandRechts();
+		
+		case BIS_NICHTS:
+			return true;
 			
 		default:
 			IO.debug.print("BewegungsSystem: nicht implementierte Haltebedingung!");
 		}
 		
 		return false;
+	}
+	
+	private void bewege()
+	{
+		switch(zustandBewegung)
+		{
+		case FAHRE_FREI:
+			Fahren.geradeaus(Konstanten.DRIVING_SPEED);
+			break;
+		case FOLGE_LINIE:
+			folgeLinie(bewegungsRichtung);
+			break;			
+		case DREHE:
+			Fahren.drehe(Konstanten.TURNING_SPEED*(drehRichtung? 1:-1) );
+			break;		
+		case STOP:
+			Fahren.stop();
+			break;
+		case RICHTE_AN_KORB_AUS:
+			Fahren.drehe(Konstanten.TURNING_SPEED*(drehRichtung? 1:-1) );
+			break;
+		//TODO: Implementieren ;-)	
+		case RICHTE_AN_WAND_AUS:
+			if(!WandErkennung.istWandLinks()) {
+				//Fahren.kurveFahren(radius, bahnGeschw);
+			}
+			else {
+				//Fahren.kurveFahren(radius, bahnGeschw);
+			}
+			break;
+		
+		
+		
+			
+		default:
+			IO.debug.print("BewegungsSystem: nicht implementierter Zustand!");
+		}
 	}
 	
 	/**
@@ -271,16 +325,13 @@ public class BewegungsSystem implements IO
 	{
 		Fahren.update();
 		
-		if (istInBewegung())
+		if (istHalteBedingungErfuellt())
 		{
-			if (istHalteBedingungErfuellt())
-			{
-				inBewegung 		= false;
-				zustandBewegung = ZustandBewegung.STOP;
-				halteBedingung 	= HalteBedingung.BIS_NICHTS;
-				Fahren.stop();
-			}
+			inBewegung 		= false;
+			zustandBewegung = ZustandBewegung.STOP;
+			halteBedingung 	= HalteBedingung.BIS_NICHTS;
 		}
+		bewege();
 		
 	}
 	
