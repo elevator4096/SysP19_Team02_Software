@@ -15,6 +15,7 @@ import team02.Systeme;
 public class Test_Task extends Task implements IO, Systeme, Konstanten
 {
 
+	int x =0;
     static
     {
         try
@@ -44,13 +45,10 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
         gegnerSystem.test();
         debugSystem.update();
         */
-    	
-    	//DIG_IO.test();
-    	
-    	
-    	//Test_LinienSensoren.test();
-    	//debug.println(debug.read());
-    	Test_Sharp.test();
+    	wlanSystem.setOwnState(2);
+    	wlanSystem.update();
+    	debug.println(wlanSystem.getPartnerState());
+    	x++;
     }
 
 }
