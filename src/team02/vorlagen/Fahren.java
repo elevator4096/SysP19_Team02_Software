@@ -63,25 +63,26 @@ public class Fahren implements IO, Konstanten
     }
 
     /**
-     * Fahre Kurve
-     * @param radius	 (positiv = UZ, negativ = GUZ)
-     * @param v (positiv = vorwaerts, negativ = rueckwaerts)
-     */
-    public static void kurveFahren(double radius, double v)
-    {
-        double vr;      //Rechte Bahngeschwindigkeit
-    	double vl;      //Linke Bahngeschwindigkeit
-        double a = Konstanten.WHEEL_DISTANCE/2;
-
-
-        if(Math.abs(radius) <= 0.0001)
-        {
-            vr = v;
-            vl = -v;
-        }else {
-            vr = (v * (radius + a)) / radius;
-            vl = (v * (radius - a)) / radius;
-        }
+    * Fahre Kurve
+    * @param radius	 (positiv = GUZ, negativ = UZ)
+    * @param bahnGeschw (positiv = vorwaerts, negativ = rueckwaerts)
+    */
+   public static void kurveFahren(double radius, double bahnGeschw)
+   {
+	   double a = WHEEL_DISTANCE/2.0;
+	   	if (Math.abs(radius)<0.001)
+	   	{
+	   		//DebugSystem.println("Kurve mit Radius kleiner 0.001m nicht erlaubt!");
+	   		return;
+	   	}
+	   	
+	   	double w = bahnGeschw/Math.abs(radius);
+	   	
+	   	double rRechts = Math.abs( radius + a*signum(w));
+	   	double rLinks  = Math.abs( radius - a*signum(w));
+	   	
+	   	double vr = w*rRechts;
+	   	double vl  = w*rLinks ;
 
         if(vr>Konstanten.MAX_SPEED)
         {
@@ -150,6 +151,11 @@ public class Fahren implements IO, Konstanten
         MOTOR_rechts.setEncPos(0);
         impLi = 0;
         impRe = 0;
+    }
+    
+    private static double signum(double d)
+    {
+    	return (d>=0)? 1:-1;
     }
     
 
