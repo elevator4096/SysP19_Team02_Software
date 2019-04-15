@@ -170,23 +170,6 @@ public class BewegungsSystem implements IO
 			}
 		}
 	}
-	
-	private boolean istHalteBedingungErfuellt()
-	{
-		switch(halteBedingung)
-		{
-		case BIS_KREUZUNG_VORNE:
-			return IO.LINE_Sensor_Vorne.istLinieVorne(); 
-		case BIS_KREUZUNG_MITTE:
-			return IO.LINE_Sensor_Rechts.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();
-		case BIS_KREUZUNG_HINTEN:
-			return IO.LINE_Sensor_Hinten.istLinieVorne();
-		default:
-			IO.debug.print("BewegungsSystem: nicht implementierte Haltebedingung!");
-		}
-		
-		return false;
-	}
 
     /**
      * setzt alle Parameter des gewuenschten Bewegungszustandes
@@ -196,6 +179,19 @@ public class BewegungsSystem implements IO
 		this.zustandBewegung 	= zustandBewegung;
 		this.bewegungsRichtung 	= richtung;
 		this.drehRichtung		= drehRichtung;
+		
+		this.zielDistanz		= Fahren.getDistanz() + distanz    *(richtung    ? 1:-1);
+		this.zielDrehWinkel		= Fahren.getPhi()	  + drehWinkel *(drehRichtung? 1:-1);
+		
+		if (this.zielDrehWinkel < 0)
+		{
+			this.zielDrehWinkel += 2*Math.PI;
+		}
+		
+		if (this.zielDrehWinkel >= 2*Math.PI)
+		{
+			this.zielDrehWinkel -= 2*Math.PI;
+		}
 
 		if (kreuzungsPos != -1) { 
 			switch(kreuzungsPos)
@@ -228,6 +224,43 @@ public class BewegungsSystem implements IO
 	public boolean istInBewegung()
 	{
 		return inBewegung;
+	}
+	
+	
+	private boolean istHalteBedingungErfuellt()
+	{
+		switch(halteBedingung)
+		{
+		case BIS_KREUZUNG_VORNE:
+			return IO.LINE_Sensor_Vorne.istLinieVorne(); 
+		case BIS_KREUZUNG_MITTE:
+			return IO.LINE_Sensor_Rechts.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();
+		case BIS_KREUZUNG_HINTEN:
+			return IO.LINE_Sensor_Hinten.istLinieVorne();
+		
+		case BIS_DISTANZ_ERREICHT:
+			return  ( bewegungsRichtung && Fahren.getDistanz()>=zielDistanz ) || ( !bewegungsRichtung && Fahren.getDistanz()<=zielDistanz ); 
+
+		//TODO: FUNKTIONIERT NICHT FUER UEBERGANG 0/2PI !!!
+		case BIS_DREHWINKEL_ERREICHT:
+			return  ( ( drehRichtung && Fahren.getPhi()>=zielDrehWinkel ) || ( !drehRichtung && Fahren.getPhi()<=zielDrehWinkel ) ); 
+		
+		/*TODO:	Muss auf Drehrichtung angepasst werden!
+		case BIS_LINIE_SENKRECHT:
+			return IO.LINE_Sensor_Rechts.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();
+			
+		case BIS_LINIE_WAAGERECHT:
+			return IO.LINE_Sensor_Vorne.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();		
+		*/	
+			
+		case BIS_WAND:
+			
+			
+		default:
+			IO.debug.print("BewegungsSystem: nicht implementierte Haltebedingung!");
+		}
+		
+		return false;
 	}
 	
 	/**

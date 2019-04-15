@@ -11,7 +11,8 @@ import team02.Konstanten;
 public class Fahren implements IO, Konstanten
 {
 
-    private static double phi =0;
+    private static double phi 		= 0;
+    private static double distanz 	= 0;
     private static long impRe, impLi;
 
     private static Fahren fahren;
@@ -119,7 +120,17 @@ public class Fahren implements IO, Konstanten
         MOTOR_links .updateSpeed(0);
         MOTOR_rechts.updateSpeed(0);
     }
-
+    
+    public static double getPhi()
+    {
+    	return phi;
+    }
+    
+    public static double getDistanz()
+    {
+    	return distanz;
+    }    
+    
     /**
      * Berechne den aktuellen Winkel gegenüber der x-Achse
      */
@@ -136,6 +147,14 @@ public class Fahren implements IO, Konstanten
         phi += deltaphi;
     }
 
+    /**
+     * Berechne zurueckgelegte Distanz
+     */
+    public static void calcDistanz()
+    {
+        distanz = (MOTOR_links.getEncPos() + MOTOR_rechts.getEncPos())/2;
+    }
+    
     public static void set0()
     {
         MOTOR_links.setEncPos(0);
