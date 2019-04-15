@@ -17,7 +17,7 @@ public class WlanSystem implements IO
 {
     private static RN131 wifi;
     private static long lastTasktime;
-    private static int partnerState = -1;
+    private static int partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
     private static int ownState;
     private static WlanSystem wlanSystem;
 
@@ -30,7 +30,8 @@ public class WlanSystem implements IO
         try {
             SCI sci = SCI.getInstance(SCI.pSCI2);
             sci.start(115200, SCI.NO_PARITY, (short) 8);
-            wifi = new RN131(sci.in, sci.out, new MPIOSM_DIO(11, true));
+            wifi = new RN131(sci.in, sci.out, OUT_Reset_Wlan);
+            debug.println("Wlan erstellt!");
         }
         catch (Exception e)
         {
@@ -90,7 +91,7 @@ public class WlanSystem implements IO
         //die Methode getPartnerState geholt werden
         if(wifi.connected())
         {
-        	if(partnerState==-1)
+        	if(partnerState==ZustandWifi.NO_ROUTER_CONNECTION)
         	{
         		partnerState=0;
         	}
@@ -103,7 +104,7 @@ public class WlanSystem implements IO
             	}
             }
         }else {
-        	partnerState = -1;
+        	partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
         }
     }
     
@@ -118,7 +119,7 @@ public class WlanSystem implements IO
     
     private static void sendHeartbeat()
     {
-    	wifi.cmd.writeCmd(-2);
+    	wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
     }
   
 }
