@@ -12,12 +12,6 @@ public class GegnerSystem implements IO
 {
 
 	private static GegnerSystem gegnerSystem;
-	/**
-     * diagrammDummy erzeugt k�nstlich Abhaengigkeiten fuer Klassendiagramm
-     * */
-	protected void diagrammDummy(Sharp sharp)
-	{
-	}
 	
 	private GegnerSystem()
 	{

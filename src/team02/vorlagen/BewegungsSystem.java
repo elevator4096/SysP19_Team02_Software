@@ -41,16 +41,6 @@ public class BewegungsSystem implements IO
 		return bewegungsSystem;
 	}
 
-	
-	/**
-     * diagrammDummy erzeugt k�nstlich Abhaengigkeiten fuer Klassendiagramm
-     */
-	protected void diagrammDummy()
-	{
-		Orientierung 	orientierung 	;
-		Fahren 			fahren 			;
-	}
-
     /**
      * kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
      * @param richtung true = vorwaerts
