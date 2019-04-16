@@ -33,9 +33,14 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 
     public void action()
     {
+    	/*
     	wlanSystem.setOwnState(ZustandWifi.FAHREN);
     	wlanSystem.update();
     	debug.println(wlanSystem.getPartnerState());
+    	*/
+    	
+    	Fahren.kurveFahren(Konstanten.WHEEL_DISTANCE/2, Konstanten.DRIVING_SPEED);
+    	
     }
     
     /*old Tests
@@ -46,7 +51,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 
      	Fahren.kurveFahren(Konstanten.WHEEL_DISTANCE, 0.1);
 
-     	/*
+     	
     	wlanSystem.setOwnState(2);
     	wlanSystem.update();
     	debug.println(wlanSystem.getPartnerState());
@@ -54,6 +59,6 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 
      	//IO.MOTOR_links.updateSpeed(0.1);		
      		
-     */
+     
 
 }

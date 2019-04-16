@@ -100,7 +100,7 @@ public class Fahren implements IO, Konstanten
             vr = (vr*(radius+2*a))/radius;
         }
 
-
+        //debug.print("Motor Speeds: ");debug.print(vl);debug.print(" ");debug.println(vr);
         MOTOR_links.updateSpeed(vl);
         MOTOR_rechts.updateSpeed(vr);
     }
