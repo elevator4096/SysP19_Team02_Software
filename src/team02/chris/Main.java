@@ -280,10 +280,9 @@ public class Main extends Task implements IO, Systeme
     private void update()
     {
     	IO.debug.update();
-    	
+        Systeme.wlanSystem.update();
         Systeme.bewegungsSystem.update();
         Systeme.gegnerSystem.update();
-        Systeme.wlanSystem.update();
         Systeme.wurfSystem.update();
     }
 }
