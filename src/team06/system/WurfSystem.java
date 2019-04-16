@@ -9,6 +9,7 @@ import team06.Instanzen;
 import team06.Variablen;
 
 public class WurfSystem {
+	private static int x =0;
 
 	public WurfSystem() {
 
@@ -51,14 +52,16 @@ public class WurfSystem {
 	 */
 	public void gibweg() {
 
+		if(x%5==0) {
 		System.out.print("Motor 1     >");
 		System.out.println(Instanzen.sMSC_WurfMotor1.gibInkrement());
 		System.out.print("Motor 2     >");
 		System.out.println(Instanzen.sMSC_WurfMotor2.gibInkrement());
-		
+		}
 		if(Instanzen.sMSC_WurfMotor2.gibInkrement() == 5) {
 			setdrehzahl(0);
 		}
+		x++;
 
 	}
 
