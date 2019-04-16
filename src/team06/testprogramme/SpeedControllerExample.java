@@ -18,9 +18,10 @@ public class SpeedControllerExample extends Task {
 	protected static final float tn = 0.01f;
 	/* Ticks per rotation from encoder datasheet */
 	protected static final int ticksPerRotation = 64;
-	protected static final float gearRatio = 1;//3249f / 196f
+	protected static final float gearRatio = 3249f / 196f;
 	protected static final float motorVoltage = 12f;
 	static SpeedController4DCMotor motor;
+	
 	
 	
 	
@@ -30,7 +31,8 @@ public class SpeedControllerExample extends Task {
 
 	
 		motor.run();
-		
+		//System.out.println(motor.getActualPosition());
+		//System.out.println("static start");
 	}
 
 	static {
@@ -40,7 +42,8 @@ public class SpeedControllerExample extends Task {
 		// Set desired speed
         // full turn once per second
 		
-		motor.setDesiredSpeed(0);
+		motor.setDesiredSpeed((float)(Math.PI));
+		//motor.setDesiredSpeed((float)(0));
 		
 		
         // Initialize task
@@ -48,10 +51,10 @@ public class SpeedControllerExample extends Task {
 		t.period = (int) (ts * 1000);
 		Task.install(t);
 
-		/*SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
 		sci1.start(9600, SCI.NO_PARITY, (short) 8);
 
 		System.out = new PrintStream(sci1.out);
-		System.out.println("static start");*/
+		System.out.println("static start");
 	}
 }

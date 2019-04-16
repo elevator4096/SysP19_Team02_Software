@@ -20,7 +20,7 @@ public class Instanzen {
 
 	public static MotorSMSC sMSC_FahrMotorlinks;
 	public static MotorSMSC sMSC_FahrMotorrechts;
-	
+
 	public static PWM_Servo servoMotor;
 
 	public static IRSensor iRSensor;
@@ -28,28 +28,27 @@ public class Instanzen {
 	public static Endschalter endSchalter1;
 	public static Endschalter endSchalter2;
 
-	public static WlanSystem wlanSystem;
 	public static WurfSystem wurfSystem;
 	public static FahrSystem fahrSystem;
 	public static OrientierSystem orientierSystem;
 
+	public static TaskMotor taskMotor;
+
 	public Instanzen() {
 
+		taskMotor = new TaskMotor();
+
 		// Motoren Wurfsysten erzeugen TPUA
-		sMSC_WurfMotor1 = new MotorSMSC(Variablen.PERIOD_SMSC, 4, 5, true, 6, true, 64, 12f, 3249f / 196f, 1f, 0.1f); // frequenz
-																														// an
-																														// task
-																														// anpassen
-																														// (1.zahl)
-//		sMSC_WurfMotor2 = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f, 1f,
-//				0.01f); // frequenz an task anpassen (1.zahl)
+		sMSC_WurfMotor1 = new MotorSMSC(Variablen.ts, 4, 5, true, 6, true, 64, 12f, 3249f / 196f, 1f, 0.01f);
+		sMSC_WurfMotor2 = new MotorSMSC(Variablen.ts, 8, 9, true, 10, true, 64, 12f, 3249f / 196f, 1f, 0.01f);
+
 //
 //		// Motoren Fahrsystem erzeugen
 //		sMSC_FahrMotorlinks = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f,
 //				1f, 0.01f); // frequenz an task anpassen (1.zahl)
 //		sMSC_FahrMotorrechts = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f,
 //				1f, 0.01f); // frequenz an task anpassen (1.zahl)
-		
+
 		// PWM_Servo TPU
 		servoMotor = new PWM_Servo(false, 4, Variablen.pwmPeriod, Variablen.hightTimehalten);
 
@@ -61,7 +60,6 @@ public class Instanzen {
 		endSchalter2 = new Endschalter(7, false); // false für input
 
 		// Wurfsystem erzeugen
-		wlanSystem = new WlanSystem();
 		wurfSystem = new WurfSystem();
 		// fahrSystem = new FahrSystem();
 		orientierSystem = new OrientierSystem();
