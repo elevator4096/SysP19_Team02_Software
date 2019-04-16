@@ -55,9 +55,15 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Fahren.vorwaerts();
     	//Test_Motor.setLeftSpeed0();
     	
+    	//Test_Motor.setLeftSpeed50();
+    	
     	//wlanSystem.setOwnState(2);
     	//wlanSystem.update();
     	//debug.println(wlanSystem.getPartnerState());
+    	//debug.println("Hallo");
+    	
+    	Test_Fahren.dreheGUZ();
+    	
     }
 
 }

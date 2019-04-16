@@ -15,6 +15,7 @@ public class Test_Fahren implements IO, Konstanten
 	
 	public static void test()
 	{
+		/*
 		if (Task.time() > lastTime+5000)
 		{
 			counter++;
@@ -38,7 +39,7 @@ public class Test_Fahren implements IO, Konstanten
 			
 			lastTime = Task.time();
 		}
-		
+		*/
 		Fahren.update();
 		
 	}
