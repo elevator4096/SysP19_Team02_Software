@@ -21,10 +21,18 @@ public class SpeedControllerExample extends Task {
 	protected static final float gearRatio = 3249f / 196f;
 	protected static final float motorVoltage = 12f;
 	static SpeedController4DCMotor motor;
+	
+	
+	
+	
+	public static int x =0;
 
 	public void action() {
+
+	
 		motor.run();
-		System.out.println(motor.getActualSpeed());
+		//System.out.println(motor.getActualPosition());
+		//System.out.println("static start");
 	}
 
 	static {
@@ -33,7 +41,11 @@ public class SpeedControllerExample extends Task {
 				motorVoltage, gearRatio, kp, tn);
 		// Set desired speed
         // full turn once per second
-		motor.setDesiredSpeed((float)0);
+		
+		motor.setDesiredSpeed((float)(Math.PI));
+		//motor.setDesiredSpeed((float)(0));
+		
+		
         // Initialize task
 		Task t = new SpeedControllerExample();
 		t.period = (int) (ts * 1000);

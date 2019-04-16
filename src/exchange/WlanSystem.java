@@ -3,7 +3,7 @@
  * @version 2019.03.13
  */
 
-package team02.chris;
+package exchange;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
@@ -11,7 +11,6 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
 import team02.IO;
-import team02.ZustandWifi;
 
 public class WlanSystem implements IO
 {
@@ -20,17 +19,18 @@ public class WlanSystem implements IO
     private static int partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
     private static int ownState;
     private static WlanSystem wlanSystem;
+    
 
     /**
      * Konstruktor für die Wlan Verbindung
      *
      */
-    private WlanSystem()
+    private WlanSystem(MPIOSM_DIO reset)
     {
         try {
             SCI sci = SCI.getInstance(SCI.pSCI2);
             sci.start(115200, SCI.NO_PARITY, (short) 8);
-            wifi = new RN131(sci.in, sci.out, OUT_Reset_Wlan);
+            wifi = new RN131(sci.in, sci.out, reset);
             debug.println("Wlan erstellt!");
         }
         catch (Exception e)
@@ -43,11 +43,11 @@ public class WlanSystem implements IO
      * Statische Methode um WlanSystem Singleton zu erstelllen
      * @return WlanSystem
      */
-    public static WlanSystem getInstance()
+    public static WlanSystem getInstance(MPIOSM_DIO reset)
     {
         if(wlanSystem==null)
         {
-            wlanSystem = new WlanSystem();
+            wlanSystem = new WlanSystem(reset);
         }
         return wlanSystem;
     }
@@ -137,5 +137,4 @@ public class WlanSystem implements IO
     {
     	wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
     }
-  
 }

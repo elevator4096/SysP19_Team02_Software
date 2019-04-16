@@ -35,7 +35,8 @@ public class Variablen {
 	// Task Zeit
 	public static int TASK_PERIOD = 100;
 	public static int TASK_PERIOD_WlAN = 500;
-	public static int PERIOD_SMSC = TASK_PERIOD / 1000;
+	public static float ts = 0.001f;
+	public static float TASK_PERIOD_MOTOR = Variablen.ts*1000;
 
 	// BodenSensor Wert
 	public static int aufliniemin = 100; // Wert anpassen

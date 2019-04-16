@@ -29,7 +29,7 @@ public class WurfSystem {
 	 */
 	public void motorstarten() {
 		Instanzen.sMSC_WurfMotor1.motorstarten();
-		// Instanzen.sMSC_WurfMotor2.motorstarten();
+		Instanzen.sMSC_WurfMotor2.motorstarten();
 	}
 
 	/**
@@ -51,7 +51,14 @@ public class WurfSystem {
 	 */
 	public void gibweg() {
 
-		Instanzen.sMSC_WurfMotor1.gibInkrement();
+		System.out.print("Motor 1     >");
+		System.out.println(Instanzen.sMSC_WurfMotor1.gibInkrement());
+		System.out.print("Motor 2     >");
+		System.out.println(Instanzen.sMSC_WurfMotor2.gibInkrement());
+		
+		if(Instanzen.sMSC_WurfMotor2.gibInkrement() == 5) {
+			setdrehzahl(0);
+		}
 
 	}
 

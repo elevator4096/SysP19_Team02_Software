@@ -8,7 +8,6 @@ import java.io.PrintStream;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team06.system.WlanSystem;
 import team06.system.WurfSystem;
 import team06.aurelia.*;
 
@@ -33,9 +32,6 @@ public class Main extends Task {
 	 * Methode, die zyklisch aufgerufen wird
 	 */
 	public void action() {
-
-		Instanzen.wurfSystem.motorstarten();
-		// Instanzen.fahrSystem.motorstarten();
 		Instanzen.wurfSystem.gibweg();
 	}
 
@@ -124,14 +120,15 @@ public class Main extends Task {
 	 * Task initialisieren/ SCI_OUT
 	 */
 	static {
-		try {
-			task = new Main();
-			task.period = Variablen.TASK_PERIOD;
-			Task.install(task);
+		
+		task = new Main();
+		task.period = Variablen.TASK_PERIOD;
+		Task.install(task);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short) 8);
+		// Hook SCI1.out on System.out
+		System.out = new PrintStream(sci1.out);
 
 		System.out.println("Main Static gestartet");
 
