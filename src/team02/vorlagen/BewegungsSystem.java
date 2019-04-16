@@ -166,8 +166,6 @@ public class BewegungsSystem implements IO
 
 
 	
-	
-	
 	/**folge Linie in Fahrtrichtung
 	 * 
 	 * @param fahrtRichtung
