@@ -3,6 +3,7 @@ package team02.testklassen;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Systeme;
+import team02.vorlagen.*;
 
 public class Test_Wurfsystem implements IO
 {
@@ -19,11 +20,11 @@ public class Test_Wurfsystem implements IO
 			switch(counter)
 			{
 			case 1:
-				Systeme.wurfSystem.zylinderSpannen(95);
+				Systeme.wurfSystem.zylinderSpannen(70);
 				IO.debug.println("Wurfsystem Fall 1");
 				break;
 			case 2:
-				Systeme.wurfSystem.zylinderSpannen(40);
+				Systeme.wurfSystem.zylinderSpannen(50);
 				IO.debug.println("Wurfsystem Fall 2");
 				break;
 			case 3:
@@ -39,6 +40,7 @@ public class Test_Wurfsystem implements IO
 			lastTime = Task.time();
 		}
 		
+		Systeme.wurfSystem.update();
 		
 		
 	}	
