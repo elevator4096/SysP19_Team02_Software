@@ -9,7 +9,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-import team02.chris.WlanSystem;
+import exchange.WlanSystem;
 import team02.vorlagen.*;
 
 

@@ -1,6 +1,6 @@
-package team02;
+package exchange;
 
-public interface ZustandWifi
+public interface ZustandWifi 
 {
     int WURF_BEREIT =0;
     int FANG_BEREIT=1;

@@ -8,8 +8,9 @@ package team02.beispiele;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
+import team02.IO;
 
-public class Motor extends Task
+public class Motor extends Task implements IO
 {
 	static final boolean TPU_A = true;
 	static final int TPU_PWM_CH0 = 0;
@@ -25,7 +26,7 @@ public class Motor extends Task
 	static final float motorVoltage = 12f;
 	
 	static OutputStream stream;
-	static SpeedController4DCMotor motor;
+	public static SpeedController4DCMotor motor;
 	
 	static int z=0;
 	
