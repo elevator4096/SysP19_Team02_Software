@@ -2,14 +2,15 @@
  * @Author Phil
  * @version 2019.03.26
  */
-package team06;
+package team06.aurelia;
 
 import java.io.PrintStream;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import team06.system.WurfSystem;
-import team06.aurelia.*;
+import team06.Instanzen;
+import team06.Variablen;
+
 import static team06.aurelia.Zustand.*;
 
 public class Main extends Task {
