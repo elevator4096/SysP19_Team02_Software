@@ -36,6 +36,7 @@ public class DebugSystem implements IO
             sci1.start(9600, SCI.NO_PARITY, (short) 8);
             //Hook SCI1.out on System.out
             System.out = new PrintStream(sci1.out);
+            System.err = System.out;
             System.out.println("Debug System Aktiv!");
     }
 

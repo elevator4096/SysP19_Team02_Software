@@ -8,13 +8,18 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.IO;
 import team02.Konstanten;
 import team02.Systeme;
+import team02.chris.WlanSystem;
+import team02.vorlagen.DebugSystem;
 import team02.vorlagen.Fahren;
 
 /**
  *
  */
-public class Test_Task extends Task implements IO, Systeme, Konstanten
+public class Test_Task extends Task /*implements IO, Systeme, Konstanten*/
 {
+	static   WlanSystem		wlanSystem 					= WlanSystem.getInstance();
+	static 	DebugSystem		 	debug		 				= DebugSystem.getInstance();
+
     static
     {
         try
@@ -55,9 +60,9 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Fahren.vorwaerts();
     	//Test_Motor.setLeftSpeed0();
     	
-    	//wlanSystem.setOwnState(2);
-    	//wlanSystem.update();
-    	//debug.println(wlanSystem.getPartnerState());
+    	wlanSystem.setOwnState(2);
+    	wlanSystem.update();
+    	debug.println(wlanSystem.getPartnerState());
     }
 
 }

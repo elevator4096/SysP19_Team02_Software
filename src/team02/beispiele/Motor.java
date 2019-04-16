@@ -32,7 +32,7 @@ public class Motor extends Task
 	static
 	{
 		motor = new SpeedController4DCMotor(ts, TPU_PWM_CH0, TPU_PWM_CH1, TPU_A, TPU_FQD_A, TPU_A, ticksPerRotation, motorVoltage, gearRatio, kp, tn);
-		motor.setDesiredSpeed((float)(2*Math.PI*0.5));
+		motor.setDesiredSpeed((float)(2*Math.PI));
 		
 		stream = new OutputStream();
 		
