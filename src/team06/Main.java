@@ -17,10 +17,10 @@ public class Main extends Task {
 	private static Main task;
 
 	public Instanzen instanz;
-	private Zustand zustand = Zustand.STARTZUSTAND;
+	private Zustand zustand = STARTZUSTAND;
 
 	/**
-	 * Konstruktor Instanz erzugen
+	 * Konstruktor Instanz erzeugen
 	 */
 	public Main() {
 
@@ -47,35 +47,61 @@ public class Main extends Task {
 			{	
 				startzustand();
 				break;
-
 			}
 
 			case WURF_KURZ_VORBEREITEN:				//kurzen Pass an Partner vorbereiten
 			{
 				wurf_kurz_vorbereiten();
 				break;
-
 			}
 
 			case WURF_LANG_VORBEREITEN:				//langen Pass an Partner vorbereiten
 			{
 				wurf_lang_vorbereiten();
 				break;
-
 			}
 
-			case KORBWURF_VORBEREITEN:				//Wurf auf Korb vorbereiten
-			{
-				korbwurf_vorbereiten();
-				break;
 
+			case WURFPOSITION:						//Bereit zum Werfen
+			{
+				wurfposition();
+				break;
 			}
 
-			case WURFPOSITION:				//Wurf auf Korb vorbereiten
+			case POSITION_WECHSELN:					//Positionswechsel einleiten
 			{
-				korbwurf_vorbereiten();
+				position_wechseln();
 				break;
+			}
 
+			case VORRUECKEN:						//in nächsten Spielfelddabschnitt vorruecken
+			{
+				vorruecken();
+				break;
+			}
+
+			case RUECKWAERTS_AN_WAND:				//rueckwaerts an Wand fahren, um neu auszurichten und Fangen vorzubereiten
+			{
+				rueckwaerts_an_wand();
+				break;
+			}
+
+			case FANGPOSITION:						//Bereit zum Fangen
+			{
+				fangposition();
+				break;
+			}
+
+			case ENDE:								//Spiel beendet
+			{
+				ende();
+				break;
+			}
+
+			case FEHLER:							//Spielabbruch durch Fehler
+			{
+				fehler();
+				break;
 			}
 
 
@@ -113,9 +139,57 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode, Korbwurf vorzubereiten
+	 * Methode, um Wurf auszuführen
 	 */
-	public void korbwurf_vorbereiten()
+	public void wurfposition()
+	{
+		// Methode formulieren
+	}
+
+	/**
+	 * Methode, um Positionswechsel einzuleiten
+	 */
+	public void position_wechseln()
+	{
+		// Methode formulieren
+	}
+
+	/**
+	 * Methode, um in den nächsten Feldabschnitt vorzuruecken
+	 */
+	public void vorruecken()
+	{
+		// Methode formulieren
+	}
+
+	/**
+	 * Methode, um in den nächsten Feldabschnitt vorzuruecken
+	 */
+	public void rueckwaerts_an_wand()
+	{
+		// Methode formulieren
+	}
+
+	/**
+	 * Methode, um Ball zu fangen
+	 */
+	public void fangposition()
+	{
+		// Methode formulieren
+	}
+
+	/**
+	 * Methode, Spiel zu beenden
+	 */
+	public void ende()
+	{
+		// Methode formulieren
+	}
+
+	/**
+	 * Methode, um Fehler zu melden/Spiel abzubrechen
+	 */
+	public void fehler()
 	{
 		// Methode formulieren
 	}
