@@ -16,13 +16,13 @@ public interface Konstanten
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
-	double 	WHEEL_DIAMETER 			= 0.0455; 						//in m
-	double 	WHEEL_DISTANCE 			= 0.100;						//Horizontaler Abstand der RĂ¤der
+	double 	WHEEL_DIAMETER 			= 0.062; 						//in m
+	double 	WHEEL_DISTANCE 			= 0.105;						//Horizontaler Abstand der RĂ¤der
 
 	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde
 	
 	//Tuning Parameter
-	double	DRIVING_SPEED			= 0.018;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
+	double	DRIVING_SPEED			= 0.08;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
 	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s 		( Werte von ca 0.050PI - 1.150PI)
 	double	SLOW_SPEED				= 0.009;						// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)
 	double	MAX_SPEED				= MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;
