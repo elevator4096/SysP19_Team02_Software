@@ -10,6 +10,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team06.system.WurfSystem;
 import team06.aurelia.*;
+import static team06.aurelia.Zustand.*;
 
 public class Main extends Task {
 
@@ -43,7 +44,7 @@ public class Main extends Task {
 		switch (zustand) {
 
 			case STARTZUSTAND:						//Startzustand
-			{
+			{	
 				startzustand();
 				break;
 
@@ -88,6 +89,10 @@ public class Main extends Task {
 	 */
 	public void startzustand()
 	{
+		if(Instanzen.sMSC_WurfMotor2.gibInkrement() == 5) {
+			zustand = WURF_KURZ_VORBEREITEN;
+		}
+		
 		// Methode formulieren
 	}
 
