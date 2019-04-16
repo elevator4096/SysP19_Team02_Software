@@ -39,7 +39,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	debug.println(wlanSystem.getPartnerState());
     	*/
     	
-    	Fahren.kurveFahren(, Konstanten.DRIVING_SPEED);
+    	Fahren.kurveFahren(Konstanten.WHEEL_DISTANCE/2, Konstanten.DRIVING_SPEED);
     	
     }
     
