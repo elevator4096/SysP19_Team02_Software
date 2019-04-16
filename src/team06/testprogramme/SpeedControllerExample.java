@@ -1,6 +1,7 @@
 package team06.testprogramme;
 
 import java.io.PrintStream;
+import java.lang.System;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
@@ -27,17 +28,17 @@ public class SpeedControllerExample extends Task {
 	}
 
 	static {
-// Create controller
+        // Create controller
 		motor = new SpeedController4DCMotor(ts, TPU_PWM_CH0, TPU_PWM_CH1, TPU_A, TPU_FQD_A, TPU_A, ticksPerRotation,
 				motorVoltage, gearRatio, kp, tn);
-// Set desired speed
-// full turn once per second
-		motor.setDesiredSpeed(0);
-// Initialize task
+		// Set desired speed
+        // full turn once per second
+		motor.setDesiredSpeed((float)0);
+        // Initialize task
 		Task t = new SpeedControllerExample();
 		t.period = (int) (ts * 1000);
 		Task.install(t);
-		
+
 		SCI sci1 = SCI.getInstance(SCI.pSCI1);
 		sci1.start(9600, SCI.NO_PARITY, (short) 8);
 
