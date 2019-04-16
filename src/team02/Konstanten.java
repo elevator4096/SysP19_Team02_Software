@@ -22,8 +22,9 @@ public interface Konstanten
 	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde
 	
 	//Tuning Parameter
-	double	DRIVING_SPEED			= 0.018;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   ( Werte von ca 0.010   - 0.180)
-	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s ( Werte von ca 0.050PI - 1.150PI)
+	double	DRIVING_SPEED			= 0.018;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
+	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s 		( Werte von ca 0.050PI - 1.150PI)
+	double	SLOW_SPEED				= 0.009;						// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)
 	double	MAX_SPEED				= MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;
 	
 	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
@@ -36,8 +37,10 @@ public interface Konstanten
 	
 	
 	//Sensor Konstanten 
-	int 	HLC_GRENZWERT_SCHWARZ 	= 100;							// schwarze Linie
-	int 	HLC_GRENZWERT_WEISS 	= 100;							// keine Linie
+	int 	HLC_GRENZWERT_SCHWARZ 	= 100  ;							// schwarze Linie
+	int 	HLC_GRENZWERT_WEISS 	= 100  ;							// keine Linie
+	double  SHARP_GRENZWERT			= 0.012;							//Gegner erkannt?
+	
 	
 	//Sharp Konstanten fuer Lineare Naeherung siehe Sharp_Distanz_Rechner.xlsx
 	double  m_SHARP					= 14249.186;

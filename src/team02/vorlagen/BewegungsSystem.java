@@ -21,7 +21,7 @@ public class BewegungsSystem implements IO
 	private boolean 		bewegungsRichtung		= false; //vorwaerts 	= true
 	private boolean 		drehRichtung			= false; //GUZ		= true
 	private boolean 		inBewegung 				= false;
-	private double			zielDrehWinkel			= 0.0;
+	private double			zielDrehWinkel			= 0.0; // Kann beliebige Werte annehmen( springt nicht von 2PI auf 0)
 	private double			zielDistanz				= 0.0;
 
 	private BewegungsSystem()
@@ -140,16 +140,6 @@ public class BewegungsSystem implements IO
 		
 		this.zielDistanz		= Fahren.getDistanz() + distanz    *(richtung    ? 1:-1);
 		this.zielDrehWinkel		= Fahren.getPhi()	  + drehWinkel *(drehRichtung? 1:-1);
-		
-		if (this.zielDrehWinkel < 0)
-		{
-			this.zielDrehWinkel += 2*Math.PI;
-		}
-		
-		if (this.zielDrehWinkel >= 2*Math.PI)
-		{
-			this.zielDrehWinkel -= 2*Math.PI;
-		}
 
 		if (kreuzungsPos != -1) { 
 			switch(kreuzungsPos)
@@ -175,8 +165,6 @@ public class BewegungsSystem implements IO
 	}
 
 
-	
-	
 	
 	/**folge Linie in Fahrtrichtung
 	 * 
@@ -246,17 +234,14 @@ public class BewegungsSystem implements IO
 		case BIS_DISTANZ_ERREICHT:
 			return  ( bewegungsRichtung && Fahren.getDistanz()>=zielDistanz ) || ( !bewegungsRichtung && Fahren.getDistanz()<=zielDistanz ); 
 
-		//TODO: FUNKTIONIERT NICHT FUER UEBERGANG 0/2PI !!!
 		case BIS_DREHWINKEL_ERREICHT:
 			return  ( ( drehRichtung && Fahren.getPhi()>=zielDrehWinkel ) || ( !drehRichtung && Fahren.getPhi()<=zielDrehWinkel ) ); 
 		
-		/*TODO:	Muss auf Drehrichtung angepasst werden!
+		
 		case BIS_LINIE_SENKRECHT:
-			return IO.LINE_Sensor_Rechts.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();
-			
-		case BIS_LINIE_WAAGERECHT:
-			return IO.LINE_Sensor_Vorne.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();		
-		*/	
+			if(drehRichtung) 	return IO.LINE_Sensor_Vorne.istLinieRechts() || IO.LINE_Sensor_Hinten.istLinieRechts();	
+			else 				return IO.LINE_Sensor_Vorne.istLinieLinks () || IO.LINE_Sensor_Hinten.istLinieLinks ();
+
 			
 		case BIS_WAND:
 			return WandErkennung.istWandIrgendwo();
@@ -299,18 +284,17 @@ public class BewegungsSystem implements IO
 		case RICHTE_AN_KORB_AUS:
 			Fahren.drehe(Konstanten.TURNING_SPEED*(drehRichtung? 1:-1) );
 			break;
-		//TODO: Implementieren ;-)	
+
 		case RICHTE_AN_WAND_AUS:
 			if(!WandErkennung.istWandLinks()) {
-				//Fahren.kurveFahren(radius, bahnGeschw);
+				//Wenn Wand Links langsame Drehung um Linkes Rad im GegenUhrzeigersinn
+				Fahren.kurveFahren(Konstanten.WHEEL_DISTANCE/2 , Konstanten.SLOW_SPEED);
 			}
 			else {
-				//Fahren.kurveFahren(radius, bahnGeschw);
+				//Wenn Wand Rechts langsame Drehung um Rechtes Rad im Uhrzeigersinn
+				Fahren.kurveFahren(-Konstanten.WHEEL_DISTANCE/2 , Konstanten.SLOW_SPEED);
 			}
 			break;
-		
-		
-		
 			
 		default:
 			IO.debug.print("BewegungsSystem: nicht implementierter Zustand!");
