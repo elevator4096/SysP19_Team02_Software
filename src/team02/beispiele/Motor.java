@@ -12,9 +12,9 @@ import ch.ntb.sysp.lib.SpeedController4DCMotor;
 public class Motor extends Task
 {
 	static final boolean TPU_A = true;
-	static final int TPU_PWM_CH0 = 4;
-	static final int TPU_PWM_CH1 = 5;
-	static final int TPU_FQD_A = 6;
+	static final int TPU_PWM_CH0 = 0;
+	static final int TPU_PWM_CH1 = 1;
+	static final int TPU_FQD_A = 2;
 	
 	static final float ts = 0.001f;
 	static final float kp = 1f;
@@ -32,7 +32,7 @@ public class Motor extends Task
 	static
 	{
 		motor = new SpeedController4DCMotor(ts, TPU_PWM_CH0, TPU_PWM_CH1, TPU_A, TPU_FQD_A, TPU_A, ticksPerRotation, motorVoltage, gearRatio, kp, tn);
-		motor.setDesiredSpeed((float)(2*Math.PI*0.5*0));
+		motor.setDesiredSpeed((float)(2*Math.PI));
 		
 		stream = new OutputStream();
 		
@@ -44,7 +44,6 @@ public class Motor extends Task
 	public void action()
 	{
 		motor.run();
-		System.out.println(motor.getActualSpeed());
 	}
 	
 }
