@@ -10,7 +10,7 @@ import team02.Konstanten;
 
 public class GegnerSystem implements IO
 {
-	private boolean gegner_re,gegner_li,gegner_vo;
+	private boolean warGegnerL, warGegnerR, warGegnerH;
 
 	private static GegnerSystem gegnerSystem;
 	
@@ -25,6 +25,7 @@ public class GegnerSystem implements IO
 		if(gegnerSystem==null)
 		{
 			gegnerSystem = new GegnerSystem();
+			gegnerSystem.resetGegnerErkennung();
 		}
 		return gegnerSystem;
 	}
@@ -34,18 +35,18 @@ public class GegnerSystem implements IO
 	 **/
 	public void resetGegnerErkennung()
 	{
-		gegner_li = false;
-		gegner_re = false;
-		gegner_vo = false;
+		warGegnerL = false;
+		warGegnerR = false;
+		warGegnerH = false;
 	}
 	
 	/**
-	 * Prueft ob sich ein Gegner vorne befand
+	 * Prueft ob sich ein Gegner hinten befand
 	 * @return war Gegner vorne
 	 */
-	public boolean warGegnerVorne()
+	public boolean warGegnerHinten()
 	{
-		return gegner_vo;
+		return warGegnerH;
 	}
 	
 	/**
@@ -54,7 +55,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean warGegnerLinks()
 	{
-		return gegner_li;
+		return warGegnerL;
 	}
 	
 	/**
@@ -63,26 +64,27 @@ public class GegnerSystem implements IO
 	 */
 	public boolean warGegnerRechts()
 	{
-		return gegner_re;
+		return warGegnerH;
 	}
-	
-	/**
-	 * Prueft ob sich momentan ein Gegner vorne befindet
-	 * @return ist ein Gegner vorne
-	 */
-	public boolean istGegnerVorne()
-	{	
-		return (AN_Sharp3.getDistanz() < 0.06);
-	}
-	
+
 	/**
 	 * Prueft ob sich momentan ein Gegner links befindet
 	 * @return ist ein Gegner Links
 	 */
 	public boolean istGegnerLinks()
 	{
-		return (AN_Sharp2.getDistanz() < 0.06);
+		return (AN_Sharp1.getDistanz() < Konstanten.SHARP_GRENZWERT);
 	}
+	
+	/**
+	 * Prueft ob sich momentan ein Gegner hinten befindet
+	 * @return ist ein Gegner vorne
+	 */
+	public boolean istGegnerHinten()
+	{	
+		return (AN_Sharp2.getDistanz() < Konstanten.SHARP_GRENZWERT);
+	}
+
 	
 	/**
 	 * Prueft ob sich momentan ein Gegner rechts befindet
@@ -90,7 +92,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean istGegnerRechts()
 	{
-		return (AN_Sharp1.getDistanz() < 0.06);
+		return (AN_Sharp3.getDistanz() < Konstanten.SHARP_GRENZWERT);
 	}
 	
 
@@ -98,15 +100,15 @@ public class GegnerSystem implements IO
 	{
 		if(istGegnerLinks())
 		{
-			gegner_li = true;
+			warGegnerL = true;
 		}
 		if(istGegnerRechts())
 		{
-			gegner_re = true;
+			warGegnerR = true;
 		}
-		if(istGegnerVorne())
+		if(istGegnerHinten())
 		{
-			gegner_vo = true;
+			warGegnerH = true;
 		}
 	}
 }
