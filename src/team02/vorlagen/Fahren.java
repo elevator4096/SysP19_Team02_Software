@@ -40,8 +40,8 @@ public class Fahren implements IO, Konstanten
      */
     public static void drehe(double turningSpeed)
     {
-        MOTOR_links .updateSpeed( turningSpeed);
-        MOTOR_rechts.updateSpeed(-turningSpeed);
+        MOTOR_links .updateSpeed(-turningSpeed);
+        MOTOR_rechts.updateSpeed( turningSpeed);
     }
 
     /**

@@ -9,7 +9,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-import team02.chris.WlanSystem;
+import exchange.WlanSystem;
 import team02.vorlagen.*;
 
 
@@ -82,7 +82,7 @@ public interface IO
 
 	//Motoren
 	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,false);
-	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,true);
+	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,false);
 
 
 	//LinienSensoren

@@ -23,18 +23,13 @@ public class Test_Motor implements IO, Konstanten
     
     public static void setLeftSpeed50()
     {
-		double d;
-		d = ((double)(50))/100;
-		d = d*IO.PERIOD_Motoren;
-    	IO.MOTOR_links.updateSpeed((int)d);
+    	IO.MOTOR_links.updateSpeed(0.11);
     }
     
     public static void setLeftSpeed75()
     {
-		double d;
-		d = ((double)(75.0))/100;
-		d = d*IO.PERIOD_Motoren;
-    	IO.MOTOR_links.updateSpeed((int)d);
+
+    	IO.MOTOR_links.updateSpeed(0.16);
     }
     
     
@@ -45,9 +40,6 @@ public class Test_Motor implements IO, Konstanten
     
     public static void setRightSpeed50()
     {
-		double d;
-		d = ((double)(50))/100;
-		d = d*IO.PERIOD_Motoren;
-    	IO.MOTOR_rechts.updateSpeed((int)d);
+    	IO.MOTOR_rechts.updateSpeed(0.11);
     }
 }
