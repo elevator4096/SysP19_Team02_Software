@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="team06.Main" project="SysP19" file="/SysP19/src/team06/Main.java" binary="false" 
+  <class id="1" language="java" name="team06.aurelia.Main" project="SysP19" file="/SysP19/src/team06/Main.java" binary="false"
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="651" y="101"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
