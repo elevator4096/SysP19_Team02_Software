@@ -7,10 +7,10 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
 
 public class SpeedControllerExample extends Task {
-	protected static final boolean TPU_A = false;
-	protected static final int TPU_PWM_CH0 = 11;
-	protected static final int TPU_PWM_CH1 = 12;
-	protected static final int TPU_FQD_A = 3;
+	protected static final boolean TPU_A = true;
+	protected static final int TPU_PWM_CH0 = 4;
+	protected static final int TPU_PWM_CH1 = 5;
+	protected static final int TPU_FQD_A = 6;
 	/* Controller parameters */
 	protected static final float ts = 0.001f;
 	protected static final float kp = 1f;
@@ -42,5 +42,6 @@ public class SpeedControllerExample extends Task {
 		sci1.start(9600, SCI.NO_PARITY, (short) 8);
 
 		System.out = new PrintStream(sci1.out);
+		System.out.println("static start");
 	}
 }

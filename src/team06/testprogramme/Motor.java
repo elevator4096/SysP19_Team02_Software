@@ -4,8 +4,9 @@
 *@author chris
 *@version 19.01.13.0
 */
-package team02.beispiele;
+package team06.testprogramme;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
 
@@ -24,7 +25,7 @@ public class Motor extends Task
 	static final float gearRatio = 3249f / 196f;
 	static final float motorVoltage = 12f;
 	
-	static OutputStream stream;
+	//static OutputStream stream;
 	static SpeedController4DCMotor motor;
 	
 	static int z=0;
@@ -32,13 +33,16 @@ public class Motor extends Task
 	static
 	{
 		motor = new SpeedController4DCMotor(ts, TPU_PWM_CH0, TPU_PWM_CH1, TPU_A, TPU_FQD_A, TPU_A, ticksPerRotation, motorVoltage, gearRatio, kp, tn);
-		motor.setDesiredSpeed((float)(2*Math.PI*0.5*0));
+		motor.setDesiredSpeed((float)(2*Math.PI*0.5*0.5));
 		
-		stream = new OutputStream();
+		//stream = new OutputStream();
 		
 		Task t = new Motor();
 		t.period = (int) (ts*1000);
 		Task.install(t);
+		
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short) 8);
 	}
 	
 	public void action()
