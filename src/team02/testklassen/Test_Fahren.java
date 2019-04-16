@@ -10,11 +10,12 @@ public class Test_Fahren implements IO, Konstanten
 	public static long lastTime = Task.time();
 	public static int counter=0;
 	
-	public static double speed = 0;
-	public static double radius =0;
+	public static double speed = 0.1;
+	public static double radius =1;
 	
 	public static void test()
 	{
+		/*
 		if (Task.time() > lastTime+5000)
 		{
 			counter++;
@@ -38,7 +39,7 @@ public class Test_Fahren implements IO, Konstanten
 			
 			lastTime = Task.time();
 		}
-		
+		*/
 		Fahren.update();
 		
 	}
