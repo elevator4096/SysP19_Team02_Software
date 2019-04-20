@@ -123,7 +123,7 @@ public class WlanSystem implements IO
      */
     private static void sendData()
     {
-    	if(lastTasktime +1000 < Task.time())
+    	if(lastTasktime +999 < Task.time())
     	{
     		wifi.cmd.writeCmd(ownState);
     		lastTasktime = Task.time();

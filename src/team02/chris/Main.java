@@ -68,11 +68,12 @@ public class Main extends Task implements IO, Systeme
         //Fehler erkannt
         if(false)
         {
-            letzter_Zustand = zustand;
+
             zustand = FEHLER;
         }
 
         zustand();                  //Zustaende gemaess Zustandsdiagramm
+        letzter_Zustand = zustand;
     }
 
     /**
