@@ -17,7 +17,7 @@ public class WlanSystem implements IO
     private static RN131 wifi;
     private static long lastTasktime;
     private static int partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
-    private static int ownState;
+    private static int ownState = ZustandWifi.SETUP;
     private static WlanSystem wlanSystem;
     
 
@@ -69,6 +69,12 @@ public class WlanSystem implements IO
     public static void setOwnState(int zustandWifi)
     {
     	ownState = zustandWifi;
+    }
+
+
+    public static int getOwnState()
+    {
+        return ownState;
     }
 
     /**
