@@ -11,6 +11,7 @@ import team02.IO;
 import team02.Konstanten;
 import team02.Systeme;
 import team02.vorlagen.WurfSystem;
+import team02.vorlagen.BewegungsSystem;
 import team02.vorlagen.DebugSystem;
 import team02.vorlagen.Fahren;
 
@@ -32,6 +33,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public Test_Task()
     {
     	debug.println("Test Task laeuft!");
+    	//Test_BewegungsSystem.fahreVorwaerts1m();
     }
 
     public void action()
@@ -45,8 +47,12 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Fahren.kurveFahren(0.100, Konstanten.DRIVING_SPEED);
     	//wurfSystem.zylinderSpannen(50);
     	//Test_Wurfsystem.test();
-    	Test_Fahren.rueckwaerts();
+    	//Test_Fahren.rueckwaerts();
     	
+    	Systeme.bewegungsSystem.update();
+    	
+    	
+    	//Test_Fahren.vorwaerts();
     }
     
     /*old Tests

@@ -318,12 +318,15 @@ public class BewegungsSystem implements IO
 	{
 		Fahren.update();
 		
+		/*
 		if (istHalteBedingungErfuellt())
 		{
 			inBewegung 		= false;
 			zustandBewegung = ZustandBewegung.STOP;
 			halteBedingung 	= HalteBedingung.BIS_NICHTS;
 		}
+		*/
+		
 		bewege();
 		
 	}
