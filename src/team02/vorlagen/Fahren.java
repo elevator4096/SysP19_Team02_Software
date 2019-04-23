@@ -130,11 +130,20 @@ public class Fahren implements IO, Konstanten
     {
     	return distanz;
     }    
-    
+
     /**
      * Berechne den aktuellen Winkel gegenüber der x-Achse
      */
     public static void calcphi()
+    {
+
+        phi = (MOTOR_rechts.getEncPos()-MOTOR_links.getEncPos())/Konstanten.WHEEL_DISTANCE;
+    }
+    
+    /**
+     * Berechne den aktuellen Winkel gegenüber der x-Achse
+     */
+    public static void calcphi_old()
     {
 
         long deltali = impLi - MOTOR_links.getEncPos();
@@ -153,7 +162,7 @@ public class Fahren implements IO, Konstanten
     public static void calcDistanz()
     {
         distanz = (MOTOR_links.getEncPos() + MOTOR_rechts.getEncPos())/2;
-    }
+     }
     
     public static void set0()
     {
