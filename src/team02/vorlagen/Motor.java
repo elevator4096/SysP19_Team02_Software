@@ -38,14 +38,6 @@ public class Motor implements IO, Konstanten {
      * @param d Geschwindigkeit in m/s (max 0.213m/s)
      */
     public void updateSpeed(double d) {
-        d = (inverted)? d:-d;
-        if(d<0)
-        {
-            out.set(false);
-        }else
-        {
-            out.set(true);
-        }
     	pwm.update(calculateDutyCycle(d));
     }
 
@@ -63,9 +55,19 @@ public class Motor implements IO, Konstanten {
         if (d < -Konstanten.MAX_SPEED) {
             d = -Konstanten.MAX_SPEED;
         }
+        d = (inverted)? d:-d;
 
-        int duty_cycle = (int) (PERIOD_Motoren * (d + Konstanten.MAX_SPEED) / (2 * Konstanten.MAX_SPEED));
-        return duty_cycle;
+        if(d<0)
+        {
+            out.set(true);
+        }
+        else
+        {
+            out.set(false);
+        }
+
+        //int duty_cycle = (int) (PERIOD_Motoren * (d + Konstanten.MAX_SPEED) / (2 * Konstanten.MAX_SPEED));
+        return (int)(PERIOD_Motoren*(Math.abs(d)/Konstanten.MAX_SPEED));
     }
 
     /**
