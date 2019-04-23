@@ -1,4 +1,4 @@
-package team06.testprogramme;
+package team06.phil;
 
 import java.io.PrintStream;
 
@@ -21,7 +21,7 @@ public class Test extends Task {
 	public void action() {
 		System.out.print("Umdrehungen  >");
 		System.out.print(controller.gibweg());
-		System.out.print("        Geschwindigkeit  >");
+		System.out.print("        Geschwindigkeit in 1/min  >");
 		System.out.println(controller.gibgeschwindigkeit());
 		
 		

@@ -1,4 +1,4 @@
-package team06.testprogramme;
+package team06.phil;
 
 import java.io.PrintStream;
 import java.lang.System;
@@ -14,11 +14,11 @@ public class SpeedControllerExample extends Task {
 	protected static final int TPU_FQD_A = 6;
 	/* Controller parameters */
 	protected static final float ts = 0.001f;
-	protected static final float kp = 0.0001f;             // Fahrmotor Standard // Wurfmotor 0.0001f;
-	protected static final float tn = 0.0051f;            // Testboard 0.01   // Fahrmotor 0.008f  // Wurfmotor 0.0051f
+	protected static final float kp = 0.0001f;            // Testboar 1f             // Fahrmotor 1f              // Wurfmotor 0.0001f;
+	protected static final float tn = 0.0051f;            // Testboard 0.01          // Fahrmotor 0.008f          // Wurfmotor 0.0051f
 	/* Ticks per rotation from encoder datasheet */
-	protected static final int ticksPerRotation = 32;    // Testboard 64     // Fahrmotor 256      //  Wurfmotor 32
-	protected static final float gearRatio = 1f;    //Testboard 3249f   // Fahrmotor 196f     // 91f/1f //   Wurfmotor  1f / 1f
+	protected static final int ticksPerRotation = 32;    // Testboard 64             // Fahrmotor 256             //  Wurfmotor 32
+	protected static final float gearRatio = 1f;         //Testboard 3249f / 196f    // Fahrmotor 91f/1f          //   Wurfmotor  1f / 1f
 	protected static final float motorVoltage = 12f;
 	static SpeedController4DCMotor motor;
 
@@ -41,7 +41,7 @@ public class SpeedControllerExample extends Task {
 	
 	public int gibgeschwindigkeit()
 	{
-		return (int)(motor.getActualSpeed());
+		return (int)(motor.getActualSpeed()/(2*Math.PI)*60);
 	}
 	
 	public static void drehzahl()
@@ -51,12 +51,12 @@ public class SpeedControllerExample extends Task {
 	
 	public static void zwanzig()
 	{
-	motor.setDesiredSpeed((float)(20*Math.PI));   // 150 == 5400
+	motor.setDesiredSpeed((float)(20*Math.PI));  
 	}
 	
 	public static void nul()
 	{
-	motor.setDesiredSpeed((float)(0*Math.PI));   // 150 == 5400
+	motor.setDesiredSpeed((float)(0*Math.PI));   
 	}
 
 	static {
