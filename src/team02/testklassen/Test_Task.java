@@ -43,7 +43,8 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Fahren.kurveFahren(0.100, Konstanten.DRIVING_SPEED);
     	//wurfSystem.zylinderSpannen(50);
     	
-    	Test_Wurfsystem.test();
+    	//Test_Wurfsystem.test();
+    	Test_BewegungsSystem.fahreVorwaerts1m();
     }
     
     /*old Tests
