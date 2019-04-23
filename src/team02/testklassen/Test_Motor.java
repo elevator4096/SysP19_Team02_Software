@@ -32,6 +32,18 @@ public class Test_Motor implements IO, Konstanten
     	IO.MOTOR_links.updateSpeed(0.16);
     }
     
+    public static void setRightSpeed75()
+    {
+
+    	IO.MOTOR_rechts.updateSpeed(0.16);
+    }
+    
+    public static void setRightSpeed100()
+    {
+
+    	IO.MOTOR_rechts.updateSpeed(0.32);
+    }
+    
     
     public static void setLeftSpeed0()
     {
@@ -42,4 +54,15 @@ public class Test_Motor implements IO, Konstanten
     {
     	IO.MOTOR_rechts.updateSpeed(0.11);
     }
+    
+    public static void setRightSpeedm50()
+    {
+    	IO.MOTOR_rechts.updateSpeed(-0.11);
+    }
+    
+    public static void setRightSpeed0()
+    {
+    	IO.MOTOR_rechts.updateSpeed(0);
+    }
+    
 }

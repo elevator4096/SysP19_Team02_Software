@@ -19,6 +19,8 @@ import team02.vorlagen.Fahren;
  */
 public class Test_Task extends Task implements IO, Systeme, Konstanten
 {
+	public static long x =0;
+	
     static
     {
             Task task = new Test_Task();
@@ -42,8 +44,9 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	//Fahren.kurveFahren(0.100, Konstanten.DRIVING_SPEED);
     	//wurfSystem.zylinderSpannen(50);
+    	//Test_Wurfsystem.test();
+    	Test_Fahren.rueckwaerts();
     	
-    	Test_Wurfsystem.test();
     }
     
     /*old Tests

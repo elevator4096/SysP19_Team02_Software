@@ -64,7 +64,7 @@ public interface IO
 
 	//PWM Periodendauer
 	double 	   		PERIOD_WurfZyl				= 14_000_000.0/TPU_PWM.tpuTimeBase; 	// PWM 	   72 Hz
-	double 	   		PERIOD_Motoren 				=     41_667.0/TPU_PWM.tpuTimeBase;   	// PWM 24'000 Hz
+	double 	   		PERIOD_Motoren 				=  1_000_000.0/TPU_PWM.tpuTimeBase;   	// PWM 24'000 Hz
 
 	//Period ist falscher Ausdruck, HighTime
 	double 			PERIOD_WurfZyl_MIN 			= 980_000/TPU_PWM.tpuTimeBase;
@@ -72,8 +72,8 @@ public interface IO
 
 	//PWM
 	TPU_PWM    		PWM_WurfZylinder		   	= new TPU_PWM(false, 0, (int)PERIOD_WurfZyl, 0);
-	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.5));
-	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.5));
+	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
+	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
 
 
 	TPU_FQD    		FQD_Links 					= new TPU_FQD(false, 3);
@@ -81,7 +81,7 @@ public interface IO
 
 
 	//Motoren
-	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,false, OUT_DIR_Speed1);
+	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,true, OUT_DIR_Speed1);
 	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,false, OUT_DIR_Speed2);
 
 

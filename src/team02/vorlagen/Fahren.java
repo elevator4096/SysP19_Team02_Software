@@ -50,7 +50,7 @@ public class Fahren implements IO, Konstanten
      */
     public static void geradeaus(double speed)
     {
-        MOTOR_links .updateSpeed(speed);
+        MOTOR_links.updateSpeed(speed);
         MOTOR_rechts.updateSpeed(speed);
     }
 
