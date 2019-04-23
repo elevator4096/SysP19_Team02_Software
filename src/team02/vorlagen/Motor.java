@@ -5,6 +5,7 @@
 
 package team02.vorlagen;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import team02.IO;
@@ -14,6 +15,7 @@ public class Motor implements IO, Konstanten {
     private TPU_FQD fqd;
     private TPU_PWM pwm;
     private int pwm_time;
+    private MDASM_DIO out;
     private boolean inverted = false;
 
 
@@ -23,11 +25,12 @@ public class Motor implements IO, Konstanten {
      * @param pwm PWM Objekt, welches zum MOtor gehört
      * @param pwm_time pwm_time Periodendauer
      */
-    public Motor(TPU_FQD fqd, TPU_PWM pwm, int pwm_time, boolean inverted) {
+    public Motor(TPU_FQD fqd, TPU_PWM pwm, int pwm_time, boolean inverted, MDASM_DIO out) {
         this.fqd = fqd;
         this.pwm = pwm;
         this.pwm_time = pwm_time;
         this.inverted = inverted;
+        this.out = out;
     }
 
     /**
@@ -36,6 +39,13 @@ public class Motor implements IO, Konstanten {
      */
     public void updateSpeed(double d) {
         d = (inverted)? d:-d;
+        if(d<0)
+        {
+            out.set(false);
+        }else
+        {
+            out.set(true);
+        }
     	pwm.update(calculateDutyCycle(d));
     }
 

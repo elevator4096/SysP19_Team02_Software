@@ -81,8 +81,8 @@ public interface IO
 
 
 	//Motoren
-	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,false);
-	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,false);
+	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,false, OUT_DIR_Speed1);
+	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,false, OUT_DIR_Speed2);
 
 
 	//LinienSensoren
