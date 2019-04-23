@@ -40,6 +40,11 @@ public class Test_BewegungsSystem implements Systeme
 		Systeme.bewegungsSystem.update();
 	}
 	
+	public static void fahreVorwaerts1m()
+	{
+		Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 1);
+	}
+	
 	public static void folgeLinieVorwaerts()
 	{
 		Systeme.bewegungsSystem.folgeLinie(true);
