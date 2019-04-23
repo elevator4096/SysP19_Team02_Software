@@ -10,6 +10,7 @@ import exchange.ZustandWifi;
 import team02.IO;
 import team02.Konstanten;
 import team02.Systeme;
+import team02.vorlagen.WurfSystem;
 import team02.vorlagen.DebugSystem;
 import team02.vorlagen.Fahren;
 
@@ -39,8 +40,10 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	debug.println(wlanSystem.getPartnerState());
     	*/
     	
-    	Fahren.kurveFahren(0.100, Konstanten.DRIVING_SPEED);
+    	//Fahren.kurveFahren(0.100, Konstanten.DRIVING_SPEED);
+    	//wurfSystem.zylinderSpannen(50);
     	
+    	Test_Wurfsystem.test();
     }
     
     /*old Tests
@@ -58,7 +61,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	*/
 
      	//IO.MOTOR_links.updateSpeed(0.1);		
-     		
+    	
      
 
 }

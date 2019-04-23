@@ -62,6 +62,13 @@ package team06.testprogramme;
 			pwmR.update(pwmPeriod / 2);
 		}
 		
+		
+		private static void right34() {
+			pwmL.update(3* pwmPeriod / 4);
+			pwmR.update(0);
+		}
+		
+		
 		private static void stop() {
 			pwmL.update(0);
 			pwmR.update(0);
