@@ -43,6 +43,15 @@ public class BewegungsSystem implements IO
 		return bewegungsSystem;
 	}
 	
+    /** fahre Distanz geradeaus
+     * @param richtung true = vorwaerts
+     * @param distanz
+     */
+	public void fahreFreiBisDistanz(boolean richtung,double distanz)
+	{	
+		setBewegung(ZustandBewegung.FAHRE_FREI, richtung, false, -1, HalteBedingung.BIS_DISTANZ_ERREICHT,distanz,0.0);
+	}
+	
     /**
      * kreuzungsPos = LINIE_VORNE,LINIE_MITTE,LINIE_HINTEN
      * @param richtung true = vorwaerts
