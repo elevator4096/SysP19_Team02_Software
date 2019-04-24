@@ -72,9 +72,9 @@ public class Motor implements IO, Konstanten {
         //int duty_cycle = (int) (PERIOD_Motoren * (d + Konstanten.MAX_SPEED) / (2 * Konstanten.MAX_SPEED));
         return (int)(PERIOD_Motoren*(Math.abs(d)/Konstanten.MAX_SPEED));
     }
-    
-    /*
-     * Berechnet die gefahrene Distanz des Motors aus der Encoderposition  
+
+    /**
+     * Berechnet die die zurückgelegte Distanz
      */
     private void calcDistanz()
     {
@@ -84,13 +84,20 @@ public class Motor implements IO, Konstanten {
     	lastEncPos  =  temp;
     	distanz 	=  DISTANCE_PER_TICK*realEncPos;  
     }
-    
+
+    /**
+     *
+     * @return die zurückgelegte Distanz
+     */
     public double getDistanz()
     {
     	calcDistanz();
     	return distanz;
     }
-    
+
+    /**
+     * Setzt die zurückgelegte Distanz zurück
+     */
     public void resetDistanz()
     {
     	distanz 	= 0;
@@ -98,19 +105,4 @@ public class Motor implements IO, Konstanten {
     	lastEncPos 	= 0;
     	fqd.setPosition(0);
     }
-    
-    
-    /* Sehr gefaehrlich da short bei 32768 ueberlauft ( ca 3 Radumdrehungen!)
-     
-    private int getEncPos()
-    {
-        return encPos;
-    }
-
-    private void setEncPos(int i)
-    {
-    	fqd.setPosition(0);
-    	encPos = i;
-    }
-    */
 }

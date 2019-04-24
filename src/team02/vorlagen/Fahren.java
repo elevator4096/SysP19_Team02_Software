@@ -25,6 +25,10 @@ public class Fahren implements IO, Konstanten
 
     }
 
+    /**
+     * Methode um Fahren Singleton zu erzeugen
+     * @return Fahren Instanz
+     */
     public static Fahren getInstance()
     {
         if(fahren == null)
@@ -114,18 +118,29 @@ public class Fahren implements IO, Konstanten
     {
     		kurveFahren( Konstanten.LINE_FOLLOWER_RADIUS*(drehSinn? 1:-1), Konstanten.DRIVING_SPEED*(fahrtRichtung? 1:-1) );
     }
-    
+
+    /**
+     * Stopt beide motoren
+     */
     public static void stop()
     {
         MOTOR_links .updateSpeed(0);
         MOTOR_rechts.updateSpeed(0);
     }
-    
+
+    /**
+     *
+     * @return aktuelle winkelabweichung
+     */
     public static double getPhi()
     {
     	return phi;
     }
-    
+
+    /**
+     * Gibt die zurückgelegte Distanz zurück
+     * @return Distanz
+     */
     public static double getDistanz()
     {
     	return distanz;
@@ -139,24 +154,6 @@ public class Fahren implements IO, Konstanten
 
         phi = (MOTOR_rechts.getDistanz()-MOTOR_links.getDistanz())/Konstanten.WHEEL_DISTANCE;
     }
-    
-    /**
-     * Berechne den aktuellen Winkel gegenüber der x-Achse
-     */
-    /*
-    public static void calcphi_old()
-    {
-
-        long deltali = impLi - MOTOR_links.getEncPos();
-        long deltare = impRe - MOTOR_rechts.getEncPos();
-        double phili = (Konstanten.WHEEL_DIAMETER * Math.PI * deltali) / (Konstanten.GEAR_RATIO * Konstanten.TICKS_PER_ROUND - (Konstanten.WHEEL_DISTANCE / 2));
-        double phire = (Konstanten.WHEEL_DIAMETER * Math.PI * deltare) / (Konstanten.GEAR_RATIO * Konstanten.TICKS_PER_ROUND - (Konstanten.WHEEL_DISTANCE / 2));
-
-        double deltaphi = phili - phire;
-
-        phi += deltaphi;
-    }
-    */
 
     /**
      * Berechne zurueckgelegte Distanz
@@ -165,7 +162,10 @@ public class Fahren implements IO, Konstanten
     {
         distanz = (MOTOR_links.getDistanz() + MOTOR_rechts.getDistanz())/2;
      }
-    
+
+    /**
+     * Reset alle zwischenwerte
+     */
     public static void set0()
     {
         MOTOR_links.resetDistanz();
@@ -173,7 +173,12 @@ public class Fahren implements IO, Konstanten
         impLi = 0;
         impRe = 0;
     }
-    
+
+    /**
+     * TODO: Hier ausfüllen!
+     * @param d
+     * @return
+     */
     private static double signum(double d)
     {
     	return (d>=0)? 1:-1;

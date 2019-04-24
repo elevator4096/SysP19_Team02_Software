@@ -28,6 +28,10 @@ public class WurfSystem implements IO
 	}
 
 
+	/**
+	 * Methode, um WurfSystem Singleton zu erzeugen
+	 * @return WurfSystem Instanz
+	 */
 	public static WurfSystem getInstance()
 	{
 		if(wurfSystem==null)
@@ -91,7 +95,11 @@ public class WurfSystem implements IO
 	private void magnetMagnetisieren() {
 		IO.OUT_Magnet_Ausloeser.set(false);
 	}
-	
+
+	/**
+	 * TODO: Hier fehlt was!
+	 * @param i
+	 */
 	private void setWurfZylinderPWM(double i)
 	{
 		double d;

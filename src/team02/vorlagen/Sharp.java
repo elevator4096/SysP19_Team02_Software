@@ -25,7 +25,11 @@ public class Sharp {
 		this.sensorIndex = sensorIndex;
 		this.kalibrierWert = kalibrierWert;
 	}
-	
+
+	/**
+	 * TODO: Hier ausfüllen
+	 * @return
+	 */
 	public double getDistanz()
 	{	
 		double messwert = QADC_AIN.read(ADCPort,sensorIndex);

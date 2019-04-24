@@ -177,7 +177,7 @@ public class BewegungsSystem implements IO
 	
 	/**folge Linie in Fahrtrichtung
 	 * 
-	 * @param fahrtRichtung
+	 * @param fahrtRichtung TODO: Hier ausfüllen!
 	 */
 	public void folgeLinie(boolean fahrtRichtung)
 	{
@@ -227,8 +227,11 @@ public class BewegungsSystem implements IO
 	{
 		return inBewegung;
 	}
-	
-	
+
+	/**
+	 * TODO: Hier fehlt was!
+	 * @return
+	 */
 	private boolean istHalteBedingungErfuellt()
 	{
 		switch(halteBedingung)
@@ -273,7 +276,10 @@ public class BewegungsSystem implements IO
 		
 		return false;
 	}
-	
+
+	/**
+	 * TODO: Hier fehlt was!
+	 */
 	private void bewege()
 	{
 		switch(zustandBewegung)
