@@ -16,8 +16,9 @@ public interface Konstanten
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
-	double 	WHEEL_DIAMETER 			= 0.062; 						//in m
+	double 	WHEEL_DIAMETER 			= 0.045; 						//in m
 	double 	WHEEL_DISTANCE 			= 0.105;						//Horizontaler Abstand der RĂ¤der
+	double  DISTANCE_PER_TICK		= WHEEL_DIAMETER*Math.PI*GEAR_RATIO/(TICKS_PER_ROUND);
 
 	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde
 	

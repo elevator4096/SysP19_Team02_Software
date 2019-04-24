@@ -16,7 +16,10 @@ public class Motor implements IO, Konstanten {
     private TPU_PWM pwm;
     private int pwm_time;
     private MDASM_DIO out;
-    private boolean inverted = false;
+    private boolean inverted 	 = false;
+    private short   lastEncPos   = 0;
+    private double  distanz		 = 0;
+    private int		realEncPos	 = 0;
 
 
     /**
@@ -69,22 +72,51 @@ public class Motor implements IO, Konstanten {
         //int duty_cycle = (int) (PERIOD_Motoren * (d + Konstanten.MAX_SPEED) / (2 * Konstanten.MAX_SPEED));
         return (int)(PERIOD_Motoren*(Math.abs(d)/Konstanten.MAX_SPEED));
     }
-
-    /**
-     * Gibt aktuelle Encoder Position zurück
-     * @return aktuelle Encoder Position
-     */
-    public short getEncPos()
+    
+    
+    public void update()
     {
-        return fqd.getPosition();
+    	calcDistanz();
+    	
+    }
+    
+    /*
+     * Berechnet die gefahrene Distanz des Motors aus der Encoderposition  
+     */
+    private void calcDistanz()
+    {
+    	
+    	short temp 	=  fqd.getPosition();
+    	realEncPos += (short)(temp-lastEncPos);
+    	lastEncPos  =  temp;
+    	distanz 	=  DISTANCE_PER_TICK*realEncPos;  
+    }
+    
+    public double getDistanz()
+    {
+    	return distanz;
+    }
+    
+    public void resetDistanz()
+    {
+    	distanz 	= 0;
+    	realEncPos 	= 0;
+    	lastEncPos 	= 0;
+    	fqd.setPosition(0);
+    }
+    
+    
+    /* Sehr gefaehrlich da short bei 32768 ueberlauft ( ca 3 Radumdrehungen!)
+     
+    private int getEncPos()
+    {
+        return encPos;
     }
 
-    /**
-     * Setzt die aktuelle Encoder Position, zB zum Referenzieren
-     * @param i Ueberschreibt den aktuellen Wert mit i
-     */
-    public void setEncPos(int i)
+    private void setEncPos(int i)
     {
-        fqd.setPosition(i);
+    	fqd.setPosition(0);
+    	encPos = i;
     }
+    */
 }
