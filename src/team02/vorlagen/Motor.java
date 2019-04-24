@@ -73,13 +73,6 @@ public class Motor implements IO, Konstanten {
         return (int)(PERIOD_Motoren*(Math.abs(d)/Konstanten.MAX_SPEED));
     }
     
-    
-    public void update()
-    {
-    	calcDistanz();
-    	
-    }
-    
     /*
      * Berechnet die gefahrene Distanz des Motors aus der Encoderposition  
      */
@@ -94,6 +87,7 @@ public class Motor implements IO, Konstanten {
     
     public double getDistanz()
     {
+    	calcDistanz();
     	return distanz;
     }
     
