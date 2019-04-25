@@ -21,7 +21,11 @@ public class Motor implements IO, Konstanten {
     private double  distanz		 = 0;
     private int		realEncPos	 = 0;
 
-
+    public void update()
+    {
+    	calcDistanz();
+    }
+    
     /**
      * Konstruktor für ein Motor
      * @param fqd FQD Objekt, welches zum Motor gehört

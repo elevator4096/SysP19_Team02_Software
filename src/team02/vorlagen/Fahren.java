@@ -185,6 +185,7 @@ public class Fahren implements IO, Konstanten
      */
     public static void update()
     {
-
+    	IO.MOTOR_links.update();
+    	IO.MOTOR_rechts.update();
     }
 }

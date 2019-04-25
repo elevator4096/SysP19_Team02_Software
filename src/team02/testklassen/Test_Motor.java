@@ -10,6 +10,12 @@ import team02.Konstanten;
 
 public class Test_Motor implements IO, Konstanten
 {
+	
+	public static void printDistanzen()
+	{
+		;debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());
+	}
+	
     public static void setLeftSpeed(int speed)
     {
     	IO.MOTOR_links.updateSpeed(speed);

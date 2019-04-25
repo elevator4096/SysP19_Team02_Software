@@ -49,10 +49,11 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Wurfsystem.test();
     	//Test_Fahren.rueckwaerts();
     	
-    	Systeme.bewegungsSystem.update();
+    	//Systeme.bewegungsSystem.update();
     	
-    	
-    	//Test_Fahren.vorwaerts();
+    	Fahren.update();
+    	Test_Fahren.vorwaerts();
+    	Test_Motor.printDistanzen();
     }
     
     /*old Tests
