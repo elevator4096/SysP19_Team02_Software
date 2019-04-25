@@ -97,8 +97,8 @@ public class WurfSystem implements IO
 	}
 
 	/**
-	 * TODO: Hier fehlt was!
-	 * @param i
+	 * faehrt den Wurfzylinder auf ZielPosition in %
+	 * @param i ZielPosition in %
 	 */
 	private void setWurfZylinderPWM(double i)
 	{

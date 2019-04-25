@@ -27,8 +27,8 @@ public class Sharp {
 	}
 
 	/**
-	 * TODO: Hier ausfüllen
-	 * @return
+	 * gibt Distanz zurueck
+	 * @return distanz in m
 	 */
 	public double getDistanz()
 	{	

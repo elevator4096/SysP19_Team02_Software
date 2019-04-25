@@ -177,7 +177,7 @@ public class BewegungsSystem implements IO
 	
 	/**folge Linie in Fahrtrichtung
 	 * 
-	 * @param fahrtRichtung TODO: Hier ausfüllen!
+	 * @param fahrtRichtung (vorwaerts = true, rueckwaerts = false)
 	 */
 	public void folgeLinie(boolean fahrtRichtung)
 	{
@@ -229,8 +229,8 @@ public class BewegungsSystem implements IO
 	}
 
 	/**
-	 * TODO: Hier fehlt was!
-	 * @return
+	 * Prueft ob die vorgegebene Haltebedingung erfuellt ist
+	 * @return (ist die Haltebedingung erfuellt? - sollte Der Roboter anhalten?)
 	 */
 	private boolean istHalteBedingungErfuellt()
 	{
@@ -278,7 +278,7 @@ public class BewegungsSystem implements IO
 	}
 
 	/**
-	 * TODO: Hier fehlt was!
+	 * Fuehrt die vorgegebene Bewegungsaktion aus
 	 */
 	private void bewege()
 	{

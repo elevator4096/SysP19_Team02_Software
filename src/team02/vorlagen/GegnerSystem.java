@@ -101,7 +101,7 @@ public class GegnerSystem implements IO
 
 
 	/**
-	 * TODO: Hier ausfüllen!
+	 * Update Methode von Gegnersystem
 	 */
 	public void update()
 	{
