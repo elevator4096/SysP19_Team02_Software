@@ -12,7 +12,7 @@ public interface Konstanten
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 2.000;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.500;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
@@ -23,7 +23,7 @@ public interface Konstanten
 	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde
 	
 	//Tuning Parameter
-	double	DRIVING_SPEED			= 0.08;						// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
+	double	DRIVING_SPEED			= 0.08;							// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
 	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s 		( Werte von ca 0.050PI - 1.150PI)
 	double	SLOW_SPEED				= 0.009;						// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)
 	double	MAX_SPEED				= MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;

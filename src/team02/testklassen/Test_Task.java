@@ -33,7 +33,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public Test_Task()
     {
     	debug.println("Test Task laeuft!");
-    	//Test_BewegungsSystem.fahreVorwaerts1m();
+    	Test_BewegungsSystem.fahreVorwaerts1m();
     }
 
     public void action()
@@ -51,9 +51,10 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	//Systeme.bewegungsSystem.update();
     	
-    	Fahren.update();
-    	Test_Fahren.vorwaerts();
-    	Test_Motor.printDistanzen();
+    	Systeme.bewegungsSystem.update();
+    	//Test_Motor.printDistanzen();
+    	
+    	
     }
     
     /*old Tests
@@ -71,6 +72,12 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	*/
 
      	//IO.MOTOR_links.updateSpeed(0.1);		
+    	
+    	/*
+    	Fahren.update();
+    	Test_Fahren.vorwaerts();
+    	Test_Motor.printDistanzen();
+    	 */
     	
      
 

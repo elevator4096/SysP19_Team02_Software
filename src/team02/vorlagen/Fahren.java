@@ -149,7 +149,7 @@ public class Fahren implements IO, Konstanten
     /**
      * Berechne den aktuellen Winkel gegenüber der x-Achse
      */
-    public static void calcphi()
+    private static void calcPhi()
     {
 
         phi = (MOTOR_rechts.getDistanz()-MOTOR_links.getDistanz())/Konstanten.WHEEL_DISTANCE;
@@ -158,7 +158,7 @@ public class Fahren implements IO, Konstanten
     /**
      * Berechne zurueckgelegte Distanz
      */
-    public static void calcDistanz()
+    private static void calcDistanz()
     {
         distanz = (MOTOR_links.getDistanz() + MOTOR_rechts.getDistanz())/2;
      }
@@ -192,5 +192,8 @@ public class Fahren implements IO, Konstanten
     {
     	IO.MOTOR_links.update();
     	IO.MOTOR_rechts.update();
+    	
+    	calcDistanz();
+    	calcPhi();
     }
 }
