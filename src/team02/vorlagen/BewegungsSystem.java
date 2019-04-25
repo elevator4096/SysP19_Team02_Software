@@ -244,8 +244,6 @@ public class BewegungsSystem implements IO
 			return IO.LINE_Sensor_Hinten.istLinieVorne();
 		
 		case BIS_DISTANZ_ERREICHT:
-			debug.println("BIS_DISTANZ_ERREICHT");
-			debug.print("DISTANZ: ");debug.print(Fahren.getDistanz());debug.print(bewegungsRichtung);debug.print("Ziel: ");debug.print(zielDistanz);debug.println("");
 			return  ( bewegungsRichtung && Fahren.getDistanz()>=zielDistanz ) || ( !bewegungsRichtung && Fahren.getDistanz()<=zielDistanz ); 
 
 		case BIS_DREHWINKEL_ERREICHT:
