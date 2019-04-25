@@ -44,13 +44,21 @@ public class LinienSensor implements IO
 	{
 		return IO.HLC_1395_PULSED.read(sensorLeftIndex)>Konstanten.HLC_GRENZWERT_WEISS && IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
 	}
-	
+
+	/**
+	 * TODO: Hier ausfülllen
+	 * @return
+	 */
 	public int getHelligkeitRechts()
 	{
 		int value = IO.HLC_1395_PULSED.read(sensorRightIndex);
 		return value; 
 	}
-	
+
+	/**
+	 * TODO: Hier ausfüllen!
+	 * @return
+	 */
 	public int getHelligkeitLinks()
 	{
 		int value = IO.HLC_1395_PULSED.read(sensorLeftIndex);

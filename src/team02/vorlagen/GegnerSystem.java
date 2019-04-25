@@ -20,6 +20,10 @@ public class GegnerSystem implements IO
 		resetGegnerErkennung();
 	}
 
+	/**
+	 * Methode um Gegner Singleton zu erstellen
+	 * @return Gegner Instanz
+	 */
 	public static GegnerSystem getInstance()
 	{
 		if(gegnerSystem==null)
@@ -94,8 +98,11 @@ public class GegnerSystem implements IO
 	{
 		return (AN_Sharp3.getDistanz() < Konstanten.SHARP_GRENZWERT);
 	}
-	
 
+
+	/**
+	 * TODO: Hier ausfüllen!
+	 */
 	public void update()
 	{
 		if(istGegnerLinks())

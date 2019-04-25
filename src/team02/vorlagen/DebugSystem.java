@@ -40,6 +40,10 @@ public class DebugSystem implements IO
             System.out.println("Debug System Aktiv!");
     }
 
+    /**
+     * Methdo um Singleton zu erzeugen
+     * @return die Debug Instanz
+     */
     public static DebugSystem getInstance()
     {
         if(debugSystem==null)
@@ -49,44 +53,74 @@ public class DebugSystem implements IO
         return debugSystem;
     }
 
+    /**
+     *
+     * @param s gibt ein String aus
+     */
     public void println(String s)
     {
 
         System.out.println(s);
     }
-    
+
+    /**
+     *
+     * @param i gibt ein Integer aus
+     */
     public void println(int i)
     {
 
         System.out.println(i);
     }
-    
+
+    /**
+     *
+     * @param d gibt ein Double aus
+     */
     public void println(double d)
     {
 
         System.out.println(d);
     }
 
+    /**
+     *
+     * @param s gibt ein String aus
+     */
     public void print(String s)
     {
         System.out.print(s);
     }
 
+    /**
+     *
+     * @param o gibt die ObjetID aus
+     */
     public void print(Object o)
     {
         System.out.print(o.toString());
     }
 
+    /**
+     * Zeilenumbruch
+     */
     public void println()
     {
         System.out.println();
     }
 
+    /**
+     * update
+     */
     public void update()
     {
 
     }
-    
+
+    /**
+     * Experimentell, liest die serielle Schnittstelle aus
+     * @return int aus dem Seriellen Puffer
+     */
     public int read()
     {
     	try {
