@@ -33,11 +33,15 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public Test_Task()
     {
     	debug.println("Test Task laeuft!");
-    	Test_BewegungsSystem.fahreVorwaerts1m();
+    	//Test_BewegungsSystem.fahreVorwaertsMeter(0.1);
+    	//bewegungsSystem.dreheUngenauGUZ(0.6*Math.PI);
+    	//bewegungsSystem.dreheUngenauGUZ(0.6*Math.PI);
+    	//bewegungsSystem.dreheUngenauUZ(0.6*Math.PI);
     }
 
     public void action()
     {
+    	Systeme.bewegungsSystem.update();
     	/*
     	wlanSystem.setOwnState(ZustandWifi.FAHREN);
     	wlanSystem.update();
@@ -51,8 +55,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	//Systeme.bewegungsSystem.update();
     	
-    	Systeme.bewegungsSystem.update();
-    	//Test_Motor.printDistanzen();
+    	Test_Motor.printDistanzen();
     	
     	
     }

@@ -40,9 +40,9 @@ public class Test_BewegungsSystem implements Systeme
 		Systeme.bewegungsSystem.update();
 	}
 	
-	public static void fahreVorwaerts1m()
+	public static void fahreVorwaertsMeter(double d)
 	{
-		Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 1);
+		Systeme.bewegungsSystem.fahreFreiBisDistanz(true, d);
 	}
 	
 	public static void folgeLinieVorwaerts()
