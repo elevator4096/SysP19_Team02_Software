@@ -13,9 +13,9 @@ public class FQD2 extends Task {
 
 	// private MotPos sm;
 
-	final byte pin4 = 4;
+	final byte pin4 = 3;
 	private TPU_FQD fqd;
-	final boolean TPUA = true;
+	final boolean TPUA = false;
 
 	private int umdrehungen = 0;
 	private short diff = 0;
@@ -61,7 +61,7 @@ public class FQD2 extends Task {
 
 //			 Task properties
 		FQD2 task = new FQD2(); // Generate the task
-		task.period = 100; // Period length
+		task.period = 1000; // Period length
 		Task.install(task); // Installation of the task
 
 	}
