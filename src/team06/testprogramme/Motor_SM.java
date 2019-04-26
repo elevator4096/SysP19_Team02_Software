@@ -4,10 +4,10 @@ package team06.testprogramme;
 
 	import java.io.PrintStream;
 
-	import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+	//import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 	import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 	import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-	import ch.ntb.inf.deep.runtime.ppc32.Task;
+	//import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 
 	public class Motor_SM {
