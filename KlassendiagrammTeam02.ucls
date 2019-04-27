@@ -3,7 +3,7 @@
   realizations="true" associations="false" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="team02.vorlagen.WurfSystem" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/WurfSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="858" y="632"/>    
+    <position height="-1" width="-1" x="759" y="572"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="team02.vorlagen.DebugSystem" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/DebugSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1699" y="604"/>    
+    <position height="-1" width="-1" x="1792" y="570"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="team02.vorlagen.GegnerSystem" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/GegnerSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1141" y="633"/>    
+    <position height="-1" width="-1" x="1040" y="590"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="false" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="team02.vorlagen.Sharp" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Sharp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1146" y="1051"/>    
+    <position height="-1" width="-1" x="1014" y="1099"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="team02.vorlagen.LinienSensor" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/LinienSensor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="127" y="1086"/>    
+    <position height="-1" width="-1" x="-5" y="1137"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="team02.dominique.WandErkennung" project="SysP19" 
     file="/SysP19/src/team02/dominique/WandErkennung.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="338" y="1056"/>    
+    <position height="-1" width="-1" x="206" y="1107"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="team02.vorlagen.Motor" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Motor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="573" y="1352"/>    
+    <position height="-1" width="-1" x="441" y="1403"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="team02.vorlagen.BewegungsSystem" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/BewegungsSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="451" y="722"/>    
+    <position height="-1" width="-1" x="206" y="722"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="false" private="true" static="true"/>      
@@ -75,32 +75,23 @@
   </class>  
   <class id="9" language="java" name="team02.vorlagen.Fahren" project="SysP19" 
     file="/SysP19/src/team02/vorlagen/Fahren.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="158" width="186" x="594" y="984"/>    
+    <position height="158" width="186" x="462" y="1035"/>    
     <display autosize="false" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="team02.chris.WlanSystem" project="SysP19" 
-    file="/SysP19/src/team02/chris/WlanSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1423" y="613"/>    
-    <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="team02.chris.Main" project="SysP19" file="/SysP19/src/team02/chris/Main.java" 
+  <class id="10" language="java" name="team02.chris.Main" project="SysP19" file="/SysP19/src/team02/chris/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1139" y="241"/>    
+    <position height="-1" width="-1" x="1040" y="205"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="false" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="12" language="java" name="team02.IO" project="SysP19" file="/SysP19/src/team02/IO.java" binary="false" 
+  <interface id="11" language="java" name="team02.IO" project="SysP19" file="/SysP19/src/team02/IO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="898" width="485" x="1930" y="66"/>    
     <display autosize="false" stereotype="false" package="false" initial-value="true" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="13" language="java" name="team02.Konstanten" project="SysP19" file="/SysP19/src/team02/Konstanten.java" 
+  <interface id="12" language="java" name="team02.Konstanten" project="SysP19" file="/SysP19/src/team02/Konstanten.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="278" width="484" x="1931" y="975"/>    
     <display autosize="false" stereotype="false" package="false" initial-value="true" signature="true" 
@@ -118,16 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="14" language="java" name="team02.ZustandWifi" project="SysP19" 
-    file="/SysP19/src/team02/ZustandWifi.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="158" width="481" x="1930" y="1543"/>    
-    <display autosize="false" stereotype="false" package="false" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <enumeration id="15" language="java" name="team02.Zustand" project="SysP19" file="/SysP19/src/team02/Zustand.java" 
+  <enumeration id="13" language="java" name="team02.Zustand" project="SysP19" file="/SysP19/src/team02/Zustand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="278" width="484" x="1930" y="1263"/>    
     <display autosize="false" stereotype="false" package="false" initial-value="true" signature="true" 
@@ -136,41 +118,142 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
+  <class id="14" language="java" name="exchange.WlanSystem" project="SysP19" file="/SysP19/src/exchange/WlanSystem.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1412" y="599"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
   <dependency id="16">    
-    <end type="SOURCE" refId="11"/>    
+    <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
   <dependency id="17">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
   </dependency>  
   <dependency id="18">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="19">    
     <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="TARGET" refId="6"/>  
   </dependency>  
+  <realization id="19">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
   <dependency id="20">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <realization id="21">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="22">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="26">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <dependency id="21">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="10"/>  
+  <realization id="27">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="28">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="22">    
+  <dependency id="30">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <realization id="31">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="32">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <realization id="33">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="34">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <realization id="36">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="37">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="38">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="39">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <realization id="41">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <realization id="42">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="43">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="45">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="23">    
+  <dependency id="46">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="24">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="2"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

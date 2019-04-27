@@ -9,7 +9,6 @@ package team02.chris;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import team02.*;
 import team02.vorlagen.*;
-import team02.Systeme;
 
 import static team02.Zustand.*;
 
@@ -281,10 +280,11 @@ public class Main extends Task implements IO, Systeme
      */
     private void update()
     {
+    	//ALLE Systeme updaten(sollte nur zu Testzwecken entfernt werden)
     	IO.debug.update();
-        Systeme.wlanSystem.update();
-        Systeme.bewegungsSystem.update();
-        Systeme.gegnerSystem.update();
-        Systeme.wurfSystem.update();
+    	Systeme.gegnerSystem.update();
+    	Systeme.wurfSystem.update();
+    	Systeme.bewegungsSystem.update();
+    	Systeme.wlanSystem.update();
     }
 }

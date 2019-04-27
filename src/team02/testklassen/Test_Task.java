@@ -41,7 +41,14 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 
     public void action()
     {
+    	//ALLE Systeme updaten(sollte nur zu Testzwecken entfernt werden)
+    	Systeme.gegnerSystem.update();
+    	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
+    	Systeme.wlanSystem.update();
+    	
+    	
+    	
     	/*
     	wlanSystem.setOwnState(ZustandWifi.FAHREN);
     	wlanSystem.update();
