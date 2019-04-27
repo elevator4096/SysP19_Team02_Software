@@ -18,8 +18,10 @@ public interface ZustandWifi
     int DEMO_FAHREN_WEIT 		= 102;
     int DEMO_DREHEN_90_GUZ 		= 103;
     int DEMO_FAHREN_KURZ 		= 104;
-    int DEMO_FAHREN_WAND		= 105;
-    int DEMO_WERFEN				= 106;
+    int DEMO_DREHEN_90_UZ 		= 105;
+    int DEMO_FAHREN_WAND		= 106;
+    int DEMO_WERFEN				= 107;
+    int DEMO_HALT				= 108;
 
     
 }

@@ -42,6 +42,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public void action()
     {
     	//ALLE Systeme updaten(sollte nur zu Testzwecken entfernt werden)
+    	IO.debug.update();
     	Systeme.gegnerSystem.update();
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
@@ -62,7 +63,9 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	//Systeme.bewegungsSystem.update();
     	
-    	Test_Motor.printDistanzen();
+    	//Test_Motor.printDistanzen();
+    	
+    	Demo.run();
     	
     	
     }
