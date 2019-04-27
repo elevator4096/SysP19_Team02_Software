@@ -33,7 +33,7 @@ public class Sharp {
 	public double getDistanz()
 	{	
 		double messwert = QADC_AIN.read(ADCPort,sensorIndex);
-		double distanz  = Konstanten.m_SHARP / (messwert + Konstanten.n_SHARP) - Konstanten.k_SHARP;
+		double distanz  = ( Konstanten.m_SHARP / (messwert + Konstanten.n_SHARP) - Konstanten.k_SHARP )/1000;
 		return distanz;
 
 	}

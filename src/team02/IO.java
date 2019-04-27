@@ -57,7 +57,7 @@ public interface IO
 	int				HLC_AN_chan					= 0;
 
 
-	//Sharp Distanz in mm
+	//Sharp Distanz in m
 	Sharp			AN_Sharp1					= new Sharp(false,0,0.0);
 	Sharp			AN_Sharp2					= new Sharp(false,1, 0.0);
 	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0);
@@ -75,7 +75,7 @@ public interface IO
 	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
 	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
 
-
+	//Encoder
 	TPU_FQD    		FQD_Links 					= new TPU_FQD(false, 3);
 	TPU_FQD   		FQD_Rechts 					= new TPU_FQD(false, 5);
 
