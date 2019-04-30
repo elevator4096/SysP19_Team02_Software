@@ -9,13 +9,8 @@ import java.io.PrintStream;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
-import team06.system.WurfSystem;
 import team06.Instanzen;
 import team06.Variablen;
-import team06.aurelia.*;
-import team06.Instanzen;
-import team06.Variablen;
-
 import static team06.aurelia.Zustand.*;
 
 public class Main extends Task {
@@ -55,22 +50,15 @@ public class Main extends Task {
 				break;
 			}
 
-			case WURF_KURZ_VORBEREITEN:				//kurzen Pass an Partner vorbereiten
+			case WURF_KURZ:							//kurzen Pass an Partner vorbereiten
 			{
-				wurf_kurz_vorbereiten();
+				wurf_kurz();
 				break;
 			}
 
-			case WURF_LANG_VORBEREITEN:				//langen Pass an Partner vorbereiten
+			case WURF_LANG:							//langen Pass an Partner vorbereiten
 			{
-				wurf_lang_vorbereiten();
-				break;
-			}
-
-
-			case WURFPOSITION:						//Bereit zum Werfen
-			{
-				wurfposition();
+				wurf_lang();
 				break;
 			}
 
@@ -80,7 +68,7 @@ public class Main extends Task {
 				break;
 			}
 
-			case VORRUECKEN:						//in nächsten Spielfelddabschnitt vorruecken
+			case VORRUECKEN:						//in naechsten Spielfelddabschnitt vorruecken
 			{
 				vorruecken();
 				break;
@@ -121,9 +109,6 @@ public class Main extends Task {
 	 */
 	public void startzustand()
 	{
-		if(Instanzen.sMSC_WurfMotor2.gibInkrement() == 5) {
-			zustand = WURF_KURZ_VORBEREITEN;
-		}
 		
 		// Methode formulieren
 	}
@@ -131,7 +116,7 @@ public class Main extends Task {
 	/**
 	 * Methode, um kurzen Pass an Partner vorzubereiten
 	 */
-	public void wurf_kurz_vorbereiten()
+	public void wurf_kurz()
 	{
 		// Methode formulieren
 	}
@@ -139,15 +124,7 @@ public class Main extends Task {
 	/**
 	 * Methode, um langen Pass an Partner vorzubereiten
 	 */
-	public void wurf_lang_vorbereiten()
-	{
-		// Methode formulieren
-	}
-
-	/**
-	 * Methode, um Wurf auszuführen
-	 */
-	public void wurfposition()
+	public void wurf_lang()
 	{
 		// Methode formulieren
 	}
@@ -161,7 +138,7 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode, um in den nächsten Feldabschnitt vorzuruecken
+	 * Methode, um in den naechsten Feldabschnitt vorzuruecken
 	 */
 	public void vorruecken()
 	{
@@ -169,7 +146,7 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode, um in den nächsten Feldabschnitt vorzuruecken
+	 * Methode, um rueckwaerts an Wand zu fahren und neue Position einzunehmen
 	 */
 	public void rueckwaerts_an_wand()
 	{
