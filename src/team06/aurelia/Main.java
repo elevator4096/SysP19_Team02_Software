@@ -20,9 +20,9 @@ public class Main extends Task {
 	public Instanzen instanz;
 	private Zustand zustand = STARTZUSTAND;
 	
-	private int passKurz; 		//Zaehler für kurze Paesse geworfen
-	private int passLang;		//Zaehler für lange Paesse geworfen
-	private int gefangen;		//Zaehler für gefangene Baelle
+	private int passKurz = 0; 		//Zaehler für kurze Paesse geworfen
+	private int passLang = 0;		//Zaehler für lange Paesse geworfen
+	private int gefangen = 0;		//Zaehler für gefangene Baelle
 
 	/**
 	 * Konstruktor der Klasse Main
@@ -32,9 +32,6 @@ public class Main extends Task {
 	public Main() {
 
 		instanz = new Instanzen();
-		passKurz = 0;
-		passLang = 0;
-		gefangen = 0;
 		System.out.println("Main Konstruktor gestartet");
 
 	}
@@ -53,12 +50,17 @@ public class Main extends Task {
 
 		switch (zustand) {
 
-			case STARTZUSTAND:						//Startzustand
+			case STARTZUSTAND:						//Startzustand herstellen
 			{	
 				startzustand();
 				break;
 			}
-
+			
+			case BEREIT:							//Robi ist bereit
+			{	
+				bereit();
+				break;
+			}
 			case WURF_KURZ:							//kurzen Pass an Partner vorbereiten
 			{
 				wurf_kurz();
@@ -113,12 +115,38 @@ public class Main extends Task {
 	/**
 	 * Methode Startzustand
 	 */
-	public void startzustand()
+	public void startzustand() 
 	{
-		
 		// Methode formulieren
+		zustand = BEREIT;
+	}
+	
+	
+	/**
+	 * Robi ist bereit
+	 */
+	public void bereit()
+	{
+		//hat Ball nicht -> fangbereit
+		if (!(Variablen.hatball) && !(Variablen.hatball))															
+		{
+			zustand = FANGPOSITION;
+		}
+		
+		//1. Pass NOCH NICHT ausgefuehrt UND hat Ball -> Pass lang ausfuehren
+		else if ((gefangen == 0 && (passLang + passKurz) == 0) && Variablen.hatball)		
+		{
+			zustand = WURF_LANG;
+		}
+		
+		//1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
+		else if ((gefangen != 0 || (passLang + passKurz)!= 0) && Variablen.hatball)			//1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
+		{
+			zustand = WURF_KURZ;
+		}
 	}
 
+	
 	/**
 	 * Methode, für kurzen Pass an Partner
 	 */
