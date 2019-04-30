@@ -64,9 +64,6 @@ public class Instanzen {
 
 //		// Systeme erzeugen
 		// wurfSystem = new WurfSystem();
-
-//		// Wurfsystem erzeugen
-		// wurfSystem = new WurfSystem();
 		// fahrSystem = new FahrSystem();
 		// orientierSystem = new OrientierSystem();
 
