@@ -27,6 +27,8 @@ public class Instanzen {
 
 	public static Endschalter endSchalter1;
 	public static Endschalter endSchalter2;
+	
+	public static ToFSensor toFSensor;
 
 	public static WurfSystem wurfSystem;
 	public static FahrSystem fahrSystem;
@@ -38,31 +40,31 @@ public class Instanzen {
 
 		taskMotor = new TaskMotor();
 
-		// Motoren Wurfsysten erzeugen TPUA
-		sMSC_WurfMotor1 = new MotorSMSC(Variablen.ts, 4, 5, true, 6, true, 64, 12f, 3249f / 196f, 1f, 0.01f);
-		sMSC_WurfMotor2 = new MotorSMSC(Variablen.ts, 8, 9, true, 10, true, 64, 12f, 3249f / 196f, 1f, 0.01f);
+//		// Motoren Wurfsysten erzeugen TPUA
+		sMSC_WurfMotor1 = new MotorSMSC(Variablen.ts, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+		sMSC_WurfMotor2 = new MotorSMSC(Variablen.ts, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
 
-//
 //		// Motoren Fahrsystem erzeugen
-//		sMSC_FahrMotorlinks = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f,
-//				1f, 0.01f); // frequenz an task anpassen (1.zahl)
-//		sMSC_FahrMotorrechts = new MotorSMSC(0.001f, 0, 1, true, 2, true, 64, 12f, 3249f / 196f,
-//				1f, 0.01f); // frequenz an task anpassen (1.zahl)
+		sMSC_FahrMotorlinks = new MotorSMSC(Variablen.ts, 5, 7, true, 8, true, 256, 12f, 91f/1f, 1f, 0.008f);
+		sMSC_FahrMotorrechts = new MotorSMSC(Variablen.ts, 4, 6, true, 10, true, 256, 12f, 91f/1f, 1f, 0.008f);	
 
-		// PWM_Servo TPU
-		servoMotor = new PWM_Servo(false, 4, Variablen.pwmPeriod, Variablen.hightTimehalten);
+//		// PWM_Servo TPU
+		servoMotor = new PWM_Servo(false, 4, Variablen.pwmPeriod, Variablen.highTime);
 
-		// IR-Sensoren erzeugen MPIOB
-		iRSensor = new IRSensor(-1, -1, -1, -1, -1, 59);
+//		// IR-Sensoren erzeugen MPIOB
+		iRSensor = new IRSensor(-1, 12, 11, 15, 14, 59);
 
-		// Enschalter erzeugen MPIOB
+//		// Endschalter erzeugen MPIOB
 		endSchalter1 = new Endschalter(6, false); // false für input
 		endSchalter2 = new Endschalter(7, false); // false für input
+		
+//		// ToF-Sensoren erzeugen
+		toFSensor = new ToFSensor();
 
-		// Wurfsystem erzeugen
-		wurfSystem = new WurfSystem();
+//		// Systeme erzeugen
+		// wurfSystem = new WurfSystem();
 		// fahrSystem = new FahrSystem();
-		orientierSystem = new OrientierSystem();
+		// orientierSystem = new OrientierSystem();
 
 	}
 }

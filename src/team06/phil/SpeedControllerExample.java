@@ -13,7 +13,7 @@ public class SpeedControllerExample extends Task {
 	protected static final int TPU_PWM_CH1 = 2;
 	protected static final int TPU_FQD_A = 3;
 	/* Controller parameters */
-	protected static final float ts = 0.01f;              // Standard 0.001f        // Fahrmotor 0.001f           // Wurfmotor 0.01f
+	protected static final float ts = 0.01f;              // Standard 0.001f        // Fahrmotor 0.01f           // Wurfmotor 0.01f
 	protected static final float kp = 1f;            // Testboar 1f                 // Fahrmotor 1f              // Wurfmotor 0.001f;
 	protected static final float tn = 0.008f;            // Testboard 0.01          // Fahrmotor 0.008f          // Wurfmotor 0.0051f
 	/* Ticks per rotation from encoder datasheet */

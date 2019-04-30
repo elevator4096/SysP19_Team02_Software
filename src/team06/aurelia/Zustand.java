@@ -3,9 +3,9 @@ package team06.aurelia;
 public enum Zustand {
 
     STARTZUSTAND,
-    WURF_KURZ_VORBEREITEN,
-    WURF_LANG_VORBEREITEN,
-    WURFPOSITION,
+    BEREIT,
+    WURF_KURZ,
+    WURF_LANG,
     POSITION_WECHSELN,
     VORRUECKEN,
     RUECKWAERTS_AN_WAND,
