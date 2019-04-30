@@ -62,14 +62,11 @@ public class Instanzen {
 //		// ToF-Sensoren erzeugen
 		toFSensor = new ToFSensor();
 
-<<<<<<< HEAD
 //		// Systeme erzeugen
 		// wurfSystem = new WurfSystem();
-=======
-		// Wurfsystem erzeugen
-		wurfSystem = new WurfSystem();
-		
->>>>>>> 6d9e4488639f739640957eb6e145f00f0a627003
+
+//		// Wurfsystem erzeugen
+		// wurfSystem = new WurfSystem();
 		// fahrSystem = new FahrSystem();
 		// orientierSystem = new OrientierSystem();
 
