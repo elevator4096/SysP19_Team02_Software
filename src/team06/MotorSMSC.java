@@ -9,7 +9,6 @@
 package team06;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
-import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
 
 public class MotorSMSC {
@@ -25,10 +24,8 @@ public class MotorSMSC {
 		motor = new SpeedController4DCMotor(ts, pwmChannel1, pwmChannel2, useTPUABPWM, encChannel, useTPUAEnc, encTPR,
 				umax, i, kp, tn);
 
-		motor.setDesiredSpeed((float)(Math.PI));
-		//motor.setDesiredSpeed((float)(0));
+		motor.setDesiredSpeed((float)(0));
 		
-
 		System.out.println("Motor erzeugt");
 
 	}
@@ -49,12 +46,19 @@ public class MotorSMSC {
 	}
 
 	/**
+	 * Aktuelle Geschwindigkeit in 1/min
+	 */
+	public int gibGeschwindigkeit()
+	{
+		return (int)(motor.getActualSpeed()/(2*Math.PI)*60);
+	}
+	
+	/**
 	 * Aktuelle Umdrehungen zurückgeben
 	 */
-	public int gibInkrement() {
-
+	public int gibUmdrehungen() {
 		
-		return (int)(motor.getActualPosition()/(2*Math.PI));
+		return (int) (motor.getActualPosition() / (2 * Math.PI));
 
 	}
 

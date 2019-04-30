@@ -1,4 +1,4 @@
-package team06.phil;
+package team06.testprogramme;
 
 import java.io.PrintStream;
 

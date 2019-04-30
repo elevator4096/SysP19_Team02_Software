@@ -27,7 +27,7 @@ public class OrientierSystem {
 	 * Achtung Anzahl anpassen
 	 */
 	public void gibsensorwert() {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			System.out.print(Instanzen.iRSensor.distanzlesen(i));
 			System.out.print("\t");
 		}
