@@ -16,13 +16,14 @@ import static team06.aurelia.Zustand.*;
 public class Main extends Task {
 
 	private static Main task;
-
 	public Instanzen instanz;
-	private Zustand zustand = STARTZUSTAND;
 	
-	private int passKurz = 0; 		//Zaehler für kurze Paesse geworfen
-	private int passLang = 0;		//Zaehler für lange Paesse geworfen
-	private int gefangen = 0;		//Zaehler für gefangene Baelle
+	
+	private Zustand zustand = STARTZUSTAND;
+
+	private int passKurz = 0; // Zaehler für kurze Paesse geworfen
+	private int passLang = 0; // Zaehler für lange Paesse geworfen
+	private int gefangen = 0; // Zaehler für gefangene Baelle
 
 	/**
 	 * Konstruktor der Klasse Main
@@ -40,7 +41,6 @@ public class Main extends Task {
 	 * Methode, die zyklisch aufgerufen wird
 	 */
 	public void action() {
-		Instanzen.wurfSystem.gibweg();
 	}
 
 	/**
@@ -50,173 +50,166 @@ public class Main extends Task {
 
 		switch (zustand) {
 
-			case STARTZUSTAND:						//Startzustand herstellen
-			{	
-				startzustand();
-				break;
-			}
-			
-			case BEREIT:							//Robi ist bereit
-			{	
-				bereit();
-				break;
-			}
-			case WURF_KURZ:							//kurzen Pass an Partner vorbereiten
-			{
-				wurf_kurz();
-				break;
-			}
+		case STARTZUSTAND: // Startzustand herstellen
+		{
+			startzustand();
+			break;
+		}
 
-			case WURF_LANG:							//langen Pass an Partner vorbereiten
-			{
-				wurf_lang();
-				break;
-			}
+		case BEREIT: // Robi ist bereit
+		{
+			bereit();
+			break;
+		}
+		case WURF_KURZ: // kurzen Pass an Partner vorbereiten
+		{
+			wurf_kurz();
+			break;
+		}
 
-			case POSITION_WECHSELN:					//Positionswechsel einleiten
-			{
-				position_wechseln();
-				break;
-			}
+		case WURF_LANG: // langen Pass an Partner vorbereiten
+		{
+			wurf_lang();
+			break;
+		}
 
-			case VORRUECKEN:						//in naechsten Spielfelddabschnitt vorruecken
-			{
-				vorruecken();
-				break;
-			}
+		case POSITION_WECHSELN: // Positionswechsel einleiten
+		{
+			position_wechseln();
+			break;
+		}
 
-			case RUECKWAERTS_AN_WAND:				//rueckwaerts an Wand fahren, um neu auszurichten und Fangen vorzubereiten
-			{
-				rueckwaerts_an_wand();
-				break;
-			}
+		case VORRUECKEN: // in naechsten Spielfelddabschnitt vorruecken
+		{
+			vorruecken();
+			break;
+		}
 
-			case FANGPOSITION:						//Bereit zum Fangen
-			{
-				fangposition();
-				break;
-			}
+		case RUECKWAERTS_AN_WAND: // rueckwaerts an Wand fahren, um neu auszurichten und Fangen vorzubereiten
+		{
+			rueckwaerts_an_wand();
+			break;
+		}
 
-			case ENDE:								//Spiel beendet
-			{
-				ende();
-				break;
-			}
+		case FANGPOSITION: // Bereit zum Fangen
+		{
+			fangposition();
+			break;
+		}
 
-			case FEHLER:							//Spielabbruch durch Fehler
-			{
-				fehler();
-				break;
-			}
+		case ENDE: // Spiel beendet
+		{
+			ende();
+			break;
+		}
+
+		case FEHLER: // Spielabbruch durch Fehler
+		{
+			fehler();
+			break;
+		}
 		}
 	}
-
 
 	/**
 	 * Methode Startzustand
 	 */
-	public void startzustand() 
-	{
+	public void startzustand() {
 		// Methode formulieren
 		zustand = BEREIT;
 	}
-	
-	
+
 	/**
 	 * Robi ist bereit
 	 */
-	public void bereit()
-	{
-		//hat Ball nicht -> fangbereit
-		if (!(Variablen.hatball) && !(Variablen.hatball))															
-		{
+	public void bereit() {
+		// hat Ball nicht -> fangbereit
+		if (!(Variablen.hatball) && !(Variablen.hatball)) {
 			zustand = FANGPOSITION;
 		}
-		
-		//1. Pass NOCH NICHT ausgefuehrt UND hat Ball -> Pass lang ausfuehren
-		else if ((gefangen == 0 && (passLang + passKurz) == 0) && Variablen.hatball)		
-		{
+
+		// 1. Pass NOCH NICHT ausgefuehrt UND hat Ball -> Pass lang ausfuehren
+		else if ((gefangen == 0 && (passLang + passKurz) == 0) && Variablen.hatball) {
 			zustand = WURF_LANG;
 		}
-		
-		//1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
-		else if ((gefangen != 0 || (passLang + passKurz)!= 0) && Variablen.hatball)			//1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
+
+		// 1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
+		else if ((gefangen != 0 || (passLang + passKurz) != 0) && Variablen.hatball) // 1. Pass ausgefuehrt UND hat Ball
+																						// -> Pass kurz ausfuehren
 		{
 			zustand = WURF_KURZ;
 		}
 	}
 
-	
 	/**
 	 * Methode, für kurzen Pass an Partner
 	 */
-	public void wurf_kurz()
-	{
+	public void wurf_kurz() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, für langen Pass an Partner
 	 */
-	public void wurf_lang()
-	{
+	public void wurf_lang() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, um Positionswechsel einzuleiten
 	 */
-	public void position_wechseln()
-	{
+	public void position_wechseln() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, um in den naechsten Feldabschnitt vorzuruecken
 	 */
-	public void vorruecken()
-	{
+	public void vorruecken() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, um rueckwaerts an Wand zu fahren und neue Position einzunehmen
 	 */
-	public void rueckwaerts_an_wand()
-	{
+	public void rueckwaerts_an_wand() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, um Ball zu fangen
 	 */
-	public void fangposition()
-	{
+	public void fangposition() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, Spiel zu beenden
 	 */
-	public void ende()
-	{
+	public void ende() {
 		// Methode formulieren
 	}
 
 	/**
 	 * Methode, um Fehler zu melden/Spiel abzubrechen
 	 */
-	public void fehler()
-	{
+	public void fehler() {
 		// Methode formulieren
 	}
 
+	
+	/**
+	 * Methode, welche alle Updates-Methoden der anderen Klassen aufruft
+	 */
+	public void update() {
+
+	}
 
 	/**
 	 * Task initialisieren/ SCI_OUT
 	 */
 	static {
-		
+
 		task = new Main();
 		task.period = Variablen.TASK_PERIOD;
 		Task.install(task);
