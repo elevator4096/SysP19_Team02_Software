@@ -19,13 +19,22 @@ public class Main extends Task {
 
 	public Instanzen instanz;
 	private Zustand zustand = STARTZUSTAND;
+	
+	private int passKurz; 		//Zaehler für kurze Paesse geworfen
+	private int passLang;		//Zaehler für lange Paesse geworfen
+	private int gefangen;		//Zaehler für gefangene Baelle
 
 	/**
-	 * Konstruktor Instanz erzeugen
+	 * Konstruktor der Klasse Main
+	 * 
+	 * Instanz erzeugen
 	 */
 	public Main() {
 
 		instanz = new Instanzen();
+		passKurz = 0;
+		passLang = 0;
+		gefangen = 0;
 		System.out.println("Main Konstruktor gestartet");
 
 	}
@@ -97,10 +106,7 @@ public class Main extends Task {
 				fehler();
 				break;
 			}
-
-
 		}
-
 	}
 
 
@@ -114,7 +120,7 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode, um kurzen Pass an Partner vorzubereiten
+	 * Methode, für kurzen Pass an Partner
 	 */
 	public void wurf_kurz()
 	{
@@ -122,7 +128,7 @@ public class Main extends Task {
 	}
 
 	/**
-	 * Methode, um langen Pass an Partner vorzubereiten
+	 * Methode, für langen Pass an Partner
 	 */
 	public void wurf_lang()
 	{
