@@ -35,6 +35,10 @@ public class Variablen {
 	// BodenSensor Wert
 	public static int aufliniemin = 100; // Wert anpassen
 	public static int aufliniemax = 150; // Wert anpassen
+	
+	// boolean
+	public static boolean hatball = false;
+	public static boolean anWand = false;
 
 	public Variablen() {
 
