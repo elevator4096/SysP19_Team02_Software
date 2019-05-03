@@ -64,7 +64,7 @@ public class Test_SensorenAktoren  implements IO, Konstanten, Systeme {
 		debug.println("");
 		
 		debug.println("LinienSensoren ");
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < 8; i++) {
 			int y = IO.HLC_1395_PULSED.read(i);
 			System.out.print(y);
 			System.out.print('\t');
@@ -119,11 +119,9 @@ public class Test_SensorenAktoren  implements IO, Konstanten, Systeme {
 				IO.OUT_Magnet_Wand.set(false);
 				
 				debug.println("Magnet Ausloeser");
-				IO.OUT_Magnet_Ausloeser.set(true);
+				Systeme.wurfSystem.ballWerfen();
 				break;
 			case 4:
-				IO.OUT_Magnet_Ausloeser.set(false);
-				
 				debug.println("Zylinder Spannen");
 				Systeme.wurfSystem.zylinderSpannen(50);
 				break;
