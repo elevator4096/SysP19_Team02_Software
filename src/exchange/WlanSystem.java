@@ -140,7 +140,10 @@ public class WlanSystem implements IO
      * Heartbeat senden
      */
     private static void sendHeartbeat()
-    {
+    {    	if(lastTasktime +499 < Task.time())
+	{
     	wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
+	}
+    	
     }
 }

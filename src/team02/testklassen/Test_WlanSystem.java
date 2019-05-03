@@ -29,4 +29,14 @@ public class Test_WlanSystem implements IO, Konstanten, Systeme {
             debug.println("Wifi Test okay");
         }
     }
+    
+    public static void send()
+    {
+    	WlanSystem.setOwnState(15);
+    }
+    
+    public static void get()
+    {
+    	debug.println(WlanSystem.getPartnerState());
+    }
 }

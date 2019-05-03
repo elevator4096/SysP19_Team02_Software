@@ -42,19 +42,46 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public void action()
     {
     	//ALLE Systeme updaten(sollte nur zu Testzwecken entfernt werden)
-    	IO.debug.update();
+    	/*IO.debug.update();
     	Systeme.gegnerSystem.update();
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
+    	*/
     	
     	
     	
-    	/*
     	wlanSystem.setOwnState(ZustandWifi.FAHREN);
     	wlanSystem.update();
     	debug.println(wlanSystem.getPartnerState());
-    	*/
+    	resetLED();
+    	switch(wlanSystem.getPartnerState())
+    	{
+    	case -1:{
+    		//Kein Host
+    		OUT_LED1.set(true);
+    		break;
+    		}
+    	case 0:{
+    		//Verbindung zu Router
+    		OUT_LED2.set(true);
+    		break;
+    	}
+    	case 1:{
+    		//Befehl empfangen
+    		OUT_LED3.set(true);
+    		break;
+    	}
+    	case 2:{
+    		//Befehl empfangen
+    		OUT_LED4.set(true);
+    	}
+    	default:
+    	{
+    		//Alle anderen Befehle
+    		OUT_LED5.set(true);
+    	}
+    	}
     	
     	//Fahren.kurveFahren(0.100, Konstanten.DRIVING_SPEED);
     	//wurfSystem.zylinderSpannen(50);
@@ -68,6 +95,15 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	Demo.run();
     	
     	
+    }
+    
+    private static void resetLED()
+    {
+    	OUT_LED1.set(false);
+    	OUT_LED2.set(false);
+    	OUT_LED3.set(false);
+    	OUT_LED4.set(false);
+    	OUT_LED5.set(false);
     }
     
     /*old Tests

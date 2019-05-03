@@ -83,6 +83,36 @@ public class DIG_IO implements IO
     	OUT_LED1.set(!OUT_LED1.get());
     }
     
+    public static void LED2_TEST()
+    {
+    	OUT_LED2.set(!OUT_LED2.get());
+    }
+    
+    public static void LED3_TEST()
+    {
+    	OUT_LED3.set(!OUT_LED3.get());
+    }
+    
+    public static void LED4_TEST()
+    {
+    	OUT_LED4.set(!OUT_LED4.get());
+    }
+    
+    public static void LED5_TEST()
+    {
+    	OUT_LED5.set(!OUT_LED5.get());
+    }
+    
+    public static void MAG_TEST_WAND()
+    {
+    	OUT_Magnet_Wand.set(OUT_Magnet_Wand.get());
+    }
+    
+    public static void MAG_TEST_AUS()
+    {
+    	OUT_Magnet_Ausloeser.set(OUT_Magnet_Ausloeser.get());
+    }
+    
     public static void get()
     {
     	debug.print(OUT_LED1.get());
@@ -127,4 +157,28 @@ public class DIG_IO implements IO
         }
     }
 
+    public static void Test_Sharp()
+    {
+    	debug.println("--------------------");
+    	debug.println(AN_Sharp1.getDistanz());
+    	debug.println(AN_Sharp2.getDistanz());
+    	debug.println(AN_Sharp3.getDistanz());
+    }
+    
+    public static void Test_Tast()
+    {
+    	debug.println("---------");
+    	debug.print("Taster 1: ");
+    	debug.println(IN_Taster_1.get());
+    	debug.print("Taster 2: ");
+    	debug.println(IN_Taster_2.get());
+    	debug.print("Laser 1: ");
+    	debug.println(IN_Laser_1.get());
+    	debug.print("Laser 2: ");
+    	debug.println(IN_Laser_2.get());
+    	debug.print("Taster 1 konf: ");
+    	debug.println(IN_Taster_konf1.get());
+    	debug.print("Taster 2 konf: ");
+    	debug.println(IN_Taster_konf2.get());
+    }
 }

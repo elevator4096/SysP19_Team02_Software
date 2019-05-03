@@ -117,6 +117,17 @@ public class DebugSystem implements IO
 
     }
 
+    
+    public void println(boolean b)
+    {
+    	if(b)
+    	{
+    		System.out.println("TRUE");
+    	}else
+    	{
+    		System.out.println("FALSE");
+    	}
+    }
     /**
      * Experimentell, liest die serielle Schnittstelle aus
      * @return int aus dem Seriellen Puffer
