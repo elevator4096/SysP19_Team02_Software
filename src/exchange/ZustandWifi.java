@@ -14,14 +14,16 @@ public interface ZustandWifi
     
     //Demo Wifi-Zustaende
     int DEMO_WARTEN		 		= 100;
-    int DEMO_ZYLINDER_SPANNEN	= 101;
-    int DEMO_FAHREN_WEIT 		= 102;
-    int DEMO_DREHEN_90_GUZ 		= 103;
-    int DEMO_FAHREN_KURZ 		= 104;
-    int DEMO_DREHEN_90_UZ 		= 105;
-    int DEMO_FAHREN_WAND		= 106;
-    int DEMO_WERFEN				= 107;
-    int DEMO_HALT				= 108;
+    int DEMO_WAND				= 101;
+    int DEMO_ZYLINDER_SPANNEN	= 102;
+    int DEMO_FAHREN_WEIT 		= 103;
+    int DEMO_DREHEN_90_GUZ 		= 104;
+    int DEMO_FAHREN_KURZ 		= 105;
+    int DEMO_DREHEN_90_UZ 		= 106;
+    int DEMO_FAHREN_WAND		= 107;
+    int DEMO_WERFEN				= 108;
+    int DEMO_HALT				= 109;
+    int DEMO_LEDS_AN			= 110;
 
     
 }

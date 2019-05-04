@@ -44,7 +44,7 @@ public interface IO
 	MDASM_DIO 		OUT_LED2					= new MDASM_DIO(15,true);
 	MDASM_DIO 		OUT_LED3					= new MDASM_DIO(27,true);
 	MDASM_DIO 		OUT_LED4					= new MDASM_DIO(28,true);
-	MDASM_DIO 		OUT_LED5					= new MDASM_DIO(29,true);
+	MDASM_DIO 		OUT_LED5					= new MDASM_DIO(29,true); //Defekt
 
 	//Experimental
 	MDASM_DIO[]     OUT_MDASM_DIO               = {OUT_FG_Speed, OUT_DIR_Speed1, OUT_DIR_Speed2, OUT_LED1, OUT_LED2, OUT_LED3, OUT_LED4, OUT_LED5};

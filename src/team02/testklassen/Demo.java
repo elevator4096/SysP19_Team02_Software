@@ -26,8 +26,16 @@ public class Demo implements IO, Konstanten, Systeme {
 	            {
 	                break;
 	            }
+	            case ZustandWifi.DEMO_WAND:
+	            {
+	            	IO.OUT_Magnet_Wand.set(true);
+	            	break;
+	            }
 	            case ZustandWifi.DEMO_ZYLINDER_SPANNEN:
 	            {
+	            	//Wand-Magnet wieder aus
+	            	IO.OUT_Magnet_Wand.set(false);
+	            	
 	            	Systeme.wurfSystem.zylinderSpannen(50);
 	                break;
 	            }
@@ -66,6 +74,15 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0);
 	                break;
 	            }
+	            case ZustandWifi.DEMO_LEDS_AN:
+	            {
+	            	IO.OUT_LED1.set(true);
+	            	IO.OUT_LED2.set(true);
+	            	IO.OUT_LED3.set(true);
+	            	IO.OUT_LED4.set(true);
+	                break;
+	            }
+	            
 	            default:
 	            {
 	            	demoZustand = ZustandWifi.DEMO_WARTEN;
