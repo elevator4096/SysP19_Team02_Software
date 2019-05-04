@@ -285,7 +285,7 @@ public class BewegungsSystem implements IO
 		switch(zustandBewegung)
 		{
 		case FAHRE_FREI:
-			Fahren.geradeaus(Konstanten.DRIVING_SPEED);
+			Fahren.geradeaus( Konstanten.DRIVING_SPEED*((bewegungsRichtung)? 1:-1));
 			break;
 		case FOLGE_LINIE:
 			folgeLinie(bewegungsRichtung);

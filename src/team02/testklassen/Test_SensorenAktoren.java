@@ -52,6 +52,87 @@ public class Test_SensorenAktoren  implements IO, Konstanten, Systeme {
 	public static long lastTime = Task.time();
 	public static int counter=0;
 	public static boolean richtung = true;
+	
+	public static void testAblaufDemo()
+	{
+		
+		if (Task.time() > lastTime+8000)
+		{
+			counter++;
+			switch(counter)
+			{
+				case 1:
+					debug.println("Warten");
+					break;
+				case 2:
+					debug.println("Drehen UZ");
+					Systeme.bewegungsSystem.dreheUngenauUZ(0.5*Math.PI);
+					break;
+				case 3:
+					debug.println("Fahre 10 cm");
+					Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 0.1);
+					break;
+				case 4:
+					debug.println("Drehen GUZ");
+					Systeme.bewegungsSystem.dreheUngenauGUZ(0.5*Math.PI);
+					break;
+				case 5:
+					debug.println("Zylinder Spannen");
+					Systeme.wurfSystem.zylinderSpannen(90);;
+					break;
+				case 6:
+					Systeme.wurfSystem.zylinderSpannen(10);;
+					
+					debug.println("Zylinder Spannen");
+					
+					break;
+				case 7:
+					debug.println("Ball Werfen");
+					
+					Systeme.wurfSystem.ballWerfen();
+					break;
+				case 8 :
+					debug.println("zylinder Spannen");
+					
+					Systeme.wurfSystem.zylinderSpannen(90);
+					break;
+				case 9: 
+					debug.println("Zylinder Spannen");
+					
+					Systeme.wurfSystem.zylinderSpannen(10);
+					break;
+				case 10:
+					debug.println("Rückwärtsfahren 10cm");
+					
+					Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
+					break;
+				case 11:
+					debug.println("Drehe UZ");
+					Systeme.bewegungsSystem.dreheUngenauUZ(0.5*Math.PI);
+					break;
+				case 12:
+					debug.println("Rückwärtsfahren 10 cm");
+					Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
+					break;
+				case 13:
+					debug.println("Drehe GUZ");
+					Systeme.bewegungsSystem.dreheUngenauGUZ(0.5*Math.PI);
+					break;
+				case 14:
+					debug.println("Rückwärtsfahren 10 cm");
+					Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
+					
+			}
+			
+				
+				
+			
+			lastTime = Task.time();
+		}
+		
+		
+		
+	}
 		
 	public static void testSensoren()
 	{

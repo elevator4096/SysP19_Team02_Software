@@ -12,12 +12,12 @@ public interface Konstanten
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 0.500;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.2;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
-	int 	TICKS_PER_ROUND 		= 128;							//Encoder Impulse pro Umdr.
+	int 	TICKS_PER_ROUND 		= 512;							//Encoder Impulse pro Umdr.
 	double 	WHEEL_DIAMETER 			= 0.0465; 						//in m
-	double 	WHEEL_DISTANCE 			= 0.105;						//Horizontaler Abstand der RĂ¤der
+	double 	WHEEL_DISTANCE 			= 0.145;						//Horizontaler Abstand der RĂ¤der
 	double  DISTANCE_PER_TICK		= WHEEL_DIAMETER*Math.PI*GEAR_RATIO/(TICKS_PER_ROUND);
 
 	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde

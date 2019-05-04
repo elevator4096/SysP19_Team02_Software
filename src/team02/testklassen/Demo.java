@@ -19,7 +19,7 @@ public class Demo implements IO, Konstanten, Systeme {
 	
 	public static void run()
 	{
-		demoZustand = Systeme.wlanSystem.getPartnerState();
+		demoZustand = debug.read();
 		 switch (demoZustand)
 	        {
 	            case ZustandWifi.DEMO_WARTEN:
@@ -80,6 +80,11 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	IO.OUT_LED2.set(true);
 	            	IO.OUT_LED3.set(true);
 	            	IO.OUT_LED4.set(true);
+	                break;
+	            }
+	            case ZustandWifi.DEMO_ABLAUF:
+	            {
+	            	Test_SensorenAktoren.testAblaufDemo();
 	                break;
 	            }
 	            

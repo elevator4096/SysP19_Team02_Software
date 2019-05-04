@@ -24,6 +24,7 @@ public interface ZustandWifi
     int DEMO_WERFEN				= 108;
     int DEMO_HALT				= 109;
     int DEMO_LEDS_AN			= 110;
+    int DEMO_ABLAUF				= 111;
 
     
 }

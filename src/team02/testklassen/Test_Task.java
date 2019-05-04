@@ -35,14 +35,15 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	debug.println("Test Task laeuft!");
     	//Test_BewegungsSystem.fahreVorwaertsMeter(1);
     	//Test_BewegungsSystem.fahreVorwaertsMeter(1);
+    	//bewegungsSystem.dreheUngenauGUZ(0.5*Math.PI);
     	//bewegungsSystem.dreheUngenauGUZ(0.6*Math.PI);
-    	//bewegungsSystem.dreheUngenauGUZ(0.6*Math.PI);
-    	//bewegungsSystem.dreheUngenauUZ(0.6*Math.PI);
-    	//bewegungsSystem.fahreFreiBisDistanz(false, 1);
+    	//bewegungsSystem.dreheUngenauUZ(0.5*Math.PI);
+    	//bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
     }
 
     public void action()
     {
+    	
     	//ALLE Systeme updaten(sollte nur zu Testzwecken entfernt werden)
     	IO.debug.update();
     	Systeme.gegnerSystem.update();
@@ -50,6 +51,16 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
     	
+    
+    	//IO.MOTOR_links.updateSpeed(0.1);
+    	//IO.MOTOR_rechts.updateSpeed(0.1);
+    	
+   
+    	
+    	//Systeme.wurfSystem.zylinderSpannen(90);
+    	//Systeme.wurfSystem.ballWerfen();
+        
+    
     	
     	
     	/*
@@ -91,11 +102,14 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Fahren.rueckwaerts();
     	
     	//Systeme.bewegungsSystem.update();
-    	
+    	*/
     	//Test_Motor.printDistanzen();
     	
-    	Demo.run();
-    	*/
+    	
+    	//Demo.run();
+    	
+    	Test_SensorenAktoren.testAblaufDemo();
+    	
     	
     }
     
