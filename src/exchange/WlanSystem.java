@@ -17,7 +17,9 @@ public class WlanSystem implements IO
     private static RN131 wifi;
     private static long lastTasktime;
     private static int partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
+    private static int cPartnerState = ZustandWifi.NO_ROUTER_CONNECTION;
     private static int ownState = ZustandWifi.SETUP;
+    private static int counter =0;
     private static WlanSystem wlanSystem;
     
 
@@ -93,6 +95,7 @@ public class WlanSystem implements IO
     public static void update()
     {
         getData();
+        compensateLoss();
         sendData();
         sendHeartbeat();
     }
@@ -116,7 +119,9 @@ public class WlanSystem implements IO
             	int state = wifi.cmd.getInt();
             	if(state >= 0)
             	{
-            		partnerState =wifi.cmd.getInt();
+            		//partnerState =wifi.cmd.getInt();
+                    partnerState = state;
+            		cPartnerState = partnerState;
             	}
             }
         }else {
@@ -140,10 +145,27 @@ public class WlanSystem implements IO
      * Heartbeat senden
      */
     private static void sendHeartbeat()
-    {    	if(lastTasktime +499 < Task.time())
-	{
-    	wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
-	}
-    	
+    {
+        if(lastTasktime +499 < Task.time())
+	    {
+    	    wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
+	    }
+    }
+
+    private static void compensateLoss()
+    {
+        if(partnerState==ZustandWifi.NO_ROUTER_CONNECTION)
+        {
+            counter++;
+        }
+        if(counter>10)
+        {
+            cPartnerState = partnerState;
+        }
+    }
+
+    private static int getcPartnerState()
+    {
+        return cPartnerState;
     }
 }
