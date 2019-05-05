@@ -19,7 +19,7 @@ public class Demo implements IO, Konstanten, Systeme {
 	
 	public static void run()
 	{
-		demoZustand = debug.read();
+		demoZustand = Systeme.wlanSystem.getPartnerState();
 		 switch (demoZustand)
 	        {
 	            case ZustandWifi.DEMO_WARTEN:
@@ -95,8 +95,10 @@ public class Demo implements IO, Konstanten, Systeme {
 	            }
 	        }
 		 
+		 Systeme.wlanSystem.setPartnerState(ZustandWifi.DEMO_WARTEN);
+		 
 		 //Gegner erkannt Signalisieren
-		 IO.OUT_LED5.set(Systeme.gegnerSystem.istGegnerRechts());
+		 IO.OUT_LED2.set(Systeme.gegnerSystem.istGegnerRechts());
 		
 		
 	}

@@ -88,6 +88,15 @@ public class WlanSystem implements IO
     {
         return partnerState;
     }
+    
+    /*
+     * Setzt den Partnerzustand
+     * Nur fuer Testzwecke!
+     */
+    public static void setPartnerState(int state)
+    {
+        partnerState = state;
+    }
 
     /**
      * Wird benoetigt um die anderen Methoden aufzurufen
