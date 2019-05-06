@@ -31,17 +31,20 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	IO.OUT_Magnet_Wand.set(true);
 	            	break;
 	            }
-	            case ZustandWifi.DEMO_ZYLINDER_SPANNEN:
+	            case ZustandWifi.DEMO_WAND_AUS:
 	            {
-	            	//Wand-Magnet wieder aus
 	            	IO.OUT_Magnet_Wand.set(false);
-	            	
-	            	Systeme.wurfSystem.zylinderSpannen(50);
+	            	break;
+	            }
+	            case ZustandWifi.DEMO_DREHEN_90_UZ:
+	            {
+	            	IO.OUT_Magnet_Wand.set(false);
+	            	Systeme.bewegungsSystem.dreheUngenauUZ(Math.PI/2);	            	
 	                break;
 	            }
 	            case ZustandWifi.DEMO_FAHREN_WEIT:
 	            {
-	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.3);
+	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
 	                break;
 	            }
 	            case ZustandWifi.DEMO_DREHEN_90_GUZ:
@@ -49,19 +52,20 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	Systeme.bewegungsSystem.dreheUngenauGUZ(Math.PI/2);
 	                break;
 	            }
-	            case ZustandWifi.DEMO_FAHREN_KURZ:
+	            case ZustandWifi.DEMO_ZYLINDER_HOCH:
 	            {
-	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
+	            	//Wand-Magnet wieder aus
+	            	IO.OUT_Magnet_Wand.set(false);
+	            	
+	            	Systeme.wurfSystem.zylinderSpannen(90);
 	                break;
 	            }
-	            case ZustandWifi.DEMO_DREHEN_90_UZ:
+	            case ZustandWifi.DEMO_ZYLINDER_RUNTER:
 	            {
-	            	Systeme.bewegungsSystem.dreheUngenauUZ(Math.PI/2);	            	
-	                break;
-	            }
-	            case ZustandWifi.DEMO_FAHREN_WAND:
-	            {
-	            	Systeme.bewegungsSystem.folgeLinieBisWandRueckwaerts();
+	            	//Wand-Magnet wieder aus
+	            	IO.OUT_Magnet_Wand.set(false);
+	            	
+	            	Systeme.wurfSystem.zylinderSpannen(10);
 	                break;
 	            }
 	            case ZustandWifi.DEMO_WERFEN:
@@ -69,22 +73,14 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	Systeme.wurfSystem.ballWerfen();
 	                break;
 	            }
-	            case ZustandWifi.DEMO_HALT:
-	            {
-	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0);
-	                break;
-	            }
-	            case ZustandWifi.DEMO_LEDS_AN:
-	            {
-	            	IO.OUT_LED1.set(true);
-	            	IO.OUT_LED2.set(true);
-	            	IO.OUT_LED3.set(true);
-	            	IO.OUT_LED4.set(true);
-	                break;
-	            }
 	            case ZustandWifi.DEMO_ABLAUF:
 	            {
 	            	Test_SensorenAktoren.testAblaufDemo();
+	                break;
+	            }
+	            case ZustandWifi.DEMO_HALT:
+	            {
+	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0);
 	                break;
 	            }
 	            

@@ -39,6 +39,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//bewegungsSystem.dreheUngenauGUZ(0.6*Math.PI);
     	//bewegungsSystem.dreheUngenauUZ(0.5*Math.PI);
     	//bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
+    	IO.OUT_Magnet_Wand.set(false);
     }
 
     public void action()
@@ -106,9 +107,10 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Motor.printDistanzen();
     	
     	
-    	//Demo.run();
+    	Demo.run();
     	
-    	Test_SensorenAktoren.testAblaufDemo();
+    	//Test_SensorenAktoren.testAblaufDemo();
+    	//debug.println(WlanSystem.getPartnerState());
     	
     	
     }
