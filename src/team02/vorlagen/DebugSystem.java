@@ -12,7 +12,7 @@ import java.lang.System;
 
 import java.io.PrintStream;
 
-public class DebugSystem implements IO
+public class DebugSystem
 {
 
 	public static SCI sci1;

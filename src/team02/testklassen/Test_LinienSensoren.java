@@ -20,5 +20,22 @@ public class Test_LinienSensoren implements IO, Konstanten, Systeme
 		IO.debug.println("");
 		
 	}
+	
+	public static void printall()
+	{
+		for(int i =0;i<8;i++)
+		{
+			debug.print("Sensor ");
+			debug.print(i);
+			debug.print("\t :");
+			debug.print(IO.HLC_1395_PULSED.read(i));
+			debug.println("");
+		}
+	}
+	
+	public static void print()
+	{
+		debug.println(IO.HLC_1395_PULSED.read(0));
+	}
 
 }

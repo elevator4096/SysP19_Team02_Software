@@ -131,6 +131,7 @@ public class WlanSystem implements IO
             		//partnerState =wifi.cmd.getInt();
                     partnerState = state;
             		cPartnerState = partnerState;
+            		counter = 0;
             	}
             }
         }else {
@@ -173,7 +174,7 @@ public class WlanSystem implements IO
         }
     }
 
-    private static int getcPartnerState()
+    public static int getcPartnerState()
     {
         return cPartnerState;
     }
