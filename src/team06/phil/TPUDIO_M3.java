@@ -21,7 +21,7 @@ public class TPUDIO_M3 extends Task {
 		ledg = new TPU_DIO(false, 15, true);
 		leddp = new TPU_DIO(false, 7, true);
 
-		leda.set(true); // LED ausschalten
+		leda.set(true); // LED ausschalten true = aus
 		ledb.set(true);
 		ledc.set(true);
 		ledd.set(true); // LED ausschalten
@@ -86,14 +86,40 @@ public class TPUDIO_M3 extends Task {
 
 	public void rblinken() {
 
-		leda.set(!leda.get());
-		ledb.set(!ledb.get());
+//		leda.set(!leda.get());
+//		ledb.set(!ledb.get());
 //		ledc.set(true);
-		ledd.set(!ledd.get());
-//		lede.set(true);
-		ledf.set(!ledf.get());
-//      ledg.set(true);
-		leddp.set(!leddp.get());
+//		ledd.set(!ledd.get());
+		lede.set(!lede.get());
+//		ledf.set(!ledf.get());
+		ledg.set(!ledg.get());
+//		leddp.set(!leddp.get());
+	}
+	
+	public void dleuchten() {
+		leda.set(false); // LED ausschalten
+		ledb.set(false);
+		ledc.set(false);
+		ledd.set(false); // LED ausschalten
+		lede.set(false);
+		ledf.set(false);
+//		ledg.set(!ledg.get()); // LED ausschalten
+		leddp.set(false);
+	}
+	
+	public void strichblinken() {
+		ledg.set(!ledg.get());
+	}
+	public void löschen()
+	{
+		leda.set(true); // LED ausschalten
+		ledb.set(true);
+		ledc.set(true);
+		ledd.set(true); // LED ausschalten
+		lede.set(true);
+		ledf.set(true);
+//		ledg.set(true); // LED ausschalten
+		leddp.set(true);
 	}
 
 //	static { // Klassenkonstruktor

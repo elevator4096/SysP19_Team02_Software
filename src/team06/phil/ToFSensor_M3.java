@@ -8,11 +8,11 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.VL6180X_SC18IS600;
 
 import java.io.PrintStream;
 
-public class ToFSensor extends Task {
+public class ToFSensor_M3 extends Task {
 
 	static VL6180X_SC18IS600 tofSensor;
 
-	public ToFSensor() {
+	public ToFSensor_M3() {
 		
 		
 
@@ -110,7 +110,7 @@ public class ToFSensor extends Task {
 		 tofSensor = new VL6180X_SC18IS600(1);
 		
 
-		Task s = new ToFSensor();
+		Task s = new ToFSensor_M3();
 		s.period = 1000;
 		Task.install(s);
 
