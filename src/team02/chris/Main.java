@@ -18,6 +18,7 @@ public class Main extends Task implements IO, Systeme
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
 
+    
     /**
      * Initialisieren des Tasks
      */
