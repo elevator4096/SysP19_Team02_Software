@@ -14,7 +14,19 @@ public enum Zustand {
     ROB_HAT_BALL,
     ROB_HAT_KEIN_BALL,
     ROB_POSITION_ERREICHT,
-    SETUP, //Startzustand
-    SPIEL_BEGINNT
 
+    
+    WARTEN1,
+    SETUP_ZYLINDER_HOCH,
+    SETUP_ZYLINDER_TIEF,
+    WARTEN_START,
+    SPIELBEGINN,
+    Bewegen1,
+    Bewegen2,
+    Bewegen3,
+    Bewegen4,
+    Bewegen5,
+    FAHRE_EBENE2,
+    
+    
 }
