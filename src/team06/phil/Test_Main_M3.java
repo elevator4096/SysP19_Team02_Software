@@ -24,6 +24,8 @@ public class Test_Main_M3 extends Task {
 
 	static TPUDIO_M3 sieben;
 
+	static DistSensorTest_M3 dist;
+
 	int counter = 0;
 	int zähler = 0;
 
@@ -32,10 +34,6 @@ public class Test_Main_M3 extends Task {
 	static int geradeaus = 2;
 
 	public Test_Main_M3() {
-
-//		// Testboard
-//		wurfmotor3 = new MotorSMSC_M3(0.001f, 5, 7, true, 8, true, 64, 5f, 3249f / 196f, 1f, 0.01f);
-//		wurfmotor4 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f/1f, 1f, 0.008f);
 
 		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
 		fahrmotor2 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f / 1f, 1f, 0.008f);
@@ -47,10 +45,15 @@ public class Test_Main_M3 extends Task {
 
 		sieben = new TPUDIO_M3();
 
-		System.out.println("Main Konstruktor gestartet");
+		dist = new DistSensorTest_M3();
+
 	}
 
 	public void action() {
+
+		if (nofActivations % 100 == 0) {
+			sieben.strichblinken();
+		}
 
 		wurfmotor3.motorstarten();
 		wurfmotor4.motorstarten();
@@ -60,15 +63,36 @@ public class Test_Main_M3 extends Task {
 
 		servo.update();
 
-		testfahren();
+// testfahren();
 
-		if (nofActivations % 100 == 0) {
-			sieben.rblinken();
+		if (irsensor() == true && nofActivations % 10 == 0) {
+			sieben.dleuchten();
 		}
 
-//		wurfmotor3.motorstarten();
-//		wurfmotor4.motorstarten();
-//		
+		if (irsensor() == false && nofActivations % 10 == 0) {
+			sieben.löschen();
+
+		}
+
+		if (nofActivations % 150 == 0) {
+			System.out.print("IR Sensor 1    -->");
+			System.out.println(dist.gibdist(1));
+			System.out.print("zustand    --->>>>>");
+			System.out.println(zustand);
+		}
+
+		if (nofActivations % 150 == 0) {
+			System.out.print("Fahrmotor 1: Umdrehungen >");
+			System.out.print(fahrmotor1.gibUmdrehungen());
+			System.out.print("        Geschwindigkeit in 1/min  >");
+			System.out.println(fahrmotor1.gibGeschwindigkeit());
+
+			System.out.print("Fahrmotor 2: Umdrehungen >");
+			System.out.print(fahrmotor2.gibUmdrehungen());
+			System.out.print("        Geschwindigkeit in 1/min  >");
+			System.out.println(fahrmotor2.gibGeschwindigkeit());
+		}
+
 //		if(nofActivations%200==0) {
 //		System.out.print("Wurfmotor 3: Umdrehungen >");
 //		System.out.print(wurfmotor3.gibUmdrehungen());
@@ -81,21 +105,6 @@ public class Test_Main_M3 extends Task {
 //		System.out.println(wurfmotor4.gibGeschwindigkeit());
 //		}	
 
-//		fahrmotor1.motorstarten();
-//		fahrmotor2.motorstarten();
-//		
-		if (nofActivations % 150 == 0) {
-			System.out.println("test");
-			System.out.print("Fahrmotor 1: Umdrehungen >");
-			System.out.print(fahrmotor1.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(fahrmotor1.gibGeschwindigkeit());
-
-			System.out.print("Fahrmotor 2: Umdrehungen >");
-			System.out.print(fahrmotor2.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(fahrmotor2.gibGeschwindigkeit());
-		}
 //		
 //		
 //		if(fahrmotor1.gibUmdrehungen() == -3 && counter == 0) {
@@ -120,57 +129,79 @@ public class Test_Main_M3 extends Task {
 
 	public void testfahren() {
 
+//		if (nofActivations % 100 == 0 && counter > 0) {
+//			sieben.rblinken();
+//			System.out.print("zustand    --->>>>>");
+//			System.out.println(zustand);
+//		}
+
 		switch (zustand) {
 
 		case 1: // linkskurve
 		{
 			fahrlinkskurve();
 			zustand = 2;
+			System.out.println("case 1");
 			break;
 		}
 
 		case 2: // anzahl inkrements fahren
 		{
-			if (fahrmotor1.gibUmdrehungen() == -1) {
+			if (fahrmotor1.gibUmdrehungen() == 1) {
 				fahrhalbspeed();
 				zustand = 3;
+				System.out.println("case 2");
 				break;
 			}
 		}
+//
+//		case 3: // 180 grad drehen rechtskurve
+//		{
+//			if (fahrmotor1.gibUmdrehungen() == -6) {
+//				fahrrechtskurve();
+//				zustand = 4;
+//				System.out.println("case 3");
+//				break;
+//			}
+//		}
+//
+//		case 4: {
+//			if (fahrmotor2.gibUmdrehungen() == 10) {
+//				fahrnullspeed();
+//				zustand = 5;
+//				System.out.println("case 4");
+//				break;
+//			}
+//		}
+//
+//		case 5: {
+//			//System.out.println("case 5");
+//			zähler++;
+//			wurfspeedhalb();
+//			if (zähler == 10) {
+//				servo.servooffen();
+//			}
+//			if (zähler == 30) {
+//				servo.servogeschlossen();
+//				wurfnullspeed();
+//				break;
+//			}
+//
+//		}
 
-		case 3: // 180 grad drehen rechtskurve
-		{
-			if (fahrmotor1.gibUmdrehungen() == -6) {
-				fahrrechtskurve();
-				zustand = 4;
-				break;
-			}
 		}
 
-		case 4: {
-			if (fahrmotor2.gibUmdrehungen() == 10) {
-				fahrnullspeed();
-				zustand = 5;
-				break;
-			}
+	}
+
+	public boolean irsensor() {
+		boolean schwarz = false;
+		if (dist.gibdist(1) < 10) {
+			schwarz = true;
 		}
-
-		case 5: {
-			zähler++;
-			wurfspeedhalb();
-			if (zähler == 10) {
-				servo.servooffen();
-			}
-			if (zähler == 30) {
-				servo.servogeschlossen();
-				wurfnullspeed();
-				break;
-			}
-
+		if (dist.gibdist(1) > 10) {
+			schwarz = false;
 		}
-
-		}
-
+		return schwarz;
 	}
 
 	public static void teststarten() {
@@ -231,6 +262,14 @@ public class Test_Main_M3 extends Task {
 		wurfmotor3.setdrehzahl((float) (100 * Math.PI));
 		wurfmotor4.setdrehzahl((float) (100 * Math.PI));
 
+	}
+
+	public static void servooffen() {
+		servo.servooffen();
+	}
+
+	public static void servogeschlossen() {
+		servo.servogeschlossen();
 	}
 
 	static {
