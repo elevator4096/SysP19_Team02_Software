@@ -52,7 +52,7 @@ public interface IO
 
 	//HLC
 	HLC1395Pulsed 	HLC_1395_PULSED				= HLC1395Pulsed.getInstance();
-	int 		  	HLC_Anzahl_Sens				= 1;
+	int 		  	HLC_Anzahl_Sens				= 8;
 	int				HLC_Code_Sens				= (12 << 16) | (0 << 12) | (14 << 8) | (13 << 4) | (15 << 0) ;//0xC0EDF;	//Trig,Adr3,Adr2,Adr1,Adr0 HEX
 	int				HLC_AN_chan					= 52;
 

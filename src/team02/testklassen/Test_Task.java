@@ -39,18 +39,18 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//bewegungsSystem.dreheUngenauGUZ(0.6*Math.PI);
     	//bewegungsSystem.dreheUngenauUZ(0.5*Math.PI);
     	//bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
-    	IO.OUT_Magnet_Wand.set(false);
+    	//IO.OUT_Magnet_Wand.set(false);
     }
 
     public void action()
     {
     	
     	//ALLE Systeme updaten(sollte nur zu Testzwecken entfernt werden)
-    	IO.debug.update();
-    	Systeme.gegnerSystem.update();
-    	Systeme.wurfSystem.update();
-    	Systeme.bewegungsSystem.update();
-    	Systeme.wlanSystem.update();
+    	//IO.debug.update();
+    	//Systeme.gegnerSystem.update();
+    	//Systeme.wurfSystem.update();
+    	//Systeme.bewegungsSystem.update();
+    	//Systeme.wlanSystem.update();
     	
     
     	//IO.MOTOR_links.updateSpeed(0.1);
@@ -107,8 +107,8 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//Test_Motor.printDistanzen();
     	
     	
-    	Demo.run();
-    	
+    	//Demo.run();
+    	Test_LinienSensoren.printall();
     	//Test_SensorenAktoren.testAblaufDemo();
     	//debug.println(WlanSystem.getPartnerState());
     	
