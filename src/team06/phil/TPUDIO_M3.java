@@ -21,14 +21,14 @@ public class TPUDIO_M3 extends Task {
 		ledg = new TPU_DIO(false, 15, true);
 		leddp = new TPU_DIO(false, 7, true);
 
-		leda.set(false); // LED ausschalten
-		ledb.set(false);
-		ledc.set(false);
-		ledd.set(false); // LED ausschalten
-		lede.set(false);
-		ledf.set(false);
-		ledg.set(false); // LED ausschalten
-		leddp.set(false);
+		leda.set(true); // LED ausschalten
+		ledb.set(true);
+		ledc.set(true);
+		ledd.set(true); // LED ausschalten
+		lede.set(true);
+		ledf.set(true);
+		ledg.set(true); // LED ausschalten
+		leddp.set(true);
 
 	}
 
@@ -88,11 +88,11 @@ public class TPUDIO_M3 extends Task {
 		
 		leda.set(!leda.get());
 		ledb.set(!ledb.get());
-		ledc.set(false);
+		ledc.set(true);
 		ledd.set(!ledd.get());
-		lede.set(false);
+		lede.set(true);
 		ledf.set(!ledf.get());
-		ledg.set(false);
+		ledg.set(true);
 		leddp.set(!leddp.get());
 	}
 
