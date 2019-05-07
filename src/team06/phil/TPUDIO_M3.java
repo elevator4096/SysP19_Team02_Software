@@ -83,16 +83,16 @@ public class TPUDIO_M3 extends Task {
 //		}
 //
 //	}
-	
+
 	public void rblinken() {
-		
+
 		leda.set(!leda.get());
 		ledb.set(!ledb.get());
-		ledc.set(true);
+//		ledc.set(true);
 		ledd.set(!ledd.get());
-		lede.set(true);
+//		lede.set(true);
 		ledf.set(!ledf.get());
-		ledg.set(true);
+//      ledg.set(true);
 		leddp.set(!leddp.get());
 	}
 

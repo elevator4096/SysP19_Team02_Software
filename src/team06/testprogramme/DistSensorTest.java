@@ -12,7 +12,7 @@ public class DistSensorTest extends Task {
 	private final int ADR2PIN = 12; // not used
 	private final int ADR1PIN = 11; // MPIOB7
 	private final int ADR0PIN = 15; // MPIOB6
-	private final int TRGPIN = 7; // MPIOB5
+	private final int TRGPIN = 14; // MPIOB5
 	private final int ANPIN = 59; // A:AN59
 	private HLC1395Pulsed hlc1395;
 
