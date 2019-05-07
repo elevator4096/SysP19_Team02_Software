@@ -123,6 +123,7 @@ public class Main extends Task {
 	 * Robi ist bereit
 	 */
 	public void bereit() {
+		
 		// hat Ball nicht -> fangbereit
 		if (!(Variablen.hatball) && !(Variablen.hatball)) {
 			zustand = FANGPOSITION;
@@ -134,8 +135,7 @@ public class Main extends Task {
 		}
 
 		// 1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
-		else if ((gefangen != 0 || (passLang + passKurz) != 0) && Variablen.hatball) // 1. Pass ausgefuehrt UND hat Ball
-																						// -> Pass kurz ausfuehren
+		else if ((gefangen != 0 || (passLang + passKurz) != 0) && Variablen.hatball) 
 		{
 			zustand = WURF_KURZ;
 		}
