@@ -335,6 +335,26 @@ public class BewegungsSystem implements IO
 		bewege();
 		
 	}
+
+	public void fahre_zu_Pos1()
+	{
+
+	}
+
+	public void fahre_zu_Pos2()
+	{
+
+	}
+
+	public boolean pos1_erreicht()
+	{
+		return true;
+	}
+
+	public boolean pos2_erreicht()
+	{
+		return true;
+	}
 	
 	
 

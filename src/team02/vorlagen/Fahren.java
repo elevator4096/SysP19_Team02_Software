@@ -176,7 +176,7 @@ public class Fahren implements IO, Konstanten
 
     /**
      * Signum Funktion (gibt Vorzeichen zurueck)
-     * @param zahl
+     * @param d
      * @return vorzeichen(1,-1)
      */
     private static double signum(double d)

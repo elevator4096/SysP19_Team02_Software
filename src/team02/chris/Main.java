@@ -19,7 +19,7 @@ public class Main extends Task implements IO, Systeme
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
-    private boolean bsetup,bpass1,bpass2,bpass3,bpass4,bpass5,bpass6,bbewegen1,bbewegen2,bpos1,bpos2;
+    private boolean bsetup,bpass1,bpass2,bpass3,bpass4,bpass5,bpass6,bbewegen1,bbewegen2,bpos1,bpos2,ende;
 
     
     /**
@@ -125,6 +125,12 @@ public class Main extends Task implements IO, Systeme
                 break;
             }
 
+            case ENDE:
+            {
+                ende();
+                break;
+            }
+
 
 
             default:
@@ -140,7 +146,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void setup()
     {
-        Systeme.wurfSystem.Wandauf();
+        if(!bsetup)
+        {
+            Systeme.wurfSystem.Wandauf();
+        }
         if(IO.IN_Laser_2.get())                   //Weiterschaltbedingung
         {
             zustand = Pass2;
@@ -188,6 +197,7 @@ public class Main extends Task implements IO, Systeme
         if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT)
         {
             Systeme.wurfSystem.ballWerfen();
+
             zustand = Bewegen1;
         }
 
@@ -201,11 +211,38 @@ public class Main extends Task implements IO, Systeme
     {
         if(!bbewegen1)
         {
-
+            WlanSystem.setOwnState(ZustandWifi.FAHREN);
+            Systeme.bewegungsSystem.fahre_zu_Pos1();
             bbewegen1 = true;
         }
 
+        if(Systeme.bewegungsSystem.pos1_erreicht())
+        {
+            zustand = Pos1;
+        }
+
     }
+
+    /**
+     * Aktion an 1. Pos
+     */
+    private void pos1()
+    {
+        if(!bpos1)
+        {
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
+            bpos1 = true;
+        }
+
+        if(Systeme.wurfSystem.zylinderGespannt())
+        {
+            WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+            zustand = Pass4;
+        }
+
+
+    }
+
 
     /**
      * 2. Pass, kurz, Partnerteam
@@ -220,6 +257,7 @@ public class Main extends Task implements IO, Systeme
 
     }
 
+
     /**
      * 3. Pass, kurz, Wir
      */
@@ -230,7 +268,49 @@ public class Main extends Task implements IO, Systeme
 
             bpass4 = true;
         }
+
+        if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_2.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
+        {
+            Systeme.wurfSystem.ballWerfen();
+            zustand = Bewegen2;
+        }
     }
+
+    /**
+     * Positionswechsel
+     */
+    private void bewegen2()
+    {
+        if(!bbewegen2)
+        {
+            Systeme.bewegungsSystem.fahre_zu_Pos2();
+            bbewegen2 = true;
+        }
+
+        if(Systeme.bewegungsSystem.pos2_erreicht())
+        {
+            zustand = Pos2;
+        }
+    }
+
+    /**
+     * Aktion an 2. Pos
+     */
+    private void pos2()
+    {
+        if(!bpos2)
+        {
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Korb_Wurf);
+            bpos2 = true;
+        }
+
+        if(Systeme.wurfSystem.zylinderGespannt())
+        {
+            WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+            zustand = Pass6;
+        }
+    }
+
 
     /**
      * 4. Pass, kurz, Partnerteam
@@ -252,55 +332,28 @@ public class Main extends Task implements IO, Systeme
     {
         if(!bpass6)
         {
-
+            Systeme.bewegungsSystem.dreheZuKorb();
             bpass6 = true;
         }
-    }
 
-
-
-    /**
-     * Positionswechsel
-     */
-    private void bewegen2()
-    {
-        if(!bbewegen2)
+        if(!Systeme.bewegungsSystem.istInBewegung())
         {
-
-            bbewegen2 = true;
+            Systeme.wurfSystem.ballWerfen();
+            zustand = ENDE;
         }
     }
 
-    /**
-     * Aktion an 1. Pos
-     */
-    private void pos1()
-    {
-        if(!bpos1)
-        {
-
-            bpos1 = true;
-        }
-    }
-
-    /**
-     * Aktion an 2. Pos
-     */
-    private void pos2()
-    {
-        if(!bpos2)
-        {
-
-            bpos2 = true;
-        }
-    }
 
     /**
      * End Zustand
      */
     private void ende()
     {
-
+        if(!ende)
+        {
+            debug.print("Well done Robert!");
+            ende = true;
+        }
     }
 
     /**
