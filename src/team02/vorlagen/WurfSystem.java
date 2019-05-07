@@ -78,6 +78,10 @@ public class WurfSystem implements IO
 		{
 			magnetMagnetisieren();
 		}
+		if(Task.time() > letzteEntmagnetisierZeit +Konstanten.WURF_ZEIT && IO.OUT_Magnet_Wand.get())
+		{
+			IO.OUT_Magnet_Wand.set(false);
+		}
 	}
 	
 	/**
@@ -106,5 +110,11 @@ public class WurfSystem implements IO
 		d = ((double)(i))/100;
 		d = d*(IO.PERIOD_WurfZyl_MAX-IO.PERIOD_WurfZyl_MIN)+IO.PERIOD_WurfZyl_MIN;
 		IO.PWM_WurfZylinder.update((int)d);
+	}
+
+	public void Wandauf()
+	{
+		IO.OUT_Magnet_Wand.set(true);
+		letzteEntmagnetisierZeit = Task.time();
 	}
 }

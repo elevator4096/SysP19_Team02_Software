@@ -24,17 +24,9 @@ public class Main extends Task implements IO, Systeme
      */
     static
     {
-        try
-        {
             Task task = new Main();
             task.period = (int)Konstanten.TASK_PERIOD*1000;
             Task.install(task);
-
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -50,20 +42,11 @@ public class Main extends Task implements IO, Systeme
      */
     public void action()
     {
-        OUT_LED1.set(!OUT_LED1.get());
-
         update();
         if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {
             debug.println("Debug aktiv");
         }
-
-        if (Konstanten.TEST)
-        {
-            debug.println("Test aktiv");
-        }
-
-        //Test
 
         //Fehler erkannt
         if(false)
@@ -154,7 +137,8 @@ public class Main extends Task implements IO, Systeme
      */
     private void setup()
     {
-        if(false)                   //Weiterschaltbedingung
+        Systeme.wurfSystem.Wandauf();
+        if(true)                   //Weiterschaltbedingung
         {
             zustand = SPIEL_BEGINNT;
         }
