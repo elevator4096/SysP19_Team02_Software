@@ -35,7 +35,9 @@ public interface Konstanten
 	
 	double DREHWINKEL_KORB			= (15/180)*Math.PI;
 	
-	
+	int		Langer_Wurf				= 0;
+	int		Kurzer_Wurf				= 0;
+	int		Korb_Wurf				= 0;
 	
 	//Sensor Konstanten 
 	int 	HLC_GRENZWERT_SCHWARZ 	= 100  ;							// schwarze Linie

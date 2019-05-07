@@ -7,6 +7,8 @@
 package team02.chris;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import exchange.WlanSystem;
+import exchange.ZustandWifi;
 import team02.*;
 import team02.vorlagen.*;
 
@@ -17,6 +19,7 @@ public class Main extends Task implements IO, Systeme
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
+    private boolean bsetup,bpass1,bpass2,bpass3,bpass4,bpass5,bpass6,bbewegen1,bbewegen2,bpos1,bpos2;
 
     
     /**
@@ -71,58 +74,58 @@ public class Main extends Task implements IO, Systeme
                 setup();
                 break;
             }
+            case Pass1:
+            {
+                pass1();
+                break;
+            }
+            case Pass2:
+            {
+                pass2();
+                break;
+            }
+            case Pass3:
+            {
+                pass3();
+                break;
+            }
+            case Pass4:
+            {
+                pass4();
+                break;
+            }
+            case Pass5:
+            {
+                pass5();
+                break;
+            }
+            case Pass6:
+            {
+                pass6();
+                break;
+            }
+            case Bewegen1:
+            {
+                bewegen1();
+                break;
+            }
+            case Bewegen2:
+            {
+                bewegen2();
+                break;
+            }
+            case Pos1:
+            {
+                pos1();
+                break;
+            }
+            case Pos2:
+            {
+                pos2();
+                break;
+            }
 
-            case SPIEL_BEGINNT:             //Kommentar
-            {
-                spiel_beginnt();
-                break;
-            }
-            case ROB_HAT_KEIN_BALL:         //Roboter hat keinen Ball
-            {
 
-                rob_hat_kein_ball();
-                break;
-            }
-            case ROB_FAEHRT:                //Roboter faehrt
-            {
-                rob_faehrt();
-                break;
-            }
-            case ROB_HAT_BALL:              //Roboter hat Ball
-            {
-                rob_hat_ball();
-                break;
-            }
-            case ROB_POSITION_ERREICHT:     //Roboter hat Position erreicht
-            {
-                rob_position_erreicht();
-                break;
-            }
-            case KORB_WURF:                 //Korb Wurf
-            {
-                korb_wurf();
-                break;
-            }
-            case KURZER_WURF:               //Kurzer Wurf
-            {
-                kurzer_wurf();
-                break;
-            }
-            case LANGER_WURF:               //Langer Wurf
-            {
-                langer_wurf();
-                break;
-            }
-            case ENDE:
-            {
-                ende();
-                break;
-            }
-            case FEHLER:
-            {
-                fehler();
-                break;
-            }
 
             default:
             {
@@ -138,109 +141,157 @@ public class Main extends Task implements IO, Systeme
     private void setup()
     {
         Systeme.wurfSystem.Wandauf();
-        if(true)                   //Weiterschaltbedingung
+        if(IO.IN_Laser_2.get())                   //Weiterschaltbedingung
         {
-            zustand = SPIEL_BEGINNT;
+            zustand = Pass2;
+        } else {
+            zustand = Pass1;
+        }
+    }
+
+
+    /**
+     * Zusatz Pass falls Partnerteam den Ball hat
+     */
+    private void pass1()
+    {
+        //Entry Aktion
+        if(!bpass1)
+        {
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+            bpass1 = true;
+        }
+
+        if(Systeme.wurfSystem.zylinderGespannt())
+        {
+            WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+        }
+        //Exit Bedingung
+        if(IO.IN_Laser_2.get())
+        {
+            //Exit Aktion
+            zustand = Pass2;
         }
     }
 
     /**
-     * Spiel beginnt Zustand
+     * 1. Regulaerer Pass, lang, Wir
      */
-    private void spiel_beginnt()
+    private void pass2()
     {
-        if(false)
+        if(!bpass2)
         {
-            zustand = ROB_HAT_BALL;
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+            bpass2 = true;
         }
-        else if(false)
+
+        if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT)
         {
-            zustand = ROB_HAT_KEIN_BALL;
+            Systeme.wurfSystem.ballWerfen();
+            zustand = Bewegen1;
+        }
+
+
+    }
+
+    /**
+     * Positionswechsel
+     */
+    private void bewegen1()
+    {
+        if(!bbewegen1)
+        {
+
+            bbewegen1 = true;
+        }
+
+    }
+
+    /**
+     * 2. Pass, kurz, Partnerteam
+     */
+    private void pass3()
+    {
+        if(!bpass3)
+        {
+
+            bpass3 = true;
+        }
+
+    }
+
+    /**
+     * 3. Pass, kurz, Wir
+     */
+    private void pass4()
+    {
+        if(!bpass4)
+        {
+
+            bpass4 = true;
         }
     }
 
     /**
-     * Rob Hat kein Ball Zustand
+     * 4. Pass, kurz, Partnerteam
      */
-    private void rob_hat_kein_ball()
+    private void pass5()
     {
-        if (false)
+        if(!bpass5)
         {
-            zustand = ROB_FAEHRT;
+
+            bpass5 = true;
+        }
+
+    }
+
+    /**
+     * Korbwurf
+     */
+    private void pass6()
+    {
+        if(!bpass6)
+        {
+
+            bpass6 = true;
+        }
+    }
+
+
+
+    /**
+     * Positionswechsel
+     */
+    private void bewegen2()
+    {
+        if(!bbewegen2)
+        {
+
+            bbewegen2 = true;
         }
     }
 
     /**
-     * Rob Faehrt Zustand
+     * Aktion an 1. Pos
      */
-    private void rob_faehrt()
+    private void pos1()
     {
-        if(false)
+        if(!bpos1)
         {
-            zustand = ROB_POSITION_ERREICHT;
+
+            bpos1 = true;
         }
     }
 
     /**
-     * Rob Hat Ball Zustand
+     * Aktion an 2. Pos
      */
-    private void rob_hat_ball()
+    private void pos2()
     {
-        if(false)
+        if(!bpos2)
         {
-            zustand = KORB_WURF;
-        }
-        else if(false)
-        {
-            zustand = LANGER_WURF;
-        }
-        else if (false)
-        {
-            zustand = KURZER_WURF;
-        }
-    }
 
-    /**
-     * Rob Position Erreicht Zustand
-     */
-    private void rob_position_erreicht()
-    {
-        if(false)
-        {
-            zustand = ROB_HAT_BALL;
-        }
-    }
-
-    /**
-     * Korb Wurf Zustand
-     */
-    private void korb_wurf()
-    {
-        if(false)
-        {
-            zustand = ENDE;
-        }
-    }
-
-    /**
-     * Kurzer Wurf Zustand
-     */
-    private void kurzer_wurf()
-    {
-        if(false)
-        {
-            zustand = ROB_HAT_KEIN_BALL;
-        }
-    }
-
-    /**
-     * Langer Wurf Zustand
-     */
-    private void langer_wurf()
-    {
-        if(false)
-        {
-            zustand = ROB_HAT_KEIN_BALL;
+            bpos2 = true;
         }
     }
 

@@ -17,7 +17,17 @@ public enum Zustand {
 
     //Chriss Zustaende, nicht loeschen!
     SETUP,
-    SPIEL_BEGINNT,
+    Pass1,
+    Pass2,
+    Pass3,
+    Pass4,
+    Pass5,
+    Pass6,
+    //Bewegen1,
+    //Bewegen2,
+    Pos1,
+    Pos2,
+    Platzhalter,
     
     WARTEN1,
     SETUP_ZYLINDER_HOCH,
