@@ -14,6 +14,7 @@ public class Pos_Wechsel implements Systeme
         Gegner2,
         Gegner3,
 
+        Ebene1,
         Traverse1,
         Wand,
 
@@ -26,7 +27,9 @@ public class Pos_Wechsel implements Systeme
 
     private static double Distanz_G3 = 0.168;
 
-    private static boolean fPos1,fStart_Pos1,fGegner1,fPos2;
+    private static double Distanz_Linie = 0.2;
+
+    private static boolean fPos1,fStart_Pos1,fGegner1,fPos2, fGegner2, fTraverse1;
 
     private static Zustand zustand = Zustand.Standby;
 
@@ -76,24 +79,47 @@ public class Pos_Wechsel implements Systeme
 
     public static void gegner1()
     {
-        if(!fGegner1) {
-            if (Systeme.gegnerSystem.warGegnerRechts()) {
+        boolean b = false;
+        if(!fGegner1)
+        {
+            if (Systeme.gegnerSystem.warGegnerRechts())
+            {
                 Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G2);
-            } else {
-
+                b=false;
+            }
+            else
+            {
+                Systeme.bewegungsSystem.drehe90GradUZ();
+                b = true;
             }
             fGegner1 = true;
         }
 
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
-            zustand = Zustand.Gegner2;
+            if(!b)
+            {
+                zustand = Zustand.Gegner2;
+            }
+            if(b)
+            {
+                zustand = Zustand.Traverse1;
+            }
         }
     }
 
     public static void gegner2()
     {
 
+        if(!fGegner2)
+        {
+            fGegner2 = true;
+        }
+
+        if(false)
+        {
+
+        }
     }
 
     public static void gegner3()
@@ -103,6 +129,18 @@ public class Pos_Wechsel implements Systeme
 
     public static void traverse1()
     {
+
+        if(!fTraverse1)
+        {
+            Systeme.bewegungsSystem.fahreFreiBisDistanz(false,Distanz_Linie);
+            fTraverse1 = true;
+        }
+
+        if(!Systeme.bewegungsSystem.istInBewegung())
+        {
+            zustand = Zustand.Ebene1;
+        }
+
 
     }
 
