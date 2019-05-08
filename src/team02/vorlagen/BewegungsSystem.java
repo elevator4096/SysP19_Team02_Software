@@ -13,6 +13,14 @@ import team02.dominique.*;
 
 public class BewegungsSystem implements IO
 {
+	private enum Zustand_Ablauf
+	{
+		Test,
+		Start,
+
+	}
+
+
 	private static BewegungsSystem bewegungsSystem;
 	
 	
@@ -23,6 +31,8 @@ public class BewegungsSystem implements IO
 	private boolean 		inBewegung 				= false;
 	private double			zielDrehWinkel			= 0.0; // Kann beliebige Werte annehmen( springt nicht von 2PI auf 0)
 	private double			zielDistanz				= 0.0;
+
+	private Zustand_Ablauf ablauf 					= Zustand_Ablauf.Test;
 
 	private BewegungsSystem()
 	{
@@ -338,7 +348,19 @@ public class BewegungsSystem implements IO
 
 	public void fahre_zu_Pos1()
 	{
+		switch(ablauf)
+		{
+			case Test:
+			{
 
+			}
+
+			case Start:
+			{
+				folgeLinieBisKreuzung(true,0);
+
+			}
+		}
 	}
 
 	public void fahre_zu_Pos2()
