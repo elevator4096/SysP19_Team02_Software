@@ -4,7 +4,7 @@ import team02.Systeme;
 
 public class Pos_Wechsel implements Systeme
 {
-    private enum Ablauf
+    private enum Zustand
     {
         Test,
         Start,
@@ -24,17 +24,17 @@ public class Pos_Wechsel implements Systeme
 
     private static double Distanz_G2 = 0.168;
 
-    private static double Distanz_G3 = 0.244;
+    private static double Distanz_G3 = 0.168;
 
     private static boolean fPos1,fStart_Pos1,fGegner1,fPos2;
 
-    private static Ablauf ablauf 					= Ablauf.Standby;
+    private static Zustand zustand = Zustand.Standby;
 
     public static void fahre_zu_Pos1()
     {
         if(!fPos1)
         {
-            ablauf = Ablauf.Start_Pos1;
+            zustand = Zustand.Start_Pos1;
             fPos1 = true;
         }
     }
@@ -43,7 +43,7 @@ public class Pos_Wechsel implements Systeme
     {
         if(!fPos2)
         {
-            ablauf = Ablauf.Start_Pos1;
+            zustand = Zustand.Start_Pos1;
             fPos2 = true;
         }
     }
@@ -70,7 +70,7 @@ public class Pos_Wechsel implements Systeme
 
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
-            ablauf = Ablauf.Gegner1;
+            zustand = Zustand.Gegner1;
         }
     }
 
@@ -83,6 +83,11 @@ public class Pos_Wechsel implements Systeme
 
             }
             fGegner1 = true;
+        }
+
+        if(!Systeme.bewegungsSystem.istInBewegung())
+        {
+            zustand = Zustand.Gegner2;
         }
     }
 
@@ -103,7 +108,7 @@ public class Pos_Wechsel implements Systeme
 
     public static void update()
     {
-        switch(ablauf)
+        switch(zustand)
         {
             case Start_Pos1:
             {
