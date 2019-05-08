@@ -93,17 +93,17 @@ public class Test_Main_M3 extends Task {
 			System.out.println(fahrmotor2.gibGeschwindigkeit());
 		}
 
-//		if(nofActivations%200==0) {
-//		System.out.print("Wurfmotor 3: Umdrehungen >");
-//		System.out.print(wurfmotor3.gibUmdrehungen());
-//		System.out.print("        Geschwindigkeit in 1/min  >");
-//		System.out.println(wurfmotor3.gibGeschwindigkeit());
-//		
-//		System.out.print("Wurfmotor 4: Umdrehungen >");
-//		System.out.print(wurfmotor4.gibUmdrehungen());
-//		System.out.print("        Geschwindigkeit in 1/min  >");
-//		System.out.println(wurfmotor4.gibGeschwindigkeit());
-//		}	
+		if(nofActivations%150==0) {
+		System.out.print("Wurfmotor 3: Umdrehungen >");
+		System.out.print(wurfmotor3.gibUmdrehungen());
+		System.out.print("        Geschwindigkeit in 1/min  >");
+		System.out.println(wurfmotor3.gibGeschwindigkeit());
+		
+		System.out.print("Wurfmotor 4: Umdrehungen >");
+		System.out.print(wurfmotor4.gibUmdrehungen());
+		System.out.print("        Geschwindigkeit in 1/min  >");
+		System.out.println(wurfmotor4.gibGeschwindigkeit());
+		}	
 
 //		
 //		
