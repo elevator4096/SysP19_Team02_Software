@@ -212,11 +212,11 @@ public class Main extends Task implements IO, Systeme
         if(!bbewegen1)
         {
             WlanSystem.setOwnState(ZustandWifi.FAHREN);
-            Systeme.bewegungsSystem.fahre_zu_Pos1();
+            Pos_Wechsel.fahre_zu_Pos1();
             bbewegen1 = true;
         }
 
-        if(Systeme.bewegungsSystem.pos1_erreicht())
+        if(Pos_Wechsel.pos1_erreicht())
         {
             zustand = Pos1;
         }
@@ -283,11 +283,11 @@ public class Main extends Task implements IO, Systeme
     {
         if(!bbewegen2)
         {
-            Systeme.bewegungsSystem.fahre_zu_Pos2();
+            Pos_Wechsel.fahre_zu_Pos2();
             bbewegen2 = true;
         }
 
-        if(Systeme.bewegungsSystem.pos2_erreicht())
+        if(Pos_Wechsel.pos2_erreicht())
         {
             zustand = Pos2;
         }
