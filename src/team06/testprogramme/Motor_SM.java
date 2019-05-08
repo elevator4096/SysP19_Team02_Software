@@ -25,8 +25,8 @@ package team06.testprogramme;
 		// constructor
 		private Motor_SM() {
 
-			pwmR = new TPU_PWM(false, 1, pwmPeriod, 0);
-			pwmL = new TPU_PWM(false, 2, pwmPeriod, 0);
+			pwmR = new TPU_PWM(true, 0, pwmPeriod, 0);
+			pwmL = new TPU_PWM(true, 2, pwmPeriod, 0);
 			
 			
 			System.out.println("System Start");
