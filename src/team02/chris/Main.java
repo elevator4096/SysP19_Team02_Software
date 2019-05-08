@@ -10,7 +10,6 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import exchange.WlanSystem;
 import exchange.ZustandWifi;
 import team02.*;
-import team02.vorlagen.*;
 
 import static team02.Zustand.*;
 
@@ -19,7 +18,7 @@ public class Main extends Task implements IO, Systeme
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
-    private boolean bsetup,bpass1,bpass2,bpass3,bpass4,bpass5,bpass6,bbewegen1,bbewegen2,bpos1,bpos2,ende;
+    private boolean fsetup, fpass1, fpass2, fpass3, fpass4, fpass5, fpass6, fbewegen1, fbewegen2, fpos1, fpos2, fende;
 
     
     /**
@@ -54,7 +53,7 @@ public class Main extends Task implements IO, Systeme
         //Fehler erkannt
         if(false)
         {
-
+            fehler();
             zustand = FEHLER;
         }
 
@@ -146,9 +145,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void setup()
     {
-        if(!bsetup)
+        if(!fsetup)
         {
             Systeme.wurfSystem.Wandauf();
+            fsetup = true;
         }
         if(IO.IN_Laser_2.get())                   //Weiterschaltbedingung
         {
@@ -165,10 +165,10 @@ public class Main extends Task implements IO, Systeme
     private void pass1()
     {
         //Entry Aktion
-        if(!bpass1)
+        if(!fpass1)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
-            bpass1 = true;
+            fpass1 = true;
         }
 
         if(Systeme.wurfSystem.zylinderGespannt())
@@ -188,10 +188,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass2()
     {
-        if(!bpass2)
+        if(!fpass2)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
-            bpass2 = true;
+            fpass2 = true;
         }
 
         if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT)
@@ -209,11 +209,11 @@ public class Main extends Task implements IO, Systeme
      */
     private void bewegen1()
     {
-        if(!bbewegen1)
+        if(!fbewegen1)
         {
             WlanSystem.setOwnState(ZustandWifi.FAHREN);
             Pos_Wechsel.fahre_zu_Pos1();
-            bbewegen1 = true;
+            fbewegen1 = true;
         }
 
         if(Pos_Wechsel.pos1_erreicht())
@@ -228,10 +228,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pos1()
     {
-        if(!bpos1)
+        if(!fpos1)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
-            bpos1 = true;
+            fpos1 = true;
         }
 
         if(Systeme.wurfSystem.zylinderGespannt())
@@ -249,10 +249,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass3()
     {
-        if(!bpass3)
+        if(!fpass3)
         {
 
-            bpass3 = true;
+            fpass3 = true;
         }
 
     }
@@ -263,10 +263,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass4()
     {
-        if(!bpass4)
+        if(!fpass4)
         {
 
-            bpass4 = true;
+            fpass4 = true;
         }
 
         if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_2.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
@@ -281,10 +281,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void bewegen2()
     {
-        if(!bbewegen2)
+        if(!fbewegen2)
         {
             Pos_Wechsel.fahre_zu_Pos2();
-            bbewegen2 = true;
+            fbewegen2 = true;
         }
 
         if(Pos_Wechsel.pos2_erreicht())
@@ -298,10 +298,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pos2()
     {
-        if(!bpos2)
+        if(!fpos2)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Korb_Wurf);
-            bpos2 = true;
+            fpos2 = true;
         }
 
         if(Systeme.wurfSystem.zylinderGespannt())
@@ -317,10 +317,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass5()
     {
-        if(!bpass5)
+        if(!fpass5)
         {
 
-            bpass5 = true;
+            fpass5 = true;
         }
 
     }
@@ -330,10 +330,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass6()
     {
-        if(!bpass6)
+        if(!fpass6)
         {
             Systeme.bewegungsSystem.dreheZuKorb();
-            bpass6 = true;
+            fpass6 = true;
         }
 
         if(!Systeme.bewegungsSystem.istInBewegung())
@@ -349,10 +349,10 @@ public class Main extends Task implements IO, Systeme
      */
     private void ende()
     {
-        if(!ende)
+        if(!fende)
         {
             debug.print("Well done Robert!");
-            ende = true;
+            fende = true;
         }
     }
 
@@ -374,6 +374,7 @@ public class Main extends Task implements IO, Systeme
     	Systeme.gegnerSystem.update();
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
-    	Systeme.wlanSystem.update();
+    	WlanSystem.update();
+    	Pos_Wechsel.update();
     }
 }

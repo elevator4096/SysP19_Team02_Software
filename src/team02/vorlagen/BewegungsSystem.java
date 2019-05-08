@@ -148,6 +148,7 @@ public class BewegungsSystem implements IO
      */
 	private void setBewegung(ZustandBewegung zustandBewegung, boolean richtung, boolean drehRichtung, int kreuzungsPos, HalteBedingung halteBedingung, double distanz, double drehWinkel)
 	{
+		this.inBewegung 		= true;
 		this.zustandBewegung 	= zustandBewegung;
 		this.bewegungsRichtung 	= richtung;
 		this.drehRichtung		= drehRichtung;
