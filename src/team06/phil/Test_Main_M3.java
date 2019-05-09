@@ -29,8 +29,9 @@ public class Test_Main_M3 extends Task {
 	static DistSensorTest_M3 dist;
 	
 	static Endschalter_M3 schalter1, schalter2;
-
 	
+	static ToFSensor_M3 tof;
+
 	static WlanSystem wlan;
 
 	int counter = 0;
@@ -56,6 +57,8 @@ public class Test_Main_M3 extends Task {
 		
 		schalter1 = new Endschalter_M3(6, false);
 		schalter2 = new Endschalter_M3(7, false);
+		
+		tof = new ToFSensor_M3();
 		
 //		wlan.getInstance(new MPIOSM_DIO(11, true));
 
@@ -146,11 +149,11 @@ public class Test_Main_M3 extends Task {
 
 	public void testfahren() {
 
-//		if (nofActivations % 100 == 0 && counter > 0) {
+		if (nofActivations % 100 == 0 && counter > 0) {
 //			sieben.rblinken();
-//			System.out.print("zustand    --->>>>>");
-//			System.out.println(zustand);
-//		}
+			System.out.print("zustand    --->>>>>");
+			System.out.println(zustand);
+		}
 
 		switch (zustand) {
 

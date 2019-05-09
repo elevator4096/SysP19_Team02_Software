@@ -38,7 +38,9 @@ public class Variablen {
 	
 	// boolean
 	public static boolean hatball = false;
-	public static boolean anWand = false;
+	public static boolean anWand = false;  // besser jeder einzeln?
+	public static boolean schalter1 = false;  // false = ??
+	public static boolean schalter2 = false;  //false = ??
 
 	public Variablen() {
 

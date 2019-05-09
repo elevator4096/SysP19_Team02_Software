@@ -76,11 +76,14 @@ public class ToFSensor_M3 extends Task {
 		System.out = new PrintStream(sci1.out);
 		System.out.println("static start");
 
-		tofSensor = new VL6180X_SC18IS600(4);
+		tofSensor = new VL6180X_SC18IS600(3);
 
 		Task s = new ToFSensor_M3();
-		s.period = 1000;
+		s.period = 500;
 		Task.install(s);
-
+		
+		
+		
+		System.out.println("afasdfasd start");
 	}
 }
