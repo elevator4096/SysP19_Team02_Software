@@ -14,9 +14,9 @@ public class WLan_2 extends Task {
 
 	public WLan_2() throws Exception {
 		period = 500;
-		SCI sci2 = SCI.getInstance(SCI.pSCI2);
-		sci2.start(115200, SCI.NO_PARITY, (short) 8);
-		wifi = new RN131(sci2.in, sci2.out, new MPIOSM_DIO(11, true));
+		SCI sci = SCI.getInstance(SCI.pSCI2);
+		sci.start(115200, SCI.NO_PARITY, (short) 8);
+		wifi = new RN131(sci.in, sci.out, new MPIOSM_DIO(11, true));
 	}
 
 	public void action() {
