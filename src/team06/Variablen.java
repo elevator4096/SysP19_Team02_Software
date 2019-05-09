@@ -24,8 +24,8 @@ public class Variablen {
 	// highTime für den Servomotor
 	public static int pwmPeriod = 20000000/TPU_PWM.tpuTimeBase;
 	public static int highTime = 1000000;
-	public static int hightTimehalten = 2350000/TPU_PWM.tpuTimeBase;
-	public static int hightTimeoffen = 650000/TPU_PWM.tpuTimeBase;
+	public static int hightTimeoffen = 2000000/TPU_PWM.tpuTimeBase;
+	public static int hightTimehalten = 1200000/TPU_PWM.tpuTimeBase;
 
 	// Task Zeit
 	public static int TASK_PERIOD = 100;

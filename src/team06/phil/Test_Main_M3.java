@@ -2,8 +2,10 @@ package team06.phil;
 
 import java.io.PrintStream;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import exchange.WlanSystem;
 import team06.aurelia.Main;
 import team06.Endschalter;
 import team06.MotorSMSC;
@@ -25,6 +27,11 @@ public class Test_Main_M3 extends Task {
 	static TPUDIO_M3 sieben;
 
 	static DistSensorTest_M3 dist;
+	
+	static Endschalter_M3 schalter1, schalter2;
+
+	
+	static WlanSystem wlan;
 
 	int counter = 0;
 	int zähler = 0;
@@ -46,6 +53,11 @@ public class Test_Main_M3 extends Task {
 		sieben = new TPUDIO_M3();
 
 		dist = new DistSensorTest_M3();
+		
+		schalter1 = new Endschalter_M3(6, false);
+		schalter2 = new Endschalter_M3(7, false);
+		
+//		wlan.getInstance(new MPIOSM_DIO(11, true));
 
 	}
 
@@ -79,6 +91,11 @@ public class Test_Main_M3 extends Task {
 			System.out.println(dist.gibdist(1));
 			System.out.print("zustand    --->>>>>");
 			System.out.println(zustand);
+			System.out.print("Schalter 1--->>>>>");
+			System.out.print(schalter1.schalterzustand());
+			System.out.print("   Schalter 2--->>>>>");
+			System.out.println(schalter2.schalterzustand());
+
 		}
 
 		if (nofActivations % 150 == 0) {
@@ -93,17 +110,17 @@ public class Test_Main_M3 extends Task {
 			System.out.println(fahrmotor2.gibGeschwindigkeit());
 		}
 
-		if(nofActivations%150==0) {
-		System.out.print("Wurfmotor 3: Umdrehungen >");
-		System.out.print(wurfmotor3.gibUmdrehungen());
-		System.out.print("        Geschwindigkeit in 1/min  >");
-		System.out.println(wurfmotor3.gibGeschwindigkeit());
-		
-		System.out.print("Wurfmotor 4: Umdrehungen >");
-		System.out.print(wurfmotor4.gibUmdrehungen());
-		System.out.print("        Geschwindigkeit in 1/min  >");
-		System.out.println(wurfmotor4.gibGeschwindigkeit());
-		}	
+		if (nofActivations % 150 == 0) {
+			System.out.print("Wurfmotor 3: Umdrehungen >");
+			System.out.print(wurfmotor3.gibUmdrehungen());
+			System.out.print("        Geschwindigkeit in 1/min  >");
+			System.out.println(wurfmotor3.gibGeschwindigkeit());
+
+			System.out.print("Wurfmotor 4: Umdrehungen >");
+			System.out.print(wurfmotor4.gibUmdrehungen());
+			System.out.print("        Geschwindigkeit in 1/min  >");
+			System.out.println(wurfmotor4.gibGeschwindigkeit());
+		}
 
 //		
 //		
@@ -204,6 +221,7 @@ public class Test_Main_M3 extends Task {
 		return schwarz;
 	}
 
+
 	public static void teststarten() {
 		zustand = 1;
 	}
@@ -254,13 +272,13 @@ public class Test_Main_M3 extends Task {
 
 	public static void wurfspeedmax() {
 		wurfmotor3.setdrehzahl((float) (200 * Math.PI));
-		wurfmotor4.setdrehzahl((float) (200 * Math.PI));
+		wurfmotor4.setdrehzahl((float) (-200 * Math.PI));
 
 	}
 
 	public static void wurfspeedhalb() {
 		wurfmotor3.setdrehzahl((float) (100 * Math.PI));
-		wurfmotor4.setdrehzahl((float) (100 * Math.PI));
+		wurfmotor4.setdrehzahl((float) (-100 * Math.PI));
 
 	}
 
@@ -274,7 +292,9 @@ public class Test_Main_M3 extends Task {
 
 	static {
 
-		Task task = new Test_Main_M3();
+		Task task;
+
+		task = new Test_Main_M3();
 		task.period = (int) (0.01f * 1000);
 		Task.install(task);
 

@@ -4,17 +4,17 @@
 *@author Phil
 *@version 19.01.13.0
 */
-package team06.testprogramme;
+package team06.phil;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
 
-public class WirelessConnection {
+public class WirelessConnection_M3 {
 	private RN131 wifi;
 
-	public WirelessConnection() throws Exception{
+	public WirelessConnection_M3() throws Exception{
 		SCI sci = SCI.getInstance(SCI.pSCI2);
 		sci.start(115200, SCI.NO_PARITY, (short) 8);
 		wifi = new RN131(sci.in, sci.out, new MPIOSM_DIO(11, true));

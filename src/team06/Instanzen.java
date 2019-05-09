@@ -28,7 +28,7 @@ public class Instanzen {
 	public static Endschalter endSchalter1;
 	public static Endschalter endSchalter2;
 	
-	public static ToFSensor toFSensor;
+	//public static ToFSensor toFSensor;
 
 	public static WurfSystem wurfSystem;
 	public static FahrSystem fahrSystem;
@@ -59,7 +59,7 @@ public class Instanzen {
 		endSchalter2 = new Endschalter(7, false); // false für input
 		
 //		// ToF-Sensoren erzeugen
-		toFSensor = new ToFSensor();
+	//	toFSensor = new ToFSensor();
 
 //		// Systeme erzeugen
 		// wurfSystem = new WurfSystem();
