@@ -186,22 +186,23 @@ public class Test_Main_M3 extends Task {
 		case 4: {
 			if (fahrmotor2.gibUmdrehungen() == 7) {
 				fahrnullspeed();
-				zustand = 5;
-				System.out.println("case 4");
+				zustand = 8;
+				//System.out.println("case 4");
 				break;
 			}
 		}
 
-		case 5: {		
-			System.out.println("case 5");
+		case 8: {		
+			//System.out.println("case 5");
 			zähler++;
-			//wurfspeedhalb();
+			wurfspeedhalb();
 			if (zähler == 200) {
 				servo.servooffen();
 			}
 			if (zähler == 600) {
 				servo.servogeschlossen();
 				wurfnullspeed();
+				zustand = 9;
 				break;
 			}
 
