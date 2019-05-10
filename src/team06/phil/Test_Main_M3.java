@@ -27,9 +27,9 @@ public class Test_Main_M3 extends Task {
 	static TPUDIO_M3 sieben;
 
 	static DistSensorTest_M3 dist;
-	
+
 	static Endschalter_M3 schalter1, schalter2;
-	
+
 	static ToFSensor_M3 tof;
 
 	static WlanSystem wlan;
@@ -54,12 +54,12 @@ public class Test_Main_M3 extends Task {
 		sieben = new TPUDIO_M3();
 
 		dist = new DistSensorTest_M3();
-		
+
 		schalter1 = new Endschalter_M3(6, false);
 		schalter2 = new Endschalter_M3(7, false);
-		
-		tof = new ToFSensor_M3();
-		
+
+		//tof = new ToFSensor_M3();
+
 //		wlan.getInstance(new MPIOSM_DIO(11, true));
 
 	}
@@ -78,7 +78,7 @@ public class Test_Main_M3 extends Task {
 
 		servo.update();
 
-// testfahren();
+		testfahren();
 
 		if (irsensor() == true && nofActivations % 10 == 0) {
 			sieben.dleuchten();
@@ -90,14 +90,15 @@ public class Test_Main_M3 extends Task {
 		}
 
 		if (nofActivations % 150 == 0) {
-			System.out.print("IR Sensor 1    -->");
-			System.out.println(dist.gibdist(1));
+//			System.out.print("IR Sensor 1    -->");
+//			System.out.println(dist.gibdist(1));
 			System.out.print("zustand    --->>>>>");
 			System.out.println(zustand);
-			System.out.print("Schalter 1--->>>>>");
-			System.out.print(schalter1.schalterzustand());
-			System.out.print("   Schalter 2--->>>>>");
-			System.out.println(schalter2.schalterzustand());
+//			System.out.print("Schalter 1--->>>>>");
+//			System.out.print(schalter1.schalterzustand());
+//			System.out.print("   Schalter 2--->>>>>");
+//			System.out.println(schalter2.schalterzustand());
+			System.out.println(zähler);
 
 		}
 
@@ -113,17 +114,17 @@ public class Test_Main_M3 extends Task {
 			System.out.println(fahrmotor2.gibGeschwindigkeit());
 		}
 
-		if (nofActivations % 150 == 0) {
-			System.out.print("Wurfmotor 3: Umdrehungen >");
-			System.out.print(wurfmotor3.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(wurfmotor3.gibGeschwindigkeit());
-
-			System.out.print("Wurfmotor 4: Umdrehungen >");
-			System.out.print(wurfmotor4.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(wurfmotor4.gibGeschwindigkeit());
-		}
+//		if (nofActivations % 150 == 0) {
+//			System.out.print("Wurfmotor 3: Umdrehungen >");
+//			System.out.print(wurfmotor3.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(wurfmotor3.gibGeschwindigkeit());
+//
+//			System.out.print("Wurfmotor 4: Umdrehungen >");
+//			System.out.print(wurfmotor4.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(wurfmotor4.gibGeschwindigkeit());
+//		}
 
 //		
 //		
@@ -149,11 +150,8 @@ public class Test_Main_M3 extends Task {
 
 	public void testfahren() {
 
-		if (nofActivations % 100 == 0 && counter > 0) {
-//			sieben.rblinken();
-			System.out.print("zustand    --->>>>>");
-			System.out.println(zustand);
-		}
+		
+		
 
 		switch (zustand) {
 
@@ -168,46 +166,46 @@ public class Test_Main_M3 extends Task {
 		case 2: // anzahl inkrements fahren
 		{
 			if (fahrmotor1.gibUmdrehungen() == 1) {
-				fahrhalbspeed();
+				fahrviertelspeed();
 				zustand = 3;
 				System.out.println("case 2");
 				break;
 			}
 		}
-//
-//		case 3: // 180 grad drehen rechtskurve
-//		{
-//			if (fahrmotor1.gibUmdrehungen() == -6) {
-//				fahrrechtskurve();
-//				zustand = 4;
-//				System.out.println("case 3");
-//				break;
-//			}
-//		}
-//
-//		case 4: {
-//			if (fahrmotor2.gibUmdrehungen() == 10) {
-//				fahrnullspeed();
-//				zustand = 5;
-//				System.out.println("case 4");
-//				break;
-//			}
-//		}
-//
-//		case 5: {
-//			//System.out.println("case 5");
-//			zähler++;
-//			wurfspeedhalb();
-//			if (zähler == 10) {
-//				servo.servooffen();
-//			}
-//			if (zähler == 30) {
-//				servo.servogeschlossen();
-//				wurfnullspeed();
-//				break;
-//			}
-//
-//		}
+
+		case 3: // 180 grad drehen rechtskurve
+		{
+			if (fahrmotor1.gibUmdrehungen() == -3) {
+				fahrrechtskurve();
+				zustand = 4;
+				System.out.println("case 3");
+				break;
+			}
+		}
+
+		case 4: {
+			if (fahrmotor2.gibUmdrehungen() == 7) {
+				fahrnullspeed();
+				zustand = 5;
+				System.out.println("case 4");
+				break;
+			}
+		}
+
+		case 5: {		
+			System.out.println("case 5");
+			zähler++;
+			//wurfspeedhalb();
+			if (zähler == 200) {
+				servo.servooffen();
+			}
+			if (zähler == 600) {
+				servo.servogeschlossen();
+				wurfnullspeed();
+				break;
+			}
+
+		}
 
 		}
 
@@ -223,7 +221,6 @@ public class Test_Main_M3 extends Task {
 		}
 		return schwarz;
 	}
-
 
 	public static void teststarten() {
 		zustand = 1;
