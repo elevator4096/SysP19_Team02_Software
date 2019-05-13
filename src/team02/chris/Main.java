@@ -18,7 +18,7 @@ public class Main extends Task implements IO, Systeme
 
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
-    private boolean bflag;
+    private boolean entry_flag;
 
     
     /**
@@ -145,18 +145,23 @@ public class Main extends Task implements IO, Systeme
      */
     private void setup()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Systeme.wurfSystem.Wandauf();
-            bflag = true;
+            entry_flag = true;
         }
+
+
+
+        //Exit
         if(IO.IN_Laser_2.get())                   //Weiterschaltbedingung
         {
-            bflag =false;
+            entry_flag =false;
             zustand = Pass2;
         } else {
             zustand = Pass1;
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -166,23 +171,23 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass1()
     {
-        //Entry Aktion
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
-            bflag = true;
+            entry_flag = true;
         }
 
         if(Systeme.wurfSystem.zylinderGespannt())
         {
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
         }
-        //Exit Bedingung
+        //Exit
         if(IO.IN_Laser_2.get())
         {
             //Exit Aktion
             zustand = Pass2;
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -191,18 +196,21 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass2()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT)
         {
             Systeme.wurfSystem.ballWerfen();
 
             zustand = Bewegen1;
-            bflag = false;
+            entry_flag = false;
         }
 
 
@@ -213,17 +221,20 @@ public class Main extends Task implements IO, Systeme
      */
     private void bewegen1()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             WlanSystem.setOwnState(ZustandWifi.FAHREN);
             Pos_Wechsel.fahre_zu_Pos1();
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(Pos_Wechsel.pos1_erreicht())
         {
             zustand = Pos1;
-            bflag = false;
+            entry_flag = false;
         }
 
     }
@@ -233,17 +244,20 @@ public class Main extends Task implements IO, Systeme
      */
     private void pos1()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(Systeme.wurfSystem.zylinderGespannt())
         {
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
             zustand = Pass4;
-            bflag = false;
+            entry_flag = false;
         }
 
 
@@ -255,15 +269,18 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass3()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
 
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(false)
         {
-            bflag = false;
+            entry_flag = false;
         }
 
     }
@@ -274,17 +291,20 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass4()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
 
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_2.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
         {
             Systeme.wurfSystem.ballWerfen();
             zustand = Bewegen2;
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -293,16 +313,19 @@ public class Main extends Task implements IO, Systeme
      */
     private void bewegen2()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Pos_Wechsel.fahre_zu_Pos2();
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(Pos_Wechsel.pos2_erreicht())
         {
             zustand = Pos2;
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -311,17 +334,20 @@ public class Main extends Task implements IO, Systeme
      */
     private void pos2()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Korb_Wurf);
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(Systeme.wurfSystem.zylinderGespannt())
         {
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
             zustand = Pass6;
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -331,15 +357,18 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass5()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
 
-            bflag = true;
+            entry_flag = true;
         }
 
+
+        //Exit
         if(false)
         {
-            bflag = false;
+            entry_flag = false;
         }
 
     }
@@ -349,17 +378,19 @@ public class Main extends Task implements IO, Systeme
      */
     private void pass6()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             Systeme.bewegungsSystem.dreheZuKorb();
-            bflag = true;
+            entry_flag = true;
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             Systeme.wurfSystem.ballWerfen();
             zustand = ENDE;
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -369,15 +400,17 @@ public class Main extends Task implements IO, Systeme
      */
     private void ende()
     {
-        if(!bflag)
+        //Entry
+        if(!entry_flag)
         {
             debug.print("Well done Robert!");
-            bflag = true;
+            entry_flag = true;
         }
 
+        //Exit
         if(false)
         {
-            bflag = true;
+            entry_flag = true;
         }
     }
 

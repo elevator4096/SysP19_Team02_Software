@@ -30,35 +30,35 @@ public class Pos_Wechsel implements Systeme
 
     private static double Distanz_Linie = 0.2;
 
-    private static boolean bflag;
+    private static boolean entry_flag;
 
     private static Zustand zustand = Zustand.Standby;
 
     public static void fahre_zu_Pos1()
     {
-        if(!bflag)
+        if(!entry_flag)
         {
             zustand = Zustand.Start_Pos1;
-            bflag = true;
+            entry_flag = true;
         }
 
         if(false)
         {
-            bflag = false;
+            entry_flag = false;
         }
     }
 
     public static void fahre_zu_Pos2()
     {
-        if(!bflag)
+        if(!entry_flag)
         {
             zustand = Zustand.Start_Pos1;
-            bflag = true;
+            entry_flag = true;
         }
 
         if(false)
         {
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -75,11 +75,11 @@ public class Pos_Wechsel implements Systeme
 
     public static void start_pos1()
     {
-        if(!bflag)
+        if(!entry_flag)
         {
             Systeme.gegnerSystem.resetGegnerErkennung();
             Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G1);
-            bflag=true;
+            entry_flag =true;
         }
 
         if(!Systeme.bewegungsSystem.istInBewegung())
@@ -88,14 +88,14 @@ public class Pos_Wechsel implements Systeme
         }
         if(false)
         {
-            bflag = false;
+            entry_flag = false;
         }
     }
 
     public static void gegner1()
     {
         boolean b = false;
-        if(!bflag)
+        if(!entry_flag)
         {
             if (Systeme.gegnerSystem.warGegnerRechts())
             {
@@ -107,7 +107,7 @@ public class Pos_Wechsel implements Systeme
                 Systeme.bewegungsSystem.drehe90GradUZ();
                 b = true;
             }
-            bflag = true;
+            entry_flag = true;
         }
 
 
@@ -124,21 +124,21 @@ public class Pos_Wechsel implements Systeme
                 zustand = Zustand.Traverse1;
             }
         }
-            bflag = false;
+            entry_flag = false;
 
     }
 
     public static void gegner2()
     {
 
-        if(!bflag)
+        if(!entry_flag)
         {
-            bflag = true;
+            entry_flag = true;
         }
 
         if(false)
         {
-            bflag = false;
+            entry_flag = false;
         }
     }
 
@@ -150,16 +150,16 @@ public class Pos_Wechsel implements Systeme
     public static void traverse1()
     {
 
-        if(!bflag)
+        if(!entry_flag)
         {
             Systeme.bewegungsSystem.fahreFreiBisDistanz(false,Distanz_Linie);
-            bflag = true;
+            entry_flag = true;
         }
 
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             zustand = Zustand.Ebene1;
-            bflag = false;
+            entry_flag = false;
         }
 
 
