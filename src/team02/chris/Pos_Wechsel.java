@@ -28,7 +28,8 @@ public class Pos_Wechsel implements Systeme
     private static double Distanz_G3 = 0.168;
 
     private static double Distanz_Linie = 0.2;
-
+    
+    //zu viele Flags -> kann als einzigen Unterzustand berschrieben werden(Zahl statt 1-aus-n-Code)
     private static boolean fPos1,fStart_Pos1,fGegner1,fPos2, fGegner2, fTraverse1;
 
     private static Zustand zustand = Zustand.Standby;
@@ -46,7 +47,7 @@ public class Pos_Wechsel implements Systeme
     {
         if(!fPos2)
         {
-            zustand = Zustand.Start_Pos1;
+            zustand = Zustand.Start_Pos2;
             fPos2 = true;
         }
     }
@@ -79,6 +80,7 @@ public class Pos_Wechsel implements Systeme
 
     public static void gegner1()
     {
+    	//was is b? Vorteil gegenueber warGegnerRechts()?
         boolean b = false;
         if(!fGegner1)
         {
