@@ -128,6 +128,7 @@ public class Pos_Wechsel implements Systeme
                 zustand = Zustand.Traverse1;
             }
         }
+        	//TODO: muss das ausserhalb sein?
             entry_flag = false;
     }
 
