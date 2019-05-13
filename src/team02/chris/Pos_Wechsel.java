@@ -15,7 +15,9 @@ public class Pos_Wechsel implements Systeme
         Gegner3,
 
         Ebene1,
+        FahrezuWand,
         Traverse1,
+        Drehe1,
         Wand,
 
 
@@ -72,7 +74,9 @@ public class Pos_Wechsel implements Systeme
         return true;
     }
 
-
+    /**
+     * Fahre bis zum ersten Gegner
+     */
     public static void start_pos1()
     {
         if(!entry_flag)
@@ -92,6 +96,9 @@ public class Pos_Wechsel implements Systeme
         }
     }
 
+    /**
+     * Hoehe Gegner 1: Entscheid ob weiter fahren (wenn Gegner vorhanden ist) oder zum drehen
+     */
     public static void gegner1()
     {
         boolean b = false;
@@ -110,9 +117,6 @@ public class Pos_Wechsel implements Systeme
             entry_flag = true;
         }
 
-
-
-
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             if(!b)
@@ -125,9 +129,11 @@ public class Pos_Wechsel implements Systeme
             }
         }
             entry_flag = false;
-
     }
 
+    /**
+     * Hoehe Gegner 2:
+     */
     public static void gegner2()
     {
 
@@ -142,11 +148,17 @@ public class Pos_Wechsel implements Systeme
         }
     }
 
+    /**
+     * Hoehe Gegner 3:
+     */
     public static void gegner3()
     {
 
     }
 
+    /**
+     * 1. Gegnerreihe Traversieren
+     */
     public static void traverse1()
     {
 
@@ -165,6 +177,47 @@ public class Pos_Wechsel implements Systeme
 
     }
 
+    public static void ebene1()
+    {
+        if(!entry_flag)
+        {
+            Systeme.bewegungsSystem.drehe90GradGUZ();
+        }
+
+        if(!Systeme.bewegungsSystem.istInBewegung())
+        {
+            zustand = Zustand.FahrezuWand;
+            entry_flag = false;
+        }
+    }
+
+    public static void fahreZuWand()
+    {
+        if(!entry_flag)
+        {
+            Systeme.bewegungsSystem.folgeLinieBisWandRueckwaerts();
+        }
+
+        if(!Systeme.bewegungsSystem.istInBewegung())
+        {
+            entry_flag = false;
+            zustand = Zustand.Wand;
+        }
+    }
+
+    public static void wand()
+    {
+        if(!entry_flag)
+        {
+            Systeme.bewegungsSystem.drehe90GradGUZ();
+        }
+
+        if(!Systeme.bewegungsSystem.istInBewegung())
+        {
+            entry_flag = false;
+        }
+    }
+
     public static void update()
     {
         switch(zustand)
@@ -181,7 +234,6 @@ public class Pos_Wechsel implements Systeme
                 break;
             }
 
-
             case Gegner2:
             {
                 gegner2();
@@ -197,6 +249,24 @@ public class Pos_Wechsel implements Systeme
             case Traverse1:
             {
                 traverse1();
+                break;
+            }
+
+            case Ebene1:
+            {
+                ebene1();
+                break;
+            }
+
+            case FahrezuWand:
+            {
+                fahreZuWand();
+                break;
+            }
+
+            case Wand:
+            {
+                wand();
                 break;
             }
 
