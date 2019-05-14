@@ -16,16 +16,6 @@ public class DebugSystem
 {
 
 	public static SCI sci1;
-    /**
-     * Gibt die aktuellen Zustände auf der definierten System.out Schnittstelle aus
-     * Auftrag:
-     * Es sollen die Zustände von Ein/Ausgängen auf die Serielle schnittstelle ausgegeben werden.
-     * Pseudo Code Beispiel(Syntax wahrscheinlich nicht korrekt)
-     * system.out.print("DIG_IO x ");
-     * system.out.print(eingangx.get());
-     * dH der Output stream muss zuerst initialisiert werden.
-     * Sonst kann nichts auf die serielle Schnittstelle ausgegeben werden
-     */
 
     private static DebugSystem debugSystem;
 

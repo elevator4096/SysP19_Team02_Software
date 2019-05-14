@@ -38,12 +38,14 @@ public class Pos_Wechsel implements Systeme
 
     public static void fahre_zu_Pos1()
     {
+        //Entry
         if(!entry_flag)
         {
             zustand = Zustand.Start_Pos1;
             entry_flag = true;
         }
 
+        //Exit
         if(false)
         {
             entry_flag = false;
@@ -52,12 +54,14 @@ public class Pos_Wechsel implements Systeme
 
     public static void fahre_zu_Pos2()
     {
+        //Entry
         if(!entry_flag)
         {
             zustand = Zustand.Start_Pos1;
             entry_flag = true;
         }
 
+        //Exit
         if(false)
         {
             entry_flag = false;
@@ -79,6 +83,7 @@ public class Pos_Wechsel implements Systeme
      */
     public static void start_pos1()
     {
+        //Entry
         if(!entry_flag)
         {
             Systeme.gegnerSystem.resetGegnerErkennung();
@@ -86,6 +91,7 @@ public class Pos_Wechsel implements Systeme
             entry_flag =true;
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             zustand = Zustand.Gegner1;
@@ -101,6 +107,7 @@ public class Pos_Wechsel implements Systeme
      */
     public static void gegner1()
     {
+        //Entry
         boolean b = false;
         if(!entry_flag)
         {
@@ -117,6 +124,7 @@ public class Pos_Wechsel implements Systeme
             entry_flag = true;
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             if(!b)
@@ -127,9 +135,8 @@ public class Pos_Wechsel implements Systeme
             {
                 zustand = Zustand.Traverse1;
             }
-        }
-        	//TODO: muss das ausserhalb sein?
             entry_flag = false;
+        }
     }
 
     /**
@@ -137,12 +144,13 @@ public class Pos_Wechsel implements Systeme
      */
     public static void gegner2()
     {
-
+        //Entry
         if(!entry_flag)
         {
             entry_flag = true;
         }
 
+        //Exit
         if(false)
         {
             entry_flag = false;
@@ -162,13 +170,14 @@ public class Pos_Wechsel implements Systeme
      */
     public static void traverse1()
     {
-
+        //Entry
         if(!entry_flag)
         {
             Systeme.bewegungsSystem.fahreFreiBisDistanz(false,Distanz_Linie);
             entry_flag = true;
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             zustand = Zustand.Ebene1;
@@ -180,11 +189,13 @@ public class Pos_Wechsel implements Systeme
 
     public static void ebene1()
     {
+        //Entry
         if(!entry_flag)
         {
             Systeme.bewegungsSystem.drehe90GradGUZ();
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             zustand = Zustand.FahrezuWand;
@@ -194,11 +205,13 @@ public class Pos_Wechsel implements Systeme
 
     public static void fahreZuWand()
     {
+        //Entry
         if(!entry_flag)
         {
             Systeme.bewegungsSystem.folgeLinieBisWandRueckwaerts();
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             entry_flag = false;
@@ -208,15 +221,22 @@ public class Pos_Wechsel implements Systeme
 
     public static void wand()
     {
+        //Entry
         if(!entry_flag)
         {
             Systeme.bewegungsSystem.drehe90GradGUZ();
         }
 
+        //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             entry_flag = false;
         }
+    }
+
+    public static void test()
+    {
+        zustand = Zustand.Start_Pos1;
     }
 
     public static void update()
