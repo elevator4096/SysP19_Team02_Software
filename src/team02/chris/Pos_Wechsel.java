@@ -1,9 +1,14 @@
 package team02.chris;
 
+import team02.IO;
 import team02.Systeme;
 
 public class Pos_Wechsel implements Systeme
 {
+	private static boolean pos1Erreicht = false;
+	private static boolean pos2Erreicht = false;
+				   
+	
     private enum Zustand
     {
         Test,
@@ -22,6 +27,7 @@ public class Pos_Wechsel implements Systeme
 
 
         Standby,
+        Fehler
     }
 
     private static double Distanz_G1 = 0.05;
@@ -38,44 +44,22 @@ public class Pos_Wechsel implements Systeme
 
     public static void fahre_zu_Pos1()
     {
-        //Entry
-        if(!entry_flag)
-        {
-            zustand = Zustand.Start_Pos1;
-            entry_flag = true;
-        }
-
-        //Exit
-        if(false)
-        {
-            entry_flag = false;
-        }
+        zustand = Zustand.Start_Pos1;
     }
 
     public static void fahre_zu_Pos2()
     {
-        //Entry
-        if(!entry_flag)
-        {
-            zustand = Zustand.Start_Pos1;
-            entry_flag = true;
-        }
-
-        //Exit
-        if(false)
-        {
-            entry_flag = false;
-        }
+        zustand = Zustand.Start_Pos1;
     }
 
     public static boolean pos1_erreicht()
     {
-        return true;
+        return pos1Erreicht;
     }
 
     public static boolean pos2_erreicht()
     {
-        return true;
+        return pos2Erreicht;
     }
 
     /**
@@ -95,9 +79,6 @@ public class Pos_Wechsel implements Systeme
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
             zustand = Zustand.Gegner1;
-        }
-        if(false)
-        {
             entry_flag = false;
         }
     }
@@ -108,18 +89,18 @@ public class Pos_Wechsel implements Systeme
     public static void gegner1()
     {
         //Entry
-        boolean b = false;
+        boolean gegnerGesehen = false;
         if(!entry_flag)
         {
             if (Systeme.gegnerSystem.warGegnerRechts())
             {
                 Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G2);
-                b=false;
+                gegnerGesehen = true;
             }
             else
             {
                 Systeme.bewegungsSystem.drehe90GradUZ();
-                b = true;
+                gegnerGesehen = false;
             }
             entry_flag = true;
         }
@@ -127,11 +108,11 @@ public class Pos_Wechsel implements Systeme
         //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
-            if(!b)
+            if(gegnerGesehen)
             {
                 zustand = Zustand.Gegner2;
             }
-            if(b)
+            if(!gegnerGesehen)
             {
                 zustand = Zustand.Traverse1;
             }
@@ -144,15 +125,34 @@ public class Pos_Wechsel implements Systeme
      */
     public static void gegner2()
     {
-        //Entry
+    	   //Entry
+        boolean gegnerGesehen = false;
         if(!entry_flag)
         {
+            if (Systeme.gegnerSystem.warGegnerRechts())
+            {
+                Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G3);
+                gegnerGesehen = true;
+            }
+            else
+            {
+                Systeme.bewegungsSystem.drehe90GradUZ();
+                gegnerGesehen = false;
+            }
             entry_flag = true;
         }
 
         //Exit
-        if(false)
+        if(!Systeme.bewegungsSystem.istInBewegung())
         {
+            if(gegnerGesehen)
+            {
+                zustand = Zustand.Gegner3;
+            }
+            if(!gegnerGesehen)
+            {
+                zustand = Zustand.Traverse1;
+            }
             entry_flag = false;
         }
     }
@@ -162,7 +162,36 @@ public class Pos_Wechsel implements Systeme
      */
     public static void gegner3()
     {
+    	//Entry
+        boolean gegnerGesehen = false;
+        if(!entry_flag)
+        {
+            if (Systeme.gegnerSystem.warGegnerRechts())
+            {
+                IO.debug.println("Error: 3 Gegner gesehen");
+                gegnerGesehen = true;
+            }
+            else
+            {
+                Systeme.bewegungsSystem.drehe90GradUZ();
+                gegnerGesehen = false;
+            }
+            entry_flag = true;
+        }
 
+        //Exit
+        if(!Systeme.bewegungsSystem.istInBewegung())
+        {
+            if(gegnerGesehen)
+            {
+                zustand = Zustand.Fehler;
+            }
+            if(!gegnerGesehen)
+            {
+                zustand = Zustand.Traverse1;
+            }
+            entry_flag = false;
+        }
     }
 
     /**
@@ -192,7 +221,8 @@ public class Pos_Wechsel implements Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.bewegungsSystem.drehe90GradGUZ();
+            Systeme.bewegungsSystem.drehe90GradUZ();
+            entry_flag = true;
         }
 
         //Exit
@@ -209,6 +239,7 @@ public class Pos_Wechsel implements Systeme
         if(!entry_flag)
         {
             Systeme.bewegungsSystem.folgeLinieBisWandRueckwaerts();
+            entry_flag = true;
         }
 
         //Exit
@@ -225,11 +256,14 @@ public class Pos_Wechsel implements Systeme
         if(!entry_flag)
         {
             Systeme.bewegungsSystem.drehe90GradGUZ();
+            entry_flag = true;
         }
 
         //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
+        	IO.debug.println("Position 1 erreicht");
+        	pos1Erreicht = true;
             entry_flag = false;
         }
     }
