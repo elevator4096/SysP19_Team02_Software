@@ -79,7 +79,7 @@ public class Main extends Task {
 			break;
 		}
 
-		case VORRUECKEN: // in naechsten Spielfelddabschnitt vorruecken
+		case VORRUECKEN: // in naechsten Spielfeldabschnitt vorruecken
 		{
 			vorruecken();
 			break;

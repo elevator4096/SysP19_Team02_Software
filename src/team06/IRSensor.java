@@ -17,9 +17,9 @@ public class IRSensor {
 	}
 	
 	
-	public int distanzlesen(int pin)
+	public int distanzlesen(int pin)		// pin = Sensornummer (0-6)
 	{
-		return hlc1395.read(pin);
+		return hlc1395.read(pin);			// gibt ?? in ?? zurück
 	}
 	
 

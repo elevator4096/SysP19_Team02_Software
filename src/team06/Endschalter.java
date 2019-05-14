@@ -7,11 +7,11 @@ public class Endschalter {
 	public MPIOSM_DIO schalter;
 
 
-	public Endschalter(int pin, boolean inout) {
+	public Endschalter(int pin, boolean inout) {			
 		schalter = new MPIOSM_DIO(pin, inout);
 	}
 
-	public boolean schalterzustand() {
+	public boolean schalterzustand() {			// true = ??, false = ??
 		return schalter.get();
 	}
 
