@@ -53,7 +53,7 @@ public class Instanzen {
 //		// PWM_Servo TPU
 		servoMotor = new PWM_Servo(false, 4, Variablen.pwmPeriod, Variablen.highTime);
 
-//		// IR-Sensoren erzeugen MPIOB
+//		// IR-Sensoren erzeugen  
 		iRSensor = new IRSensor(-1, 12, 11, 15, 14, 59);
 
 //		// Endschalter erzeugen MPIOB
