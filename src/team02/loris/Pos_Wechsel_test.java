@@ -6,9 +6,7 @@ import team02.Systeme;
 public class Pos_Wechsel_test {
 	
 	private static Zustand        zustand = Zustand.Standby;
-	private static Zustand letzterZustand = Zustand.Standby;
-	private static int weg = 0;
-	private static boolean next = false;
+	private static boolean ersteFahrt = true;
 	
     private enum Zustand
     {
@@ -17,6 +15,7 @@ public class Pos_Wechsel_test {
         
         PosAtoB,
         PosBtoC,
+        PosCtoD,
         
         StartWeg1,
         StartWeg2,
@@ -58,21 +57,15 @@ public class Pos_Wechsel_test {
     private static double Distanz_G4 = 0.05;
     private static double Distanz_Linie = 0.2;
     
-    public static void update()
-    {
-    	
-    	if (!Systeme.bewegungsSystem.istInBewegung()) bewege();
-    }    
-    
     public static void fahre_zu_Pos1()
     {
-    	weg = 1;
+    	ersteFahrt = true;
         zustand = Zustand.PosAtoB;
     }
 
     public static void fahre_zu_Pos2()
     {
-    	weg = 2;
+    	ersteFahrt = false;
     	zustand = Zustand.PosBtoC;
     }
 
@@ -85,6 +78,23 @@ public class Pos_Wechsel_test {
     {
         return (zustand == Zustand.AnPosD)&&(!Systeme.bewegungsSystem.istInBewegung());
     }
+    
+    
+    public static void update()
+    {
+    	//Zum Schrittweise debuggen
+    	//if(zustand == Zustand.NachGegner12) continue;
+    	
+    	//Wenn PosC erreicht fahre automatisch weiter zu PosD 
+    	if(zustand== Zustand.AnPosC)
+    	{
+    		zustand = Zustand.PosCtoD;
+    	}
+    	
+    	if (!Systeme.bewegungsSystem.istInBewegung()) bewege();
+    	
+    	
+    }    
     
     public static void bewege()
     {
@@ -99,6 +109,11 @@ public class Pos_Wechsel_test {
     		{
     			Systeme.bewegungsSystem.drehe90GradUZ();
     			zustand = Zustand.StartWeg2;
+    			break;
+    		}
+    		case PosCtoD:
+    		{
+    			zustand = Zustand.StartWeg1;
     			break;
     		}
     	
@@ -175,7 +190,7 @@ public class Pos_Wechsel_test {
             case WandEbene2:
             {
                 Systeme.bewegungsSystem.drehe90GradGUZ();
-                zustand = Zustand.AnPosB;
+                if(ersteFahrt) zustand = Zustand.AnPosB; else zustand = Zustand.AnPosD;
                 break;
             }
             case StartWeg2:
@@ -258,7 +273,6 @@ public class Pos_Wechsel_test {
             }
             case WandEbene3:
             {
-                Systeme.bewegungsSystem.drehe90GradGUZ();
                 zustand = Zustand.AnPosC;
                 break;
             }
