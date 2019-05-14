@@ -26,7 +26,6 @@ public class MotorSMSC {
 
 		motor.setDesiredSpeed((float)(0));
 		
-		System.out.println("Motor erzeugt");
 
 	}
 

@@ -18,9 +18,9 @@ public class ToFSensor_M3 extends Task {
 
 	public void action() {
 
-		System.out.println("action");
+		//System.out.println("action");
 
-		System.out.println(tofSensor.getSingleRangeValue(1));
+		//System.out.println(tofSensor.getSingleRangeValue(1));
 
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
 		byte val = tofSensor.getSingleRangeValue(1);
@@ -38,7 +38,7 @@ public class ToFSensor_M3 extends Task {
 		if (val < 0)
 			val += 256;
 		System.out.println((val));
-		System.out.println("-------------------------------------------");
+		/*System.out.println("-------------------------------------------");
 		val = tofSensor.getSingleRangeValue(3);
 		System.out.print("RESULT__RANGE_VAL:\tSens2: ");
 		System.out.printHex((val & 0xFF));
@@ -47,6 +47,7 @@ public class ToFSensor_M3 extends Task {
 			val += 256;
 		System.out.println((val));
 		System.out.println("-------------------------------------------");
+		*/
 
 	}
 
@@ -77,6 +78,7 @@ public class ToFSensor_M3 extends Task {
 		System.out.println("static start");
 
 		tofSensor = new VL6180X_SC18IS600(3);
+		System.out.println("Static load complete");
 
 		Task s = new ToFSensor_M3();
 		s.period = 500;
@@ -84,6 +86,6 @@ public class ToFSensor_M3 extends Task {
 		
 		
 		
-		System.out.println("afasdfasd start");
+		
 	}
 }

@@ -28,13 +28,15 @@ public class Instanzen {
 	public static Endschalter endSchalter1;
 	public static Endschalter endSchalter2;
 	
-	//public static ToFSensor toFSensor;
+	public static Siebenseg siebensegment;
 
 	public static WurfSystem wurfSystem;
 	public static FahrSystem fahrSystem;
 	public static OrientierSystem orientierSystem;
 
 	public static TaskMotor taskMotor;
+	
+	//public static ToFSensor toFSensor;
 
 	public Instanzen() {
 
@@ -60,6 +62,9 @@ public class Instanzen {
 		
 //		// ToF-Sensoren erzeugen
 	//	toFSensor = new ToFSensor();
+		
+//		// SiebenSegment erzeugen
+		siebensegment = new Siebenseg();
 
 //		// Systeme erzeugen
 		// wurfSystem = new WurfSystem();

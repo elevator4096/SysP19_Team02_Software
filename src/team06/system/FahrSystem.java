@@ -11,19 +11,11 @@ import team06.Variablen;
 public class FahrSystem {
 
 	public FahrSystem() {
-		System.out.println("Fahrsystem_gestartet");
+
 	}
 
 	/**
-	 * Speed für Fahrmotoren setzen
-	 */
-	public void setdrehzahl(float drehzahl) {
-		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(drehzahl);
-		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(drehzahl);
-	}
-
-	/**
-	 * Fahrmotoren Starten
+	 * Fahrmotoren Starten (action methode)
 	 */
 	public void motorstarten() {
 		Instanzen.sMSC_FahrMotorlinks.motorstarten();
@@ -32,31 +24,48 @@ public class FahrSystem {
 	}
 
 	/**
+	 * Speed für Fahrmotoren setzen
+	 */
+	public void setdrehzahl(float drehzahl) {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(-drehzahl);
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(drehzahl);
+	}
+
+	/**
 	 * Drehung Links
 	 */
 	public void linkskurve() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(Variablen.speedmotorinnen);
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(Variablen.speedmotorausen);
 	}
 
-	
 	/**
 	 * Drehung Rechts
 	 */
 	public void rechtskurve() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(-Variablen.speedmotorausen);
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(-Variablen.speedmotorinnen);
 	}
-
 	
 	/**
-	 * Anzahl Inkrements geraudeausfahren
+	 * Rückwärts fahren
 	 */
-	public void geradeaus(int inkrement) {
+	public void retour() {
+		setdrehzahl(Variablen.speedrückwärts);
 	}
 
+	/**
+	 * Geradeaus fahren
+	 */
+	public void geradeaus() {
+		setdrehzahl(Variablen.speedgeradeaus);
+	}
 	
 	/**
-	 * Anzahl Inkrements rückwärts
+	 * Null fahren
 	 */
-	public void rückwärts(int inkrement) {
-
+	public void nullfahren() {
+		setdrehzahl(0);
 	}
-
+	
 }

@@ -27,10 +27,10 @@ public class OrientierSystem {
 	 * Achtung Pin anpassen und Wert anpassen
 	 */
 	public void hatBall() {
-		if (Instanzen.iRSensor.distanzlesen(6) < 100) {
+		if (Instanzen.iRSensor.distanzlesen(6) < 7) {
 			Variablen.hatball = true;
 		}
-		if (Instanzen.iRSensor.distanzlesen(6) > 150) {
+		if (Instanzen.iRSensor.distanzlesen(6) > 12) {
 			Variablen.hatball = false;
 		}
 	}
@@ -58,7 +58,7 @@ public class OrientierSystem {
 			Variablen.schalter2 = false;
 		}
 
-		if (Instanzen.endSchalter1.schalterzustand() && Instanzen.endSchalter2.schalterzustand()) {
+		if (Instanzen.endSchalter1.schalterzustand() == true && Instanzen.endSchalter2.schalterzustand() == true) {
 			Variablen.anWand = true;
 		}
 		if (Instanzen.endSchalter1.schalterzustand() == false && Instanzen.endSchalter2.schalterzustand() == false) {

@@ -12,7 +12,8 @@ public class TaskMotor extends Task {
 
 	{
 		Instanzen.wurfSystem.motorstarten();
-		//Instanzen.sMSC_WurfMotor2.motorstarten();
+		Instanzen.fahrSystem.motorstarten();
+		Instanzen.servoMotor.update();
 
 	}
 

@@ -1,16 +1,16 @@
-package team06.phil;
+package team06;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_DIO;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
-public class TPUDIO_M3{
+public class Siebenseg{
 	
 	TPU_DIO leda, ledb, ledc, ledd, lede, ledf, ledg, leddp;
 	
 	int counter = 0;
 
-	public TPUDIO_M3() {
+	public Siebenseg() {
 
 		// LED ausschalten true = aus
 		leda = new TPU_DIO(false, 11, true);
@@ -119,7 +119,7 @@ public class TPUDIO_M3{
 		ledd.set(true); // LED ausschalten
 		lede.set(true);
 		ledf.set(true);
-//		ledg.set(true); // LED ausschalten
+		ledg.set(true); // LED ausschalten
 		leddp.set(true);
 	}
 

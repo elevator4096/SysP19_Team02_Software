@@ -27,14 +27,21 @@ public class DistSensorTest_M3 extends Task {
 	public DistSensorTest_M3() {
 		hlc1395 = HLC1395Pulsed.getInstance();
 // Initialize sensors
-		hlc1395.init(ADR3PIN, ADR2PIN, ADR1PIN, ADR0PIN, TRGPIN, ANPIN);
+		hlc1395.init(-1, -1, -1, ADR0PIN, TRGPIN, ANPIN);
 // Start reading
 		hlc1395.start();
 	}
-	
-	
+
 	public int gibdist(int i) {
 		return hlc1395.read(i);
+	}
+
+	public void alleirausgeben() {
+		for (int i = 0; i < 7; i++) {
+			System.out.print(hlc1395.read(i));
+			System.out.print("\t");
+		}
+		System.out.println();
 	}
 
 //	static {

@@ -41,6 +41,8 @@ public class Main extends Task {
 	 * Methode, die zyklisch aufgerufen wird
 	 */
 	public void action() {
+		instanz.siebensegment.strichblinken();
+		
 	}
 
 	/**
