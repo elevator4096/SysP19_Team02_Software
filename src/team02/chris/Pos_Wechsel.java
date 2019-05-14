@@ -15,9 +15,19 @@ public class Pos_Wechsel implements Systeme
         Start,
         Start_Pos1,
         Start_Pos2,
-        Gegner1,
-        Gegner2,
-        Gegner3,
+        Gegner11,
+        Gegner12,
+        Gegner13,
+        Gegner14,
+        Gegner21,
+        Gegner22,
+        Gegner23,
+        Gegner24,
+        Gegner31,
+        Gegner32,
+    	Gegner33,
+    	Gegner34,
+        
 
         Ebene1,
         FahrezuWand,
@@ -78,15 +88,15 @@ public class Pos_Wechsel implements Systeme
         //Exit
         if(!Systeme.bewegungsSystem.istInBewegung())
         {
-            zustand = Zustand.Gegner1;
+            zustand = Zustand.Gegner11;
             entry_flag = false;
         }
     }
 
     /**
-     * Hoehe Gegner 1: Entscheid ob weiter fahren (wenn Gegner vorhanden ist) oder zum drehen
+     * Hoehe Gegner 11: Entscheid ob weiter fahren (wenn Gegner vorhanden ist) oder zum drehen
      */
-    public static void gegner1()
+    public static void gegner11()
     {
         //Entry
         boolean gegnerGesehen = false;
@@ -110,7 +120,7 @@ public class Pos_Wechsel implements Systeme
         {
             if(gegnerGesehen)
             {
-                zustand = Zustand.Gegner2;
+                zustand = Zustand.Gegner21;
             }
             if(!gegnerGesehen)
             {
@@ -121,9 +131,9 @@ public class Pos_Wechsel implements Systeme
     }
 
     /**
-     * Hoehe Gegner 2:
+     * Hoehe Gegner 21:
      */
-    public static void gegner2()
+    public static void gegner21()
     {
     	   //Entry
         boolean gegnerGesehen = false;
@@ -158,9 +168,9 @@ public class Pos_Wechsel implements Systeme
     }
 
     /**
-     * Hoehe Gegner 3:
+     * Hoehe Gegner 31:
      */
-    public static void gegner3()
+    public static void gegner31()
     {
     	//Entry
         boolean gegnerGesehen = false;
