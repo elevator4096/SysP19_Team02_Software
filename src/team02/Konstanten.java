@@ -10,6 +10,8 @@ public interface Konstanten
 	boolean DEBUG 					= true;							//True, Debug aktiviert
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
 	
+	boolean DREHE_NUR_MIT_ENCODER	= true;							//Benutze ausschliesslich Encoder fuer 90Grad Drehungen 
+	
 
 	//Programm Parameter
 	double	TASK_PERIOD 			= 0.5;						//Taktzeit des Haupttasks in s

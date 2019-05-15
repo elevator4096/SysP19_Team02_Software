@@ -115,7 +115,8 @@ public class BewegungsSystem implements IO
      */
 	public void drehe90GradUZ()
 	{	
-		setBewegung(ZustandBewegung.DREHE, false, false, -1, HalteBedingung.BIS_LINIE_SENKRECHT,0.0,0.0);
+		if(Konstanten.DREHE_NUR_MIT_ENCODER) dreheUngenauUZ(0.5*Math.PI);
+		else setBewegung(ZustandBewegung.DREHE, false, false, -1, HalteBedingung.BIS_LINIE_SENKRECHT,0.0,0.0);
 	}
 	
 	/**
@@ -123,7 +124,8 @@ public class BewegungsSystem implements IO
      */
 	public void drehe90GradGUZ()
 	{
-		setBewegung(ZustandBewegung.DREHE, false, true, -1, HalteBedingung.BIS_LINIE_SENKRECHT,0.0,0.0);
+		if(Konstanten.DREHE_NUR_MIT_ENCODER) dreheUngenauGUZ(0.5*Math.PI);
+		else setBewegung(ZustandBewegung.DREHE, false, true, -1, HalteBedingung.BIS_LINIE_SENKRECHT,0.0,0.0);
 	}
 	
 	/**
