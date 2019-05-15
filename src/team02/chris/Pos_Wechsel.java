@@ -376,10 +376,11 @@ public class Pos_Wechsel implements Systeme
                 start_pos2();
                 break;
             }
-
+            
+            /*
             case Gegner24:
             {
-                gegner24();
+            	gegner24();
                 break;
             }
 
@@ -406,6 +407,7 @@ public class Pos_Wechsel implements Systeme
                 ebene3();
                 break;
             }
+            */
 
 
             default:
