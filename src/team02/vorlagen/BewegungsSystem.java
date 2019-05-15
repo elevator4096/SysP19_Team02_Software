@@ -26,6 +26,7 @@ public class BewegungsSystem implements IO
 	private boolean 		inBewegung 				= false;
 	private double			zielDrehWinkel			= 0.0; // Kann beliebige Werte annehmen( springt nicht von 2PI auf 0)
 	private double			zielDistanz				= 0.0;
+	private double			drivingSpeed			= Konstanten.DRIVING_SPEED;
 
 
 
@@ -204,7 +205,7 @@ public class BewegungsSystem implements IO
 			}
 			else
 			{
-				Fahren.geradeaus(Konstanten.DRIVING_SPEED);
+				Fahren.geradeaus(drivingSpeed);
 			}
 		}
 		else
@@ -222,7 +223,7 @@ public class BewegungsSystem implements IO
 			}
 			else
 			{
-				Fahren.geradeaus(-Konstanten.DRIVING_SPEED);
+				Fahren.geradeaus(-drivingSpeed);
 			}
 		}
 	}
@@ -293,7 +294,7 @@ public class BewegungsSystem implements IO
 		switch(zustandBewegung)
 		{
 		case FAHRE_FREI:
-			Fahren.geradeaus( Konstanten.DRIVING_SPEED*((bewegungsRichtung)? 1:-1));
+			Fahren.geradeaus( drivingSpeed*((bewegungsRichtung)? 1:-1));
 			break;
 		case FOLGE_LINIE:
 			folgeLinie(bewegungsRichtung);
@@ -325,6 +326,22 @@ public class BewegungsSystem implements IO
 	}
 	
 	/**
+	 * Bremst den Roboter kurz vor dem Ziel ab um Praezision zu erhoehen
+	 */
+	private void sanftesBremsen()
+	{
+		if (halteBedingung == HalteBedingung.BIS_DISTANZ_ERREICHT && (( bewegungsRichtung && Fahren.getDistanz()>=(zielDistanz-Konstanten.BREMSWEG) ) || ( !bewegungsRichtung && Fahren.getDistanz()<=(zielDistanz+Konstanten.BREMSWEG) )) )
+		{
+			drivingSpeed			= Konstanten.SLOW_SPEED;
+		}
+		else
+		{
+			drivingSpeed			= Konstanten.DRIVING_SPEED;
+		}
+	}
+	
+	
+	/**
 	 * update wird zyklisch aufgerufen
 	 * Stoppt die Bewegung des Roboters sobald Zielposition erreicht wurde  
 	 */
@@ -332,6 +349,8 @@ public class BewegungsSystem implements IO
 	{
 		Fahren.update();
 		
+		if (Konstanten.SANFTES_BREMSEN) sanftesBremsen();
+				
 		if (istHalteBedingungErfuellt())
 		{
 			inBewegung 		= false;

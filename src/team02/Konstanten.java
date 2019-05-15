@@ -11,6 +11,7 @@ public interface Konstanten
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
 	
 	boolean DREHE_NUR_MIT_ENCODER	= true;							//Benutze ausschliesslich Encoder fuer 90Grad Drehungen 
+	boolean SANFTES_BREMSEN			= true;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)
 	
 
 	//Programm Parameter
@@ -27,8 +28,10 @@ public interface Konstanten
 	//Tuning Parameter
 	double	DRIVING_SPEED			= 0.08;							// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
 	double	TURNING_SPEED			= 0.100*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s 		( Werte von ca 0.050PI - 1.150PI)
-	double	SLOW_SPEED				= 0.009;						// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)
+	double	SLOW_SPEED				= 0.02;							// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)
 	double	MAX_SPEED				= MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;
+	
+	double BREMSWEG					= 0.020;						//Bremsweg vor Halt(Hoehere Praezision durch sanftes Bremsen)
 	
 	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
 	
