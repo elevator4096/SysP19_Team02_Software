@@ -27,8 +27,8 @@ public class Pos_Wechsel_V2 {
         Ebene2, Ebene3,												// Ebene erreicht
         
         FahreZuWandEbene2, FahreZuWandEbene3,						// Fahrt rueckwaerts bis zur Wand 
-        WandEbene2,WandEbene3,										// Wand erreicht (Fahre zu Wand_Abstand)
-        WandAbstandEbene2,WandAbstandEbene3,						// Wand_Abstand erreicht 
+        WandEbene2, WandEbene3,										// Wand erreicht (Fahre zu Wand_Abstand)
+        WandAbstandEbene2, WandAbstandEbene3,						// Wand_Abstand erreicht 
 
         Standby,													// Warten auf Befehle
         Fehler;														// Ein Fehler ist aufgetreten
@@ -41,6 +41,7 @@ public class Pos_Wechsel_V2 {
     private static double Distanz_Linie = 0.200;
     
     private static double Distanz_Wand_Abstand 	= 0.050;    
+    
     /**
      * Fahre autonom zu WurfPosition1
      */
@@ -60,7 +61,7 @@ public class Pos_Wechsel_V2 {
     }
     
     /**
-     * Wurde WurfPosition1 erreicht?
+     *  Wurde WurfPosition1 erreicht?
      * return WurfPosition1 erreicht
      */
     public static boolean pos1_erreicht()
@@ -69,7 +70,7 @@ public class Pos_Wechsel_V2 {
     }
     
     /**
-     * Wurde WurfPosition2 erreicht?
+     *  Wurde WurfPosition2 erreicht?
      * return WurfPosition2 erreicht
      */
     public static boolean pos2_erreicht()
@@ -98,7 +99,7 @@ public class Pos_Wechsel_V2 {
     }    
     
     /**
-     * Schrittkette um die naechste Bewegungsaktion des Roboters auszufuehren
+     *  Schrittkette um die naechste Bewegungsaktion des Roboters auszufuehren
      * (Darf nur aufgerufen werden falls sich der Roboter im Stillstand befindet)
      */
     public static void bewege()
