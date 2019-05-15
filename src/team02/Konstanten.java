@@ -31,7 +31,7 @@ public interface Konstanten
 	double	SLOW_SPEED				= 0.02;							// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)
 	double	MAX_SPEED				= MAX_DREHZAHL_MOTOR * GEAR_RATIO * WHEEL_DIAMETER * Math.PI;
 	
-	double BREMSWEG					= 0.020;						//Bremsweg vor Halt(Hoehere Praezision durch sanftes Bremsen)
+	double  BREMSWEG				= 0.020;						//Bremsweg vor Halt(Hoehere Praezision durch sanftes Bremsen)
 	
 	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
 	
