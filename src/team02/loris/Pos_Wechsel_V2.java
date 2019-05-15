@@ -27,7 +27,8 @@ public class Pos_Wechsel_V2 {
         Ebene2, Ebene3,												// Ebene erreicht
         
         FahreZuWandEbene2, FahreZuWandEbene3,						// Fahrt rueckwaerts bis zur Wand 
-        WandEbene2,WandEbene3,										// Wand erreicht 
+        WandEbene2,WandEbene3,										// Wand erreicht (Fahre zu Wand_Abstand)
+        WandAbstandEbene2,WandAbstandEbene3,						// Wand_Abstand erreicht 
 
         Standby,													// Warten auf Befehle
         Fehler;														// Ein Fehler ist aufgetreten
@@ -39,6 +40,7 @@ public class Pos_Wechsel_V2 {
     private static double Distanz_G4 	= 0.050;
     private static double Distanz_Linie = 0.200;
     
+    private static double Distanz_Wand_Abstand 	= 0.050;    
     /**
      * Fahre autonom zu WurfPosition1
      */
@@ -190,12 +192,18 @@ public class Pos_Wechsel_V2 {
                 zustand = Zustand.WandEbene2;
                 break;
             }
-            case WandEbene2: // Wand Ebene2 erreicht 
+            case WandEbene2: // Wand Ebene2 erreicht (Fahre zu Wand_Abstand)
+            {
+                Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_Wand_Abstand);
+                zustand = Zustand.WandAbstandEbene2;
+                break;
+            }
+            case WandAbstandEbene2: // Ebene2 Wand_Abstand erreicht 
             {
                 Systeme.bewegungsSystem.drehe90GradGUZ();
                 if(ersteFahrt) zustand = Zustand.AnPosB; else zustand = Zustand.AnPosD;
                 break;
-            }
+            } 
             case StartWeg2:	// Starte Fahrt Weg2 ( von PosB zu PosC)		
             {	
 	            Systeme.gegnerSystem.resetGegnerErkennung();
@@ -274,12 +282,18 @@ public class Pos_Wechsel_V2 {
                 zustand = Zustand.WandEbene3;
                 break;
             }
-            case WandEbene3: // Wand Ebene3 erreicht 
+            
+            case WandEbene3: // Wand Ebene3 erreicht (Fahre zu Wand_Abstand)
             {
-                zustand = Zustand.AnPosC;
+                Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_Wand_Abstand);
+                zustand = Zustand.WandAbstandEbene3;
                 break;
             }
-            
+            case WandAbstandEbene3: // Ebene2 Wand_Abstand erreicht 
+            {
+            	zustand = Zustand.AnPosC;
+                break;
+            }          
             
             default:
             {
