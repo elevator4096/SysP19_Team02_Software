@@ -36,13 +36,13 @@ public class DistSensorTest_M3 extends Task {
 		return hlc1395.read(i);
 	}
 
-	public void alleirausgeben() {
-		for (int i = 0; i < 7; i++) {
-			System.out.print(hlc1395.read(i));
-			System.out.print("\t");
-		}
-		System.out.println();
-	}
+//	public void alleirausgeben() {
+//		for (int i = 0; i < 7; i++) {
+//			System.out.print(hlc1395.read(i));
+//			System.out.print("\t");
+//		}
+//		System.out.println();
+//	}
 
 //	static {
 //// 1) Initialize SCI1 (9600 8N1)

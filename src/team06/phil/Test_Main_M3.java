@@ -32,9 +32,9 @@ public class Test_Main_M3 extends Task {
 
 	static Endschalter_M3 schalter1, schalter2;
 
-	static ToFSensor_M3 tof;
+	// static ToFSensor_M3 tof;
 
-	static WlanSystem wlan;
+	// static WlanSystem wlan;
 
 	int counter = 0;
 	int zähler = 0;
@@ -44,7 +44,7 @@ public class Test_Main_M3 extends Task {
 
 	int linksbogen = 1;
 	static int geradeaus = 2;
-	
+
 	static boolean gestartet = false;
 
 	public Test_Main_M3() {
@@ -71,8 +71,7 @@ public class Test_Main_M3 extends Task {
 	}
 
 	public void action() {
-		
-		
+
 //		if (nofActivations % 1000 == 0 && gestartet == false) {
 //			teststarten();
 //			gestartet = true;
@@ -346,11 +345,12 @@ public class Test_Main_M3 extends Task {
 		task.period = (int) (0.01f * 1000);
 		Task.install(task);
 
-		SCI sci1 = SCI.getInstance(SCI.pSCI1);
-		sci1.start(19200, SCI.NO_PARITY, (short) 8);
-		// Hook SCI1.out on System.out
-		System.out = new PrintStream(sci1.out);
-		System.out.println("static start");
+
+//		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+//		sci1.start(19200, SCI.NO_PARITY, (short) 8);
+//		// Hook SCI1.out on System.out
+//		System.out = new PrintStream(sci1.out);
+//		System.out.println("static start");
 
 	}
 
