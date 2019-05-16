@@ -20,7 +20,7 @@ public class WandErkennung implements IO
 	 */
 	public static boolean istWandVorne()
 	{
-		return IO.IN_Taster_1.get() && IO.IN_Taster_2.get();
+		return !IO.IN_Taster_1.get() && !IO.IN_Taster_2.get();
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class WandErkennung implements IO
 	 */
 	public static boolean istWandLinks()
 	{
-		return IO.IN_Taster_1.get();
+		return !IO.IN_Taster_1.get();
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class WandErkennung implements IO
 	 */
 	public static boolean istWandRechts()
 	{
-		return IO.IN_Taster_2.get();
+		return !IO.IN_Taster_2.get();
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class WandErkennung implements IO
 	 */
 	public static boolean istWandIrgendwo()
 	{
-		return IO.IN_Taster_1.get() || IO.IN_Taster_2.get();
+		return !IO.IN_Taster_1.get() || !IO.IN_Taster_2.get();
 	}
 
 }
