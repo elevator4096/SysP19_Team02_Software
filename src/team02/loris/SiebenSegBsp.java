@@ -41,14 +41,14 @@ public class SiebenSegBsp {
         //Pruefen ob Ziffer zwischen [0-9] sonst Error ausgeben
         if ((ziffer<0)||(ziffer>9)) ziffer = 10; // Error  
         
-        leddp.set((siebenSegCode[ziffer]&0b10000000)>0);
-        leda .set((siebenSegCode[ziffer]&0b01000000)>0); 
-        ledb .set((siebenSegCode[ziffer]&0b00100000)>0);
-        ledc .set((siebenSegCode[ziffer]&0b00010000)>0);
+        leda .set((siebenSegCode[ziffer]&0b00000001)>0); 
+        ledb .set((siebenSegCode[ziffer]&0b00000010)>0);
+        ledc .set((siebenSegCode[ziffer]&0b00000100)>0);
         ledd .set((siebenSegCode[ziffer]&0b00001000)>0); 
-        lede .set((siebenSegCode[ziffer]&0b00000100)>0);
-        ledf .set((siebenSegCode[ziffer]&0b00000010)>0);
-        ledg .set((siebenSegCode[ziffer]&0b00000001)>0);     
+        lede .set((siebenSegCode[ziffer]&0b00010000)>0);
+        ledf .set((siebenSegCode[ziffer]&0b00100000)>0);
+        ledg .set((siebenSegCode[ziffer]&0b01000000)>0);    
+        leddp.set((siebenSegCode[ziffer]&0b10000000)>0);
     }    
     
 	public void rblinken() {
