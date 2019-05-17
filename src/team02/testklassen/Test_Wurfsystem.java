@@ -5,7 +5,7 @@ import team02.IO;
 import team02.Systeme;
 import team02.vorlagen.*;
 
-public class Test_Wurfsystem implements IO
+public class Test_Wurfsystem implements IO, Systeme
 {
 	public static long lastTime = Integer.MIN_VALUE;
 	public static int counter=0;
@@ -44,5 +44,50 @@ public class Test_Wurfsystem implements IO
 		
 		
 	}	
+	
+	public static void spannen0()
+	{
+		Systeme.wurfSystem.zylinderSpannen(0);
+	}
+	public static void spannen25()
+	{
+		Systeme.wurfSystem.zylinderSpannen(25);
+	}
+	
+	public static void spannen50()
+	{
+		Systeme.wurfSystem.zylinderSpannen(50);
+	}
+	
+	public static void spannen90()
+	{
+		Systeme.wurfSystem.zylinderSpannen(90);
+	}
+	
+	public static void spannen20()
+	{
+		Systeme.wurfSystem.zylinderSpannen(20);
+	}
+	
+	public static void spannen8() //2 Linien
+	{
+		Systeme.wurfSystem.zylinderSpannen(8);
+	}
+	
+	public static void spannen40()
+	{
+		Systeme.wurfSystem.zylinderSpannen(40); //1Linie
+	}
+	
+	public static void loesen()
+	{
+		Systeme.wurfSystem.magnetEntmagnetisieren();
+	}
+	
+	public static void spannen()
+	{
+		Systeme.wurfSystem.magnetMagnetisieren();
+	}
+	
 
 }

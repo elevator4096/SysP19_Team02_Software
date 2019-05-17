@@ -54,7 +54,9 @@ public class Test_BewegungsSystem implements Systeme
 	{
 		Systeme.bewegungsSystem.folgeLinie(false);
 	}
-	
-	
+	public static void fahre10()
+	{
+	Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 0.1);
+	}
 	
 }

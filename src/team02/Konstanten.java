@@ -11,11 +11,11 @@ public interface Konstanten
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
 	
 	boolean DREHE_NUR_MIT_ENCODER	= true;							//Benutze ausschliesslich Encoder fuer 90Grad Drehungen 
-	boolean SANFTES_BREMSEN			= true;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)
+	boolean SANFTES_BREMSEN			= false;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 0.5;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.2;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 512;							//Encoder Impulse pro Umdr.

@@ -72,17 +72,17 @@ public interface IO
 
 	//PWM
 	TPU_PWM    		PWM_WurfZylinder		   	= new TPU_PWM(false, 0, (int)PERIOD_WurfZyl, 0);
-	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
-	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
+	TPU_PWM    		PWM_MotorRechtsPWM 	   		= new TPU_PWM(false, 1, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
+	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
 
 	//Encoder
-	TPU_FQD    		FQD_Links 					= new TPU_FQD(false, 3);
-	TPU_FQD   		FQD_Rechts 					= new TPU_FQD(false, 5);
+	TPU_FQD    		FQD_Rechts 					= new TPU_FQD(false, 3);
+	TPU_FQD   		FQD_Links 					= new TPU_FQD(false, 5);
 
 
 	//Motoren
-	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,true, OUT_DIR_Speed1);
-	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,false, OUT_DIR_Speed2);
+	Motor 	   		MOTOR_links 				= new Motor(FQD_Links, PWM_MotorLinksPWM, (int)PERIOD_Motoren  ,true, OUT_DIR_Speed2);
+	Motor 	   		MOTOR_rechts				= new Motor(FQD_Rechts, PWM_MotorRechtsPWM, (int)PERIOD_Motoren,false, OUT_DIR_Speed1);
 
 
 	//LinienSensoren

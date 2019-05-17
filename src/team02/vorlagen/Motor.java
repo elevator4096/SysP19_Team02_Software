@@ -82,11 +82,16 @@ public class Motor implements IO, Konstanten {
      */
     private void calcDistanz()
     {
-    	
+    	/*
     	short temp 	=  fqd.getPosition();
     	realEncPos += (short)(temp-lastEncPos);
     	lastEncPos  =  temp;
-    	distanz 	=  DISTANCE_PER_TICK*realEncPos;  
+    	distanz 	=  DISTANCE_PER_TICK*realEncPos;
+    	*/
+    	realEncPos += fqd.getPosition();
+    	fqd.setPosition(0);
+    	
+    	distanz 	=  DISTANCE_PER_TICK*realEncPos;
     }
 
     /**

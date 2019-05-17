@@ -87,7 +87,7 @@ public class WurfSystem implements IO
 	/**
 	 * Magnetspule kurzzeitig entmagnetisieren (durch EINSCHALTEN des EntmagnetisierElektroMagneten)
 	 */
-	private void magnetEntmagnetisieren()
+	public void magnetEntmagnetisieren()
 	{
 		IO.OUT_Magnet_Ausloeser.set(true);
 		letzteEntmagnetisierZeit = Task.time();
@@ -96,7 +96,7 @@ public class WurfSystem implements IO
 	/**
 	 * Magnetspule dauerhaft magnetisieren (durch AUSSCHALTEN des EntmagnetisierElektroMagneten)
 	 */
-	private void magnetMagnetisieren() {
+	public void magnetMagnetisieren() {
 		IO.OUT_Magnet_Ausloeser.set(false);
 	}
 
