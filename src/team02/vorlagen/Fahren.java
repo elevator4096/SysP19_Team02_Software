@@ -46,6 +46,7 @@ public class Fahren implements IO, Konstanten
     {
         MOTOR_links .updateSpeed(-turningSpeed);
         MOTOR_rechts.updateSpeed( turningSpeed);
+        IO.OUT_FG_Speed.set(true);
     }
 
     /**
@@ -56,6 +57,7 @@ public class Fahren implements IO, Konstanten
     {
         MOTOR_links.updateSpeed(speed);
         MOTOR_rechts.updateSpeed(speed);
+        IO.OUT_FG_Speed.set(true);
     }
 
     /**
@@ -107,6 +109,8 @@ public class Fahren implements IO, Konstanten
         //debug.print("Motor Speeds: ");debug.print(vl);debug.print(" ");debug.println(vr);
         MOTOR_links.updateSpeed(vl);
         MOTOR_rechts.updateSpeed(vr);
+        
+        IO.OUT_FG_Speed.set(true);
     }
     
     /**leichte Kurve zur Richtungskorrektur des Roboters
@@ -124,6 +128,7 @@ public class Fahren implements IO, Konstanten
      */
     public static void stop()
     {
+    	IO.OUT_FG_Speed.set(false);
         MOTOR_links .updateSpeed(0);
         MOTOR_rechts.updateSpeed(0);
     }
