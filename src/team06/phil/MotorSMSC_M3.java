@@ -49,9 +49,10 @@ public class MotorSMSC_M3 {
 	/**
 	 * Aktuelle Umdrehungen zurückgeben
 	 */
-	public int gibUmdrehungen() {
+	public float gibUmdrehungen() {
 		
-		return (int) (motor.getActualPosition() / (2 * Math.PI));
+//		return (int) (motor.getActualPosition() / (2 * Math.PI));
+		return  motor.getActualPosition();
 
 	}
 	

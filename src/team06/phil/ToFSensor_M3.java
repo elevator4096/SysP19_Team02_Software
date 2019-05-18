@@ -8,7 +8,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.VL6180X_SC18IS600;
 
 import java.io.PrintStream;
 
-public class ToFSensor_M3 extends Task {
+public class ToFSensor_M3 extends Task{
 
 	static VL6180X_SC18IS600 tofSensor;
 
@@ -17,11 +17,13 @@ public class ToFSensor_M3 extends Task {
 	}
 
 	public void action() {
-
-		//System.out.println("action");
-
-		//System.out.println(tofSensor.getSingleRangeValue(1));
-
+//
+//		//System.out.println("action");
+//
+//		//System.out.println(tofSensor.getSingleRangeValue(1));
+//
+		
+		if (nofActivations % 150 == 0) {
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
 		byte val = tofSensor.getSingleRangeValue(1);
 		System.out.print("RESULT__RANGE_VAL:\tSens0: ");
@@ -39,17 +41,58 @@ public class ToFSensor_M3 extends Task {
 			val += 256;
 		System.out.println((val));
 		/*System.out.println("-------------------------------------------");
-		val = tofSensor.getSingleRangeValue(3);
-		System.out.print("RESULT__RANGE_VAL:\tSens2: ");
+//		val = tofSensor.getSingleRangeValue(3);
+//		System.out.print("RESULT__RANGE_VAL:\tSens2: ");
+//		System.out.printHex((val & 0xFF));
+//		System.out.print("\t");
+//		if (val < 0)
+//			val += 256;
+//		System.out.println((val));
+//		System.out.println("-------------------------------------------");
+//		*/
+//
+	}	
+	}	
+	
+	public void tofausgeben() {
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
+		byte val = tofSensor.getSingleRangeValue(1);
+		System.out.print("RESULT__RANGE_VAL:\tSens0: ");
 		System.out.printHex((val & 0xFF));
 		System.out.print("\t");
 		if (val < 0)
 			val += 256;
 		System.out.println((val));
-		System.out.println("-------------------------------------------");
-		*/
-
+//		System.out.println("-------------------------------------------");
+//		byte val = tofSensor.getSingleRangeValue(2);
+//		System.out.print("RESULT__RANGE_VAL:\tSens1: ");
+//		System.out.printHex((val & 0xFF));
+//		System.out.print("\t");
+//		if (val < 0)
+//			val += 256;
+//		System.out.println((val));
 	}
+	
+	public void update() {
+		byte val = tofSensor.getSingleRangeValue(2);
+		if(val > 20 && val < 80) {
+			Test_Main_M3.gegnerlinks = true;
+		}
+		
+		if(val < 20 || val > 80) {
+			Test_Main_M3.gegnerlinks = false;
+		}
+		
+		val = tofSensor.getSingleRangeValue(1);
+		if(val > 20 && val < 80) {
+			Test_Main_M3.gegnerrechts = true;
+		}
+		
+		if(val < 20 || val > 80) {
+			Test_Main_M3.gegnerrechts = false;
+		}
+	}
+	
 
 	public static void startCont() { // für Beispiel 2
 		tofSensor.startRangeContMode(1);
@@ -71,18 +114,19 @@ public class ToFSensor_M3 extends Task {
 	}
 
 	static {
-		SCI sci1 = SCI.getInstance(SCI.pSCI1);
-		sci1.start(19200, SCI.NO_PARITY, (short) 8);
-		// Hook SCI1.out on System.out
-		System.out = new PrintStream(sci1.out);
-		System.out.println("static start");
+//		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+//		sci1.start(19200, SCI.NO_PARITY, (short) 8);
+//		// Hook SCI1.out on System.out
+//		System.out = new PrintStream(sci1.out);
+//		System.out.println("static start");
 
 		tofSensor = new VL6180X_SC18IS600(3);
-		System.out.println("Static load complete");
+//		System.out.println("Static load complete");
 
-		Task s = new ToFSensor_M3();
-		s.period = 500;
-		Task.install(s);
+//		Task s = new ToFSensor_M3();
+////		s.period = 500;
+//		s.period = (int)(0.01f * 1000);
+//		Task.install(s);
 		
 		
 		
