@@ -57,6 +57,7 @@ public class Fahren implements IO, Konstanten
     {
         MOTOR_links.updateSpeed(speed);
         MOTOR_rechts.updateSpeed(speed);
+        //for(int i = 0; i < 10000000;i++); 
         IO.OUT_FG_Speed.set(true);
     }
 

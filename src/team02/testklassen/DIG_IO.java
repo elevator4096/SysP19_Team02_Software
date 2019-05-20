@@ -181,4 +181,53 @@ public class DIG_IO implements IO
     	debug.print("Taster 2 konf: ");
     	debug.println(IN_Taster_konf2.get());
     }
+    
+    public static void dirMotRetrue()
+    {
+    	IO.OUT_DIR_Speed1.set(true);
+    }
+    
+    public static void dirMotLitrue()
+    {
+    	IO.OUT_DIR_Speed2.set(true);
+    }
+    
+    
+    public static void dirMotLifalse()
+    {
+    	IO.OUT_DIR_Speed2.set(false);
+    }
+    
+    public static void dirMotRefalse()
+    {
+    	IO.OUT_DIR_Speed1.set(false);
+    }
+    
+    public static void setLiSpeed50()
+    {
+    	IO.PWM_MotorLinksPWM.update((int)PERIOD_Motoren/2);
+    }
+    public static void setLiSpeed0()
+    {
+    	IO.PWM_MotorLinksPWM.update(0);
+    }
+    
+    public static void setReSpeed50()
+    {
+    	IO.PWM_MotorRechtsPWM.update((int)PERIOD_Motoren/2);
+    }
+    public static void setReSpeed0()
+    {
+    	IO.PWM_MotorRechtsPWM.update(0);
+    }
+    
+    public static void setBoth()
+    {
+    	IO.OUT_DIR_Speed1.set(true);
+    	
+    	for(int i=0;i<100000;i++);
+    	IO.PWM_MotorRechtsPWM.update((int)PERIOD_Motoren/2);
+    	IO.PWM_MotorLinksPWM.update((int)PERIOD_Motoren/2);
+    }
+    
 }

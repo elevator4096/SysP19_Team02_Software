@@ -24,6 +24,8 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 	
 	private static int delta =0;
 	
+	private int counter =0;
+	
     static
     {
             Task task = new Test_Task();
@@ -36,6 +38,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public Test_Task()
     {
     	debug.println("Test Task laeuft!");
+
     	//Test_BewegungsSystem.fahreVorwaertsMeter(1);
     	//Test_BewegungsSystem.fahreVorwaertsMeter(1);
     	//bewegungsSystem.dreheUngenauGUZ(0.5*Math.PI);
@@ -52,7 +55,13 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
-    	Test_Motor.printDistanzen();
+    	
+    	
+    	if(counter%20==0) {
+    	Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 0.1);
+    	}
+    	
+    	counter ++;
 
     }
     

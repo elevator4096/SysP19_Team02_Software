@@ -59,4 +59,8 @@ public class Test_BewegungsSystem implements Systeme
 	Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 0.1);
 	}
 	
+	public static void drehe()
+	{
+		Systeme.bewegungsSystem.dreheUngenauGUZ(Math.PI/2);
+	}
 }

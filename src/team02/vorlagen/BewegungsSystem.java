@@ -38,6 +38,8 @@ public class BewegungsSystem implements IO
 		
 		QADC_AIN.init(true);
 		QADC_AIN.init(false);
+		
+		Fahren.stop();
 	}
 
 	public static BewegungsSystem getInstance()
@@ -349,8 +351,10 @@ public class BewegungsSystem implements IO
 	{
 		Fahren.update();
 		
+		System.out.println("TEST!");
+		
 		if (Konstanten.SANFTES_BREMSEN) sanftesBremsen();
-				
+			
 		if (istHalteBedingungErfuellt())
 		{
 			inBewegung 		= false;

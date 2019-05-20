@@ -15,6 +15,7 @@ public class Motor implements IO, Konstanten {
     private TPU_FQD fqd;
     private TPU_PWM pwm;
     private int pwm_time;
+    private int curr_hightime;
     private MDASM_DIO out;
     private boolean inverted 	 = false;
     private short   lastEncPos   = 0;
@@ -24,6 +25,7 @@ public class Motor implements IO, Konstanten {
     public void update()
     {
     	calcDistanz();
+    	pwm.update(curr_hightime);
     }
     
     /**
@@ -38,6 +40,7 @@ public class Motor implements IO, Konstanten {
         this.pwm_time = pwm_time;
         this.inverted = inverted;
         this.out = out;
+        this.curr_hightime =0;
     }
 
     /**
@@ -45,7 +48,11 @@ public class Motor implements IO, Konstanten {
      * @param d Geschwindigkeit in m/s (max 0.213m/s)
      */
     public void updateSpeed(double d) {
-    	pwm.update(calculateDutyCycle(d));
+    	this.curr_hightime = calculateDutyCycle(d);
+    	if(curr_hightime ==0)
+    	{
+    		pwm.update(curr_hightime);
+    	}
     }
 
     /**
@@ -73,7 +80,7 @@ public class Motor implements IO, Konstanten {
             out.set(false);
         }
 
-        //int duty_cycle = (int) (PERIOD_Motoren * (d + Konstanten.MAX_SPEED) / (2 * Konstanten.MAX_SPEED));
+        
         return (int)(PERIOD_Motoren*(Math.abs(d)/Konstanten.MAX_SPEED));
     }
 
