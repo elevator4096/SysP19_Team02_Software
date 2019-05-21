@@ -201,7 +201,7 @@ public class Main extends Task {
 
 	
 	/**
-	 * Methode, welche alle Updates-Methoden der anderen Klassen aufruft
+	 * Methode, welche alle Update-Methoden der anderen Klassen aufruft
 	 */
 	public void update() {
 

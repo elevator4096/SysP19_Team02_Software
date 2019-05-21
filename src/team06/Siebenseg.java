@@ -187,7 +187,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	
+	public void strichblinken() {
+		ledg.set(!ledg.get());
+	}
 	
 //	public void action() {
 //		leddp.set(!leddp.get()); // LED “toggeln”
@@ -264,8 +266,6 @@ public class Siebenseg {
 //		leddp.set(false);
 //	}
 //
-//	public void strichblinken() {
-//		ledg.set(!ledg.get());
-//	}
+	
 //
 }
