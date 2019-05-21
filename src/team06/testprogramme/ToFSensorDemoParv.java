@@ -7,10 +7,16 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.VL6180X;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 public class ToFSensorDemoParv extends Task{
-	static VL6180X vs;
+	VL6180X vs;
 	int[] sensorDistances;
-	final static int numberOfSensors = 3;
-	final static int resetPin = 5;
+	final int numberOfSensors = 3;
+	final int resetPin = 9;
+	
+	ToFSensorDemoParv(){
+		System.out.println("ToFSensorDemoParv");
+		vs = new VL6180X(numberOfSensors, resetPin);
+		System.out.println("End ToFSensorDemoParv");
+	}
 	
 	public void action(){
 		sensorDistances = vs.read();
@@ -36,6 +42,7 @@ public class ToFSensorDemoParv extends Task{
 		if(val < 0) val+=256;
 		System.out.println((val));
 		System.out.println("-------------------------------------------");
+		
 	}
 	
 	static{
@@ -45,8 +52,6 @@ public class ToFSensorDemoParv extends Task{
 		System.out = new PrintStream(sci1.out);
 		
 		System.out.println("static start");
-		
-		vs = new VL6180X(numberOfSensors, resetPin);
 		
 		Task s = new ToFSensorDemoParv();
 		s.period = 1000;

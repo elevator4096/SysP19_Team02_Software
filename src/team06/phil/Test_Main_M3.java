@@ -58,6 +58,13 @@ public class Test_Main_M3 extends Task {
 
 	static int partnerstate = 0;
 
+	static int countertemporär = 0;
+
+	static boolean schwarz = false;
+
+	static boolean schalterlinks = false;
+	static boolean schalterrechts = false;
+
 	public Test_Main_M3() {
 
 		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
@@ -85,35 +92,46 @@ public class Test_Main_M3 extends Task {
 
 	public void action() {
 
-		
+//		if (schalterlinks == true) {
+//			fahrnullspeed();
+//
+//		}
+
+		endschalterupdate();
+
+//		schiesenmitwlan();
+
 		if (partnerstate == 5 && gestartet == false) {
 			zustand = START;
 			gestartet = true;
 		}
-		
-		if(partnerstate == 5) {
+
+		if (partnerstate == 5) {
 			fahrenlinks();
 		}
-		
-		
-		if(partnerstate == 6 && schritt2 == false) {
+
+		if (partnerstate == 6 && schritt2 == false) {
 			zustand = START;
 			schritt2 = true;
 		}
 
-		if(partnerstate == 6) {
+		if (partnerstate == 6) {
 			fahrenrechts();
 		}
-		
-		if (nofActivations % 100 == 0) {
+
+		if (nofActivations % 150 == 0) {
+//			tof.tofausgeben();
 			sieben.strichblinken();
-			// dist.alleirausgeben();
-			// System.out.println(wlan.getOwnState());
-			// wlan.setOwnState(ZustandWifi.SETUP);
+//			dist.alleirausgeben();
+//			System.out.print("partnerstate ------>");
+//			System.out.println(partnerstate);
+//			System.out.print("sensor 1 ------>");
+//			System.out.println(dist.gibdist(1));
 			// System.out.println(anzahlgegner);
 		}
 
 		if (nofActivations % 50 == 0) {
+			irsensor();
 			tof.update();
 			wlanSystem.update();
 			partnerstate = wlanSystem.getPartnerState();
@@ -128,9 +146,9 @@ public class Test_Main_M3 extends Task {
 		servo.update();
 
 //		testfahren();
-//		neunziggrad();
+//		neunziggradtest();
+//		yachse();
 //		fahrenlinks();
-
 //		fahrenrechts();
 
 //		if (irsensor() == true && nofActivations % 10 == 0) {
@@ -138,38 +156,27 @@ public class Test_Main_M3 extends Task {
 //		}
 //
 //		if (irsensor() == false && nofActivations % 10 == 0) {
-//			sieben.löschen();
-//
-//		}
-
-//		if (nofActivations % 150 == 0) {
-//////			System.out.print("IR Sensor 1    -->");
-//////			System.out.println(dist.gibdist(1));
-//			System.out.print("zustand    --->>>>>");
-//			System.out.println(start);
-//////			System.out.print("Schalter 1--->>>>>");
-//////			System.out.print(schalter1.schalterzustand());
-//////			System.out.print("   Schalter 2--->>>>>");
-//////			System.out.println(schalter2.schalterzustand());
-////			System.out.println(zähler);
-////
+//			sieben.löschen();	
 //		}
 
 		if (nofActivations % 150 == 0) {
-			
-			System.out.println(partnerstate);
-			tof.tofausgeben();
-			System.out.print("Fahrmotor 1: Umdrehungen >");
-			System.out.print(fahrmotor1.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(fahrmotor1.gibGeschwindigkeit());
-
-			System.out.print("Fahrmotor 2: Umdrehungen >");
-			System.out.print(fahrmotor2.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(fahrmotor2.gibGeschwindigkeit());
-			System.out.println(gegnerrechts);
+			System.out.print("Schalter links--->>>>>");
+			System.out.print(schalterlinks);
+			System.out.print("   Schalter rechts--->>>>>");
+			System.out.println(schalterrechts);
 		}
+//
+//		if (nofActivations % 150 == 0) {
+//			System.out.print("Fahrmotor 1: Umdrehungen >");
+//			System.out.print(fahrmotor1.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(fahrmotor1.gibGeschwindigkeit());
+//
+//			System.out.print("Fahrmotor 2: Umdrehungen >");
+//			System.out.print(fahrmotor2.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(fahrmotor2.gibGeschwindigkeit());
+//		}
 
 //		if (nofActivations % 150 == 0) {
 //			System.out.print("Wurfmotor 3: Umdrehungen >");
@@ -185,19 +192,19 @@ public class Test_Main_M3 extends Task {
 
 	}
 
-	public void neunziggrad() {
+	public void yachse() {
 
 		switch (zustand) {
 
 		case START: {
-			fahrretour();
+			fahrviertelspeed();
 			zustand = VORRUECKEN;
 			umdrehungen = fahrmotor2.gibUmdrehungen();
 			break;
 		}
 
 		case VORRUECKEN: {
-			if (fahrmotor2.gibUmdrehungen() <= (umdrehungen - 7.5)) {
+			if (fahrmotor2.gibUmdrehungen() >= (umdrehungen + 7.5)) {
 				fahrnullspeed();
 				zustand = ENDE;
 				break;
@@ -208,6 +215,60 @@ public class Test_Main_M3 extends Task {
 		case ENDE: {
 			fahrnullspeed();
 			zustand = STARTZUSTAND;
+			break;
+		}
+		}
+	}
+
+	public void neunziggradtest() {
+
+		switch (zustand) {
+
+		case START: {
+			fahrrechtskurve();
+			zustand = VORRUECKEN;
+			umdrehungen = fahrmotor2.gibUmdrehungen();
+			break;
+		}
+
+		case VORRUECKEN: {
+			if (fahrmotor2.gibUmdrehungen() <= (umdrehungen - 5.15)) {
+				fahrnullspeed();
+				zustand = ENDE;
+				break;
+			}
+			break;
+		}
+
+		case ENDE: {
+			fahrnullspeed();
+			zustand = STARTZUSTAND;
+			break;
+		}
+		}
+	}
+
+	public void schiesenmitwlan() {
+
+		switch (zustand) {
+		case START: {
+			if (schwarz == true && partnerstate == 3) {
+//			if (dist.gibdist(1) <= 10 && partnerstate == 3) {
+				wurfspeedhalb();
+				servo.servooffen();
+				zustand = WURF_KURZ;
+			}
+			break;
+		}
+
+		case WURF_KURZ: {
+			countertemporär++;
+			if (countertemporär >= 500) {
+				servo.servogeschlossen();
+				wurfnullspeed();
+				countertemporär = 0;
+				zustand = STARTZUSTAND;
+			}
 			break;
 		}
 		}
@@ -244,7 +305,7 @@ public class Test_Main_M3 extends Task {
 		}
 
 		case YFAHREN: {
-			if (fahrmotor2.gibUmdrehungen() <= umdrehungen - 5) {
+			if (fahrmotor2.gibUmdrehungen() <= umdrehungen - 4.85) {
 				fahrviertelspeed();
 				umdrehungen = fahrmotor2.gibUmdrehungen();
 				zustand = NEUNZIGGRADRECHTS_2;
@@ -269,7 +330,7 @@ public class Test_Main_M3 extends Task {
 		}
 
 		case RETOUR: {
-			if (fahrmotor2.gibUmdrehungen() <= umdrehungen - 5) {
+			if (fahrmotor2.gibUmdrehungen() <= umdrehungen - 4.85) {
 				fahrretour();
 				umdrehungen = fahrmotor2.gibUmdrehungen();
 				zustand = RUECKWAERTS_AN_WAND;
@@ -277,9 +338,25 @@ public class Test_Main_M3 extends Task {
 			break;
 		}
 
+//		// Mit inkrement retour
+//		case RUECKWAERTS_AN_WAND: {
+//			if (fahrmotor2.gibUmdrehungen() <= (umdrehungen - 7.5 * anzahlgegner)) {
+//				fahrnullspeed();
+//				anzahlgegner = 2;
+//				zustand = ENDE;
+//			}
+//			break;
+
+		// mit taster retour
 		case RUECKWAERTS_AN_WAND: {
-			if (fahrmotor2.gibUmdrehungen() <= (umdrehungen - 7.5 * anzahlgegner)) {
-				fahrnullspeed();
+			if (schalterlinks == true) {
+				fahrmotor1.setdrehzahl(0);
+			}
+			if (schalterrechts == true) {
+				fahrmotor2.setdrehzahl(0);
+			}
+
+			if (schalterlinks == true && schalterrechts == true) {
 				anzahlgegner = 2;
 				zustand = ENDE;
 			}
@@ -321,7 +398,7 @@ public class Test_Main_M3 extends Task {
 		}
 
 		case YFAHREN: {
-			if (fahrmotor1.gibUmdrehungen() >= umdrehungen + 5) {
+			if (fahrmotor1.gibUmdrehungen() >= umdrehungen + 4.85) {
 				fahrviertelspeed();
 				umdrehungen = fahrmotor2.gibUmdrehungen();
 				zustand = NEUNZIGGRADLINKS_2;
@@ -338,15 +415,6 @@ public class Test_Main_M3 extends Task {
 			break;
 		}
 
-//		case NEUNZIGGRADRECHTS: {
-//			if (fahrmotor2.gibUmdrehungen() >= umdrehungen + 11.5) {
-//				fahrrechtskurve();
-//				umdrehungen = fahrmotor2.gibUmdrehungen();
-//				zustand = RETOUR;
-//			}
-//			break;
-//		}
-
 		case WEITERFAHREN: {
 			fahrviertelspeed();
 			umdrehungen = fahrmotor2.gibUmdrehungen();
@@ -355,7 +423,7 @@ public class Test_Main_M3 extends Task {
 		}
 
 		case RETOUR: {
-			if (fahrmotor1.gibUmdrehungen() >= umdrehungen + 5) {
+			if (fahrmotor1.gibUmdrehungen() >= umdrehungen + 4.85) {
 				fahrretour();
 				umdrehungen = fahrmotor2.gibUmdrehungen();
 				zustand = RUECKWAERTS_AN_WAND;
@@ -374,6 +442,104 @@ public class Test_Main_M3 extends Task {
 		}
 
 		}
+	}
+
+	public static void testneunziggrad() {
+		zustand = START;
+	}
+
+	public static void teststarten() {
+		zustand = WURF_KURZ;
+	}
+
+	public void endschalterupdate() {
+		if (schalter2.schalterzustand() == false) {
+			schalterlinks = true;
+		}
+		if (schalter1.schalterzustand() == false) {
+			schalterrechts = true;
+		}
+		if (schalter2.schalterzustand() == true) {
+			schalterlinks = false;
+		}
+		if (schalter1.schalterzustand() == true) {
+			schalterrechts = false;
+		}
+
+	}
+
+	public void irsensor() {
+
+		if (dist.gibdist(1) < 8) {
+			schwarz = true;
+		}
+		if (dist.gibdist(1) > 12) {
+			schwarz = false;
+		}
+	}
+
+	public static void fahrnullspeed() {
+		fahrmotor1.setdrehzahl(0);
+		fahrmotor2.setdrehzahl(0);
+	}
+
+	public static void fahrviertelspeed() {
+		fahrmotor1.setdrehzahl((float) (-0.5 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (0.5 * Math.PI));
+	}
+
+	public static void fahrhalbspeed() {
+		fahrmotor1.setdrehzahl((float) (-2 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (2 * Math.PI));
+	}
+
+	public static void fahrmaxspeed() {
+
+		fahrmotor1.setdrehzahl((float) (-4 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (4 * Math.PI));
+
+	}
+
+	public static void fahrretour() {
+		fahrmotor1.setdrehzahl((float) (0.5 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (-0.5 * Math.PI));
+	}
+
+	public static void fahrlinkskurve() {
+		fahrmotor1.setdrehzahl((float) (0.5 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (0.5 * Math.PI));
+
+	}
+
+	public static void fahrrechtskurve() {
+		fahrmotor1.setdrehzahl((float) (-0.5 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (-0.5 * Math.PI));
+
+	}
+
+	public static void wurfnullspeed() {
+		wurfmotor3.setdrehzahl(0);
+		wurfmotor4.setdrehzahl(0);
+	}
+
+	public static void wurfspeedmax() {
+		wurfmotor3.setdrehzahl((float) (93 * Math.PI));
+		wurfmotor4.setdrehzahl((float) (-93 * Math.PI));
+
+	}
+
+	public static void wurfspeedhalb() {
+		wurfmotor3.setdrehzahl((float) (100 * Math.PI));
+		wurfmotor4.setdrehzahl((float) (-100 * Math.PI));
+
+	}
+
+	public static void servooffen() {
+		servo.servooffen();
+	}
+
+	public static void servogeschlossen() {
+		servo.servogeschlossen();
 	}
 
 	public void testfahren() {
@@ -439,89 +605,6 @@ public class Test_Main_M3 extends Task {
 
 		}
 
-	}
-
-	public static void testneunziggrad() {
-		zustand = START;
-	}
-
-	public static void teststarten() {
-		zustand = WURF_KURZ;
-	}
-
-	public boolean irsensor() {
-		boolean schwarz = false;
-		if (dist.gibdist(1) < 10) {
-			schwarz = true;
-		}
-		if (dist.gibdist(1) > 10) {
-			schwarz = false;
-		}
-		return schwarz;
-	}
-
-	public static void fahrnullspeed() {
-		fahrmotor1.setdrehzahl(0);
-		fahrmotor2.setdrehzahl(0);
-	}
-
-	public static void fahrviertelspeed() {
-		fahrmotor1.setdrehzahl((float) (-0.5 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (0.5 * Math.PI));
-	}
-
-	public static void fahrhalbspeed() {
-		fahrmotor1.setdrehzahl((float) (-2 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (2 * Math.PI));
-	}
-
-	public static void fahrmaxspeed() {
-
-		fahrmotor1.setdrehzahl((float) (-4 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (4 * Math.PI));
-
-	}
-
-	public static void fahrretour() {
-		fahrmotor1.setdrehzahl((float) (0.5 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (-0.5 * Math.PI));
-	}
-
-	public static void fahrlinkskurve() {
-		fahrmotor1.setdrehzahl((float) (0.5 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (0.5 * Math.PI));
-
-	}
-
-	public static void fahrrechtskurve() {
-		fahrmotor1.setdrehzahl((float) (-0.5 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (-0.5 * Math.PI));
-
-	}
-
-	public static void wurfnullspeed() {
-		wurfmotor3.setdrehzahl(0);
-		wurfmotor4.setdrehzahl(0);
-	}
-
-	public static void wurfspeedmax() {
-		wurfmotor3.setdrehzahl((float) (200 * Math.PI));
-		wurfmotor4.setdrehzahl((float) (-200 * Math.PI));
-
-	}
-
-	public static void wurfspeedhalb() {
-		wurfmotor3.setdrehzahl((float) (100 * Math.PI));
-		wurfmotor4.setdrehzahl((float) (-100 * Math.PI));
-
-	}
-
-	public static void servooffen() {
-		servo.servooffen();
-	}
-
-	public static void servogeschlossen() {
-		servo.servogeschlossen();
 	}
 
 	static {

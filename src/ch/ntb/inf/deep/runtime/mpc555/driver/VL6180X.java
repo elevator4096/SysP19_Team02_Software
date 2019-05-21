@@ -99,18 +99,20 @@ public class VL6180X extends Task implements IntbMpc555HB, VL6180XAddr {
 		*/
 		
 		switch(sensorIndex){
-		case 1:
-			//GPIO 1
-			gpio +=0x02;
-			
 		case 2:
-			gpio +=0x04;									// TODO check GPIO3 on new print
-		//case 1:
-			//gpio +=0x08;
+			//GPIO 1
+			gpio += 0x02;
+			
+		case 1:
+			//GPIO 2
+			gpio += 0x04;
+		case 3:
+			//GPIO 3
+			gpio +=0x08;
 			
 		case 0:
 			//GPIO 0
-			gpio+=0x01;
+			gpio += 0x01;
 		}
 		
 		sci.writeRegBlocking(SCI18IS600.REG_GPIO_VAL, gpio);
