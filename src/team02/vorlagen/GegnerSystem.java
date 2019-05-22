@@ -89,7 +89,6 @@ public class GegnerSystem implements IO
 		return (AN_Sharp2.getDistanz() < Konstanten.SHARP_GRENZWERT);
 	}
 
-	
 	/**
 	 * Prueft ob sich momentan ein Gegner rechts befindet
 	 * @return ist ein Gegner Rechts

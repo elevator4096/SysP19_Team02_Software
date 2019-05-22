@@ -130,8 +130,6 @@ public class Main extends Task implements IO, Systeme
                 break;
             }
 
-
-
             default:
             {
                 zustand = FEHLER;
@@ -152,8 +150,6 @@ public class Main extends Task implements IO, Systeme
             entry_flag = true;
         }
 
-
-
         //Exit
         if(IO.IN_Laser_2.get())                   //Weiterschaltbedingung
         {
@@ -164,7 +160,6 @@ public class Main extends Task implements IO, Systeme
             entry_flag = false;
         }
     }
-
 
     /**
      * Zusatz Pass falls Partnerteam den Ball hat
@@ -203,7 +198,6 @@ public class Main extends Task implements IO, Systeme
             entry_flag = true;
         }
 
-
         //Exit
         if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT)
         {
@@ -212,8 +206,6 @@ public class Main extends Task implements IO, Systeme
             zustand = Bewegen1;
             entry_flag = false;
         }
-
-
     }
 
     /**
@@ -229,14 +221,12 @@ public class Main extends Task implements IO, Systeme
             entry_flag = true;
         }
 
-
         //Exit
         if(Pos_Wechsel.pos1_erreicht())
         {
             zustand = Pos1;
             entry_flag = false;
         }
-
     }
 
     /**
@@ -251,7 +241,6 @@ public class Main extends Task implements IO, Systeme
             entry_flag = true;
         }
 
-
         //Exit
         if(Systeme.wurfSystem.zylinderGespannt())
         {
@@ -259,10 +248,7 @@ public class Main extends Task implements IO, Systeme
             zustand = Pass4;
             entry_flag = false;
         }
-
-
     }
-
 
     /**
      * 2. Pass, kurz, Partnerteam
@@ -276,13 +262,11 @@ public class Main extends Task implements IO, Systeme
             entry_flag = true;
         }
 
-
         //Exit
         if(false)
         {
             entry_flag = false;
         }
-
     }
 
 
@@ -351,7 +335,6 @@ public class Main extends Task implements IO, Systeme
         }
     }
 
-
     /**
      * 4. Pass, kurz, Partnerteam
      */
@@ -360,17 +343,14 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-
             entry_flag = true;
         }
-
 
         //Exit
         if(false)
         {
             entry_flag = false;
         }
-
     }
 
     /**

@@ -244,8 +244,6 @@ public class Pos_Wechsel implements Systeme
             zustand = Zustand.Ebene2;
             entry_flag = false;
         }
-
-
     }
 
     public static void ebene2()
@@ -376,39 +374,6 @@ public class Pos_Wechsel implements Systeme
                 start_pos2();
                 break;
             }
-            
-            /*
-            case Gegner24:
-            {
-            	gegner24();
-                break;
-            }
-
-            case Gegner23:
-            {
-                gegner23();
-                break;
-            }
-
-            case Gegner22:
-            {
-                gegner22();
-                break;
-            }
-
-            case Traverse2:
-            {
-                traverse2();
-                break;
-            }
-
-            case Ebene3:
-            {
-                ebene3();
-                break;
-            }
-            */
-
 
             default:
             {

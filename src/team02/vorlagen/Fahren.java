@@ -157,7 +157,6 @@ public class Fahren implements IO, Konstanten
      */
     private static void calcPhi()
     {
-
         phi = (MOTOR_rechts.getDistanz()-MOTOR_links.getDistanz())/Konstanten.WHEEL_DISTANCE;
     }
 

@@ -22,7 +22,6 @@ public class WlanSystem implements IO
     private static int counter =0;
     private static WlanSystem wlanSystem;
     private static int maxLoss = 10000;
-    
 
     /**
      * Konstruktor für die Wlan Verbindung
@@ -82,7 +81,7 @@ public class WlanSystem implements IO
 
     /**
      * Lade Integer aus dem Puffer
-     * Achtund!!! getInt Löscht Integer aus dem RingArray
+     * Achtung!!! getInt Löscht Integer aus dem RingArray
      * @return gibt Integer aus dem Puffer aus
      */
     public static int getPartnerState()
@@ -90,9 +89,10 @@ public class WlanSystem implements IO
         return partnerState;
     }
     
-    /*
+    /**
      * Setzt den Partnerzustand
      * Nur fuer Testzwecke!
+     * @param state Partnerzustand
      */
     public static void setPartnerState(int state)
     {
@@ -175,6 +175,10 @@ public class WlanSystem implements IO
         }
     }
 
+    /**
+     *
+     * @return der verlustbereinigte Wert
+     */
     public static int getcPartnerState()
     {
         return cPartnerState;

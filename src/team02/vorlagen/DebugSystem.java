@@ -21,7 +21,6 @@ public class DebugSystem
 
     private DebugSystem()
     {
-
             sci1 = SCI.getInstance(SCI.pSCI1);
             sci1.start(9600, SCI.NO_PARITY, (short) 8);
             //Hook SCI1.out on System.out
@@ -49,7 +48,6 @@ public class DebugSystem
      */
     public void println(String s)
     {
-
         System.out.println(s);
     }
 
@@ -59,7 +57,6 @@ public class DebugSystem
      */
     public void println(int i)
     {
-
         System.out.println(i);
     }
 
@@ -69,7 +66,6 @@ public class DebugSystem
      */
     public void println(double d)
     {
-
         System.out.println(d);
     }
 

@@ -94,8 +94,6 @@ public class Pos_Wechsel_V2 {
     	}
     	
     	if (!Systeme.bewegungsSystem.istInBewegung()) bewege();
-    	
-    	
     }    
     
     /**

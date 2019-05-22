@@ -22,11 +22,9 @@ public class WurfSystem implements IO
 	 */
 	private WurfSystem()
 	{
-		
 		setWurfZylinderPWM(0);
 		letzteSpannZeit = Task.time();
 	}
-
 
 	/**
 	 * Methode, um WurfSystem Singleton zu erzeugen
@@ -50,8 +48,7 @@ public class WurfSystem implements IO
 		setWurfZylinderPWM(pwmValue);
 		letzteSpannZeit = Task.time();
 	}
-	
-	
+
 	/**
 	 * Wirft den Ball durch entmagnetisieren des HalteMagneten
 	 * */

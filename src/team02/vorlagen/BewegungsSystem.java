@@ -13,12 +13,8 @@ import team02.dominique.*;
 
 public class BewegungsSystem implements IO
 {
-
-
-
 	private static BewegungsSystem bewegungsSystem;
-	
-	
+
 	private ZustandBewegung zustandBewegung 		= ZustandBewegung.STOP;
 	private HalteBedingung 	halteBedingung			= HalteBedingung .BIS_NICHTS;		
 	private boolean 		bewegungsRichtung		= false; //vorwaerts 	= true
@@ -27,8 +23,6 @@ public class BewegungsSystem implements IO
 	private double			zielDrehWinkel			= 0.0; // Kann beliebige Werte annehmen( springt nicht von 2PI auf 0)
 	private double			zielDistanz				= 0.0;
 	private double			drivingSpeed			= Konstanten.DRIVING_SPEED;
-
-
 
 	private BewegungsSystem()
 	{
@@ -184,8 +178,6 @@ public class BewegungsSystem implements IO
 		}
 	}
 
-
-	
 	/**folge Linie in Fahrtrichtung
 	 * 
 	 * @param fahrtRichtung (vorwaerts = true, rueckwaerts = false)
@@ -341,8 +333,7 @@ public class BewegungsSystem implements IO
 			drivingSpeed			= Konstanten.DRIVING_SPEED;
 		}
 	}
-	
-	
+
 	/**
 	 * update wird zyklisch aufgerufen
 	 * Stoppt die Bewegung des Roboters sobald Zielposition erreicht wurde  
@@ -361,13 +352,6 @@ public class BewegungsSystem implements IO
 			zustandBewegung = ZustandBewegung.STOP;
 			halteBedingung 	= HalteBedingung.BIS_NICHTS;
 		}
-		
-		
 		bewege();
-		
 	}
-
-
-	
-
 }

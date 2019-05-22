@@ -60,9 +60,8 @@ public class Motor implements IO, Konstanten {
      * @param d Geschwindigkeit in m/s
      * @return high Time fuer die aktuelle PERIOD_Motoren
      */
-    private int calculateDutyCycle(double d) {
-        
-
+    private int calculateDutyCycle(double d)
+    {
         if (d > Konstanten.MAX_SPEED) {
             d = Konstanten.MAX_SPEED;
         }
@@ -79,8 +78,6 @@ public class Motor implements IO, Konstanten {
         {
             out.set(false);
         }
-
-        
         return (int)(PERIOD_Motoren*(Math.abs(d)/Konstanten.MAX_SPEED));
     }
 
