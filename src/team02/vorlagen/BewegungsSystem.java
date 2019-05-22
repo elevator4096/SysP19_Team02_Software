@@ -240,9 +240,11 @@ public class BewegungsSystem implements IO
 		switch(halteBedingung)
 		{
 		case BIS_KREUZUNG_VORNE:
-			return IO.LINE_Sensor_Vorne.istLinieVorne(); 
+			return IO.LINE_Sensor_Vorne.istLinieVorne();
+
 		case BIS_KREUZUNG_MITTE:
 			return IO.LINE_Sensor_Rechts.istLinieLinks() || IO.LINE_Sensor_Links.istLinieRechts();
+
 		case BIS_KREUZUNG_HINTEN:
 			return IO.LINE_Sensor_Hinten.istLinieVorne();
 		
@@ -251,13 +253,11 @@ public class BewegungsSystem implements IO
 
 		case BIS_DREHWINKEL_ERREICHT:
 			return  ( ( drehRichtung && Fahren.getPhi()>=zielDrehWinkel ) || ( !drehRichtung && Fahren.getPhi()<=zielDrehWinkel ) ); 
-		
-		
+
 		case BIS_LINIE_SENKRECHT:
 			if(drehRichtung) 	return IO.LINE_Sensor_Vorne.istLinieRechts() || IO.LINE_Sensor_Hinten.istLinieRechts();	
 			else 				return IO.LINE_Sensor_Vorne.istLinieLinks () || IO.LINE_Sensor_Hinten.istLinieLinks ();
 
-			
 		case BIS_WAND:
 			return WandErkennung.istWandIrgendwo();
 			
