@@ -11,7 +11,7 @@ public interface Konstanten
 	boolean TEST					= true;							//True, Testfunktionen aktiviert
 	
 	boolean DREHE_NUR_MIT_ENCODER	= true;							//Benutze ausschliesslich Encoder fuer 90Grad Drehungen 
-	boolean SANFTES_BREMSEN			= false;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)
+	boolean SANFTES_BREMSEN			= true;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)
 	
 
 	//Programm Parameter
