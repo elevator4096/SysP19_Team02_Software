@@ -21,6 +21,7 @@ public class WlanSystem implements IO
     private static int ownState = ZustandWifi.SETUP;
     private static int counter =0;
     private static WlanSystem wlanSystem;
+    private static int maxLoss = 10000;
     
 
     /**
@@ -168,7 +169,7 @@ public class WlanSystem implements IO
         {
             counter++;
         }
-        if(counter>10)
+        if(counter>maxLoss)
         {
             cPartnerState = partnerState;
         }

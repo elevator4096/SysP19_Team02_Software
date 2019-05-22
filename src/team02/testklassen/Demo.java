@@ -44,7 +44,7 @@ public class Demo implements IO, Konstanten, Systeme {
 	            }
 	            case ZustandWifi.DEMO_FAHREN_WEIT:
 	            {
-	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
+	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0.3);
 	                break;
 	            }
 	            case ZustandWifi.DEMO_DREHEN_90_GUZ:
