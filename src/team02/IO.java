@@ -76,8 +76,8 @@ public interface IO
 	TPU_PWM    		PWM_MotorLinksPWM 	   		= new TPU_PWM(false, 2, (int)PERIOD_Motoren, (int)(PERIOD_Motoren*0.0));
 
 	//Encoder
-	TPU_FQD    		FQD_Links 					= new TPU_FQD(false, 3);
-	TPU_FQD   		FQD_Rechts 					= new TPU_FQD(false, 5);
+	TPU_FQD    		FQD_Rechts 					= new TPU_FQD(false, 3);
+	TPU_FQD   		FQD_Links 					= new TPU_FQD(false, 5);
 
 
 	//Motoren

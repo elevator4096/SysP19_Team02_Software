@@ -46,20 +46,31 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//bewegungsSystem.dreheUngenauUZ(0.5*Math.PI);
     	//bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
     	//IO.OUT_Magnet_Wand.set(false);
+    	
+    	//bewegungsSystem.dreheUngenauGUZ(0.5*Math.PI);
     }
 
     public void action()
     {
     	IO.debug.update();
+    	
     	Systeme.gegnerSystem.update();
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
     	
-    	Demo.run();
-    	debug.println(IO.MOTOR_links.getDistanz());
     	
-    	debug.println(IO.MOTOR_rechts.getDistanz());
+    	Demo.run();
+    	/*
+    	debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());
+    	*/
+    	//IO.MOTOR_rechts.updateSpeed(0.1);
+    	//IO.MOTOR_rechts.update();
+    	debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());
+    	debug.println(Fahren.getPhi());
+    	
+    	//Fahren.drehe(0.1);
+    	//Fahren.update();
 
     }
     

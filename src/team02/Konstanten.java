@@ -15,7 +15,7 @@ public interface Konstanten
 	
 
 	//Programm Parameter
-	double	TASK_PERIOD 			= 0.8;						//Taktzeit des Haupttasks in s
+	double	TASK_PERIOD 			= 0.2;						//Taktzeit des Haupttasks in s
 
 	double 	GEAR_RATIO 				= 1.0/86;						//Übersetzung des Getriebes
 	int 	TICKS_PER_ROUND 		= 512;							//Encoder Impulse pro Umdr.
