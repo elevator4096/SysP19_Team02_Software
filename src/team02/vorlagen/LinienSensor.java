@@ -33,7 +33,7 @@ public class LinienSensor implements IO
 	 */
 	public boolean istLinieLinks()
 	{
-		return IO.HLC_1395_PULSED.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorRightIndex)>Konstanten.HLC_GRENZWERT_WEISS;
+		return IO.HLC_1395_PULSED.read(sensorLeftIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorRightIndex)>Konstanten.HLC_GRENZWERT_SCHWARZ;
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class LinienSensor implements IO
 	 */
 	public boolean istLinieRechts()
 	{
-		return IO.HLC_1395_PULSED.read(sensorLeftIndex)>Konstanten.HLC_GRENZWERT_WEISS && IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
+		return IO.HLC_1395_PULSED.read(sensorLeftIndex)>Konstanten.HLC_GRENZWERT_SCHWARZ && IO.HLC_1395_PULSED.read(sensorRightIndex)<Konstanten.HLC_GRENZWERT_SCHWARZ;
 	}
 
 	/**

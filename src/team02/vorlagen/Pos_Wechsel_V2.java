@@ -1,5 +1,6 @@
-package team02.loris;
+package team02.vorlagen;
 
+import sun.security.util.Debug;
 import team02.IO;
 import team02.Systeme;
 
@@ -102,6 +103,7 @@ public class Pos_Wechsel_V2 {
      */
     public static void bewege()
     {
+    	IO.debug.print("Pos_Wechsel_V2:Zustand: " ); IO.debug.println(zustand.ordinal()); 
     	switch(zustand)
         {
     		case PosAtoB:	// Fahre von Position A zu Position B
@@ -175,7 +177,7 @@ public class Pos_Wechsel_V2 {
             }
             case TraverseZuEbene2: // wechsle zu Ebene2
             {
-            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false,Distanz_Linie);
+            	Systeme.bewegungsSystem.fahreFreiBisDistanz(true,Distanz_Linie);
             	zustand = Zustand.Ebene2;
             	break;
             }

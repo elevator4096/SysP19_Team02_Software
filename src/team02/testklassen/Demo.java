@@ -4,6 +4,7 @@ import exchange.ZustandWifi;
 import team02.IO;
 import team02.Konstanten;
 import team02.Systeme;
+import team02.vorlagen.Pos_Wechsel_V2;
 
 /**
  * 
@@ -75,7 +76,8 @@ public class Demo implements IO, Konstanten, Systeme {
 	            }
 	            case ZustandWifi.DEMO_ABLAUF:
 	            {
-	            	Test_SensorenAktoren.testAblaufDemo();
+	            	debug.println("DEMO Ablauf!");
+	            	Pos_Wechsel_V2.fahre_zu_Pos1();
 	                break;
 	            }
 	            case ZustandWifi.DEMO_HALT:

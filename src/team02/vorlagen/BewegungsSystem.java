@@ -209,12 +209,12 @@ public class BewegungsSystem implements IO
 			if (IO.LINE_Sensor_Hinten.istLinieLinks())
 			{
 				//Korrigiere im Uhrzeigersinn
-				Fahren.KorrekturKurve(fahrtRichtung, false);
+				Fahren.KorrekturKurve(fahrtRichtung, true);
 			}
 			else if (IO.LINE_Sensor_Hinten.istLinieRechts())
 			{
 				//Korrigiere im GegenUhrzeigersinn
-				Fahren.KorrekturKurve(fahrtRichtung, true);
+				Fahren.KorrekturKurve(fahrtRichtung, false);
 			}
 			else
 			{

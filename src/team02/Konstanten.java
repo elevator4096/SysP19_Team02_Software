@@ -35,7 +35,7 @@ public interface Konstanten
 	double  BREMSWEG				= 0.100;						//Bremsweg vor Halt(Hoehere Praezision durch sanftes Bremsen)
 	double  BREMSWINKEL				= 0.500;						//BREMSWINKEL vor Halt(Hoehere Praezision durch sanftes Bremsen)
 	
-	double	LINE_FOLLOWER_RADIUS	= 0.500;						// Radius von KorrekturKurve fuer Linienfolger in m
+	double	LINE_FOLLOWER_RADIUS	= 0.400;						// Radius von KorrekturKurve fuer Linienfolger in m
 	
 	double 	SPANN_ZEIT 				= 0;
 	double 	WURF_ZEIT 				= 1000;
@@ -47,8 +47,7 @@ public interface Konstanten
 	int		Korb_Wurf				= 0;
 	
 	//Sensor Konstanten 
-	int 	HLC_GRENZWERT_SCHWARZ 	= 100  ;							// schwarze Linie
-	int 	HLC_GRENZWERT_WEISS 	= 100  ;							// keine Linie
+	int 	HLC_GRENZWERT_SCHWARZ 	= 300  ;							// schwarze Linie
 	double  SHARP_GRENZWERT			= 0.012;							//Gegner erkannt?
 	
 	

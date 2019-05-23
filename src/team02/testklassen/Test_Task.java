@@ -14,6 +14,7 @@ import team02.vorlagen.WurfSystem;
 import team02.vorlagen.BewegungsSystem;
 import team02.vorlagen.DebugSystem;
 import team02.vorlagen.Fahren;
+import team02.vorlagen.Pos_Wechsel_V2;
 
 /**
  *
@@ -47,7 +48,8 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//bewegungsSystem.fahreFreiBisDistanz(false, 0.1);
     	//IO.OUT_Magnet_Wand.set(false);
     	
-    	//bewegungsSystem.dreheUngenauGUZ(0.5*Math.PI);
+    	//bewegungsSystem.folgeLinieBisWandRueckwaerts();
+    	
     }
 
     public void action()
@@ -59,6 +61,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
+    	Pos_Wechsel_V2.update();
     	
     	
     	Demo.run();
@@ -71,13 +74,17 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//debug.println(Fahren.getPhi()*180/3.1415926);
     	//debug.println(wlanSystem.getcPartnerState());
     	
+    	/*
     	if(counter % 10 == 0)
     	{
     		debug.print("Helligkeit: ");debug.print(IO.LINE_Sensor_Hinten.getHelligkeitLinks());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.getHelligkeitRechts());
-    		
+    		debug.print("Linienpos: ");debug.print(IO.LINE_Sensor_Hinten.istLinieLinks());debug.print(" ");debug.print(IO.LINE_Sensor_Hinten.istLinieRechts());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.istLinieVorne());
     	}
+    	*/
+    	//Fahren.kurveFahren(-0.2, -Konstanten.DRIVING_SPEED);
     	
     	//Fahren.drehe(0.1);
+    	//Fahren.kurveFahren( Konstanten.LINE_FOLLOWER_RADIUS, Konstanten.DRIVING_SPEED );
     	//Fahren.update();
 
     }
