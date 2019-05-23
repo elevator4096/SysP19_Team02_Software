@@ -23,6 +23,7 @@ public class BewegungsSystem implements IO
 	private double			zielDrehWinkel			= 0.0; // Kann beliebige Werte annehmen( springt nicht von 2PI auf 0)
 	private double			zielDistanz				= 0.0;
 	private double			drivingSpeed			= Konstanten.DRIVING_SPEED;
+	private double			turningSpeed			= Konstanten.TURNING_SPEED;
 
 	private BewegungsSystem()
 	{
@@ -294,13 +295,13 @@ public class BewegungsSystem implements IO
 			folgeLinie(bewegungsRichtung);
 			break;			
 		case DREHE:
-			Fahren.drehe(Konstanten.TURNING_SPEED*(drehRichtung? 1:-1) );
+			Fahren.drehe(turningSpeed*(drehRichtung? 1:-1) );
 			break;		
 		case STOP:
 			Fahren.stop();
 			break;
 		case RICHTE_AN_KORB_AUS:
-			Fahren.drehe(Konstanten.TURNING_SPEED*(drehRichtung? 1:-1) );
+			Fahren.drehe(turningSpeed*(drehRichtung? 1:-1) );
 			break;
 
 		case RICHTE_AN_WAND_AUS:
@@ -332,6 +333,17 @@ public class BewegungsSystem implements IO
 		{
 			drivingSpeed			= Konstanten.DRIVING_SPEED;
 		}
+		//turningSpeed
+		if (halteBedingung == HalteBedingung.BIS_DREHWINKEL_ERREICHT && ( ( drehRichtung && Fahren.getPhi()>=(zielDrehWinkel-Konstanten.BREMSWINKEL) ) || ( !drehRichtung && Fahren.getPhi()<=(zielDrehWinkel+Konstanten.BREMSWINKEL) ) ))
+		{
+			turningSpeed = Konstanten.SLOW_TURNING_SPEED;
+		}
+		else
+		{
+			turningSpeed = Konstanten.TURNING_SPEED;
+		}
+		
+		
 	}
 
 	/**
@@ -342,7 +354,7 @@ public class BewegungsSystem implements IO
 	{
 		Fahren.update();
 		
-		System.out.println("TEST!");
+		//System.out.println("TEST!");
 		
 		if (Konstanten.SANFTES_BREMSEN) sanftesBremsen();
 			
