@@ -58,9 +58,9 @@ public interface IO
 
 
 	//Sharp Distanz in m
-	Sharp			AN_Sharp1					= new Sharp(false,0,0.0);
-	Sharp			AN_Sharp2					= new Sharp(false,1, 0.0);
-	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0);
+	Sharp			AN_Sharp1					= new Sharp(false,0,0.0);  //hinten
+	Sharp			AN_Sharp2					= new Sharp(false,1, 0.0); //links
+	Sharp			AN_Sharp3					= new Sharp(false,2, 0.0); //rechts
 
 	//PWM Periodendauer
 	double 	   		PERIOD_WurfZyl				= 14_000_000.0/TPU_PWM.tpuTimeBase; 	// PWM 	   72 Hz

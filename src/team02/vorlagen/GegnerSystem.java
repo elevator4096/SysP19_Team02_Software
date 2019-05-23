@@ -77,7 +77,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean istGegnerLinks()
 	{
-		return (AN_Sharp1.getDistanz() < Konstanten.SHARP_GRENZWERT);
+		return (AN_Sharp2.getDistanz() < Konstanten.SHARP_GRENZWERT);
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean istGegnerHinten()
 	{	
-		return (AN_Sharp2.getDistanz() < Konstanten.SHARP_GRENZWERT);
+		return (AN_Sharp1.getDistanz() < Konstanten.SHARP_GRENZWERT);
 	}
 
 	/**

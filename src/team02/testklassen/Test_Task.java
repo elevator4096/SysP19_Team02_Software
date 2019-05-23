@@ -65,6 +65,8 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	
     	Demo.run();
+    	debug.println(Systeme.gegnerSystem.warGegnerRechts());
+    	
     	/*
     	debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());
     	*/
@@ -79,7 +81,15 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	{
     		//debug.print("Helligkeit: ");debug.print(IO.LINE_Sensor_Hinten.getHelligkeitLinks());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.getHelligkeitRechts());
     		//debug.print("Linienpos: ");debug.print(IO.LINE_Sensor_Hinten.istLinieLinks());debug.print(" ");debug.print(IO.LINE_Sensor_Hinten.istLinieRechts());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.istLinieVorne());
-    		Test_Sharp.test();
+    		//Test_Sharp.test();
+    		/*
+    		debug.print("Hinten: ");
+    		debug.print(Systeme.gegnerSystem.istGegnerHinten());
+    		debug.print("   Links: ");
+    		debug.print(Systeme.gegnerSystem.istGegnerLinks());
+    		debug.print("   Rechts: ");
+    		debug.println(Systeme.gegnerSystem.istGegnerRechts());
+    		*/
     	}
     	
     	//Fahren.kurveFahren(-0.2, -Konstanten.DRIVING_SPEED);
