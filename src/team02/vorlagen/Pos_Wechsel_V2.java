@@ -34,14 +34,15 @@ public class Pos_Wechsel_V2 {
         Fehler;														// Ein Fehler ist aufgetreten
     }
     
+    private static double Distanz_Wand_Abstand 	= 0.050;    
+    
     private static double Distanz_G1 		= 0.080; 
-    private static double Distanz_G1_kurz 	= 0.030; 
+    private static double Distanz_G1_kurz 	= Distanz_G1-Distanz_Wand_Abstand; 
     private static double Distanz_G2 		= 0.168;
     private static double Distanz_G3 		= 0.168;
-    private static double Distanz_G4 		= 0.050;
+    private static double Distanz_G4 		= 0.100;
     private static double Distanz_Linie 	= 0.260;
     
-    private static double Distanz_Wand_Abstand 	= 0.050;    
     
     /**
      * Fahre autonom zu WurfPosition1
@@ -238,7 +239,7 @@ public class Pos_Wechsel_V2 {
 	            Systeme.gegnerSystem.resetGegnerErkennung();
 	            break;
             }
-            case NachGegner22: // Zustand NACH dem passieren von Gegner23 (Gegner von Weg2)
+            case NachGegner22: // Zustand NACH dem passieren von Gegner22 (Gegner von Weg2)
             {
 	            if (Systeme.gegnerSystem.warGegnerLinks())
 	            {
