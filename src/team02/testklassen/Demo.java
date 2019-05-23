@@ -74,15 +74,21 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	Systeme.wurfSystem.ballWerfen();
 	                break;
 	            }
-	            case ZustandWifi.DEMO_ABLAUF:
-	            {
-	            	debug.println("DEMO Ablauf!");
-	            	Pos_Wechsel_V2.fahre_zu_Pos1();
-	                break;
-	            }
 	            case ZustandWifi.DEMO_HALT:
 	            {
 	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false, 0);
+	                break;
+	            }
+	            case ZustandWifi.DEMO_POS1:
+	            {
+	            	debug.println("DEMO_POS1");
+	            	Pos_Wechsel_V2.fahre_zu_Pos1();
+	                break;
+	            }
+	            case ZustandWifi.DEMO_POS2:
+	            {
+	            	debug.println("DEMO_POS2");
+	            	Pos_Wechsel_V2.fahre_zu_Pos2();
 	                break;
 	            }
 	            

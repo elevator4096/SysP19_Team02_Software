@@ -22,8 +22,10 @@ public interface ZustandWifi
     int DEMO_ZYLINDER_HOCH		= 106;
     int DEMO_ZYLINDER_RUNTER 	= 107;
     int DEMO_WERFEN				= 108;
-    int DEMO_ABLAUF				= 109;
     int DEMO_HALT				= 110;
+    
+    int DEMO_POS1				= 111;
+    int DEMO_POS2				= 112;
     
 
     

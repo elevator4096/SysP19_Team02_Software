@@ -74,13 +74,14 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//debug.println(Fahren.getPhi()*180/3.1415926);
     	//debug.println(wlanSystem.getcPartnerState());
     	
-    	/*
+    	
     	if(counter % 10 == 0)
     	{
-    		debug.print("Helligkeit: ");debug.print(IO.LINE_Sensor_Hinten.getHelligkeitLinks());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.getHelligkeitRechts());
-    		debug.print("Linienpos: ");debug.print(IO.LINE_Sensor_Hinten.istLinieLinks());debug.print(" ");debug.print(IO.LINE_Sensor_Hinten.istLinieRechts());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.istLinieVorne());
+    		//debug.print("Helligkeit: ");debug.print(IO.LINE_Sensor_Hinten.getHelligkeitLinks());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.getHelligkeitRechts());
+    		//debug.print("Linienpos: ");debug.print(IO.LINE_Sensor_Hinten.istLinieLinks());debug.print(" ");debug.print(IO.LINE_Sensor_Hinten.istLinieRechts());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.istLinieVorne());
+    		Test_Sharp.test();
     	}
-    	*/
+    	
     	//Fahren.kurveFahren(-0.2, -Konstanten.DRIVING_SPEED);
     	
     	//Fahren.drehe(0.1);

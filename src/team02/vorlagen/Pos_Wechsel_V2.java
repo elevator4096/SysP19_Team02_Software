@@ -39,7 +39,7 @@ public class Pos_Wechsel_V2 {
     private static double Distanz_G2 	= 0.168;
     private static double Distanz_G3 	= 0.168;
     private static double Distanz_G4 	= 0.050;
-    private static double Distanz_Linie = 0.200;
+    private static double Distanz_Linie = 0.260;
     
     private static double Distanz_Wand_Abstand 	= 0.050;    
     
@@ -103,7 +103,7 @@ public class Pos_Wechsel_V2 {
      */
     public static void bewege()
     {
-    	IO.debug.print("Pos_Wechsel_V2:Zustand: " ); IO.debug.println(zustand.ordinal()); 
+    	//IO.debug.print("Pos_Wechsel_V2:Zustand: " ); IO.debug.println(zustand.ordinal()); 
     	switch(zustand)
         {
     		case PosAtoB:	// Fahre von Position A zu Position B
@@ -201,7 +201,7 @@ public class Pos_Wechsel_V2 {
             }
             case WandAbstandEbene2: // Ebene2 Wand_Abstand erreicht 
             {
-                Systeme.bewegungsSystem.drehe90GradGUZ();
+            	if(ersteFahrt) Systeme.bewegungsSystem.drehe90GradGUZ();
                 if(ersteFahrt) zustand = Zustand.AnPosB; else zustand = Zustand.AnPosD;
                 break;
             } 
@@ -267,13 +267,13 @@ public class Pos_Wechsel_V2 {
             }
             case TraverseZuEbene3: // wechsle zu Ebene3
             {
-            	Systeme.bewegungsSystem.fahreFreiBisDistanz(false,Distanz_Linie);
+            	Systeme.bewegungsSystem.fahreFreiBisDistanz(true,Distanz_Linie);
             	zustand = Zustand.Ebene3;
             	break;
             }
             case Ebene3: // Ebene3 erreicht
             {
-                Systeme.bewegungsSystem.drehe90GradUZ();
+                Systeme.bewegungsSystem.drehe90GradGUZ();
                 zustand = Zustand.FahreZuWandEbene3;
                 break;
             }
