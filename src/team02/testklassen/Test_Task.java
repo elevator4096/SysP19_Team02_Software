@@ -65,7 +65,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	
     	
     	Demo.run();
-    	debug.println(Systeme.gegnerSystem.warGegnerRechts());
+    	debug.println(IO.AN_Sharp3.getDistanz());debug.print(" "); debug.println(Systeme.gegnerSystem.warGegnerRechts());
     	
     	/*
     	debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());

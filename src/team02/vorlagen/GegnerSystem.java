@@ -68,7 +68,7 @@ public class GegnerSystem implements IO
 	 */
 	public boolean warGegnerRechts()
 	{
-		return warGegnerH;
+		return warGegnerR;
 	}
 
 	/**

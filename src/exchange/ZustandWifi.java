@@ -26,6 +26,7 @@ public interface ZustandWifi
     
     int DEMO_POS1				= 111;
     int DEMO_POS2				= 112;
+    int DEMO_NORM_DIST			= 113;
     
 
     

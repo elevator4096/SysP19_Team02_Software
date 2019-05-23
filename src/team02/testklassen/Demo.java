@@ -91,6 +91,15 @@ public class Demo implements IO, Konstanten, Systeme {
 	            	Pos_Wechsel_V2.fahre_zu_Pos2();
 	                break;
 	            }
+	            case ZustandWifi.DEMO_NORM_DIST:
+	            {
+	            	debug.println("DEMO_NORM_DIST");
+	            	Systeme.gegnerSystem.resetGegnerErkennung();
+	            	Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 0.168);
+	                break;
+	            }
+	            
+	            
 	            
 	            default:
 	            {

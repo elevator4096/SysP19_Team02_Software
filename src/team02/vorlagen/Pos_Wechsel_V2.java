@@ -1,6 +1,5 @@
 package team02.vorlagen;
 
-import sun.security.util.Debug;
 import team02.IO;
 import team02.Systeme;
 
@@ -35,11 +34,12 @@ public class Pos_Wechsel_V2 {
         Fehler;														// Ein Fehler ist aufgetreten
     }
     
-    private static double Distanz_G1 	= 0.050; 
-    private static double Distanz_G2 	= 0.168;
-    private static double Distanz_G3 	= 0.168;
-    private static double Distanz_G4 	= 0.050;
-    private static double Distanz_Linie = 0.260;
+    private static double Distanz_G1 		= 0.080; 
+    private static double Distanz_G1_kurz 	= 0.030; 
+    private static double Distanz_G2 		= 0.168;
+    private static double Distanz_G3 		= 0.168;
+    private static double Distanz_G4 		= 0.050;
+    private static double Distanz_Linie 	= 0.260;
     
     private static double Distanz_Wand_Abstand 	= 0.050;    
     
@@ -165,7 +165,10 @@ public class Pos_Wechsel_V2 {
                 if (Systeme.gegnerSystem.warGegnerRechts())
                 {
                 	IO.debug.println("Error: Gegner 13 gesehen");
-                    zustand = Zustand.Fehler;
+                    //zustand = Zustand.Fehler;
+                	
+                	Systeme.bewegungsSystem.drehe90GradUZ();
+                	zustand = Zustand.TraverseZuEbene2;
                 }
                 else
                 {
@@ -208,7 +211,7 @@ public class Pos_Wechsel_V2 {
             case StartWeg2:	// Starte Fahrt Weg2 ( von PosB zu PosC)		
             {	
 	            Systeme.gegnerSystem.resetGegnerErkennung();
-	            Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G1);
+	            Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G1_kurz);
             	zustand = Zustand.NachGegner24;
             	break;
             }
@@ -286,7 +289,6 @@ public class Pos_Wechsel_V2 {
             
             case WandEbene3: // Wand Ebene3 erreicht (Fahre zu Wand_Abstand)
             {
-                Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_Wand_Abstand);
                 zustand = Zustand.WandAbstandEbene3;
                 break;
             }
