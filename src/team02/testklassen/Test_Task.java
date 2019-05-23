@@ -52,6 +52,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 
     public void action()
     {
+    	counter++;
     	IO.debug.update();
     	
     	Systeme.gegnerSystem.update();
@@ -66,9 +67,15 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	*/
     	//IO.MOTOR_rechts.updateSpeed(0.1);
     	//IO.MOTOR_rechts.update();
-    	debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());
-    	debug.println(Fahren.getPhi()*180/3.1415926);
-    	debug.println(wlanSystem.getcPartnerState());
+    	//debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());
+    	//debug.println(Fahren.getPhi()*180/3.1415926);
+    	//debug.println(wlanSystem.getcPartnerState());
+    	
+    	if(counter % 10 == 0)
+    	{
+    		debug.print("Helligkeit: ");debug.print(IO.LINE_Sensor_Hinten.getHelligkeitLinks());debug.print(" ");debug.println(IO.LINE_Sensor_Hinten.getHelligkeitRechts());
+    		
+    	}
     	
     	//Fahren.drehe(0.1);
     	//Fahren.update();

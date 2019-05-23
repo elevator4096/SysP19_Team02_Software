@@ -26,7 +26,7 @@ public interface Konstanten
 	double 	MAX_DREHZAHL_MOTOR 		= 7000.0/60;					// Umdrehungen pro Sekunde
 	
 	//Tuning Parameter
-	double	DRIVING_SPEED			= 0.150;							// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
+	double	DRIVING_SPEED			= 0.050;							// RichtGeschwindigkeit 	  fuer Fahren in m/s   		( Werte von ca 0.010   - 0.180)
 	double	TURNING_SPEED			= 0.020*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer Drehen in rad/s 		( Werte von ca 0.050PI - 1.150PI)
 	double	SLOW_TURNING_SPEED		= 0.010*Math.PI;			 	// RichtWinkelGeschwindigkeit fuer langsames Drehen in rad/s 		( Werte von ca 0.050PI - 1.150PI)
 	double	SLOW_SPEED				= 0.02;							// RichtGeschwindigkeit fuer langsames fahren in m/s   	( Werte von ca 0.010   - 0.180)

@@ -86,10 +86,10 @@ public interface IO
 
 
 	//LinienSensoren
-	LinienSensor 	LINE_Sensor_Hinten			= new LinienSensor(1,0);
+	LinienSensor 	LINE_Sensor_Hinten			= new LinienSensor(0,1);
 	LinienSensor 	LINE_Sensor_Links			= new LinienSensor(2,3);
-	LinienSensor	LINE_Sensor_Rechts			= new LinienSensor(4,5);
-	LinienSensor 	LINE_Sensor_Vorne			= new LinienSensor(6,7);
+	LinienSensor 	LINE_Sensor_Vorne			= new LinienSensor(4,5);
+	LinienSensor	LINE_Sensor_Rechts			= new LinienSensor(6,7);
 	
 	//Debug
 	DebugSystem		 	debug		 				= DebugSystem.getInstance();
