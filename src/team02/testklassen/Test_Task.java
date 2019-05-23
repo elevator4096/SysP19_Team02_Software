@@ -56,12 +56,10 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
     	
+    	Demo.run();
+    	debug.println(IO.MOTOR_links.getDistanz());
     	
-    	if(counter%20==0) {
-    	Systeme.bewegungsSystem.fahreFreiBisDistanz(true, 0.1);
-    	}
-    	
-    	counter ++;
+    	debug.println(IO.MOTOR_rechts.getDistanz());
 
     }
     
