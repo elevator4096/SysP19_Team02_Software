@@ -16,6 +16,7 @@ public class BewegungsSystem implements IO
 	private static BewegungsSystem bewegungsSystem;
 
 	private ZustandBewegung zustandBewegung 		= ZustandBewegung.STOP;
+	private ZustandBewegung letzterZustandBewegung  = ZustandBewegung.STOP;
 	private HalteBedingung 	halteBedingung			= HalteBedingung .BIS_NICHTS;		
 	private boolean 		bewegungsRichtung		= false; //vorwaerts 	= true
 	private boolean 		drehRichtung			= false; //GUZ		= true
@@ -164,9 +165,16 @@ public class BewegungsSystem implements IO
 		this.zustandBewegung 	= zustandBewegung;
 		this.bewegungsRichtung 	= richtung;
 		this.drehRichtung		= drehRichtung;
-		
-		this.zielDistanz		= Fahren.getDistanz() + distanz    *(richtung    ? 1:-1);
 		this.zielDrehWinkel		= Fahren.getPhi()	  + drehWinkel *(drehRichtung? 1:-1);
+		
+		// Wenn die letzte Fahrt schon eine reine Fahrbewegung war kann die neue Zieldistanz zur alten Zielposition addiert werden(genauer!))
+		if (this.letzterZustandBewegung == ZustandBewegung.FAHRE_FREI)
+		{
+			this.zielDistanz 	    = this.zielDistanz    + distanz*(richtung    ? 1:-1);
+		}else
+		{
+			this.zielDistanz		= Fahren.getDistanz() + distanz*(richtung    ? 1:-1);
+		}	
 
 		if (kreuzungsPos != -1) { 
 			switch(kreuzungsPos)
@@ -189,6 +197,7 @@ public class BewegungsSystem implements IO
 		{
 			this.halteBedingung = halteBedingung;
 		}
+		this.letzterZustandBewegung = this.zustandBewegung;
 	}
 
 	/**folge Linie in Fahrtrichtung
