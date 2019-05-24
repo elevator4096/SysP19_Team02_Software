@@ -55,7 +55,7 @@ public class BewegungsSystem implements IO
      */
 	public void fahreFreiBisDistanzUngebremst(boolean richtung,double distanz)
 	{
-		//ungebremst = true;
+		ungebremst = true;
 		fahreFreiBisDistanz(richtung,distanz);
 	}
 	
@@ -112,13 +112,25 @@ public class BewegungsSystem implements IO
 	}
 	
 	/**
+     * folgt der Linie eine gewisse Distanz - ohne abbremsen
+     * @param richtung vorwaerts = true
+     * @param distanz
+     */
+	public void folgeLinieBisDistanzUngebremst(boolean richtung, double distanz)
+	{	
+		ungebremst = true;
+		setBewegung(ZustandBewegung.FOLGE_LINIE, richtung, false, -1, HalteBedingung.BIS_DISTANZ_ERREICHT,distanz,0.0);
+	}	
+	
+	/**
      * folgt der Linie eine gewisse Distanz
      * @param richtung vorwaerts = true
      * @param distanz
      */
-	public void folgeLinie(boolean richtung, int distanz)
+	public void folgeLinieBisDistanz(boolean richtung, double distanz)
 	{	
-		setBewegung(ZustandBewegung.FOLGE_LINIE, false, false, -1, HalteBedingung.BIS_DISTANZ_ERREICHT,distanz,0.0);
+		ungebremst = true;
+		setBewegung(ZustandBewegung.FOLGE_LINIE, richtung, false, -1, HalteBedingung.BIS_DISTANZ_ERREICHT,distanz,0.0);
 	}
 	
 	/**
