@@ -394,10 +394,15 @@ public class BewegungsSystem implements IO
 		if (istHalteBedingungErfuellt())
 		{
 			inBewegung 		= false;
-			ungebremst		= false;
 			zustandBewegung = ZustandBewegung.STOP;
 			halteBedingung 	= HalteBedingung.BIS_NICHTS;
 		}
 		bewege();
+		
+		//erlaubt die vollsteandige deaktivierung des Bremssystems fuer einen Taktzyklus
+		if (istHalteBedingungErfuellt())
+		{
+			ungebremst		= false;
+		}
 	}
 }
