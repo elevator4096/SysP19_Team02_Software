@@ -331,7 +331,7 @@ public class BewegungsSystem implements IO
 			Fahren.drehe(turningSpeed*(drehRichtung? 1:-1) );
 			break;		
 		case STOP:
-			Fahren.stop();
+			if((!Konstanten.BREMSEN_DEAKTIVIERBAR)||(!ungebremst)) Fahren.stop();
 			break;
 		case RICHTE_AN_KORB_AUS:
 			Fahren.drehe(turningSpeed*(drehRichtung? 1:-1) );
