@@ -127,7 +127,7 @@ public class Pos_Wechsel_V2 {
             case StartWeg1: // Starte Fahrt Weg1 ( von PosA zu PosB oder von PosC zu PosD)
             {	
 	            Systeme.gegnerSystem.resetGegnerErkennung();
-	            Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G1);
+	            Systeme.bewegungsSystem.fahreFreiBisDistanzUngebremst(true, Distanz_G1);
             	zustand = Zustand.NachGegner11;
             	break;
             } 			
@@ -135,7 +135,7 @@ public class Pos_Wechsel_V2 {
             {
                 if (Systeme.gegnerSystem.warGegnerRechts())
                 {
-                    Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G2);
+                    Systeme.bewegungsSystem.fahreFreiBisDistanzUngebremst(true, Distanz_G2);
                     zustand = Zustand.NachGegner12;
                 }
                 else
@@ -212,14 +212,14 @@ public class Pos_Wechsel_V2 {
             case StartWeg2:	// Starte Fahrt Weg2 ( von PosB zu PosC)		
             {	
 	            Systeme.gegnerSystem.resetGegnerErkennung();
-	            Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G1_kurz);
+	            Systeme.bewegungsSystem.fahreFreiBisDistanzUngebremst(true, Distanz_G1_kurz);
             	zustand = Zustand.NachGegner24;
             	break;
             }
             case NachGegner24: // Zustand NACH dem passieren von Gegner24 (Gegner von Weg2)
             {
             	//Wir muessen zwingend weiterfahren da Partnerroboter im Weg steht
-                Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G2);
+                Systeme.bewegungsSystem.fahreFreiBisDistanzUngebremst(true, Distanz_G2);
                 zustand = Zustand.NachGegner23;
                 Systeme.gegnerSystem.resetGegnerErkennung();
                 break;
@@ -228,7 +228,7 @@ public class Pos_Wechsel_V2 {
             {
 	            if (Systeme.gegnerSystem.warGegnerLinks())
 	            {
-	                Systeme.bewegungsSystem.fahreFreiBisDistanz(true, Distanz_G3);
+	                Systeme.bewegungsSystem.fahreFreiBisDistanzUngebremst(true, Distanz_G3);
 	                zustand = Zustand.NachGegner22;
 	            }
 	            else
