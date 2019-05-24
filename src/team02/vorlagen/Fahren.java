@@ -121,7 +121,7 @@ public class Fahren implements IO, Konstanten
      */
     public static void KorrekturKurve(boolean fahrtRichtung, boolean drehSinn)
     {
-    		kurveFahren( Konstanten.LINE_FOLLOWER_RADIUS*(drehSinn? 1:-1), Konstanten.DRIVING_SPEED*(fahrtRichtung? 1:-1) );
+    		kurveFahren( Konstanten.LINE_FOLLOWER_RADIUS*(drehSinn? 1:-1), Konstanten.LINE_KORREKTUR_SPEED*(fahrtRichtung? 1:-1) );
     }
 
     /**
