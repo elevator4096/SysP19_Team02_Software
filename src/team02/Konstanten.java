@@ -36,6 +36,7 @@ public interface Konstanten
 	double  BREMSWINKEL				= 0.500;						//BREMSWINKEL vor Halt(Hoehere Praezision durch sanftes Bremsen)
 	
 	double	LINE_FOLLOWER_RADIUS	= 0.400;						// Radius von KorrekturKurve fuer Linienfolger in m
+	double	LINE_KORREKTUR_SPEED	= 0.050;
 	
 	double 	SPANN_ZEIT 				= 0;
 	double 	WURF_ZEIT 				= 1000;
