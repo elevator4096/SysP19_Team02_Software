@@ -55,7 +55,7 @@ public class BewegungsSystem implements IO
      */
 	public void fahreFreiBisDistanzUngebremst(boolean richtung,double distanz)
 	{
-		ungebremst = true;
+		//ungebremst = true;
 		fahreFreiBisDistanz(richtung,distanz);
 	}
 	
