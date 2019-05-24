@@ -24,6 +24,8 @@ public class BewegungsSystem implements IO
 	private double			zielDistanz				= 0.0;
 	private double			drivingSpeed			= Konstanten.DRIVING_SPEED;
 	private double			turningSpeed			= Konstanten.TURNING_SPEED;
+	
+	private boolean 		ungebremst = false;
 
 	private BewegungsSystem()
 	{
@@ -45,8 +47,18 @@ public class BewegungsSystem implements IO
 		}
 		return bewegungsSystem;
 	}
+
+    /** fahre Distanz geradeaus - ohne abbremsen
+     * @param richtung true = vorwaerts
+     * @param distanz
+     */
+	public void fahreFreiBisDistanzUngebremst(boolean richtung,double distanz)
+	{
+		ungebremst = true;
+		fahreFreiBisDistanz(richtung,distanz);
+	}
 	
-    /** fahre Distanz geradeaus
+    /** fahre Distanz geradeaus - mit abbremsen
      * @param richtung true = vorwaerts
      * @param distanz
      */
@@ -356,11 +368,12 @@ public class BewegungsSystem implements IO
 		
 		//System.out.println("TEST!");
 		
-		if (Konstanten.SANFTES_BREMSEN) sanftesBremsen();
+		if ((Konstanten.SANFTES_BREMSEN)&&(!ungebremst)) sanftesBremsen();
 			
 		if (istHalteBedingungErfuellt())
 		{
 			inBewegung 		= false;
+			ungebremst		= false;
 			zustandBewegung = ZustandBewegung.STOP;
 			halteBedingung 	= HalteBedingung.BIS_NICHTS;
 		}
