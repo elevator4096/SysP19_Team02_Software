@@ -14,17 +14,17 @@ public class Test_Wurfsystem implements IO, Systeme
 	public static void test()
 	{
 		//02.04.19 -> Funktioniert!
-		if (Task.time() > lastTime+10000)
+		if (Task.time() > lastTime+8000)
 		{
 			counter++;
 			switch(counter)
 			{
 			case 1:
-				Systeme.wurfSystem.zylinderSpannen(70);
+				Systeme.wurfSystem.zylinderSpannen(90);
 				IO.debug.println("Wurfsystem Fall 1");
 				break;
 			case 2:
-				Systeme.wurfSystem.zylinderSpannen(50);
+				Systeme.wurfSystem.zylinderSpannen(10); //Korbschuss 10
 				IO.debug.println("Wurfsystem Fall 2");
 				break;
 			case 3:

@@ -49,7 +49,6 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//IO.OUT_Magnet_Wand.set(false);
     	
     	//bewegungsSystem.folgeLinieBisWandRueckwaerts();
-    	
     }
 
     public void action()
