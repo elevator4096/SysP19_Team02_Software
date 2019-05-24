@@ -35,9 +35,13 @@ public class Test_Main_M3 extends Task {
 
 	static Endschalter_M3 schalter1, schalter2;
 
+	static MPIOSM_DIO wlandio;
+
+	static WlanSystem wlanSystem;
+
 	static ToFSensor_M3 tof;
 
-//	VL6180X tof;
+	VL6180X tofvlx;
 
 //	static ToFSensorDemoParv tof;
 
@@ -58,10 +62,6 @@ public class Test_Main_M3 extends Task {
 	static float umdrehungen;
 	static int anzahlgegner = 2;
 
-	static MPIOSM_DIO wlandio;
-
-	static WlanSystem wlanSystem;
-
 	static int partnerstate = 0;
 
 	static int countertemporär = 0;
@@ -75,10 +75,16 @@ public class Test_Main_M3 extends Task {
 	final int numberOfSensors = 3;
 	final int resetPin = 9;
 
-	static boolean ir_1 = false;
-	static boolean ir_2 = false;
+	static boolean ir_1 = false; // schwarz = true
+	static boolean ir_2 = false; // schwarz = true
 
 	public Test_Main_M3() {
+
+//		tofvlx = new VL6180X(numberOfSensors, resetPin);	
+
+		tof = new ToFSensor_M3();
+
+//		tof = new ToFSensorDemoParv();
 
 		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
 		fahrmotor2 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f / 1f, 1f, 0.008f);
@@ -95,12 +101,6 @@ public class Test_Main_M3 extends Task {
 		schalter1 = new Endschalter_M3(6, false);
 		schalter2 = new Endschalter_M3(7, false);
 
-		tof = new ToFSensor_M3();
-
-//		tof = new VL6180X(numberOfSensors, resetPin);
-
-//		tof = new ToFSensorDemoParv();
-
 		wlandio = new MPIOSM_DIO(8, true);
 
 		wlanSystem = WlanSystem.getInstance(wlandio);
@@ -115,8 +115,8 @@ public class Test_Main_M3 extends Task {
 //		}
 
 		endschalterupdate();
-
-//		schiesenmitwlan();
+		servo.update();
+		irupdate();
 
 		if (partnerstate == 5 && gestartet == false) {
 			zustand = START;
@@ -138,9 +138,9 @@ public class Test_Main_M3 extends Task {
 
 		if (nofActivations % 150 == 0) {
 			sieben.strichblinken();
+			dist.alleirausgeben();
 //			tofupdate();
 //			tof.tofausgeben();		
-			dist.alleirausgeben();
 //			System.out.print("partnerstate ------>");
 //			System.out.println(partnerstate);
 //			System.out.print("sensor 1 ------>");
@@ -164,21 +164,12 @@ public class Test_Main_M3 extends Task {
 		fahrmotor1.motorstarten();
 		fahrmotor2.motorstarten();
 
-		servo.update();
-
+//		schiesenmitwlan();
 //		testfahren();
 		neunziggradtest();
 //		yachse();
 //		fahrenlinks();
 //		fahrenrechts();
-
-//		if (irsensor() == true && nofActivations % 10 == 0) {
-//			sieben.dleuchten();
-//		}
-//
-//		if (irsensor() == false && nofActivations % 10 == 0) {
-//			sieben.löschen();	
-//		}
 
 //		if (nofActivations % 150 == 0) {
 //			System.out.print("Schalter links--->>>>>");
@@ -234,7 +225,17 @@ public class Test_Main_M3 extends Task {
 			if (ir_1 == true && ir_2 == true) {
 				fahrretour();
 			}
-			zustand = ENDE;
+
+			if (schalterlinks == true) {
+				fahrmotor1.setdrehzahl(0);
+			}
+			if (schalterrechts == true) {
+				fahrmotor2.setdrehzahl(0);
+			}
+
+			if (schalterlinks == true && schalterrechts == true) {
+				zustand = ENDE;
+			}
 			break;
 		}
 
@@ -539,7 +540,24 @@ public class Test_Main_M3 extends Task {
 		if (schalter1.schalterzustand() == true) {
 			schalterrechts = false;
 		}
+	}
 
+	/**
+	 * i & wert anpassen >= 11 weiss <= 7 schwarz schwarz = true
+	 */
+	public void irupdate() {
+		if (dist.gibdist(1) >= 11) {
+			ir_1 = false;
+		}
+		if (dist.gibdist(1) <= 7) {
+			ir_1 = true;
+		}
+		if (dist.gibdist(2) >= 10) {
+			ir_2 = false;
+		}
+		if (dist.gibdist(2) <= 7) {
+			ir_2 = true;
+		}
 	}
 
 //	public void tofupdate() {
@@ -549,8 +567,10 @@ public class Test_Main_M3 extends Task {
 //		System.out.println(sensorDistances[2]);
 //	}
 
+	/**
+	 * i & wert anpassen
+	 */
 	public void irsensor() {
-
 		if (dist.gibdist(1) < 8) {
 			schwarz = true;
 		}
@@ -631,71 +651,6 @@ public class Test_Main_M3 extends Task {
 
 	public static void servogeschlossen() {
 		servo.servogeschlossen();
-	}
-
-	public void testfahren() {
-
-		switch (start) {
-
-		case 1: // linkskurve
-		{
-			fahrlinkskurve();
-			start = 2;
-			break;
-		}
-
-		case 2: // anzahl inkrements fahren
-		{
-			if (fahrmotor1.gibUmdrehungen() == 1) {
-				fahrviertelspeed();
-				start = 3;
-			}
-			break;
-		}
-
-		case 3: // 180 grad drehen rechtskurve
-		{
-			if (fahrmotor1.gibUmdrehungen() == -3) {
-				fahrrechtskurve();
-				start = 4;
-			}
-			break;
-		}
-
-		case 4: {
-			if (fahrmotor2.gibUmdrehungen() == 3) {
-				fahrnullspeed();
-				start = 5;
-			}
-			break;
-		}
-
-		case 5: {
-			wurfspeedhalb();
-			servo.servooffen();
-			start = 6;
-			break;
-
-		}
-
-		case 6: {
-			zähler++;
-			if (zähler == 400) {
-				servo.servogeschlossen();
-				wurfnullspeed();
-				start = 7;
-			}
-			break;
-		}
-
-		case 7: {
-			start = 0;
-			zähler = 0;
-			break;
-		}
-
-		}
-
 	}
 
 	static {
