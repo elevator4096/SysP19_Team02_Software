@@ -12,7 +12,6 @@ public interface Konstanten
 	
 	boolean DREHE_NUR_MIT_ENCODER	= true;							//Benutze ausschliesslich Encoder fuer 90Grad Drehungen 
 	boolean SANFTES_BREMSEN			= true;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)
-	boolean BREMSEN_DEAKTIVIERBAR	= true;							//Erlaubt die vollstaendige deaktivierung des Bremssystems
 
 	//Programm Parameter
 	double	TASK_PERIOD 			= 0.15;						//Taktzeit des Haupttasks in s

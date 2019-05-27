@@ -331,7 +331,7 @@ public class BewegungsSystem implements IO
 			Fahren.drehe(turningSpeed*(drehRichtung? 1:-1) );
 			break;		
 		case STOP:
-			if((!Konstanten.BREMSEN_DEAKTIVIERBAR)||(!ungebremst)) Fahren.stop();
+			Fahren.stop();
 			break;
 		case RICHTE_AN_KORB_AUS:
 			Fahren.drehe(turningSpeed*(drehRichtung? 1:-1) );
@@ -394,15 +394,10 @@ public class BewegungsSystem implements IO
 		if (istHalteBedingungErfuellt())
 		{
 			inBewegung 		= false;
+			ungebremst		= false;
 			zustandBewegung = ZustandBewegung.STOP;
 			halteBedingung 	= HalteBedingung.BIS_NICHTS;
 		}
 		bewege();
-		
-		//erlaubt die vollsteandige deaktivierung des Bremssystems fuer einen Taktzyklus
-		if (istHalteBedingungErfuellt())
-		{
-			ungebremst		= false;
-		}
 	}
 }

@@ -140,7 +140,6 @@ public class Pos_Wechsel_V2 {
                 }
                 else
                 {
-                	Fahren.stop();
                     Systeme.bewegungsSystem.drehe90GradUZ();
                     zustand = Zustand.TraverseZuEbene2;
                 }
@@ -156,7 +155,6 @@ public class Pos_Wechsel_V2 {
                 }
                 else
                 {
-                	Fahren.stop();
                     Systeme.bewegungsSystem.drehe90GradUZ();
                     zustand = Zustand.TraverseZuEbene2;
                 }
@@ -175,7 +173,6 @@ public class Pos_Wechsel_V2 {
                 }
                 else
                 {
-                	Fahren.stop();
                     Systeme.bewegungsSystem.drehe90GradUZ();
                     zustand = Zustand.TraverseZuEbene2;
                 }
@@ -236,7 +233,6 @@ public class Pos_Wechsel_V2 {
 	            }
 	            else
 	            {
-	            	Fahren.stop();
 	                Systeme.bewegungsSystem.drehe90GradGUZ();
 	                zustand = Zustand.TraverseZuEbene3;
 	            }
@@ -252,7 +248,6 @@ public class Pos_Wechsel_V2 {
 	            }
 	            else
 	            {
-	            	Fahren.stop();
 	                Systeme.bewegungsSystem.drehe90GradGUZ();
 	                zustand = Zustand.TraverseZuEbene3;
 	            }
@@ -270,7 +265,6 @@ public class Pos_Wechsel_V2 {
 	            }
 	            else
 	            {
-	            	Fahren.stop();
 	                Systeme.bewegungsSystem.drehe90GradGUZ();
 	                zustand = Zustand.TraverseZuEbene3;
 	            }
