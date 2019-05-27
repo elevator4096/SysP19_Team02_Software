@@ -21,13 +21,14 @@ public interface ZustandWifi
     int DEMO_DREHEN_90_GUZ 		= 105;
     int DEMO_ZYLINDER_HOCH		= 106;
     int DEMO_ZYLINDER_RUNTER 	= 107;
-    int DEMO_WERFEN				= 108;
     int DEMO_HALT				= 110;
     
     int DEMO_POS1				= 111;
     int DEMO_POS2				= 112;
     int DEMO_NORM_DIST			= 113;
     
+    //Bereich 1000-1100 fuer Zylinderspannen(0-100%)
+    int DEMO_WERFEN				= 1101;
 
     
 }

@@ -103,6 +103,12 @@ public class Demo implements IO, Konstanten, Systeme {
 	            
 	            default:
 	            {
+	            	//Bereich 1000-1100 spannt zylinder auf demoZustand-1000
+	            	if (demoZustand >= 1000 && demoZustand <= 1100)
+	            	{
+	            		Systeme.wurfSystem.zylinderSpannen(demoZustand-1000);
+	            	}
+	            	
 	            	demoZustand = ZustandWifi.DEMO_WARTEN;
 	                break;
 	            }

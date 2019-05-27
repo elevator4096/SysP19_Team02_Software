@@ -10,6 +10,7 @@ public class Pos_Wechsel_V2 {
 	
     private enum Zustand
     {   
+    	Pos0toA,	//fahre von Startposition(erste Linie) zu Position A (an Wand)
         PosAtoB,	// Fahre von Position A zu Position B
         PosBtoC, 	// Fahre von Position B zu Position C
         PosCtoD, 	// Fahre von Position C zu Position D
@@ -20,7 +21,7 @@ public class Pos_Wechsel_V2 {
         NachGegner11, NachGegner12, NachGegner13,					// Zustand NACH dem passieren einer Gegnerposition (Gegner von Weg1)
         NachGegner24, NachGegner23, NachGegner22, NachGegner21,		// Zustand NACH dem passieren einer Gegnerposition (Gegner von Weg2)
         
-        AnPosB, AnPosC, AnPosD,										// Zielposition erreicht (ACHTUNG: Roboter kann noch in einer Drehbewegung sein -> kein Stillstand garantiert )
+        AnPosA,AnPosB, AnPosC, AnPosD,								// Zielposition erreicht (ACHTUNG: Roboter kann noch in einer Drehbewegung sein -> kein Stillstand garantiert )
         
         TraverseZuEbene2, TraverseZuEbene3,							// Ebene wird gewechselt
         
@@ -47,6 +48,14 @@ public class Pos_Wechsel_V2 {
     /**
      * Fahre autonom zu WurfPosition1
      */
+    public static void fahre_zu_PosA()
+    {
+        zustand = Zustand.Pos0toA;
+    }
+    
+    /**
+     * Fahre autonom zu WurfPosition1
+     */
     public static void fahre_zu_Pos1()
     {
     	ersteFahrt = true;
@@ -60,6 +69,15 @@ public class Pos_Wechsel_V2 {
     {
     	ersteFahrt = false;
     	zustand = Zustand.PosBtoC;
+    }
+    
+    /**
+     *  Wurde WurfPositionA erreicht?
+     * return WurfPositionA erreicht
+     */
+    public static boolean posA_erreicht()
+    {
+        return (zustand == Zustand.AnPosA)&&(!Systeme.bewegungsSystem.istInBewegung());
     }
     
     /**
@@ -107,6 +125,12 @@ public class Pos_Wechsel_V2 {
     	//IO.debug.print("Pos_Wechsel_V2:Zustand: " ); IO.debug.println(zustand.ordinal()); 
     	switch(zustand)
         {
+			case Pos0toA:	// Fahre von Position 0 zu Position A
+			{
+				Systeme.bewegungsSystem.folgeLinieBisWandRueckwaerts();
+				zustand = Zustand.AnPosA;
+				break;
+			}
     		case PosAtoB:	// Fahre von Position A zu Position B
     		{
     			zustand = Zustand.StartWeg1;
