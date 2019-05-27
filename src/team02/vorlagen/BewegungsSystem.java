@@ -118,7 +118,7 @@ public class BewegungsSystem implements IO
      */
 	public void folgeLinieBisDistanzUngebremst(boolean richtung, double distanz)
 	{	
-		ungebremst = true;
+		//ungebremst = true;
 		setBewegung(ZustandBewegung.FOLGE_LINIE, richtung, false, -1, HalteBedingung.BIS_DISTANZ_ERREICHT,distanz,0.0);
 	}	
 	
