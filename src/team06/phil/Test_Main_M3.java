@@ -41,7 +41,7 @@ public class Test_Main_M3 extends Task {
 
 	static ToFSensor_M3 tof;
 
-//	VL6180X tofvlx;
+	static VL6180X tofvlx;
 
 //	static ToFSensorDemoParv tof;
 
@@ -80,6 +80,7 @@ public class Test_Main_M3 extends Task {
 
 	public Test_Main_M3() {
 		
+		tofvlx = new VL6180X(numberOfSensors, resetPin);
 
 		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
 		fahrmotor2 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f / 1f, 1f, 0.008f);
@@ -99,15 +100,45 @@ public class Test_Main_M3 extends Task {
 		wlandio = new MPIOSM_DIO(8, true);
 
 		wlanSystem = WlanSystem.getInstance(wlandio);
-		
+
+//		System.out.println("action anfang");
 //		tof = new ToFSensor_M3();
+//		System.out.println("action ende");
+
+		
 
 	}
 
 	public void action() {
-		
+
 		if (nofActivations % 150 == 0) {
-		System.out.println("action");
+			System.out.println("action");
+			sensorDistances = tofvlx.read();
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
+			int val = sensorDistances[0];
+			System.out.print("RESULT__RANGE_VAL:\tSens0: ");
+			System.out.printHex((val & 0xFF));
+			System.out.print("\t");
+			if (val < 0)
+				val += 256;
+			System.out.println((val));
+			System.out.println("-------------------------------------------");
+			val = sensorDistances[1];
+			System.out.print("RESULT__RANGE_VAL:\tSens1: ");
+			System.out.printHex((val & 0xFF));
+			System.out.print("\t");
+			if (val < 0)
+				val += 256;
+			System.out.println((val));
+			System.out.println("-------------------------------------------");
+			val = sensorDistances[2];
+			System.out.print("RESULT__RANGE_VAL:\tSens2: ");
+			System.out.printHex((val & 0xFF));
+			System.out.print("\t");
+			if (val < 0)
+				val += 256;
+			System.out.println((val));
+			System.out.println("-------------------------------------------");
 		}
 
 ////		if (schalterlinks == true) {
@@ -139,7 +170,7 @@ public class Test_Main_M3 extends Task {
 //
 		if (nofActivations % 150 == 0) {
 			sieben.strichblinken();
-			dist.alleirausgeben();
+//			dist.alleirausgeben();
 //			tofupdate();
 //			tof.tofausgeben();		
 //			System.out.print("partnerstate ------>");
@@ -179,17 +210,17 @@ public class Test_Main_M3 extends Task {
 //			System.out.println(schalterrechts);
 //		}
 //
-		if (nofActivations % 150 == 0) {
-			System.out.print("Fahrmotor 1: Umdrehungen >");
-			System.out.print(fahrmotor1.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(fahrmotor1.gibGeschwindigkeit());
-
-			System.out.print("Fahrmotor 2: Umdrehungen >");
-			System.out.print(fahrmotor2.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(fahrmotor2.gibGeschwindigkeit());
-		}
+//		if (nofActivations % 150 == 0) {
+//			System.out.print("Fahrmotor 1: Umdrehungen >");
+//			System.out.print(fahrmotor1.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(fahrmotor1.gibGeschwindigkeit());
+//
+//			System.out.print("Fahrmotor 2: Umdrehungen >");
+//			System.out.print(fahrmotor2.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(fahrmotor2.gibGeschwindigkeit());
+//		}
 
 //		if (nofActivations % 150 == 0) {
 //			System.out.print("Wurfmotor 3: Umdrehungen >");
@@ -668,7 +699,7 @@ public class Test_Main_M3 extends Task {
 		// Hook SCI1.out on System.out
 		System.out = new PrintStream(sci1.out);
 		System.out.println("static start");
-		
+
 		System.out.println("test");
 
 	}
