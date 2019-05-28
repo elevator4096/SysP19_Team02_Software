@@ -13,9 +13,9 @@ public class ToFSensorDemoParv extends Task{
 	final int resetPin = 9;
 	
 	public ToFSensorDemoParv(){
-//		System.out.println("ToFSensorDemoParv");
+		System.out.println("ToFSensorDemoParv");
 		vs = new VL6180X(numberOfSensors, resetPin);
-//		System.out.println("End ToFSensorDemoParv");
+		System.out.println("End ToFSensorDemoParv");
 	}
 	
 	public void action(){
@@ -54,17 +54,17 @@ public class ToFSensorDemoParv extends Task{
 		
 	}
 	
-//	static{
-//		SCI sci1 = SCI.getInstance(SCI.pSCI1);
-//		sci1.start(19200, SCI.NO_PARITY, (short)8);
-//
-//		System.out = new PrintStream(sci1.out);
-//		
-//		System.out.println("static start");
-//		
-//		Task s = new ToFSensorDemoParv();
-//		s.period = 1000;
-//		
-//		Task.install(s);
-//	}
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short)8);
+
+		System.out = new PrintStream(sci1.out);
+		
+		System.out.println("static start");
+		
+		Task s = new ToFSensorDemoParv();
+		s.period = 1000;
+		
+		Task.install(s);
+	}
 }

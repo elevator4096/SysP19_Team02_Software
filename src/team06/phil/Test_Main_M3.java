@@ -41,7 +41,7 @@ public class Test_Main_M3 extends Task {
 
 	static ToFSensor_M3 tof;
 
-	VL6180X tofvlx;
+//	VL6180X tofvlx;
 
 //	static ToFSensorDemoParv tof;
 
@@ -79,18 +79,13 @@ public class Test_Main_M3 extends Task {
 	static boolean ir_2 = false; // schwarz = true
 
 	public Test_Main_M3() {
-
-//		tofvlx = new VL6180X(numberOfSensors, resetPin);	
-
-		tof = new ToFSensor_M3();
-
-//		tof = new ToFSensorDemoParv();
+		
 
 		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
 		fahrmotor2 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f / 1f, 1f, 0.008f);
 
-		wurfmotor3 = new MotorSMSC_M3(0.01f, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
-		wurfmotor4 = new MotorSMSC_M3(0.01f, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+//		wurfmotor3 = new MotorSMSC_M3(0.01f, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+//		wurfmotor4 = new MotorSMSC_M3(0.01f, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
 
 		servo = new PWM_Servo_M3(false, 4, Variablen.pwmPeriod, Variablen.highTime); // anpassen
 
@@ -104,38 +99,44 @@ public class Test_Main_M3 extends Task {
 		wlandio = new MPIOSM_DIO(8, true);
 
 		wlanSystem = WlanSystem.getInstance(wlandio);
+		
+//		tof = new ToFSensor_M3();
 
 	}
 
 	public void action() {
+		
+		if (nofActivations % 150 == 0) {
+		System.out.println("action");
+		}
 
-//		if (schalterlinks == true) {
-//			fahrnullspeed();
+////		if (schalterlinks == true) {
+////			fahrnullspeed();
+////
+////		}
 //
-//		}
-
-		endschalterupdate();
+////		endschalterupdate();
 		servo.update();
-		irupdate();
-
-		if (partnerstate == 5 && gestartet == false) {
-			zustand = START;
-			gestartet = true;
-		}
-
-		if (partnerstate == 5) {
-			fahrenlinks();
-		}
-
-		if (partnerstate == 6 && schritt2 == false) {
-			zustand = START;
-			schritt2 = true;
-		}
-
-		if (partnerstate == 6) {
-			fahrenrechts();
-		}
-
+////		irupdate();
+//
+//		if (partnerstate == 5 && gestartet == false) {
+//			zustand = START;
+//			gestartet = true;
+//		}
+//
+//		if (partnerstate == 5) {
+//			fahrenlinks();
+//		}
+//
+//		if (partnerstate == 6 && schritt2 == false) {
+//			zustand = START;
+//			schritt2 = true;
+//		}
+//
+//		if (partnerstate == 6) {
+//			fahrenrechts();
+//		}
+//
 		if (nofActivations % 150 == 0) {
 			sieben.strichblinken();
 			dist.alleirausgeben();
@@ -151,22 +152,22 @@ public class Test_Main_M3 extends Task {
 		}
 
 		if (nofActivations % 50 == 0) {
-			irsensor();
-			tof.update();
+//			irsensor();
+//			tof.update();
 			wlanSystem.update();
 			partnerstate = wlanSystem.getPartnerState();
 
 		}
 
-		wurfmotor3.motorstarten();
-		wurfmotor4.motorstarten();
+//		wurfmotor3.motorstarten();
+//		wurfmotor4.motorstarten();
 
 		fahrmotor1.motorstarten();
 		fahrmotor2.motorstarten();
 
 //		schiesenmitwlan();
 //		testfahren();
-		neunziggradtest();
+//		neunziggradtest();
 //		yachse();
 //		fahrenlinks();
 //		fahrenrechts();
@@ -178,17 +179,17 @@ public class Test_Main_M3 extends Task {
 //			System.out.println(schalterrechts);
 //		}
 //
-//		if (nofActivations % 150 == 0) {
-//			System.out.print("Fahrmotor 1: Umdrehungen >");
-//			System.out.print(fahrmotor1.gibUmdrehungen());
-//			System.out.print("        Geschwindigkeit in 1/min  >");
-//			System.out.println(fahrmotor1.gibGeschwindigkeit());
-//
-//			System.out.print("Fahrmotor 2: Umdrehungen >");
-//			System.out.print(fahrmotor2.gibUmdrehungen());
-//			System.out.print("        Geschwindigkeit in 1/min  >");
-//			System.out.println(fahrmotor2.gibGeschwindigkeit());
-//		}
+		if (nofActivations % 150 == 0) {
+			System.out.print("Fahrmotor 1: Umdrehungen >");
+			System.out.print(fahrmotor1.gibUmdrehungen());
+			System.out.print("        Geschwindigkeit in 1/min  >");
+			System.out.println(fahrmotor1.gibGeschwindigkeit());
+
+			System.out.print("Fahrmotor 2: Umdrehungen >");
+			System.out.print(fahrmotor2.gibUmdrehungen());
+			System.out.print("        Geschwindigkeit in 1/min  >");
+			System.out.println(fahrmotor2.gibGeschwindigkeit());
+		}
 
 //		if (nofActivations % 150 == 0) {
 //			System.out.print("Wurfmotor 3: Umdrehungen >");
@@ -655,6 +656,7 @@ public class Test_Main_M3 extends Task {
 
 	static {
 
+		System.out.println("test");
 		Task task;
 
 		task = new Test_Main_M3();
@@ -666,6 +668,8 @@ public class Test_Main_M3 extends Task {
 		// Hook SCI1.out on System.out
 		System.out = new PrintStream(sci1.out);
 		System.out.println("static start");
+		
+		System.out.println("test");
 
 	}
 
