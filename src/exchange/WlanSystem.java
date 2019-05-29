@@ -157,10 +157,10 @@ public class WlanSystem implements IO
      */
     private static void sendHeartbeat()
     {
-        if(lastTasktime +499 < Task.time())
+        /*if(lastTasktime +499 < Task.time())
 	    {
     	    wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
-	    }
+	    }*/
     }
 
     private static void compensateLoss()

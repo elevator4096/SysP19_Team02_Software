@@ -39,6 +39,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     public Test_Task()
     {
     	debug.println("Test Task laeuft!");
+    	
 
     	//Test_BewegungsSystem.fahreVorwaertsMeter(1);
     	//Test_BewegungsSystem.fahreVorwaertsMeter(1);
@@ -53,7 +54,7 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
 
     public void action()
     {
-    	counter++;
+    	//counter++;
     	IO.debug.update();
     	
     	Systeme.gegnerSystem.update();
@@ -62,9 +63,9 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	Systeme.wlanSystem.update();
     	Pos_Wechsel_V2.update();
     	
-    	
+    	debug.println(IO.OUT_Magnet_Ausloeser.get());
     	Demo.run();
-    	debug.println(IO.AN_Sharp3.getDistanz());debug.print(" "); debug.println(Systeme.gegnerSystem.warGegnerRechts());
+    	//debug.println(IO.AN_Sharp3.getDistanz());debug.print(" "); debug.println(Systeme.gegnerSystem.warGegnerRechts());
     	
     	/*
     	debug.print("Motor Distanzen: ");debug.print(IO.MOTOR_links.getDistanz());debug.print(" ");debug.println(IO.MOTOR_rechts.getDistanz());

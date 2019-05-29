@@ -7,8 +7,8 @@ package team02;
 public interface Konstanten
 {
 	//Debug Konstanten
-	boolean DEBUG 					= true;							//True, Debug aktiviert
-	boolean TEST					= true;							//True, Testfunktionen aktiviert
+	boolean DEBUG 					= false;							//True, Debug aktiviert
+	boolean TEST					= false;							//True, Testfunktionen aktiviert
 	
 	boolean DREHE_NUR_MIT_ENCODER	= true;							//Benutze ausschliesslich Encoder fuer 90Grad Drehungen 
 	boolean SANFTES_BREMSEN			= true;							//Verlangsame den Roboter kurz vor erreichen der Zielposition(Hoehere Praezision)

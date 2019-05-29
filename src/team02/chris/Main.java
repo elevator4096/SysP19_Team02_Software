@@ -147,7 +147,8 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.Wandauf();
+            Systeme.wurfSystem.Wandauf();  
+            debug.println("Wand auf");
             entry_flag = true;
         }
 
