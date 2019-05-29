@@ -29,6 +29,15 @@ public interface ZustandWifi
     
     //Bereich 1000-1100 fuer Zylinderspannen(0-100%)
     int DEMO_WERFEN				= 1101;
-
     
+    int VORWAERTS				= 4200;
+    int RUECKWAERTS				= 4201;
+    int DREHE_UZ				= 4202;
+    int DREHE_GUZ				= 4203;
+    
+    int KURVEV_UZ				= 4204;
+    int KURVEV_GUZ				= 4205;
+    
+    int KURVER_UZ				= 4206;
+    int KURVER_GUZ				= 4207;
 }

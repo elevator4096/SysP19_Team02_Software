@@ -21,7 +21,7 @@ public class WlanSystem implements IO
     private static int ownState = ZustandWifi.SETUP;
     private static int counter =0;
     private static WlanSystem wlanSystem;
-    private static int maxLoss = 10000;
+    private static int maxLoss = 1;
 
     /**
      * Konstruktor für die Wlan Verbindung
@@ -130,6 +130,7 @@ public class WlanSystem implements IO
             	if(state >= 0)
             	{
             		//partnerState =wifi.cmd.getInt();
+            		debug.println(state);
                     partnerState = state;
             		cPartnerState = partnerState;
             		counter = 0;
