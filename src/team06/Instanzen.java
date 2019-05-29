@@ -11,6 +11,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import ch.ntb.sysp.lib.SpeedController4DCMotor;
+import exchange.WlanSystem;
 import team06.system.*;
 
 public class Instanzen {
@@ -33,6 +34,7 @@ public class Instanzen {
 	public static WurfSystem wurfSystem;
 	public static FahrSystem fahrSystem;
 	public static OrientierSystem orientierSystem;
+	public static  WlanSystem wlanSystem;
 
 	public static TaskMotor taskMotor;
 	
@@ -67,6 +69,7 @@ public class Instanzen {
 		siebensegment = new Siebenseg();
 
 //		// Systeme erzeugen
+		wlanSystem = WlanSystem.getInstance(new MPIOSM_DIO(8, true));
 		// wurfSystem = new WurfSystem();
 		// fahrSystem = new FahrSystem();
 		// orientierSystem = new OrientierSystem();
