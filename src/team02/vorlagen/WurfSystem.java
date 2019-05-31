@@ -75,9 +75,10 @@ public class WurfSystem implements IO
 		{
 			magnetMagnetisieren();
 		}
-		if(Task.time() > letzteEntmagnetisierZeit +Konstanten.WURF_ZEIT && IO.OUT_Magnet_Wand.get())
+		if(Task.time() > (letzteEntmagnetisierZeit +Konstanten.WURF_ZEIT) && IO.OUT_Magnet_Wand.get())
 		{
 			IO.OUT_Magnet_Wand.set(false);
+			IO.OUT_LED1.set(false);
 		}
 	}
 	
@@ -112,6 +113,7 @@ public class WurfSystem implements IO
 	public void Wandauf()
 	{
 		IO.OUT_Magnet_Wand.set(true);
+		IO.OUT_LED1.set(true);
 		letzteEntmagnetisierZeit = Task.time();
 	}
 }

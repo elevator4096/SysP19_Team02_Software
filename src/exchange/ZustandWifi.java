@@ -30,6 +30,8 @@ public interface ZustandWifi
     //Bereich 1000-1100 fuer Zylinderspannen(0-100%)
     int DEMO_WERFEN				= 1101;
     
+    
+    //Fuer Fernsteuerung
     int VORWAERTS				= 4200;
     int RUECKWAERTS				= 4201;
     int DREHE_UZ				= 4202;
@@ -40,4 +42,11 @@ public interface ZustandWifi
     
     int KURVER_UZ				= 4206;
     int KURVER_GUZ				= 4207;
+    
+    int SPANNE90				= 4208;
+    int SPANNE40				= 4209;
+    int SPANNE08				= 4210;
+    int WERFE					= 4211;
+    
+    int LOESE_WAND				= 4212;
 }

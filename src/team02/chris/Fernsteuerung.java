@@ -16,7 +16,7 @@ public class Fernsteuerung extends Task implements IO, Systeme
 	static
     {
             Task task = new Fernsteuerung();
-            task.period = 200;
+            task.period = 50;
             Task.install(task);
     }
 	
@@ -75,8 +75,31 @@ public class Fernsteuerung extends Task implements IO, Systeme
 	            	IO.MOTOR_rechts.updateSpeed(-speed/2);
 	            	break;
 	            }
-	            
-	            
+	            case ZustandWifi.SPANNE90:
+	            {
+	            	Systeme.wurfSystem.zylinderSpannen(90);
+	            	break;
+	            }
+	            case ZustandWifi.SPANNE40:
+	            {
+	            	Systeme.wurfSystem.zylinderSpannen(40);
+	            	break;
+	            }
+	            case ZustandWifi.SPANNE08:
+	            {
+	            	Systeme.wurfSystem.zylinderSpannen(8);
+	            	break;
+	            }
+	            case ZustandWifi.WERFE:
+	            {
+	            	Systeme.wurfSystem.ballWerfen();
+	            	break;
+	            }
+	            case ZustandWifi.LOESE_WAND:
+	            {
+	            	Systeme.wurfSystem.Wandauf();
+	            	break;
+	            }
 	            default:
 	            {
 	            	IO.MOTOR_links.updateSpeed(0.00);
@@ -85,6 +108,7 @@ public class Fernsteuerung extends Task implements IO, Systeme
 	            }
 	        }
 		 	wlanSystem.update();
+		 	Systeme.wurfSystem.update();
 		 	
 		 	IO.MOTOR_links.update();
 		 	IO.MOTOR_rechts.update();

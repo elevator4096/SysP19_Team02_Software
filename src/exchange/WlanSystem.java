@@ -130,7 +130,6 @@ public class WlanSystem implements IO
             	if(state >= 0)
             	{
             		//partnerState =wifi.cmd.getInt();
-            		debug.println(state);
                     partnerState = state;
             		cPartnerState = partnerState;
             		counter = 0;
