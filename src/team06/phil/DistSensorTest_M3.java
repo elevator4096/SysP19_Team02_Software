@@ -5,7 +5,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
-public class DistSensorTest_M3 extends Task {
+public class DistSensorTest_M3{
 // I/Os to use:
 
 	private final int ADR3PIN = -1; // not used

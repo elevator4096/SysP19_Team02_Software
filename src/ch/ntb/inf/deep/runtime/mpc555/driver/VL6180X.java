@@ -63,7 +63,7 @@ public class VL6180X extends Task implements IntbMpc555HB, VL6180XAddr {
 			}			
 		} while(!initDone);
 		testPin.set(false);
-		period = 2;
+		period = 20;
 		Task.install(this);
 	}
 	
