@@ -108,10 +108,6 @@ public class Test_Main_M3 extends Task {
 
 		wlanSystem = WlanSystem.getInstance(wlandio);
 
-//		System.out.println("action anfang");
-//		tof = new ToFSensor_M3();
-//		System.out.println("action ende");
-
 	}
 
 	public void action() {
