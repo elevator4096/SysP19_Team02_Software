@@ -1,5 +1,7 @@
 package team06.phil;
 
+import static team06.Zustand.*;
+
 import java.io.PrintStream;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
@@ -8,14 +10,13 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.VL6180X;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import exchange.WlanSystem;
 import exchange.ZustandWifi;
-import team06.aurelia.Main;
-import team06.aurelia.Zustand;
 import team06.testprogramme.ToFSensorDemoParv;
 import team06.Endschalter;
+import team06.Main;
 import team06.MotorSMSC;
 import team06.PWM_Servo;
 import team06.Variablen;
-import static team06.aurelia.Zustand.*;
+import team06.Zustand;
 
 public class Test_Main_M3 extends Task {
 
@@ -42,8 +43,6 @@ public class Test_Main_M3 extends Task {
 //	static ToFSensor_M3 tof;
 
 	VL6180X tofvlx;
-
-//	static ToFSensorDemoParv tof;
 
 	int counter = 0;
 	int zähler = 0;
@@ -77,6 +76,7 @@ public class Test_Main_M3 extends Task {
 
 	static boolean fahrenrechts = false;
 	static boolean fahrenlinks = true;
+	static boolean fangundschiess = false;
 
 	static int[] sensorDistances;
 	final int numberOfSensors = 3;
@@ -112,47 +112,45 @@ public class Test_Main_M3 extends Task {
 
 	public void action() {
 
-		if (nofActivations % 150 == 0) {
-			sensorDistances = tofvlx.read();
-			System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
-			int val = sensorDistances[0];
-			System.out.print("RESULT__RANGE_VAL:\tSens0: ");
-			System.out.printHex((val & 0xFF));
-			System.out.print("\t");
-			if (val < 0)
-				val += 256;
-			System.out.println((val));
-			System.out.println("-------------------------------------------");
-			val = sensorDistances[1];
-			System.out.print("RESULT__RANGE_VAL:\tSens1: ");
-			System.out.printHex((val & 0xFF));
-			System.out.print("\t");
-			if (val < 0)
-				val += 256;
-			System.out.println((val));
-			System.out.println("-------------------------------------------");
-			val = sensorDistances[2];
-			System.out.print("RESULT__RANGE_VAL:\tSens2: ");
-			System.out.printHex((val & 0xFF));
-			System.out.print("\t");
-			if (val < 0)
-				val += 256;
-			System.out.println((val));
-			System.out.println("-------------------------------------------");
-		}
+//		if (nofActivations % 150 == 0) {
+//			sensorDistances = tofvlx.read();
+//			System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
+//			int val = sensorDistances[0];
+//			System.out.print("RESULT__RANGE_VAL:\tSens0: ");
+//			System.out.printHex((val & 0xFF));
+//			System.out.print("\t");
+//			if (val < 0)
+//				val += 256;
+//			System.out.println((val));
+//			System.out.println("-------------------------------------------");
+//			val = sensorDistances[1];
+//			System.out.print("RESULT__RANGE_VAL:\tSens1: ");
+//			System.out.printHex((val & 0xFF));
+//			System.out.print("\t");
+//			if (val < 0)
+//				val += 256;
+//			System.out.println((val));
+//			System.out.println("-------------------------------------------");
+//			val = sensorDistances[2];
+//			System.out.print("RESULT__RANGE_VAL:\tSens2: ");
+//			System.out.printHex((val & 0xFF));
+//			System.out.print("\t");
+//			if (val < 0)
+//				val += 256;
+//			System.out.println((val));
+//			System.out.println("-------------------------------------------");
+//		}
 
 ////		if (schalterlinks == true) {
 ////			fahrnullspeed();
 ////
 ////		}
 //
-		
+
 //		if (partnerstate == 5 && gestartet == false) {
 //		zustand = START;
 //		gestartet = true;
-//	}
-		
-		
+//	}	
 		endschalterupdate();
 		servo.update();
 ////		irupdate();
@@ -178,8 +176,8 @@ public class Test_Main_M3 extends Task {
 		if (nofActivations % 150 == 0) {
 			sieben.strichblinken();
 			tofupdate();
-			System.out.println(fahrenlinks);
-			System.out.println(fahrenrechts);
+//			System.out.println(fahrenlinks);
+//			System.out.println(fahrenrechts);
 //			dist.alleirausgeben();
 //			tof.tofausgeben();		
 //			System.out.print("partnerstate ------>");
@@ -221,12 +219,16 @@ public class Test_Main_M3 extends Task {
 			fahrenrechts();
 		}
 
-		if (nofActivations % 150 == 0) {
-			System.out.print("Schalter links--->>>>>");
-			System.out.print(schalterlinks);
-			System.out.print("   Schalter rechts--->>>>>");
-			System.out.println(schalterrechts);
+		if (fangundschiess == true) {
+			fangundschiess();
 		}
+
+//		if (nofActivations % 150 == 0) {
+//			System.out.print("Schalter links--->>>>>");
+//			System.out.print(schalterlinks);
+//			System.out.print("   Schalter rechts--->>>>>");
+//			System.out.println(schalterrechts);
+//		}
 //
 //		if (nofActivations % 150 == 0) {
 //			System.out.print("Fahrmotor 1: Umdrehungen >");
@@ -309,7 +311,7 @@ public class Test_Main_M3 extends Task {
 		}
 
 		case VORRUECKEN: {
-			if (fahrmotor2.gibUmdrehungen() >= (umdrehungen + 9.4)) {
+			if (fahrmotor2.gibUmdrehungen() >= (umdrehungen + 11.1)) {
 				fahrnullspeed();
 				zustand = ENDE;
 				break;
@@ -410,6 +412,7 @@ public class Test_Main_M3 extends Task {
 		case FANGPOSITION: {
 			if (fahrmotor2.gibUmdrehungen() <= (umdrehungen - 4.82)) {
 				fahrnullspeed();
+				wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
 				zustand = HUNDERTACHZIGLINKS;
 			}
 			break;
@@ -427,6 +430,12 @@ public class Test_Main_M3 extends Task {
 			if (fahrmotor1.gibUmdrehungen() >= (umdrehungen + 9.64)) {
 				// ++ if wlan signal methode schiessen
 				fahrnullspeed();
+			}
+			if (partnerstate == ZustandWifi.FANG_BEREIT) {
+				servooffen();
+				fahrenlinks = true;
+				fahrenrechts = false;
+				fangundschiess = false;
 				zustand = STARTZUSTAND;
 			}
 			break;
@@ -541,9 +550,10 @@ public class Test_Main_M3 extends Task {
 
 			if (schalterlinks == true && schalterrechts == true) {
 				anzahlgegner = 2;
-				zustand = ENDE;
-				fahrenlinks = true;
+				fahrenlinks = false;
 				fahrenrechts = false;
+				fangundschiess = true;
+				zustand = START;
 			}
 			break;
 
@@ -665,7 +675,7 @@ public class Test_Main_M3 extends Task {
 			if (fahrmotor2.gibUmdrehungen() <= umdrehungen - 4.82) {
 				fahrretour();
 				umdrehungen = fahrmotor2.gibUmdrehungen();
-				zustand = RUECKWAERTS_AN_WAND;
+				zustand = RUECKWAERTS_AN_WAND_2;
 			}
 			break;
 		}
@@ -699,7 +709,24 @@ public class Test_Main_M3 extends Task {
 				zustand = START;
 			}
 			break;
+		}
 
+		case RUECKWAERTS_AN_WAND_2: {
+			if (schalterlinks == true) {
+				fahrmotor1.setdrehzahl(0);
+			}
+			if (schalterrechts == true) {
+				fahrmotor2.setdrehzahl(0);
+			}
+
+			if (schalterlinks == true && schalterrechts == true) {
+				anzahlgegner = 2;
+				fahrenrechts = false;
+				fahrenlinks = false;
+				fangundschiess = true;
+				zustand = START;
+			}
+			break;
 		}
 
 		}
