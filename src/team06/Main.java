@@ -8,6 +8,8 @@ import static team06.Zustand.*;
 
 import java.io.PrintStream;
 
+import com.sun.org.apache.xpath.internal.operations.Variable;
+
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import exchange.ZustandWifi;
@@ -21,6 +23,8 @@ public class Main extends Task {
 	private Zustand vorruecken = START_1;
 	private Zustand fangposition = START_1;
 	private Zustand wurf_kurz = START_1;
+	private Zustand fangstart = START_1;
+	private Zustand bereit = START_1;
 
 	private float umdrehungen = 0; // Temporär für Encoder
 	private int countertemporär = 0;
@@ -34,7 +38,7 @@ public class Main extends Task {
 	 */
 	public Main() {
 		instanz = new Instanzen();
-		zustand = WURF_KURZ;
+//		zustand = BEREIT;
 	}
 
 	/**
@@ -48,6 +52,7 @@ public class Main extends Task {
 
 		update();
 		spielablauf();
+
 		if (nofActivations % 10 == 0) {
 			testsystemout();
 		}
@@ -63,9 +68,13 @@ public class Main extends Task {
 		instanz.siebensegment.strichblinken();
 //		Instanzen.iRSensor.alleirausgeben();
 //		System.out.println(Variablen.schalterrechts);
+		System.out.print("gefangen  ---->>");
+		System.out.println(Variablen.gefangen);
+		System.out.print("geworfen  ---->>");
+		System.out.println(Variablen.geworfen);
 
-		System.out.println(instanz.sMSC_FahrMotorlinks.gibUmdrehungen());
-		System.out.println(instanz.sMSC_FahrMotorrechts.gibUmdrehungen());
+//		System.out.println(instanz.sMSC_FahrMotorlinks.gibUmdrehungen());
+//		System.out.println(instanz.sMSC_FahrMotorrechts.gibUmdrehungen());
 	}
 
 	/**
@@ -77,7 +86,7 @@ public class Main extends Task {
 
 		case STARTZUSTAND: // Startzustand herstellen
 		{
-			// startzustand();
+			startzustand();
 			break;
 		}
 
@@ -86,21 +95,10 @@ public class Main extends Task {
 			bereit();
 			break;
 		}
+
 		case WURF_KURZ: // kurzen Pass an Partner vorbereiten
 		{
 			wurf_kurz();
-			break;
-		}
-
-		case WURF_LANG: // langen Pass an Partner vorbereiten
-		{
-			wurf_lang();
-			break;
-		}
-
-		case POSITION_WECHSELN: // Positionswechsel einleiten
-		{
-			position_wechseln();
 			break;
 		}
 
@@ -109,12 +107,6 @@ public class Main extends Task {
 			vorruecken();
 			break;
 		}
-
-//		case RUECKWAERTS_AN_WAND_1: // rueckwaerts an Wand fahren, um neu auszurichten und Fangen vorzubereiten
-//		{
-//			rueckwaerts_an_wand();
-//			break;
-//		}
 
 		case FANGPOSITION: // Bereit zum Fangen
 		{
@@ -133,6 +125,19 @@ public class Main extends Task {
 			fehler();
 			break;
 		}
+
+//		case POSITION_WECHSELN: // Positionswechsel einleiten
+//		{
+//			position_wechseln();
+//			break;
+//		}
+
+//		case RUECKWAERTS_AN_WAND_1: // rueckwaerts an Wand fahren, um neu auszurichten und Fangen vorzubereiten
+//		{
+//			rueckwaerts_an_wand();
+//			break;
+//		}
+
 		}
 	}
 
@@ -140,8 +145,25 @@ public class Main extends Task {
 	 * Methode Startzustand
 	 */
 	public void startzustand() {
-		// Methode formulieren
-		zustand = BEREIT;
+		if (instanz.wlanSystem.getPartnerState() == ZustandWifi.START) {
+			zustand = BEREIT;
+		}
+	}
+
+	public static void geworfen_1() {
+		Variablen.gefangen = 1;
+	}
+
+	public static void gefangen_1() {
+		Variablen.gefangen = 1;
+	}
+
+	public static void hatballtrue() {
+		Variablen.hatball = true;
+	}
+
+	public static void hatballfalse() {
+		Variablen.hatball = false;
 	}
 
 	/**
@@ -149,32 +171,95 @@ public class Main extends Task {
 	 */
 	public void bereit() {
 
-		// Start: hat Ball nicht -> fangbereit
-		if (Variablen.hatball == false && Variablen.gefangen == 0 && Variablen.geworfen == 0) {
-			instanz.wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+		switch (bereit) {
+
+		case START_1: {
+			// Start: hat Ball nicht, geworfen = 0, gefangen = 0 -> fangbereit
+			if (Variablen.hatball == false && Variablen.geworfen == 0 && Variablen.gefangen == 0) {
+				instanz.wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+				bereit = FANGSTART;
+			}
+
+			// Start: hat Ball, gefangen = 0 und geworfen = 0 -> schiessen
+			if (Variablen.hatball == true && Variablen.geworfen == 0 && Variablen.gefangen == 0) {
+				instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+				zustand = WURF_KURZ;
+			}
+
+			// Hat Ball gefangen (1) und geworfen = 0, geworfen = 0
+			if (Variablen.hatball == true && Variablen.geworfen == 0 && Variablen.gefangen == 1) {
+				// instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
+				zustand = WURF_KURZ;
+			}
+
+			// Hat Ball nicht, gefangen (0), geworfen (1)
+			if (Variablen.hatball == false && Variablen.geworfen == 1 && Variablen.gefangen == 0) {
+				instanz.wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+				bereit = AUFBALLWARTEN;
+			}
+
+			// geworfen = 1 und gefangen = 1
+			if (Variablen.gefangen == 1 && Variablen.geworfen == 1) {
+				bereit = STARTZUSTAND;
+			}
+			break;
 		}
 
-		// Start: hat Ball
-		if (Variablen.hatball == true && Variablen.gefangen == 0 && Variablen.geworfen == 0) {
-			zustand = WURF_KURZ;
+		case FANGSTART: {
+			if (Variablen.hatball == true) {
+				Variablen.gefangen++;
+				instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+				bereit = START_1;
+			}
+			break;
 		}
 
-//		// 1. Pass NOCH NICHT ausgefuehrt UND hat Ball -> Pass lang ausfuehren
-//		else if ((gefangen == 0 && (passLang + passKurz) == 0) && Variablen.hatball) {
-//			zustand = WURF_LANG;
-//		}
-//
-//		// 1. Pass ausgefuehrt UND hat Ball -> Pass kurz ausfuehren
-//		else if ((gefangen != 0 || (passLang + passKurz) != 0) && Variablen.hatball) {
-//			zustand = WURF_KURZ;
-//		}
+		case AUFBALLWARTEN: {
+			if (Variablen.hatball == true) {
+				Variablen.gefangen++;
+				bereit = STARTZUSTAND;
+			}
+			break;
+		}
+
+		case STARTZUSTAND: {
+			instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+			instanz.fahrSystem.fahrrechtskurve();
+			umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
+			bereit = NEUNZIGGRADRECHTS;
+			break;
+		}
+
+		case NEUNZIGGRADRECHTS: {
+			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() <= (umdrehungen - 4.82)) {
+				instanz.fahrSystem.fahrretour();
+				bereit = RETOUR;
+			}
+			break;
+		}
+
+		case RETOUR: {
+			if (Variablen.schalterlinks == true) {
+				instanz.sMSC_FahrMotorlinks.setdrehzahl(0);
+			}
+			if (Variablen.schalterrechts == true) {
+				instanz.sMSC_FahrMotorrechts.setdrehzahl(0);
+			}
+
+			if (Variablen.schalterlinks == true && Variablen.schalterrechts == true) {
+				zustand = VORRUECKEN;
+			}
+			break;
+		}
+
+		}
+
 	}
 
 	/**
 	 * Methode, für kurzen Pass an Partner
 	 */
 	public void wurf_kurz() {
-
 		switch (wurf_kurz) {
 
 		case START_1: {
@@ -209,12 +294,14 @@ public class Main extends Task {
 			} else if (countertemporär == 80) {
 				// wurfmotoren ausschalten
 				instanz.servoMotor.servogeschlossen();
-				zustand = BEREIT;	
+				Variablen.geworfen++;
+				zustand = BEREIT;
 			}
-			break;	
+			break;
 		}
 
 		}
+
 		// Methode formulieren
 	}
 
@@ -393,12 +480,21 @@ public class Main extends Task {
 				if (Variablen.gegnerrechts == false) {
 					instanz.fahrSystem.fahrrechtskurve();
 					umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
-					vorruecken = YFAHREN_2;
+					vorruecken = YFAHREN_4;
 				} else if (Variablen.gegnerrechts == true) {
 					instanz.fahrSystem.fahrviertelspeed();
 					umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
 					vorruecken = GEGNER_2;
 				}
+			}
+			break;
+		}
+
+		case YFAHREN_4: {
+			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() <= (umdrehungen - 4.82)) {
+				instanz.fahrSystem.fahrviertelspeed();
+				umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
+				vorruecken = NEUNZIGGRADRECHTS;
 			}
 			break;
 		}

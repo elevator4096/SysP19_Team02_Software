@@ -11,6 +11,7 @@ public interface ZustandWifi
     int HEARTBEAT 				=  -2;
     int TEST 					=  42;
     int TEST_PASSED 			=  43;
+    int START 					= 100;
     
     //Demo Wifi-Zustaende
     int DEMO_WARTEN		 		= 100;

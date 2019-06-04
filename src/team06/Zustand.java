@@ -21,6 +21,8 @@ public enum Zustand {
     NEUNZIGGRADRECHTS_2,
     SCHIESSENVORBEREITEN,
     SCHIESSEN,
+    START,
+    AUFBALLWARTEN,
 	
 	
 	
@@ -35,6 +37,7 @@ public enum Zustand {
     VORRUECKEN,
   
     FANGPOSITION,
+    FANGSTART,
     SCHIESSPOSITION,
     STARTPOSITION,
     ENDE,
@@ -46,6 +49,7 @@ public enum Zustand {
     
     YFAHREN_2,
     YFAHREN_3,
+    YFAHREN_4,
     GEGNERVORNE,
     WAND,
 
