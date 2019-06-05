@@ -63,14 +63,14 @@ public class ToFSensor_M3 extends Task{
 		if (val < 0)
 			val += 256;
 		System.out.println((val));
-//		System.out.println("-------------------------------------------");
-//		byte val = tofSensor.getSingleRangeValue(2);
-//		System.out.print("RESULT__RANGE_VAL:\tSens1: ");
-//		System.out.printHex((val & 0xFF));
-//		System.out.print("\t");
-//		if (val < 0)
-//			val += 256;
-//		System.out.println((val));
+		System.out.println("-------------------------------------------");
+		val = tofSensor.getSingleRangeValue(2);
+		System.out.print("RESULT__RANGE_VAL:\tSens1: ");
+		System.out.printHex((val & 0xFF));
+		System.out.print("\t");
+		if (val < 0)
+			val += 256;
+		System.out.println((val));
 	}
 	
 	public void update() {

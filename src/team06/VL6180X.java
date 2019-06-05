@@ -1,4 +1,4 @@
-package ch.ntb.inf.deep.runtime.mpc555.driver;
+package team06;
 
 import ch.ntb.inf.deep.runtime.mpc555.IntbMpc555HB;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;

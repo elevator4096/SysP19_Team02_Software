@@ -50,14 +50,16 @@ public class MotorSMSC {
 	public int gibGeschwindigkeit()
 	{
 		return (int)(motor.getActualSpeed()/(2*Math.PI)*60);
+		
 	}
 	
 	/**
 	 * Aktuelle Umdrehungen zurückgeben
 	 */
-	public int gibUmdrehungen() {
+	public float gibUmdrehungen() {
 		
-		return (int) (motor.getActualPosition() / (2 * Math.PI));
+//		return (int) (motor.getActualPosition() / (2 * Math.PI));
+		return  motor.getActualPosition();
 
 	}
 

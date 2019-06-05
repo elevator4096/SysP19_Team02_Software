@@ -89,5 +89,13 @@ public class Test_Wurfsystem implements IO, Systeme
 		Systeme.wurfSystem.magnetMagnetisieren();
 	}
 	
+	public static void wandEin() {
+		OUT_Magnet_Wand.set(true);
+	}
+	
+	public static void wandAus() {
+		OUT_Magnet_Wand.set(false);
+
+	}
 
 }

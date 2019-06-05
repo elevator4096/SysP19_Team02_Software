@@ -21,7 +21,7 @@ public class WlanSystem implements IO
     private static int ownState = ZustandWifi.SETUP;
     private static int counter =0;
     private static WlanSystem wlanSystem;
-    private static int maxLoss = 10000;
+    private static int maxLoss = 1;
 
     /**
      * Konstruktor für die Wlan Verbindung
@@ -157,10 +157,10 @@ public class WlanSystem implements IO
      */
     private static void sendHeartbeat()
     {
-        if(lastTasktime +499 < Task.time())
+        /*if(lastTasktime +499 < Task.time())
 	    {
     	    wifi.cmd.writeCmd(ZustandWifi.HEARTBEAT);
-	    }
+	    }*/
     }
 
     private static void compensateLoss()

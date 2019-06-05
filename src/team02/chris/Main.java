@@ -10,12 +10,13 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import exchange.WlanSystem;
 import exchange.ZustandWifi;
 import team02.*;
+import team02.vorlagen.Pos_Wechsel_V2;
 
 import static team02.Zustand.*;
 
 public class Main extends Task implements IO, Systeme
 {
-
+	//TODO: Zylinder vollstaendig einfahren um zu fangen
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
     private boolean entry_flag;
@@ -146,12 +147,13 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.Wandauf();
+            Systeme.wurfSystem.Wandauf();  
+            debug.println("Wand auf");
             entry_flag = true;
         }
 
         //Exit
-        if(IO.IN_Laser_2.get())                   //Weiterschaltbedingung
+        if(IO.IN_Laser_1.get())                   //Weiterschaltbedingung
         {
             entry_flag =false;
             zustand = Pass2;
@@ -178,7 +180,7 @@ public class Main extends Task implements IO, Systeme
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
         }
         //Exit
-        if(IO.IN_Laser_2.get())
+        if(IO.IN_Laser_1.get())
         {
             //Exit Aktion
             zustand = Pass2;
@@ -217,12 +219,12 @@ public class Main extends Task implements IO, Systeme
         if(!entry_flag)
         {
             WlanSystem.setOwnState(ZustandWifi.FAHREN);
-            Pos_Wechsel.fahre_zu_Pos1();
+            Pos_Wechsel_V2.fahre_zu_Pos1();
             entry_flag = true;
         }
 
         //Exit
-        if(Pos_Wechsel.pos1_erreicht())
+        if(Pos_Wechsel_V2.pos1_erreicht())
         {
             zustand = Pos1;
             entry_flag = false;
@@ -284,7 +286,7 @@ public class Main extends Task implements IO, Systeme
 
 
         //Exit
-        if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_2.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
+        if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
         {
             Systeme.wurfSystem.ballWerfen();
             zustand = Bewegen2;
@@ -300,13 +302,13 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Pos_Wechsel.fahre_zu_Pos2();
+            Pos_Wechsel_V2.fahre_zu_Pos2();
             entry_flag = true;
         }
 
 
         //Exit
-        if(Pos_Wechsel.pos2_erreicht())
+        if(Pos_Wechsel_V2.pos2_erreicht())
         {
             zustand = Pos2;
             entry_flag = false;
@@ -361,7 +363,7 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.bewegungsSystem.dreheZuKorb();
+            //Systeme.bewegungsSystem.dreheZuKorb();
             entry_flag = true;
         }
 
@@ -383,7 +385,7 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            debug.print("Well done Robert!");
+            debug.print("Well done Roberto!");
             entry_flag = true;
         }
 
@@ -413,6 +415,6 @@ public class Main extends Task implements IO, Systeme
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
     	WlanSystem.update();
-    	Pos_Wechsel.update();
+    	Pos_Wechsel_V2.update();
     }
 }

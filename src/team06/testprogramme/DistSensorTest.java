@@ -9,7 +9,7 @@ public class DistSensorTest extends Task {
 // I/Os to use:
 
 	private final int ADR3PIN = -1; // not used
-	private final int ADR2PIN = 12; // not used
+	private final int ADR2PIN = 12;//12; // not used 12
 	private final int ADR1PIN = 11; // MPIOB7
 	private final int ADR0PIN = 15; // MPIOB6
 	private final int TRGPIN = 14; // MPIOB5

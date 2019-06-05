@@ -34,14 +34,16 @@ public class WurfSystem {
 	 * Wurfmotoren passgeschwindigkeit
 	 */
 	public void setspeedpassgegner() {
-		setdrehzahl(Variablen.speedpassgegner);
+		Instanzen.sMSC_WurfMotor1.setdrehzahl(Variablen.speedpassgegner);
+		Instanzen.sMSC_WurfMotor2.setdrehzahl(-Variablen.speedpassgegner);
 	}
 	
 	/**
 	 * Wurfmotoren Nullspeed
 	 */
-	public void nullwerfen() {
-		setdrehzahl(0);
+	public void setnullspeed() {
+		Instanzen.sMSC_WurfMotor1.setdrehzahl((float) (0));
+		Instanzen.sMSC_WurfMotor2.setdrehzahl((float) (0));
 	}
 	
 	/**
