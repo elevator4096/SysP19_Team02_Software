@@ -57,16 +57,16 @@ public class Test_Task extends Task implements IO, Systeme, Konstanten
     	//counter++;
     	IO.debug.update();
     	
-    	/*Systeme.gegnerSystem.update();
+    	Systeme.gegnerSystem.update();
     	Systeme.wurfSystem.update();
     	Systeme.bewegungsSystem.update();
     	Systeme.wlanSystem.update();
     	Pos_Wechsel_V2.update();
-    	*/
-    	IO.MOTOR_links.update();
-    	IO.MOTOR_rechts.update();
+    	
+    	//IO.MOTOR_links.update();
+    	//IO.MOTOR_rechts.update();
     	//debug.println(IO.OUT_Magnet_Ausloeser.get());
-    	//Demo.run();
+    	Demo.run();
     	//debug.println(IO.AN_Sharp3.getDistanz());debug.print(" "); debug.println(Systeme.gegnerSystem.warGegnerRechts());
     	
     	/*
