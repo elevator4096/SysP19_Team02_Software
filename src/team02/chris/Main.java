@@ -28,7 +28,7 @@ public class Main extends Task implements IO, Systeme
     static
     {
             Task task = new Main();
-            task.period = (int)Konstanten.TASK_PERIOD*1000;
+            task.period = (int)(Konstanten.TASK_PERIOD*1000);
             Task.install(task);
     }
 
