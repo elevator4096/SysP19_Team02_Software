@@ -23,7 +23,13 @@ public enum Zustand {
     SCHIESSEN,
     START,
     AUFBALLWARTEN,
-	
+    WURF_KURZ_2,
+    
+    
+    
+    
+    AUSRICHTEN_1,
+    AUSRICHTEN_2,
 	
 	
 

@@ -21,13 +21,16 @@ public class Main extends Task {
 	public Instanzen instanz;
 	private Zustand zustand = STARTZUSTAND;
 	private Zustand vorruecken = START_1;
+//	private Zustand vorruecken =  RUECKWAERTS_AN_WAND_2;
 	private Zustand fangposition = START_1;
 	private Zustand wurf_kurz = START_1;
 	private Zustand fangstart = START_1;
 	private Zustand bereit = START_1;
+	private Zustand wurf_kurz_2 = START_1;
+	private Zustand fehler = AUSRICHTEN_1;
 
 	private float umdrehungen = 0; // Temporär für Encoder
-	private int countertemporär = 0;
+	private int countertemporär = 0; // Temporär für allerlei
 
 	private boolean gestartet = false;
 
@@ -38,7 +41,7 @@ public class Main extends Task {
 	 */
 	public Main() {
 		instanz = new Instanzen();
-//		zustand = BEREIT;
+		zustand = VORRUECKEN; // zum testen
 	}
 
 	/**
@@ -48,6 +51,14 @@ public class Main extends Task {
 //		if (instanz.wlanSystem.getPartnerState() == 10 && gestartet == false) {
 //			zustand = VORRUECKEN;
 //			gestartet = true;
+//		}
+
+//		if (Variablen.hatball == true) {
+//			instanz.wurfSystem.setspeedpassgegner();
+//		}
+//		
+//		if (Variablen.hatball == false) {
+//			instanz.wurfSystem.nullspeed();
 //		}
 
 		update();
@@ -72,9 +83,15 @@ public class Main extends Task {
 		System.out.println(Variablen.gefangen);
 		System.out.print("geworfen  ---->>");
 		System.out.println(Variablen.geworfen);
+		System.out.print("hat ball  ---->>");
+		System.out.println(Variablen.hatball);
+		System.out.print("ir links  ---->>");
+		System.out.println(Variablen.ir_vl);
+		System.out.print("ir rechts  ---->>");
+		System.out.println(Variablen.ir_vr);
 
 //		System.out.println(instanz.sMSC_FahrMotorlinks.gibUmdrehungen());
-//		System.out.println(instanz.sMSC_FahrMotorrechts.gibUmdrehungen());
+		System.out.println(instanz.sMSC_FahrMotorrechts.gibUmdrehungen());
 	}
 
 	/**
@@ -99,6 +116,12 @@ public class Main extends Task {
 		case WURF_KURZ: // kurzen Pass an Partner vorbereiten
 		{
 			wurf_kurz();
+			break;
+		}
+
+		case WURF_KURZ_2: // kurzen Pass an Partner vorbereiten
+		{
+			wurf_kurz_2();
 			break;
 		}
 
@@ -188,7 +211,6 @@ public class Main extends Task {
 
 			// Hat Ball gefangen (1) und geworfen = 0, geworfen = 0
 			if (Variablen.hatball == true && Variablen.geworfen == 0 && Variablen.gefangen == 1) {
-				// instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
 				zustand = WURF_KURZ;
 			}
 
@@ -199,7 +221,7 @@ public class Main extends Task {
 			}
 
 			// geworfen = 1 und gefangen = 1
-			if (Variablen.gefangen == 1 && Variablen.geworfen == 1) {
+			if (Variablen.hatball == false && Variablen.gefangen == 1 && Variablen.geworfen >= 1) {
 				bereit = STARTZUSTAND;
 			}
 			break;
@@ -217,7 +239,7 @@ public class Main extends Task {
 		case AUFBALLWARTEN: {
 			if (Variablen.hatball == true) {
 				Variablen.gefangen++;
-				bereit = STARTZUSTAND;
+				zustand = WURF_KURZ_2;
 			}
 			break;
 		}
@@ -273,7 +295,6 @@ public class Main extends Task {
 			if (instanz.sMSC_FahrMotorlinks.gibUmdrehungen() >= umdrehungen + 4.82) {
 				instanz.fahrSystem.fahrnullspeed();
 				instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
-				countertemporär = 0;
 				wurf_kurz = SCHIESSENVORBEREITEN;
 			}
 			break;
@@ -281,7 +302,8 @@ public class Main extends Task {
 
 		case SCHIESSENVORBEREITEN: {
 			if (instanz.wlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT) {
-				// wurfmotoren einschalten
+				instanz.wurfSystem.setspeedpassgegner();
+				countertemporär = 0;
 				wurf_kurz = SCHIESSEN;
 			}
 			break;
@@ -291,8 +313,8 @@ public class Main extends Task {
 			countertemporär++;
 			if (countertemporär == 20) {
 				instanz.servoMotor.servooffen();
-			} else if (countertemporär == 80) {
-				// wurfmotoren ausschalten
+			} else if (countertemporär == 60) {
+				instanz.wurfSystem.setnullspeed();
 				instanz.servoMotor.servogeschlossen();
 				Variablen.geworfen++;
 				zustand = BEREIT;
@@ -302,7 +324,39 @@ public class Main extends Task {
 
 		}
 
-		// Methode formulieren
+	}
+
+	public void wurf_kurz_2() {
+
+		switch (wurf_kurz_2) {
+
+		case START_1: {
+			if (instanz.wlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT) {
+				instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
+				instanz.wurfSystem.setspeedpassgegner();
+				countertemporär = 0;
+				wurf_kurz_2 = SCHIESSEN;
+			}
+			break;
+		}
+
+		case SCHIESSEN: {
+			System.out.print("case1");
+			countertemporär++;
+			if (countertemporär == 20) {
+				instanz.servoMotor.servooffen();
+			} else if (countertemporär == 80) {
+				instanz.wurfSystem.setnullspeed();
+				instanz.servoMotor.servogeschlossen();
+				Variablen.geworfen++;
+				bereit = START_1;
+				zustand = BEREIT;
+			}
+			break;
+		}
+
+		}
+
 	}
 
 	/**
@@ -452,7 +506,9 @@ public class Main extends Task {
 
 			if (Variablen.schalterlinks == true && Variablen.schalterrechts == true) {
 				vorruecken = ENDE;
-				zustand = FANGPOSITION;
+//				zustand = FANGPOSITION;
+				umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
+				vorruecken = AUSRICHTEN_1;
 			}
 			break;
 		}
@@ -536,7 +592,50 @@ public class Main extends Task {
 			vorruecken = GEGNER_2;
 			break;
 		}
+
+		case AUSRICHTEN_1: {
+			
+
+			if (Variablen.ir_vl == false && Variablen.ir_vr == true) {
+				instanz.fahrSystem.fahrrechtsbogen();
+			}
+
+			if (Variablen.ir_vl == true && Variablen.ir_vr == false) {
+				instanz.fahrSystem.fahrlinksbogen();
+			}
+
+			if (Variablen.ir_vl == true && Variablen.ir_vr == true) {
+				instanz.fahrSystem.fahrviertelspeed();
+			}
+
+			if (Variablen.ir_vl == false && Variablen.ir_vr == false) {
+				instanz.fahrSystem.fahrviertelspeed();
+			}
+			
+			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() >= (umdrehungen + 8)) {
+				instanz.fahrSystem.fahrretour();
+				vorruecken = AUSRICHTEN_2;
+			}
+			break;
 		}
+
+		case AUSRICHTEN_2: {
+			if (Variablen.schalterlinks == true) {
+				instanz.sMSC_FahrMotorlinks.setdrehzahl(0);
+			}
+			if (Variablen.schalterrechts == true) {
+				instanz.sMSC_FahrMotorrechts.setdrehzahl(0);
+			}
+
+			if (Variablen.schalterlinks == true && Variablen.schalterrechts == true) {
+				vorruecken = ENDE;
+				zustand = FANGPOSITION;
+			}
+			break;
+		}
+
+		}
+
 	}
 
 	// Methode formulieren
@@ -583,9 +682,10 @@ public class Main extends Task {
 			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() <= umdrehungen - 4.82) {
 				instanz.fahrSystem.fahrnullspeed();
 				instanz.wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+			}
 
-				// if irsensor hat ball
-				// (zustand drehen)
+			if (Variablen.hatball == true) {
+				instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
 				umdrehungen = instanz.sMSC_FahrMotorlinks.gibUmdrehungen();
 				instanz.fahrSystem.fahrlinkskurve();
 				fangposition = SCHIESSPOSITION;
@@ -604,8 +704,7 @@ public class Main extends Task {
 
 		case SCHIESSENVORBEREITEN: {
 			if (instanz.wlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT) {
-				// wurfmotoren starten
-				instanz.servoMotor.servooffen();
+				instanz.wurfSystem.setspeedpassgegner();
 				countertemporär = 0;
 				fangposition = SCHIESSEN;
 			}
@@ -614,9 +713,14 @@ public class Main extends Task {
 
 		case SCHIESSEN: {
 			countertemporär++;
-			if (countertemporär == 80) {
+			if (countertemporär == 20) {
+				instanz.servoMotor.servooffen();
+			}
+			if (countertemporär == 60) {
 				instanz.servoMotor.servogeschlossen();
+				instanz.wurfSystem.setnullspeed();
 				fangposition = ENDE;
+				instanz.wlanSystem.setOwnState(ZustandWifi.ERROR);
 				zustand = ENDE;
 			}
 			break;
@@ -638,6 +742,51 @@ public class Main extends Task {
 	 */
 	public void fehler() {
 		// Methode formulieren
+
+		switch (fehler) {
+		case AUSRICHTEN_1: {
+			System.out.println("aölsdfj)");
+			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() >= (umdrehungen + 1.5)) {
+				instanz.fahrSystem.fahrretour();
+				vorruecken = AUSRICHTEN_2;
+			}
+
+			if (Variablen.ir_vl == false && Variablen.ir_vr == true) {
+				instanz.fahrSystem.fahrrechtsbogen();
+			}
+
+			if (Variablen.ir_vl == true && Variablen.ir_vr == false) {
+				instanz.fahrSystem.fahrlinksbogen();
+			}
+
+			if (Variablen.ir_vl == true && Variablen.ir_vr == true) {
+				instanz.fahrSystem.fahrviertelspeed();
+			}
+
+			if (Variablen.ir_vl == false && Variablen.ir_vr == false) {
+				instanz.fahrSystem.fahrviertelspeed();
+			}
+
+		}
+
+		case AUSRICHTEN_2: {
+			if (Variablen.schalterlinks == true) {
+				instanz.sMSC_FahrMotorlinks.setdrehzahl(0);
+			}
+			if (Variablen.schalterrechts == true) {
+				instanz.sMSC_FahrMotorrechts.setdrehzahl(0);
+			}
+
+			if (Variablen.schalterlinks == true && Variablen.schalterrechts == true) {
+				vorruecken = ENDE;
+//			zustand = FANGPOSITION;
+				umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
+				vorruecken = AUSRICHTEN_1;
+
+			}
+			break;
+		}
+		}
 	}
 
 	/**

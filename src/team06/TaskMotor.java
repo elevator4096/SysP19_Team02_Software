@@ -11,7 +11,7 @@ public class TaskMotor extends Task {
 	public void action()
 
 	{
-//		Instanzen.wurfSystem.motorstarten();
+		Instanzen.wurfSystem.motorstarten();
 		Instanzen.fahrSystem.motorstarten();
 		Instanzen.servoMotor.update();
 

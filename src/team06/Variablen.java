@@ -9,7 +9,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 public class Variablen {
 
 	// Speed für Wurfmoroten
-//	public static float speedpassgegner = (float) (100 * Math.PI); // in s^-1 (Radiant)
+	public static float speedpassgegner = (float) (105 * Math.PI); // in s^-1 (Radiant)
 //	public static float speedkorbschuss = (float) (150 * Math.PI); // in s^-1 (Radiant)
 
 	// Speed für Fahrmotoren
@@ -40,13 +40,15 @@ public class Variablen {
 	public static boolean hatball = false;
 	public static boolean schalterlinks = false; // false = ??
 	public static boolean schalterrechts = false; // false = ??
-	public static boolean gegnerlinks = false; 
+	public static boolean gegnerlinks = false;
 	public static boolean gegnerrechts = false;
 	public static boolean gegnervorne = false;
+	public static boolean ir_vl = false;
+	public static boolean ir_vr = false;
 	
+
 	// spiel
 	public static int gefangen = 0;
 	public static int geworfen = 0;
-	
 
 }

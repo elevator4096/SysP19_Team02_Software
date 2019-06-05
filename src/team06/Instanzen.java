@@ -40,15 +40,14 @@ public class Instanzen {
 
 	public static VL6180X tofSensor;
 
-
 	public Instanzen() {
 
 		// ToF-Sensoren erzeugen
 		tofSensor = new VL6180X(3, 9);
 
-////		// Motoren Wurfsysten erzeugen TPUA
-////		sMSC_WurfMotor1 = new MotorSMSC(Variablen.ts, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
-////		sMSC_WurfMotor2 = new MotorSMSC(Variablen.ts, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+		// Motoren Wurfsysten erzeugen TPUA
+		sMSC_WurfMotor1 = new MotorSMSC(Variablen.ts, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+		sMSC_WurfMotor2 = new MotorSMSC(Variablen.ts, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
 
 		// Motoren Fahrsystem erzeugen
 		sMSC_FahrMotorlinks = new MotorSMSC(Variablen.ts, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);

@@ -82,24 +82,24 @@ public class Test_Main_M3 extends Task {
 	final int numberOfSensors = 3;
 	final int resetPin = 9;
 
-	static boolean ir_1 = false; // schwarz = true
-	static boolean ir_2 = false; // schwarz = true
+	static boolean ir_links = true; // schwarz = true
+	static boolean ir_rechts = true; // schwarz = true
 
 	public Test_Main_M3() {
 
 //		tofvlx = new VL6180X(numberOfSensors, resetPin);
 //
-//		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
-//		fahrmotor2 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f / 1f, 1f, 0.008f);
+		fahrmotor1 = new MotorSMSC_M3(0.01f, 5, 7, true, 8, true, 256, 12f, 91f / 1f, 1f, 0.008f);
+		fahrmotor2 = new MotorSMSC_M3(0.01f, 4, 6, true, 10, true, 256, 12f, 91f / 1f, 1f, 0.008f);
 
-		wurfmotor3 = new MotorSMSC_M3(0.01f, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
-		wurfmotor4 = new MotorSMSC_M3(0.01f, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
-
-		servo = new PWM_Servo_M3(false, 4, Variablen.pwmPeriod, Variablen.highTime); // anpassen
+//		wurfmotor3 = new MotorSMSC_M3(0.01f, 1, 3, true, 12, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+//		wurfmotor4 = new MotorSMSC_M3(0.01f, 0, 2, true, 14, true, 32, 12f, 1f / 1f, 0.001f, 0.0051f);
+//
+//		servo = new PWM_Servo_M3(false, 4, Variablen.pwmPeriod, Variablen.highTime); // anpassen
 
 		sieben = new TPUDIO_M3();
 //
-//		dist = new DistSensorTest_M3();
+		dist = new DistSensorTest_M3();
 //
 //		schalter1 = new Endschalter_M3(6, false);
 //		schalter2 = new Endschalter_M3(7, false);
@@ -112,7 +112,59 @@ public class Test_Main_M3 extends Task {
 
 	public void action() {
 
-//		if (nofActivations % 150 == 0) {
+		if (nofActivations % 10 == 0) {
+			if (dist.gibdist(1) <= 50) {
+				ir_links = true;
+			}
+			if (dist.gibdist(1) >= 100) {
+				ir_links = false;
+			}
+
+			if (dist.gibdist(3) <= 50) {
+				ir_rechts = true;
+			}
+			if (dist.gibdist(3) >= 100) {
+				ir_rechts = false;
+			}
+			
+			if(ir_links == false && ir_rechts == true) {
+				retourrechtsbogen();
+			}
+			
+			if(ir_links == true && ir_rechts == false) {
+				retourlinksbogen();
+			}
+			
+			if(ir_links == true && ir_rechts == true) {
+				fahrviertelspeed();
+			}
+			
+
+			if(ir_links == false && ir_rechts == false) {
+				fahrviertelspeed();
+			}
+		}
+
+		if (nofActivations % 150 == 0) {
+			System.out.print("Sensor links -->");
+			System.out.println(dist.gibdist(1));
+			System.out.print("Sensor rechts -->");
+			System.out.println(dist.gibdist(3));
+		}
+		
+	
+		
+//	retourrechtsbogen();
+		
+		
+		
+		
+		fahrmotor1.motorstarten();
+		fahrmotor2.motorstarten();
+	}
+	
+	
+
 //			sensorDistances = tofvlx.read();
 //			System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
 //			int val = sensorDistances[0];
@@ -139,7 +191,6 @@ public class Test_Main_M3 extends Task {
 //				val += 256;
 //			System.out.println((val));
 //			System.out.println("-------------------------------------------");
-//		}
 
 ////		if (schalterlinks == true) {
 ////			fahrnullspeed();
@@ -152,7 +203,7 @@ public class Test_Main_M3 extends Task {
 //		gestartet = true;
 //	}	
 //		endschalterupdate();
-		servo.update();
+//		servo.update();
 ////		irupdate();
 //
 //		if (partnerstate == 5 && gestartet == false) {
@@ -173,21 +224,21 @@ public class Test_Main_M3 extends Task {
 //			fahrenrechts();
 //		}
 //
-		if (nofActivations % 150 == 0) {
-			sieben.strichblinken();
-//			tofupdate();
-////			System.out.println(fahrenlinks);
-////			System.out.println(fahrenrechts);
-////			dist.alleirausgeben();
-////			tof.tofausgeben();		
-////			System.out.print("partnerstate ------>");
-////			System.out.println(partnerstate);
-////			System.out.print("sensor 1 ------>");
-////			System.out.println(dist.gibdist(1));
-////			System.out.print("sensor 2 ------>");
-////			System.out.println(dist.gibdist(2));
-//			// System.out.println(anzahlgegner);
-		}
+//		if (nofActivations % 150 == 0) {
+//			sieben.strichblinken();
+////			tofupdate();
+//////			System.out.println(fahrenlinks);
+//////			System.out.println(fahrenrechts);
+//////			dist.alleirausgeben();
+//////			tof.tofausgeben();		
+//////			System.out.print("partnerstate ------>");
+//////			System.out.println(partnerstate);
+//////			System.out.print("sensor 1 ------>");
+//////			System.out.println(dist.gibdist(1));
+//////			System.out.print("sensor 2 ------>");
+//////			System.out.println(dist.gibdist(2));
+////			// System.out.println(anzahlgegner);
+//		}
 
 //		if (nofActivations % 50 == 0) {
 ////			irsensor();
@@ -197,11 +248,10 @@ public class Test_Main_M3 extends Task {
 //
 //		}
 
-		wurfmotor3.motorstarten();
-		wurfmotor4.motorstarten();
+//		wurfmotor3.motorstarten();
+//		wurfmotor4.motorstarten();
 
-//		fahrmotor1.motorstarten();
-//		fahrmotor2.motorstarten();
+
 
 //		schiesenmitwlan();
 //		testfahren();
@@ -242,19 +292,19 @@ public class Test_Main_M3 extends Task {
 //			System.out.println(fahrmotor2.gibGeschwindigkeit());
 //		}
 
-		if (nofActivations % 150 == 0) {
-			System.out.print("Wurfmotor 3: Umdrehungen >");
-			System.out.print(wurfmotor3.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(wurfmotor3.gibGeschwindigkeit());
-
-			System.out.print("Wurfmotor 4: Umdrehungen >");
-			System.out.print(wurfmotor4.gibUmdrehungen());
-			System.out.print("        Geschwindigkeit in 1/min  >");
-			System.out.println(wurfmotor4.gibGeschwindigkeit());
-		}
-
-	}
+//		if (nofActivations % 150 == 0) {
+//			System.out.print("Wurfmotor 3: Umdrehungen >");
+//			System.out.print(wurfmotor3.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(wurfmotor3.gibGeschwindigkeit());
+//
+//			System.out.print("Wurfmotor 4: Umdrehungen >");
+//			System.out.print(wurfmotor4.gibUmdrehungen());
+//			System.out.print("        Geschwindigkeit in 1/min  >");
+//			System.out.println(wurfmotor4.gibGeschwindigkeit());
+//		}
+//
+//	}
 
 	public void retourmitir() {
 
@@ -860,13 +910,13 @@ public class Test_Main_M3 extends Task {
 	}
 
 	public static void retourrechtsbogen() {
-		fahrmotor1.setdrehzahl((float) (0.3 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (-0.5 * Math.PI));
+		fahrmotor1.setdrehzahl((float) (-0.5 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (0.3 * Math.PI));
 	}
 
 	public static void retourlinksbogen() {
-		fahrmotor1.setdrehzahl((float) (0.5 * Math.PI));
-		fahrmotor2.setdrehzahl((float) (-0.3 * Math.PI));
+		fahrmotor1.setdrehzahl((float) (-0.3 * Math.PI));
+		fahrmotor2.setdrehzahl((float) (0.5 * Math.PI));
 	}
 
 	public static void wurfnullspeed() {
@@ -875,14 +925,14 @@ public class Test_Main_M3 extends Task {
 	}
 
 	public static void wurfspeedmax() {
-		wurfmotor3.setdrehzahl((float) (105 * Math.PI));
-		wurfmotor4.setdrehzahl((float) (-105 * Math.PI));
+		wurfmotor3.setdrehzahl((float) (100 * Math.PI));
+		wurfmotor4.setdrehzahl((float) (-100 * Math.PI));
 
 	}
 
 	public static void wurfspeedhalb() {
-		wurfmotor3.setdrehzahl((float) (80 * Math.PI));
-		wurfmotor4.setdrehzahl((float) (-80 * Math.PI));
+		wurfmotor3.setdrehzahl((float) (75 * Math.PI));
+		wurfmotor4.setdrehzahl((float) (-75 * Math.PI));
 
 	}
 

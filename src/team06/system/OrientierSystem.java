@@ -4,17 +4,17 @@ import team06.Instanzen;
 import team06.Variablen;
 
 public class OrientierSystem {
-	
-	static int[] sensorDistances;	
+
+	static int[] sensorDistances;
 
 	public OrientierSystem() {
 
 	}
-	
+
 	public void tofupdate() {
-		
+
 		sensorDistances = Instanzen.tofSensor.read();
-		int val = sensorDistances[0];
+		int val = sensorDistances[2];
 		if (val > 20 && val < 80) {
 			Variablen.gegnerlinks = true;
 		}
@@ -23,7 +23,7 @@ public class OrientierSystem {
 			Variablen.gegnerlinks = false;
 		}
 
-		val = sensorDistances[2];
+		val = sensorDistances[0];
 		if (val > 20 && val < 80) {
 			Variablen.gegnerrechts = true;
 		}
@@ -40,9 +40,9 @@ public class OrientierSystem {
 		if (val < 20 || val > 80) {
 			Variablen.gegnervorne = false;
 		}
-		
+
 	}
-	
+
 	public void endschalterupdate() {
 		if (Instanzen.endSchalterlinks.schalterzustand() == false) {
 			Variablen.schalterlinks = true;
@@ -57,8 +57,32 @@ public class OrientierSystem {
 			Variablen.schalterrechts = false;
 		}
 	}
-	
-	
+
+	public void ballupdate() {
+		if (Instanzen.iRSensor.distanzlesen(2) >= 300) {
+			Variablen.hatball = true;
+		}
+
+		if (Instanzen.iRSensor.distanzlesen(2) <= 250) {
+			Variablen.hatball = false;
+		}
+	}
+
+	public void irupdate() {
+		if (Instanzen.iRSensor.distanzlesen(1) <= 50) {
+			Variablen.ir_vl = true;
+		}
+		if (Instanzen.iRSensor.distanzlesen(1) >= 100) {
+			Variablen.ir_vl = false;
+		}
+
+		if (Instanzen.iRSensor.distanzlesen(3) <= 50) {
+			Variablen.ir_vr = true;
+		}
+		if (Instanzen.iRSensor.distanzlesen(3) >= 100) {
+			Variablen.ir_vr = false;
+		}
+	}
 
 //	/**
 //	 * Testen ob Sensor auf Linie oder nicht
@@ -139,6 +163,8 @@ public class OrientierSystem {
 	public void update() {
 		tofupdate();
 		endschalterupdate();
+		ballupdate();
+		irupdate();
 //		hatBall();
 //		anWand();
 	}

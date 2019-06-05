@@ -62,14 +62,14 @@ public class FahrSystem {
 
 	}
 
-	public static void retourrechtsbogen() {
-		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.3 * Math.PI));
-		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.5 * Math.PI));
+	public static void fahrrechtsbogen() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.5 * Math.PI));
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.3 * Math.PI));
 	}
 
-	public static void retourlinksbogen() {
-		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.5 * Math.PI));
-		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.3 * Math.PI));
+	public static void fahrlinksbogen() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.3 * Math.PI));
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.5 * Math.PI));
 	}
 	
 	
