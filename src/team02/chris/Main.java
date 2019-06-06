@@ -150,10 +150,12 @@ public class Main extends Task implements IO, Systeme
             Systeme.wurfSystem.Wandauf();  
             debug.println("Wand auf");
             entry_flag = true;
+            WlanSystem.setOwnState(ZustandWifi.SETUP);
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
         }
 
         //Exit
-        if(IO.IN_Laser_1.get())                   //Weiterschaltbedingung
+        if(IO.IN_Laser_2.get() && WlanSystem.getPartnerState() == ZustandWifi.START)                   //Weiterschaltbedingung
         {
             entry_flag =false;
             zustand = Pass2;
@@ -171,7 +173,7 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+            //Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
             entry_flag = true;
         }
 
@@ -180,7 +182,7 @@ public class Main extends Task implements IO, Systeme
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
         }
         //Exit
-        if(IO.IN_Laser_1.get())
+        if(IO.IN_Laser_2.get())
         {
             //Exit Aktion
             zustand = Pass2;
@@ -196,7 +198,7 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+            //Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
             entry_flag = true;
         }
 
@@ -286,7 +288,7 @@ public class Main extends Task implements IO, Systeme
 
 
         //Exit
-        if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
+        if(Systeme.wurfSystem.zylinderGespannt() && IO.IN_Laser_2.get() && WlanSystem.getPartnerState() == ZustandWifi.FANG_BEREIT)
         {
             Systeme.wurfSystem.ballWerfen();
             zustand = Bewegen2;
