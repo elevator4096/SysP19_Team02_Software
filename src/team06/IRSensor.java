@@ -6,6 +6,9 @@ public class IRSensor {
 
 	public HLC1395Pulsed hlc1395;
 
+	/**
+	 * Konstruktor, um den Infrarotsensor zu initialisieren
+	 */
 	public IRSensor(int ADR3PIN, int ADR2PIN, int ADR1PIN, int ADR0PIN, int TRGPIN, int ANPIN) {
 
 		hlc1395 = HLC1395Pulsed.getInstance();
@@ -13,11 +16,17 @@ public class IRSensor {
 		hlc1395.start();
 	}
 
-	public int distanzlesen(int pin) // pin = Sensornummer (0-6)
+	/**
+	 * Methode, um die Distanz zurückzugeben
+	 */
+	public int distanzlesen(int pin)
 	{
-		return hlc1395.read(pin); // gibt ?? in ?? zurueck
+		return hlc1395.read(pin); 
 	}
 
+	/**
+	 * Methode, um alle Distanzsensoren auszugeben
+	 */
 	public void alleirausgeben() {
 		for (int i = 0; i < 7; i++) {
 			System.out.print(hlc1395.read(i));

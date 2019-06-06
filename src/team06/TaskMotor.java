@@ -4,10 +4,16 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 public class TaskMotor extends Task {
 
+	/**
+	 * Konstrukor, um den TaskMotor zu initialiseren
+	 */
 	public TaskMotor() {
 
 	}
 
+	/**
+	 * Methode, die zyklisch aufgerufen wird
+	 */
 	public void action()
 
 	{
