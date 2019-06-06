@@ -133,6 +133,7 @@ public class WlanSystem implements IO
                     partnerState = state;
             		cPartnerState = partnerState;
             		counter = 0;
+            		debug.println(state);
             	}
             }
         }else {
