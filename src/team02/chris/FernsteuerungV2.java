@@ -12,13 +12,14 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 	
 	private int r,l;
 
-	private byte[] transmit;
+	private static byte[] transmit;
 	
 	static
     {
             Task task = new FernsteuerungV2();
             task.period = 50;
             Task.install(task);
+            transmit = new byte[4];
     }
 	
 	public void action() {
@@ -27,8 +28,9 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 		IO.MOTOR_rechts.update();
 			
 		cache = wlanSystem.getPartnerState();
+		debug.println(cache);
 
-		if(cache!=0){
+		if(!(cache == -1 || cache ==0)){
 			//Decrypt Data
 			transmit[0] = (byte) ((cache >> 24) & 0xff);
 			transmit[1] = (byte) ((cache >> 16) & 0xff);
@@ -46,8 +48,8 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 
 			int zylValue = transmit[1]&0x0F;
 
-			IO.MOTOR_links.updateSpeed(Konstanten.MAX_SPEED*l/7.0);
-			IO.MOTOR_rechts.updateSpeed(Konstanten.MAX_SPEED*r/7.0);
+			IO.MOTOR_links.updateSpeed(Konstanten.MAX_SPEED*l/1.0);
+			IO.MOTOR_rechts.updateSpeed(Konstanten.MAX_SPEED*r/1.0);
 
 			Systeme.wurfSystem.zylinderSpannen((int)(zylValue*(87.0/15.0)+8));
 
@@ -59,6 +61,9 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 			}
 
 
+		}else {
+			IO.MOTOR_links.updateSpeed(0);
+			IO.MOTOR_rechts.updateSpeed(0);
 		}
 
 		wlanSystem.update();

@@ -14,6 +14,7 @@ public enum Zustand {
     ROB_HAT_BALL,
     ROB_HAT_KEIN_BALL,
     ROB_POSITION_ERREICHT,
+    START,
 
     //Chriss Zustaende, nicht loeschen!
     SETUP,

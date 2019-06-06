@@ -20,7 +20,8 @@ public class Main extends Task implements IO, Systeme
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
     private boolean entry_flag;
-
+    private int lastSystemTime;
+	 boolean b = false;
     
     /**
      * Initialisieren des Tasks
@@ -28,7 +29,7 @@ public class Main extends Task implements IO, Systeme
     static
     {
             Task task = new Main();
-            task.period = (int)Konstanten.TASK_PERIOD*1000;
+            task.period = (int)(Konstanten.TASK_PERIOD*1000);
             Task.install(task);
     }
 
@@ -73,6 +74,11 @@ public class Main extends Task implements IO, Systeme
             {
                 setup();
                 break;
+            }
+            case START:
+            {
+            	start();
+            	break;
             }
             case Pass1:
             {
@@ -147,17 +153,42 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.Wandauf();  
-            debug.println("Wand auf");
             entry_flag = true;
+            WlanSystem.setOwnState(ZustandWifi.SETUP);
+            lastSystemTime = Task.time();
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Holen);
         }
 
         //Exit
-        if(IO.IN_Laser_1.get())                   //Weiterschaltbedingung
+        if(Task.time() > lastSystemTime + 5000)                   //Weiterschaltbedingung
         {
+        	entry_flag = false;
+        	zustand = Zustand.START;
+        }
+    }
+    
+    
+    private void start() {
+        //Entry
+        if(!entry_flag)
+        {
+        	Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+        	 lastSystemTime = Task.time();
+        	 debug.println("Start entry");
+        	 Systeme.wurfSystem.Wandauf();  
+            entry_flag = true;
+        }
+
+
+        //Exit
+        if(IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.START && Task.time() > lastSystemTime + 2000)                   //Weiterschaltbedingung
+        {        	 
+        	debug.println("Start exit 1");
             entry_flag =false;
             zustand = Pass2;
-        } else {
+        } else if (!IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.START && Task.time() > lastSystemTime + 2000)
+        {
+        	debug.println("Start exit 2");
             zustand = Pass1;
             entry_flag = false;
         }
@@ -171,7 +202,8 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+        	lastSystemTime = Task.time();
+            //Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
             entry_flag = true;
         }
 
@@ -180,7 +212,7 @@ public class Main extends Task implements IO, Systeme
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
         }
         //Exit
-        if(IO.IN_Laser_1.get())
+        if(IO.IN_Laser_1.get() && Task.time() > lastSystemTime + 2000)
         {
             //Exit Aktion
             zustand = Pass2;
@@ -196,8 +228,9 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+            //Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
             entry_flag = true;
+            WlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
         }
 
         //Exit
@@ -218,11 +251,18 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
+        	Systeme.wurfSystem.zylinderSpannen(Konstanten.Holen);
             WlanSystem.setOwnState(ZustandWifi.FAHREN);
             Pos_Wechsel_V2.fahre_zu_Pos1();
+            lastSystemTime = Task.time();
             entry_flag = true;
         }
 
+        
+        if(Task.time() > lastSystemTime + 6000) {
+        	Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+        }
+        
         //Exit
         if(Pos_Wechsel_V2.pos1_erreicht())
         {
@@ -239,15 +279,22 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
+        	WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);   
             entry_flag = true;
+        }
+        
+       
+        if(IO.IN_Laser_1.get() && !b) {
+        	b = true;
+        	lastSystemTime = Task.time();
         }
 
         //Exit
-        if(Systeme.wurfSystem.zylinderGespannt())
+        if(b && Task.time() > lastSystemTime + 2000)
         {
-            WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
             zustand = Pass4;
+            b = false;
             entry_flag = false;
         }
     }
@@ -260,13 +307,13 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-
             entry_flag = true;
         }
 
         //Exit
         if(false)
         {
+        	zustand = Pass4;
             entry_flag = false;
         }
     }
@@ -280,7 +327,7 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-
+        	WlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);   
             entry_flag = true;
         }
 
@@ -302,11 +349,17 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
+        	WlanSystem.setOwnState(ZustandWifi.FAHREN);   
             Pos_Wechsel_V2.fahre_zu_Pos2();
+            lastSystemTime = Task.time();
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Holen);
             entry_flag = true;
         }
-
-
+        
+        if(Task.time() > lastSystemTime + 6000) {
+        	Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+        }
+        
         //Exit
         if(Pos_Wechsel_V2.pos2_erreicht())
         {
@@ -323,18 +376,25 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Korb_Wurf);
+        	WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);   
             entry_flag = true;
+        }
+        
+        if(IO.IN_Laser_1.get() && !b) {
+        	b = true;
+        	lastSystemTime = Task.time();
         }
 
 
         //Exit
-        if(Systeme.wurfSystem.zylinderGespannt())
+        if(b && Task.time() > lastSystemTime + 2000)
         {
-            WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+            Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
             zustand = Pass6;
             entry_flag = false;
         }
+
+
     }
 
     /**
@@ -403,6 +463,7 @@ public class Main extends Task implements IO, Systeme
     {
 
     }
+
 
     /**
      * Ruft alle anderen update methoden auf
