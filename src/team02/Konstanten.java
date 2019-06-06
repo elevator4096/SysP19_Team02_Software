@@ -38,7 +38,7 @@ public interface Konstanten
 	double	LINE_FOLLOWER_RADIUS	= 0.400;						// Radius von KorrekturKurve fuer Linienfolger in m
 	double	LINE_KORREKTUR_SPEED	= 0.060;
 	
-	double 	SPANN_ZEIT 				= 0;
+	double 	SPANN_ZEIT 				= 4000;
 	double 	WURF_ZEIT 				= 1000;
 	
 	double DREHWINKEL_KORB			= (15/180)*Math.PI;

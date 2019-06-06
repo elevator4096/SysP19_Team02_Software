@@ -2,7 +2,7 @@ package exchange;
 
 public interface ZustandWifi 
 {
-    int WURF_BEREIT 			=	0;
+    int WURF_BEREIT 			=	4;
     int FANG_BEREIT				=	1;
     int FAHREN					=	2;
     int ERROR					=	3;
