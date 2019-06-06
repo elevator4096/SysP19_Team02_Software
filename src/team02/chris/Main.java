@@ -151,7 +151,7 @@ public class Main extends Task implements IO, Systeme
             debug.println("Wand auf");
             entry_flag = true;
             WlanSystem.setOwnState(ZustandWifi.SETUP);
-            Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
+            //Systeme.wurfSystem.zylinderSpannen(Konstanten.Holen);
         }
 
         //Exit
