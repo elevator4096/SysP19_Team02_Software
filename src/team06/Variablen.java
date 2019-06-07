@@ -18,7 +18,6 @@ public class Variablen {
 	public static int highTime = 1000000;
 	public static int hightTimeoffen = 1800000 / TPU_PWM.tpuTimeBase;
 	public static int hightTimehalten = 1100000 / TPU_PWM.tpuTimeBase;
-	public static int yolo = 0;
 
 	// Task Zeit
 	public static int TASK_PERIOD = 50;

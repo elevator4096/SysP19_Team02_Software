@@ -54,12 +54,12 @@ public class Main extends Task {
 	 * Testmethoden zum löschen
 	 */
 	public void testsystemout() {
+		instanz.siebensegment.strichblinken();
 //		System.out.println(Variablen.gegnerlinks);
 //		System.out.println(Variablen.gegnerrechts);
 //		System.out.println(Variablen.gegnervorne);
 //		System.out.println(Variablen.schalterlinks);
 //		System.out.println(Variablen.schalterrechts);
-		instanz.siebensegment.strichblinken();
 //		Instanzen.iRSensor.alleirausgeben();
 //		System.out.println(Variablen.schalterrechts);
 //		System.out.print("gefangen  ---->>");
@@ -73,8 +73,7 @@ public class Main extends Task {
 //		System.out.print("ir rechts  ---->>");
 //		System.out.println(Variablen.ir_hr);
 //		System.out.println(instanz.iRSensor.distanzlesen(2));
-		System.out.println(Variablen.gegnerlinks);
-
+//		System.out.println(Variablen.gegnerlinks);
 //		System.out.println(instanz.sMSC_FahrMotorlinks.gibUmdrehungen());
 //		System.out.println(instanz.sMSC_FahrMotorrechts.gibUmdrehungen());
 	}
@@ -750,7 +749,7 @@ public class Main extends Task {
 		}
 
 		case KURZVORWÄRTS: {
-			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() >= (umdrehungen + 2.35)) {
+			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() >= (umdrehungen + 2.3)) {
 				instanz.fahrSystem.fahrrechtskurve();
 				umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
 				fangposition = FANGPOSITION;
