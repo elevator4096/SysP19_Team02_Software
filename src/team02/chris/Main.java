@@ -181,7 +181,7 @@ public class Main extends Task implements IO, Systeme
 
 
         //Exit
-        if(IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.START && Task.time() > lastSystemTime + 2000)                   //Weiterschaltbedingung
+        if(IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.START && Task.time() > lastSystemTime + 4000)                   //Weiterschaltbedingung
         {        	 
         	debug.println("Start exit 1");
             entry_flag =false;
