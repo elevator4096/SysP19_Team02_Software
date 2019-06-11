@@ -25,7 +25,6 @@ public class MotorSMSC {
 				umax, i, kp, tn);
 
 		motor.setDesiredSpeed((float)(0));
-		
 
 	}
 

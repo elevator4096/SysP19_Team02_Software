@@ -188,12 +188,14 @@ public class Main extends Task {
 			// Start ohne Ball // oder Hat Ball nicht, geworfen (1), gefangen(1)
 			if (Variablen.hatball == false && Variablen.geworfen >= 0 && Variablen.gefangen == 0) {
 				instanz.wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+				instanz.siebensegment.leuchten1();
 				bereit = FANGSTART;
 			}
 
 			// Start mit Ball --> Wurf lang
 			else if (Variablen.hatball == true && Variablen.geworfen == 0 && Variablen.gefangen == 0) {
 				instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
+				instanz.siebensegment.leuchten4();
 				zustand = WURF_LANG;
 			}
 
@@ -213,6 +215,7 @@ public class Main extends Task {
 			if (Variablen.hatball == true) {
 				Variablen.gefangen++;
 				instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+				instanz.siebensegment.leuchten2();
 				bereit = START_1;
 			}
 			break;
@@ -220,6 +223,7 @@ public class Main extends Task {
 
 		case STARTZUSTAND: {
 			instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+			instanz.siebensegment.leuchten2();
 			instanz.fahrSystem.fahrrechtskurve();
 			umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
 			bereit = NEUNZIGGRADRECHTS;
@@ -358,6 +362,7 @@ public class Main extends Task {
 			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() <= umdrehungen - 0.9) {
 				instanz.fahrSystem.fahrnullspeed();
 				instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
+				instanz.siebensegment.leuchten4();
 				wurf_kurz = SCHIESSENVORBEREITEN;
 			}
 			break;
@@ -480,6 +485,7 @@ public class Main extends Task {
 
 		case START_1: {
 			instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+			instanz.siebensegment.leuchten2();
 			instanz.fahrSystem.fahrviertelspeed();
 			umdrehungen = instanz.sMSC_FahrMotorrechts.gibUmdrehungen();
 			vorruecken = POS_1;
@@ -761,10 +767,12 @@ public class Main extends Task {
 			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() <= umdrehungen - 4.82) {
 				instanz.fahrSystem.fahrnullspeed();
 				instanz.wlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
+				instanz.siebensegment.leuchten1();
 			}
 
 			if (Variablen.hatball == true) {
 				instanz.wlanSystem.setOwnState(ZustandWifi.FAHREN);
+				instanz.siebensegment.leuchten2();
 				umdrehungen = instanz.sMSC_FahrMotorlinks.gibUmdrehungen();
 				instanz.fahrSystem.fahrlinkskurve();
 				fangposition = RETOURGEGNER;
@@ -785,6 +793,7 @@ public class Main extends Task {
 			if (instanz.sMSC_FahrMotorrechts.gibUmdrehungen() <= umdrehungen - 0.9) {
 				instanz.fahrSystem.fahrnullspeed();
 				instanz.wlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
+				instanz.siebensegment.leuchten4();
 				fangposition = SCHIESSENVORBEREITEN;
 			}
 			break;
@@ -809,6 +818,7 @@ public class Main extends Task {
 				instanz.wurfSystem.setnullspeed();
 				fangposition = ENDE;
 				instanz.wlanSystem.setOwnState(ZustandWifi.ERROR);
+				instanz.siebensegment.leuchtenF();
 				zustand = ENDE;
 			}
 			break;

@@ -68,13 +68,18 @@ public class OrientierSystem {
 	 * Methode, um den Ballsensor zu aktualisieren
 	 */
 	public void ballupdate() {
-		if (Instanzen.iRSensor.distanzlesen(2) >= 300) {
+		/*if (Instanzen.iRSensor.distanzlesen(2) >= 300) {		//Methode um mit IR Ball zu erkennen
 			Variablen.hatball = true;
 		}
 
 		if (Instanzen.iRSensor.distanzlesen(2) <= 200) {
 			Variablen.hatball = false;
+		}*/
+		
+		if (Instanzen.ballErkennung.get() == true ) {			//Methode um mit Endschalter Ball zu erkennen (Methode servooffen() mit 2. Zeile ergänzt)
+			Variablen.hatball = true;							
 		}
+
 	}
 
 	/**
@@ -119,7 +124,6 @@ public class OrientierSystem {
 		endschalterupdate();
 		ballupdate();
 		irupdate();
-
 	}
 
 }

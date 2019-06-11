@@ -26,6 +26,7 @@ public class PWM_Servo {
 	 */
 	public void servooffen() {
 		pwm = Variablen.hightTimeoffen;
+		Variablen.hatball = false;
 	}
 	
 	/**

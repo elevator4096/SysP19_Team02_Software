@@ -59,6 +59,7 @@ public class WurfSystem {
 	 */
 	public void servooffen() {
 		Instanzen.servoMotor.servooffen();
+		Variablen.hatball = false;
 	}
 
 	/**

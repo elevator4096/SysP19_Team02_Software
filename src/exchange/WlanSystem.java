@@ -14,7 +14,7 @@ import team02.IO;
 
 public class WlanSystem implements IO
 {
-    private static RN131 wifi;
+    public static RN131 wifi;
     private static long lastTasktime;
     private static int partnerState = ZustandWifi.NO_ROUTER_CONNECTION;
     private static int cPartnerState = ZustandWifi.NO_ROUTER_CONNECTION;
