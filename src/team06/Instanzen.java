@@ -5,12 +5,8 @@
 
 package team06;
 
-import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
-import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
-import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
-import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
-import ch.ntb.sysp.lib.SpeedController4DCMotor;
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_DIO;
 import exchange.WlanSystem;
 import team06.system.*;
 
@@ -28,6 +24,7 @@ public class Instanzen {
 
 	public static Endschalter endSchalterrechts;
 	public static Endschalter endSchalterlinks;
+	public static TPU_DIO ballErkennung;
 
 	public static Siebenseg siebensegment;
 
@@ -59,9 +56,10 @@ public class Instanzen {
 		// IR-Sensoren erzeugen
 		iRSensor = new IRSensor(-1, 12, 11, 15, 14, 59);
 
-		// Endschalter erzeugen MPIOB
-		endSchalterrechts = new Endschalter(6, false); // false für input
-		endSchalterlinks = new Endschalter(7, false); // false für input
+		// Endschalter erzeugen MPIOB (+ Endschalter fuer Ballerkennung als TPU_DIO)
+		endSchalterrechts = new Endschalter(6, false); // false fuer input
+		endSchalterlinks = new Endschalter(7, false); // false fuer input
+		ballErkennung = new TPU_DIO(false, 0, false);	//false fuer TPU B, PinNr, false fuer Input
 
 		// SiebenSegment erzeugen
 		siebensegment = new Siebenseg();
