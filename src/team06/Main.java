@@ -54,7 +54,7 @@ public class Main extends Task {
 	 * Testmethoden zum löschen
 	 */
 	public void testsystemout() {
-		instanz.siebensegment.strichblinken();
+//		instanz.siebensegment.strichblinken();
 //		System.out.println(Variablen.gegnerlinks);
 //		System.out.println(Variablen.gegnerrechts);
 //		System.out.println(Variablen.gegnervorne);
