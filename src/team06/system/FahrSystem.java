@@ -15,112 +15,94 @@ public class FahrSystem {
 	}
 
 	/**
-	 * Fahrmotoren Starten (action methode)
+	 * Fahrmotoren Starten (wird zyklisch vom Motor-Task aufgerufen
 	 */
 	public void motorstarten() {
 		Instanzen.sMSC_FahrMotorlinks.motorstarten();
 		Instanzen.sMSC_FahrMotorrechts.motorstarten();
 
 	}
-	
-	public static void fahrnullspeed() {
+
+	/**
+	 * Fahrmotoren nullspeed
+	 */
+	public void fahrnullspeed() {
 		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(0);
 		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(0);
 	}
 
-	public static void fahrviertelspeed() {
+	/**
+	 * Fahrmotoren viertelspeed
+	 */
+	public void fahrviertelspeed() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.7 * Math.PI));
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.7 * Math.PI));
+	}
+
+	/**
+	 * Fahrmotoren kleinspeed
+	 */
+	public void fahrkleinspeed() {
 		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.5 * Math.PI));
 		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.5 * Math.PI));
 	}
 
-	public static void fahrhalbspeed() {
-		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-2 * Math.PI));
-		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (2 * Math.PI));
+	/**
+	 * Fahrmotoren retourspeed
+	 */
+	public void fahrretour() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.6 * Math.PI));
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.6 * Math.PI));
 	}
 
-	public static void fahrmaxspeed() {
-
-		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-4 * Math.PI));
-		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (4 * Math.PI));
-
-	}
-
-	public static void fahrretour() {
-		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.5 * Math.PI));
-		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.5 * Math.PI));
-	}
-
-	public static void fahrlinkskurve() {
+	/**
+	 * Fahrmotoren linkskurve
+	 */
+	public void fahrlinkskurve() {
 		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.5 * Math.PI));
 		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.5 * Math.PI));
 
 	}
 
-	public static void fahrrechtskurve() {
+	/**
+	 * Fahrmotoren rechtskurve
+	 */
+	public void fahrrechtskurve() {
 		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.5 * Math.PI));
 		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.5 * Math.PI));
 
 	}
 
-	public static void fahrrechtsbogen() {
+	/**
+	 * Fahrmotoren rechtsbogen
+	 */
+	public void fahrrechtsbogen() {
 		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.5 * Math.PI));
 		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.3 * Math.PI));
 	}
 
-	public static void fahrlinksbogen() {
+	/**
+	 * Fahrmotoren linksbogen
+	 */
+	public void fahrlinksbogen() {
 		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (-0.3 * Math.PI));
 		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (0.5 * Math.PI));
 	}
-	
-	
-	
-	
-	
-	
 
-//	/**
-//	 * Speed für Fahrmotoren setzen
-//	 */
-//	public void setdrehzahl(float drehzahl) {
-//		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(-drehzahl);
-//		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(drehzahl);
-//	}
-//
-//	/**
-//	 * Drehung Links
-//	 */
-//	public void linkskurve() {
-//		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(Variablen.speedmotorinnen);
-//		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(Variablen.speedmotorausen);
-//	}
-//
-//	/**
-//	 * Drehung Rechts
-//	 */
-//	public void rechtskurve() {
-//		Instanzen.sMSC_FahrMotorlinks.setdrehzahl(-Variablen.speedmotorausen);
-//		Instanzen.sMSC_FahrMotorrechts.setdrehzahl(-Variablen.speedmotorinnen);
-//	}
-//	
-//	/**
-//	 * Rückwärts fahren
-//	 */
-//	public void retour() {
-//		setdrehzahl(Variablen.speedrückwärts);
-//	}
-//
-//	/**
-//	 * Geradeaus fahren
-//	 */
-//	public void geradeaus() {
-//		setdrehzahl(Variablen.speedgeradeaus);
-//	}
-//	
-//	/**
-//	 * Null fahren
-//	 */
-//	public void nullfahren() {
-//		setdrehzahl(0);
-//	}
-	
+	/**
+	 * Fahrmotoren retourrechtsbogen
+	 */
+	public void retourrechtsbogen() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.5 * Math.PI));
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.3 * Math.PI));
+	}
+
+	/**
+	 * Fahrmotoren retourlinksbogen
+	 */
+	public void retourlinksbogen() {
+		Instanzen.sMSC_FahrMotorlinks.setdrehzahl((float) (0.3 * Math.PI));
+		Instanzen.sMSC_FahrMotorrechts.setdrehzahl((float) (-0.5 * Math.PI));
+	}
+
 }

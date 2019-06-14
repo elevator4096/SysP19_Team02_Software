@@ -37,11 +37,11 @@ public class Pos_Wechsel_V2 {
     
     private static double Distanz_Wand_Abstand 	= 0.015;    
     
-    private static double Distanz_G1 		= 0.080; 
+    private static double Distanz_G1 		= 0.094; 
     private static double Distanz_G1_kurz 	= Distanz_G1-Distanz_Wand_Abstand; 
-    private static double Distanz_G2 		= 0.168;
-    private static double Distanz_G3 		= 0.140;
-    private static double Distanz_G4 		= 0.120;
+    private static double Distanz_G2 		= 0.154;
+    private static double Distanz_G3 		= 0.090;
+    private static double Distanz_G4 		= 0.080;
     private static double Distanz_Linie 	= 0.260;
     
     /**
@@ -234,7 +234,7 @@ public class Pos_Wechsel_V2 {
             {
 	            if (Systeme.gegnerSystem.warGegnerLinks())
 	            {
-	                Systeme.bewegungsSystem.folgeLinieBisDistanzUngebremst(true, Distanz_G3);
+	                Systeme.bewegungsSystem.folgeLinieBisDistanzUngebremst(true, Distanz_G2);
 	                zustand = Zustand.NachGegner22;
 	            }
 	            else

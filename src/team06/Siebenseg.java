@@ -8,6 +8,9 @@ public class Siebenseg {
 
 	int counter = 0;
 
+	/**
+	 * Konstruktor, um das Siebensegment zu initialisieren
+	 */
 	public Siebenseg() {
 
 		leda = new TPU_DIO(false, 11, true);
@@ -31,7 +34,9 @@ public class Siebenseg {
 
 	}
 
-	// 7-Segment aus
+	/**
+	 * Methode, um das SiebenSegment auszuschalten
+	 */
 	public void alleLEDAusschalten() {
 		leda.set(true);
 		ledb.set(true);
@@ -43,7 +48,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "F" leuchten
+	/**
+	 * Methode, zum den Buchstaben F einzuschalten
+	 */
 	public void leuchtenF() {
 		leda.set(false);
 		ledb.set(true);
@@ -55,7 +62,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "F" blinken
+	/**
+	 * Methode, zum den Buchstaben F blinken zu lassen
+	 */
 	public void blinkenF() {
 		leda.set(!leda.get());
 		ledb.set(true);
@@ -67,7 +76,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "0" leuchten
+	/**
+	 * Methode, zum den Buchstaben 0 einzuschalten
+	 */
 	public void leuchten0() {
 		leda.set(false);
 		ledb.set(false);
@@ -79,7 +90,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "1" leuchten
+	/**
+	 * Methode, zum die Zahl 1 einzuschalten
+	 */
 	public void leuchten1() {
 		leda.set(true);
 		ledb.set(false);
@@ -91,7 +104,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "2" leuchten
+	/**
+	 * Methode, zum die Zahl 2 einzuschalten
+	 */
 	public void leuchten2() {
 		leda.set(false);
 		ledb.set(false);
@@ -103,7 +118,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "3" leuchten
+	/**
+	 * Methode, zum die Zahl 3 einzuschalten
+	 */
 	public void leuchten3() {
 		leda.set(false);
 		ledb.set(false);
@@ -115,7 +132,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "4" leuchten
+	/**
+	 * Methode, zum die Zahl 4 einzuschalten
+	 */
 	public void leuchten4() {
 		leda.set(true);
 		ledb.set(false);
@@ -127,7 +146,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "5" leuchten
+	/**
+	 * Methode, zum die Zahl 5 einzuschalten
+	 */
 	public void leuchten5() {
 		leda.set(false);
 		ledb.set(true);
@@ -139,7 +160,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "6" leuchten
+	/**
+	 * Methode, zum die Zahl 6 einzuschalten
+	 */
 	public void leuchten6() {
 		leda.set(false);
 		ledb.set(true);
@@ -151,7 +174,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "7" leuchten
+	/**
+	 * Methode, zum die Zahl 7 einzuschalten
+	 */
 	public void leuchten7() {
 		leda.set(false);
 		ledb.set(false);
@@ -163,7 +188,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "8" leuchten
+	/**
+	 * Methode, zum die Zahl 8 einzuschalten
+	 */
 	public void leuchten8() {
 		leda.set(false);
 		ledb.set(false);
@@ -175,7 +202,9 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
-	// "9" leuchten
+	/**
+	 * Methode, zum die Zahl 9 einzuschalten
+	 */
 	public void leuchten9() {
 		leda.set(false);
 		ledb.set(false);
@@ -187,85 +216,11 @@ public class Siebenseg {
 		leddp.set(true);
 	}
 
+	/**
+	 * Methode, zum den Bindestrich blinken zu lassen
+	 */
 	public void strichblinken() {
 		ledg.set(!ledg.get());
 	}
-	
-//	public void action() {
-//		leddp.set(!leddp.get()); // LED “toggeln”
-//		// led.set(!led.get()); // LED “toggeln”
-//
-//		// kleines N (n)
-//		if (counter == 0) {
-//			leda.set(true); // LED ausschalten
-//			ledb.set(true);
-//			ledc.set(false);
-//			ledd.set(true); // LED ausschalten
-//			lede.set(false);
-//			ledf.set(true);
-//			ledg.set(false); // LED ausschalten
-//			leddp.set(true);
-//		}
-//        
-//		// E
-//		if (counter == 1) {
-//			leda.set(false); // LED ausschalten
-//			ledb.set(true);
-//			ledc.set(true);
-//			ledd.set(false); // LED ausschalten
-//			lede.set(false);
-//			ledf.set(false);
-//			ledg.set(false); // LED ausschalten
-//			leddp.set(true);
-//		}
-//
-//		// F
-//		if (counter == 2) {
-//			leda.set(false); // LED ausschalten
-//			ledb.set(true);
-//			ledc.set(true);
-//			ledd.set(true); // LED ausschalten
-//			lede.set(false);
-//			ledf.set(false);
-//			ledg.set(false); // LED ausschalten
-//			leddp.set(true);
-//		}
-//
-////		if (counter > 3) {
-////			leddp.set(!leddp.get()); // LED “toggeln”
-////
-////		}
-//		counter++;
-//
-//		if (counter == 5) {
-//			counter = 0;
-//		}
-//
-//	}
-//
-//	public void rblinken() {
-//
-////		leda.set(!leda.get());
-////		ledb.set(!ledb.get());
-////		ledc.set(true);
-////		ledd.set(!ledd.get());
-//		lede.set(!lede.get());
-////		ledf.set(!ledf.get());
-//		ledg.set(!ledg.get());
-////		leddp.set(!leddp.get());
-//	}
-//
-//	public void dleuchten() {
-//		leda.set(false); // LED ausschalten
-//		ledb.set(false);
-//		ledc.set(false);
-//		ledd.set(false); // LED ausschalten
-//		lede.set(false);
-//		ledf.set(false);
-////		ledg.set(!ledg.get()); // LED ausschalten
-//		leddp.set(false);
-//	}
-//
-	
-//
+
 }

@@ -31,11 +31,19 @@ public class WurfSystem {
 	}
 
 	/**
-	 * Wurfmotoren passgeschwindigkeit
+	 * Wurfmotoren passgeschwindigkeit wurf kurz
 	 */
-	public void setspeedpassgegner() {
-		Instanzen.sMSC_WurfMotor1.setdrehzahl(Variablen.speedpassgegner);
-		Instanzen.sMSC_WurfMotor2.setdrehzahl(-Variablen.speedpassgegner);
+	public void setspeedpassgegnerkurz() {
+		Instanzen.sMSC_WurfMotor1.setdrehzahl(Variablen.speedpassgegnerkurz);
+		Instanzen.sMSC_WurfMotor2.setdrehzahl(-Variablen.speedpassgegnerkurz);
+	}
+	
+	/**
+	 * Wurfmotoren passgeschwindigkeit wurf lang
+	 */
+	public void setspeedpassgegnerlang() {
+		Instanzen.sMSC_WurfMotor1.setdrehzahl(Variablen.speedpassgegnerlang);
+		Instanzen.sMSC_WurfMotor2.setdrehzahl(-Variablen.speedpassgegnerlang);
 	}
 	
 	/**
@@ -51,6 +59,7 @@ public class WurfSystem {
 	 */
 	public void servooffen() {
 		Instanzen.servoMotor.servooffen();
+		Variablen.hatball = false;
 	}
 
 	/**
