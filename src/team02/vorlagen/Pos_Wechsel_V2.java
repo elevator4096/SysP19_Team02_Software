@@ -37,9 +37,9 @@ public class Pos_Wechsel_V2 {
     
     private static double Distanz_Wand_Abstand 	= 0.015;    
     
-    private static double Distanz_G1 		= 0.110; 
+    private static double Distanz_G1 		= 0.100; 
     private static double Distanz_G1_kurz 	= Distanz_G1-Distanz_Wand_Abstand; 
-    private static double Distanz_G2 		= 0.138;
+    private static double Distanz_G2 		= 0.148;
     private static double Distanz_G3 		= 0.100;
     private static double Distanz_G4 		= 0.160;
     private static double Distanz_Linie 	= 0.260;
