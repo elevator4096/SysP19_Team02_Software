@@ -79,6 +79,7 @@ public class OrientierSystem {
 		if (Instanzen.ballErkennung.get() == true ) {			//Methode um mit Endschalter Ball zu erkennen (Methode servooffen() mit 2. Zeile ergänzt)
 			Variablen.hatball = true;							
 		}
+		
 
 	}
 

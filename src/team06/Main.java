@@ -76,6 +76,7 @@ public class Main extends Task {
 //		System.out.println(Variablen.gegnerlinks);
 //		System.out.println(instanz.sMSC_FahrMotorlinks.gibUmdrehungen());
 //		System.out.println(instanz.sMSC_FahrMotorrechts.gibUmdrehungen());
+		System.out.println(Variablen.hatball);
 	}
 
 	/**

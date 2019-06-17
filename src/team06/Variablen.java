@@ -10,7 +10,7 @@ public class Variablen {
 
 	// Speed für Wurfmotoren
 	public static float speedpassgegnerkurz = (float) (75 * Math.PI); // in s^-1 (Radiant)
-	public static float speedpassgegnerlang = (float) (102 * Math.PI); // in s^-1 (Radiant)
+	public static float speedpassgegnerlang = (float) (105 * Math.PI); // in s^-1 (Radiant)
 	public static float speedkorbschuss = (float) (150 * Math.PI); // in s^-1 (Radiant)
 
 	// highTime für den Servomotor
