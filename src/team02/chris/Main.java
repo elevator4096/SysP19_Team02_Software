@@ -16,7 +16,6 @@ import static team02.Zustand.*;
 
 public class Main extends Task implements IO, Systeme
 {
-	//TODO: Zylinder vollstaendig einfahren um zu fangen
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
     private boolean entry_flag;
@@ -202,7 +201,6 @@ public class Main extends Task implements IO, Systeme
         //Entry
         if(!entry_flag)
         {
-        	lastSystemTime = Task.time();
             //Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
             entry_flag = true;
         }
@@ -211,12 +209,18 @@ public class Main extends Task implements IO, Systeme
         {
             WlanSystem.setOwnState(ZustandWifi.FANG_BEREIT);
         }
+
+        if(IO.IN_Laser_1.get() && !b){
+            lastSystemTime = Task.time();
+            b = true;
+        }
         //Exit
-        if(IO.IN_Laser_1.get() && Task.time() > lastSystemTime + 2000)
+        if(b && Task.time() > lastSystemTime + 2000)
         {
             //Exit Aktion
             zustand = Pass2;
             entry_flag = false;
+            b = false;
         }
     }
 
@@ -392,6 +396,7 @@ public class Main extends Task implements IO, Systeme
             Systeme.wurfSystem.zylinderSpannen(Konstanten.Kurzer_Wurf);
             zustand = Pass6;
             entry_flag = false;
+            b = false;
         }
 
 
