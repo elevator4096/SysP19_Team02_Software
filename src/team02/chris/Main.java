@@ -253,10 +253,11 @@ public class Main extends Task implements IO, Systeme
             //Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
             entry_flag = true;
             WlanSystem.setOwnState(ZustandWifi.WURF_BEREIT);
+            Systeme.bewegungsSystem.drehe90GradGUZ();
         }
 
         //Exit
-        if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT)
+        if(Systeme.wurfSystem.zylinderGespannt() && WlanSystem.getPartnerState()==ZustandWifi.FANG_BEREIT && !Systeme.bewegungsSystem.istInBewegung())
         {
             Systeme.wurfSystem.ballWerfen();
 
