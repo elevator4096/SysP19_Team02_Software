@@ -16,6 +16,9 @@ import static team02.Zustand.*;
 
 public class Main extends Task implements IO, Systeme
 {
+	
+	private static Task task;
+	
     private Zustand zustand = SETUP;
     private Zustand letzter_Zustand;
     private boolean entry_flag;
@@ -27,9 +30,7 @@ public class Main extends Task implements IO, Systeme
      */
     static
     {
-            Task task = new Main();
-            task.period = (int)(Konstanten.TASK_PERIOD*1000);
-            Task.install(task);
+            
     }
 
     /**
@@ -37,6 +38,12 @@ public class Main extends Task implements IO, Systeme
      */
     public Main()
     {	
+    	task = new Main(1);
+        task.period = (int)(Konstanten.TASK_PERIOD*1000);
+        Task.install(task);
+    }
+    
+    private Main(int i) {
     	
     }
 
@@ -45,6 +52,16 @@ public class Main extends Task implements IO, Systeme
      */
     public void action()
     {
+    	IO.OUT_LED3.set(!IO.OUT_LED3.get());
+    	
+    	if(!(IO.IN_Taster_konf1.get() || IO.IN_Taster_konf2.get())) {
+			IO.OUT_LED3.set(false);
+			IO.OUT_LED2.set(false);
+			Task.remove(task);
+			new Startup();
+		}
+    	
+    	
         update();
         if (Konstanten.DEBUG)         //wird nur aufgerufen wenn Debug aktiviert ist
         {

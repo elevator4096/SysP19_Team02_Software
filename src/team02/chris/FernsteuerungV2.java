@@ -10,19 +10,36 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 {
 	private static int cache = 0;
 	
+	private static Task task;
+	
 	private int r,l;
 
 	private static byte[] transmit;
 	
 	static
     {
-            Task task = new FernsteuerungV2();
-            task.period = 50;
-            Task.install(task);
-            transmit = new byte[4];
+            
     }
 	
+	public FernsteuerungV2() {
+		task = new FernsteuerungV2(1);
+        task.period = 50;
+        Task.install(task);
+        transmit = new byte[4];
+	}
+	
+	private FernsteuerungV2(int i) {
+		
+	}
+	
 	public void action() {
+		IO.OUT_LED4.set(!IO.OUT_LED4.get());
+		
+		if(!(IO.IN_Taster_konf1.get() || IO.IN_Taster_konf2.get())) {
+			IO.OUT_LED4.set(false);
+			Task.remove(task);
+			new Startup();
+		}
 
 		IO.MOTOR_links.update();
 		IO.MOTOR_rechts.update();
