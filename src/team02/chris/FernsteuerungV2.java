@@ -36,8 +36,10 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 		IO.OUT_LED4.set(!IO.OUT_LED4.get());
 		
 		if(!(IO.IN_Taster_konf1.get() || IO.IN_Taster_konf2.get())) {
+            IO.OUT_LED3.set(false);
 			IO.OUT_LED4.set(false);
 			Task.remove(task);
+			task = null;
 			new Startup();
 		}
 

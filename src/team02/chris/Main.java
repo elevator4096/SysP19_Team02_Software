@@ -58,6 +58,7 @@ public class Main extends Task implements IO, Systeme
 			IO.OUT_LED3.set(false);
 			IO.OUT_LED2.set(false);
 			Task.remove(task);
+			task = null;
 			new Startup();
 		}
     	
