@@ -192,7 +192,6 @@ public class Main extends Task implements IO, Systeme
         	Systeme.wurfSystem.zylinderSpannen(Konstanten.Langer_Wurf);
         	 lastSystemTime = Task.time();
         	 debug.println("Start entry");
-        	 Systeme.wurfSystem.Wandauf();  
             entry_flag = true;
         }
 
@@ -201,11 +200,13 @@ public class Main extends Task implements IO, Systeme
         if(IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.START && Task.time() > lastSystemTime + 2000)                   //Weiterschaltbedingung
         {        	 
         	debug.println("Start exit 1");
+       	 	Systeme.wurfSystem.Wandauf();
             entry_flag =false;
             zustand = Pass2;
         } else if (!IO.IN_Laser_1.get() && WlanSystem.getPartnerState() == ZustandWifi.START && Task.time() > lastSystemTime + 2000)
         {
         	debug.println("Start exit 2");
+       	 	Systeme.wurfSystem.Wandauf();  
             zustand = Pass1;
             entry_flag = false;
         }
