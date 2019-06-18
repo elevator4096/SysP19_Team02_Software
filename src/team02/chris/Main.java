@@ -398,8 +398,6 @@ public class Main extends Task implements IO, Systeme
             entry_flag = false;
             b = false;
         }
-
-
     }
 
     /**
