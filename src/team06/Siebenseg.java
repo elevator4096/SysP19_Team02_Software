@@ -55,7 +55,7 @@ public class Siebenseg {
 		leda.set(false);
 		ledb.set(true);
 		ledc.set(true);
-		ledd.set(true);
+		ledd.set(false);
 		lede.set(false);
 		ledf.set(false);
 		ledg.set(false);
