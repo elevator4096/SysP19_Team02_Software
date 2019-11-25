@@ -56,20 +56,26 @@ public class FernsteuerungV2 extends Task implements IO, Systeme
 			transmit[2] = (byte) ((cache >> 8) & 0xff);
 			transmit[3] = (byte) ((cache >> 0) & 0xff);
 
-			int r = (transmit[3]>>4 & 0x0F)-7;
-			int l = (transmit[3] & 0x0F)-7;
+			int r = (transmit[2]);
+			int l = (transmit[3]);
 
-			boolean buttonA = ((transmit[2]&0x01) !=0);
-			boolean buttonB = ((transmit[2]&0x02) !=0);
-			boolean buttonX = ((transmit[2]&0x04) !=0);
-			boolean buttonY = ((transmit[2]&0x08) !=0);
-			boolean buttonRZ= ((transmit[2]&0x10) !=0);
+			boolean buttonA = ((transmit[1]&0x01) !=0);
+			boolean buttonB = ((transmit[1]&0x02) !=0);
+			boolean buttonX = ((transmit[1]&0x04) !=0);
+			boolean buttonY = ((transmit[1]&0x08) !=0);
+			boolean buttonRZ= ((transmit[1]&0x10) !=0);
+			boolean buttonLT3 = ((transmit[1]&0x20)!=0);
 
-			int zylValue = transmit[1]&0x0F;
+			int zylValue = transmit[0]&0x0F;
 
-			IO.MOTOR_links.updateSpeed(Konstanten.MAX_SPEED*l/1.0);
-			IO.MOTOR_rechts.updateSpeed(Konstanten.MAX_SPEED*r/1.0);
 
+			if(!buttonLT3) {
+                IO.MOTOR_links.updateSpeed(Konstanten.MAX_SPEED * l / 127.0);
+                IO.MOTOR_rechts.updateSpeed(Konstanten.MAX_SPEED * r / 127.0);
+            }else{
+                IO.MOTOR_links.updateSpeed(Konstanten.MAX_SPEED * l / 255.0);
+                IO.MOTOR_rechts.updateSpeed(Konstanten.MAX_SPEED * r / 255.0);
+            }
 			Systeme.wurfSystem.zylinderSpannen((int)(zylValue*(87.0/15.0)+8));
 
 			if(buttonRZ){
